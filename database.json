@@ -1,6 +1,6 @@
 {
   "meta": {
-    "last_updated": "2026-06-23T17:59:41.113661+00:00",
+    "last_updated": "2026-06-23T19:50:33.161682+00:00",
     "total_gw": 8.048,
     "total_iodine_ton": 38.0671,
     "total_pbi2_ton": 22.8403,
@@ -8,15 +8,15 @@
     "total_mai_ton": 3.8067,
     "total_csi_ton": 3.8067,
     "unique_companies": 6,
-    "article_count": 123,
+    "article_count": 124,
     "capacity_count": 12,
     "iodine_per_gw": 4.73,
     "risk_counts": {
       "Beneficioso": 42,
       "Riesgo": 0,
-      "Neutral": 81
+      "Neutral": 82
     },
-    "llm_enabled": true,
+    "llm_enabled": false,
     "target_years": [
       "2024",
       "2025",
@@ -41,7 +41,7 @@
   ],
   "articles": [
     {
-      "id": "a-440665494450",
+      "id": "a-169802559017",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -53,7 +53,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -69,7 +69,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMi5wFBVV95cUxQTFZCY2t4VENPbTdXbU9DdllwelFTYzU0R3YyZVluMFFiYmNoUHJ6T2dCazdKZWhFMVJiVlp2Y0pIc0JXSjNGU3lWbmNiVGRTQThUcTJ5V1d1NlVYSlh1TWZ5RXpvMHF4MFlZbUZjQ25WVG8zSnJwUTVqVEFQSGktdy1XQlFqMGxLX2VIXy1fcjI5cVNuamxhZmd5eFBldlJfQ09IanB5cjFNM2NwbWFMbm40WFUyeF9EZU"
     },
     {
-      "id": "a-329845309667",
+      "id": "a-550120336131",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -81,7 +81,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -97,7 +97,7 @@
       "summary": "<p>Fraunhofer ISE, in collaboration with <a href=\"https://www.perovskite-info.com/oxford-photovoltaics-oxford-pv\">Oxford PV</a>, has developed advanced shingled perovskite-silicon (perovskite-Si) tandem PV modules under Germany’s government-backed HoTSun research initiative.</p><div class=\"align-cen"
     },
     {
-      "id": "a-794525961965",
+      "id": "a-967245400904",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -109,7 +109,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -125,7 +125,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMirgFBVV95cUxOaER4Qk9XbTJzMGlfUG5tYXc1bEZJNWlSUXhvNkRjYm4taFpIel8xYlA3Q2x3VW1ESUUyUVN6NEhOMWFLcXoyVExFWWJ0STBYOFhpeE5iVVpYWEhRRVp0bE1lZHdaTV83VUdocGRsaUU2VmU5ZTBfQ21oakFsbG9nOHl6ajhNYndqcmVKTFR2QVZCa1ZsVVpSczR4OEFvYUlkYVFKa1F4WFI2VEVoMGc?oc=5\" target=\""
     },
     {
-      "id": "a-438029681532",
+      "id": "a-605736606259",
       "company": "GCL",
       "capacityValue": 0.5,
       "capacityUnit": "GW",
@@ -137,7 +137,7 @@
       "csi": 0.2365,
       "phase": "Operational",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: GCL (China). Capacidad: 0.500 GW. Fase: Operational. Nivel: Beneficioso. Año objetivo: 2025.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -153,7 +153,7 @@
       "summary": "<p>An interview with Dr. Bin Fan, Founder and Chairman of <a href=\"https://www.perovskite-info.com/gcl-optoelectronic-material\">GCL Optoelectronic</a>, took place at a recent conference, providing interesting updates and shedding light on GCL’s perovskite commercialization strategy and 4‑terminal ta"
     },
     {
-      "id": "a-625730925390",
+      "id": "a-773489485265",
       "company": "BOE",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -165,7 +165,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: BOE (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2026",
       "invest_proxy": false,
       "geo": {
@@ -181,7 +181,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiqwFBVV95cUxNT2V5TEZSNGpYU1IyVXdiZEJZckE5TkxNSk5aaTN3a3JBM1R3a3ZJZHRvUUZzYTZvYXZ1b09ULTNFNzVvUHdESW91NGk5VzN2Y21nRVRWY1JtNURjUFpFU2RpM19nS2tJOEtGV214LXl0dkNBOEQ0aF9pc3FZRzBRajFuWS0tYmdETnVQb1BMbWpnX0VjcE93VFpfTzNwQXBvejV0VnQ3NTl4cFnSAbgBQVVfeXFMT0o1OU"
     },
     {
-      "id": "a-954984309794",
+      "id": "a-219566651072",
       "company": "UtmoLight",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -193,7 +193,7 @@
       "csi": 0.0,
       "phase": "Under Construction",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: UtmoLight (China). Capacidad: 0.000 GW. Fase: Under Construction. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2026",
       "invest_proxy": false,
       "geo": {
@@ -209,7 +209,7 @@
       "summary": "<p><a href=\"https://www.perovskite-info.com/wuxi-utmost-light-technology-utmolight\">UtmoLight</a> has introduced a new series of solar modules at SNEC 2026 in Shanghai, marking a shift toward application-focused product design rather than purely scaling efficiency and size. The launch includes two d"
     },
     {
-      "id": "a-998933094796",
+      "id": "a-557801539445",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -221,7 +221,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -237,7 +237,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMivgFBVV95cUxPVm9uX1NrNFREZTlGajNJSnV3RXhyMjdfZU1pR05VSjhhcllLaXkyZUQ4VGM5LUNEeUljNDlocmpuN3RBY3JMZzJrX2dLNVRTeW0wQ0pqNXpUd3RTeFhZd2FTWTNnM3VQaWlmcmo5c3ZOcm9fcG1hNmRuY19MRW9oY04zNFY5YTQwSXB5V2VVTGFhR19rejc1cDlEcmg4LTRXdFNTTERfdW1kUzFPU2QtMVItQWVraE9XYW"
     },
     {
-      "id": "a-577393861198",
+      "id": "a-201396371891",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -249,7 +249,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -265,7 +265,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMi0gFBVV95cUxNRWZOdFRRTTNYV0YyVGplWThLbTFOaHR4ZkpfeTFXNElyUmU0TmljZS1zazhlQUpLX2E5ZlI5Q1RXYjQxS1IwRmV3NUNiYXk3ZlR5N3ZBakVSR0NvdE5VRUZ1YTBGQXJpZXFrcWh3WU11eHhUOVBSb2hZUEtQWGVFZVJGTjZGWWtKbllCU01kLXpzNEdKQ3NnbXZNeV9DMVhfLU5lRU1Xd1JuRHZMNHRWWm9JZ01odklNUD"
     },
     {
-      "id": "a-593158985345",
+      "id": "a-821721377543",
       "company": "Oxford PV",
       "capacityValue": 1.0,
       "capacityUnit": "MW",
@@ -277,7 +277,7 @@
       "csi": 0.0005,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.001 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -293,7 +293,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMipAFBVV95cUxPemJqcHNaQ05oUDhRTW9SWk1aQWhtNWxfaTJmY1RrVmpuNEIzdC12ak16S0cyX20waC1VNGRQRWotUDZOXzZNOEMxTzFYRkZzdTNRTnFiRkdvLWhLLWI2VWpFQzROSmIxLVRmUml6eTd5ZGJRS1ZSRzV2MVp4T0dvaWJxZm5Gb1Q2UmxPdUs1RGVrdWlPeHdVcXU1MWU2ZkVLejdYbNIBsgFBVV95cUxNZXVURm1VUVlRRj"
     },
     {
-      "id": "a-5639546234",
+      "id": "a-735734255977",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -305,7 +305,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -321,7 +321,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMivwFBVV95cUxNWTNqVFpzTzRHY0x3czFmUWR6eE92SnpCZjRlVmJZbkl3MzNha1ZxY2xDOG5XcGpOVm9xbDJvaFk1T3hnRmlNS2RFQVZMTVk5TmJyZUJrY3EtX01ndzYtR1B1ZkZFcGVpWHF6cU5zTU4xcHFPSmp3T1RiUjhmNXl6T3AwY0xoTDdhZ09BZHZRdDV4WVhMLXBMQ2ZjZnJlVzd4UGE1TUwxRU9GU1FNMmlWbFU0TVZ0MDlsM1"
     },
     {
-      "id": "a-850460750656",
+      "id": "a-381716722114",
       "company": "Renshine Solar",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -333,7 +333,7 @@
       "csi": 0.0,
       "phase": "Operational",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Renshine Solar (China). Capacidad: 0.000 GW. Fase: Operational. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2026",
       "invest_proxy": false,
       "geo": {
@@ -349,7 +349,7 @@
       "summary": "<p>Researchers at Nanjing University, National Innovation Institute of Defense Technology, Chinese Academy of Sciences, University of Science and Technology of China and <a href=\"https://www.perovskite-info.com/renshine-solar\">Renshine Solar</a> have developed a new interconnecting strategy for all-"
     },
     {
-      "id": "a-39571488914",
+      "id": "a-431632773019",
       "company": "UtmoLight",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -361,7 +361,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: UtmoLight (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2026",
       "invest_proxy": false,
       "geo": {
@@ -377,7 +377,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMimAFBVV95cUxNZkFGVFhqSDdwY2lnUnpWb2pFQVAxczVOQkJkYUtvSVpXUkxXcUg0R1lMZXdwOWh0WUZTNkJqRUVnQmVFc05rUl9HeUs4dlZMd19DSlBiRF8wUUtEVTlwdGpfdDgwT0lfOVZnWkRkTk5IVHVvc0c1TTY0alRFLUJTS2s1Z09PeEtMTG9BYmVWWWNyZHdKWnBobQ?oc=5\" target=\"_blank\">UtmoLight launches ne"
     },
     {
-      "id": "a-700867068126",
+      "id": "a-387230359977",
       "company": "UtmoLight",
       "capacityValue": 19.0,
       "capacityUnit": "MW",
@@ -389,7 +389,7 @@
       "csi": 0.009,
       "phase": "Under Construction",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: UtmoLight (China). Capacidad: 0.019 GW. Fase: Under Construction. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2026",
       "invest_proxy": false,
       "geo": {
@@ -405,7 +405,7 @@
       "summary": "<p>During a recent industry exhibition, <a href=\"https://www.perovskite-info.com/wuxi-utmost-light-technology-utmolight\">UtmoLight</a> reportedly signed a cooperation agreement with the China Construction Fourth Engineering Division (CSCEC 4th Bureau) for a \"19MW Perovskite PV Module Project,\" marki"
     },
     {
-      "id": "a-950804331152",
+      "id": "a-433500804750",
       "company": "BOE",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -417,7 +417,7 @@
       "csi": 0.0,
       "phase": "Operational",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: BOE (China). Capacidad: 0.000 GW. Fase: Operational. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2026",
       "invest_proxy": false,
       "geo": {
@@ -433,7 +433,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMimAFBVV95cUxQQnJqU2sxUVpmcmx4YUE3WkgwRkhGWkI2V0dETXhDUkJpNlRLc0QwLWpSV2tPTlRibGJOMEtDVW44U1N6bFpYS1FHRUM2aDFSeUZkM1N4UlJEd3h0Y01CSDdCR2tVc1A1ajJSZlhsSzJwVGFtZUNWZmZJbzhiMUl5a2ZheEVoeXY2NHNYOXg5RThZX3FUazRURQ?oc=5\" target=\"_blank\">BOE says glass-based "
     },
     {
-      "id": "a-972217104222",
+      "id": "a-398796867561",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -445,7 +445,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: GCL (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2024",
       "invest_proxy": false,
       "geo": {
@@ -461,7 +461,7 @@
       "summary": "<p>China’s solar and clean energy industry has launched two new industry alliances focused on space-based energy technologies, announced at SNEC 2026 in Shanghai. These developments underline growing interest in combining photovoltaics, energy storage, aerospace technology and satellite infrastructu"
     },
     {
-      "id": "a-460278407533",
+      "id": "a-423772188474",
       "company": "BOE",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -473,7 +473,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: BOE (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2026",
       "invest_proxy": false,
       "geo": {
@@ -489,7 +489,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMifkFVX3lxTE1LQkh5bDBSeHlmdDVBZW1oVHFrY0RJMUk0ZUdEcDg0Ukl4QmVBZG9ZYzBsV3MybkV3SGNjWVpNWkZ2YlhwTVRjSjVKYmNqQjQ5dU40TGJuNXI3cjNqdF9IdkpFV0NOX0loVlhXdkE2N1B2QkNqZEhmOFgwWFlVZ9IBiwFBVV95cUxQRDVDVUFNdXd4VVpuR3R3djRnem9Ga1RSRmcxT21mMmZHYS12eGxReHBhODFDako1TX"
     },
     {
-      "id": "a-823583816574",
+      "id": "a-291794926377",
       "company": "BOE",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -501,7 +501,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: BOE (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2026",
       "invest_proxy": false,
       "geo": {
@@ -517,7 +517,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMikgFBVV95cUxOVUtBSUhWRGRlRV9zNUxVZ29XUllXdlZTZkVSSzJyQktSTjcxUUxJTVFraldpVmFYMzFNT0ZRdzRmT08xZWh2YTRFNGpJUnlpMEM4NGlpYWtsamRUU201WnVWYmFKajdERWJHZGpWWW9aMmd0MnM4cWdUa3FpZHN2cHpQYnFSTjVsUDlxMWlLSTdadw?oc=5\" target=\"_blank\">BOE, Corning target glass sub"
     },
     {
-      "id": "a-130097019832",
+      "id": "a-627869705563",
       "company": "BOE",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -529,7 +529,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: BOE (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2026",
       "invest_proxy": false,
       "geo": {
@@ -545,7 +545,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMirAFBVV95cUxQVWNQOExQaHhCMHRJbW1jd0dENTh6dU4yMVhnbldQd2FaRWlCWTQyRGgxRE1ZSkJCQ1lHdzVQMHRhcW9OeWR2dURZQlRkRmY5R25fWjBxUkItQWVGNDZWeTRIclhtckYxT3Y0X0pKMi1FSVYzcTYtU0t3U3ZkUlR5WEwxTnZTc25XVnFaS0gwd2Q3b0V4TlBoakhRRnFFRjBXMWhESUZiYS0zY3VY?oc=5\" target=\"_bl"
     },
     {
-      "id": "a-105288629086",
+      "id": "a-687056023907",
       "company": "BOE",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -557,7 +557,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: BOE (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2026",
       "invest_proxy": false,
       "geo": {
@@ -573,7 +573,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiowFBVV95cUxPMmRjaWVqc2pKUEx2b3JpNXd1Z0tTN01LU0Q4dHk3azRqOExhUjlqR3hhR3pLdzZRVGZJcldWWjBoT3NnWThmZ2tNaUV5UWlfZ0w4STN3b1F0c3pPZHNOOWYxaW83c0FvUHhXUEFzRjcwYThIdnFYQTZLbVdwV3NGZlNsSVpSd3V5ZWthd2dUckNkdklLbFJwTlpwVVVDczU5bkRB?oc=5\" target=\"_blank\">BOE Par"
     },
     {
-      "id": "a-885667280165",
+      "id": "a-338397086468",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -585,7 +585,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: GCL (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2024",
       "invest_proxy": false,
       "geo": {
@@ -601,7 +601,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMimgFBVV95cUxOU2EtYnl2S0NBWWtqWk1rb1RlMl9yZmpCbXdYTVgxQ21xVWtLNFdnREZGQnJpcUR2TUZVOXhUUFFQNWJ1ZFJkMTZXYm03UUxVN2ozMW80U1ZlcWJManRraGlTcE50VHRyUDViTlNndWt0OTJFS0MtTVBlTUl2clpWdEp2d2hQMWdHbHY3NGdCYnN4WVV4LUVZdUdn0gGnAUFVX3lxTE1YR0ZYNXRpWDBCZGFGemlRQ1Ztb2"
     },
     {
-      "id": "a-236436322136",
+      "id": "a-619368155030",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -613,7 +613,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -629,7 +629,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiqgFBVV95cUxNQjFiUjU0b2NWcTZVTVhnbUpZRlNtM04tUUxLUmVscFl4V3hKemFfOGZNc2JXZEhWNmd1VktoVTUtaDNtVUo0bmZybWFIOTVNZ1Y0a0x4VHJWSEpXaTdiZGp3eUQ2RXZOZjZoRXF4djNhZTViTi1nSXVoRXowYWFPd1dJMGh5cjdoYVBsMFRYZ2hVNlpreFNMTlltYy04alI5X2xHRG1YQ3U5UQ?oc=5\" target=\"_blan"
     },
     {
-      "id": "a-589831742409",
+      "id": "a-541579539556",
       "company": "Caelux",
       "capacityValue": 3.0,
       "capacityUnit": "GW",
@@ -641,7 +641,7 @@
       "csi": 1.419,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Caelux (USA). Capacidad: 3.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2027",
       "invest_proxy": false,
       "geo": {
@@ -657,7 +657,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMihAFBVV95cUxNZ3ROWGZyV3lSdUlTMkdLcnlzZG0tcDZfTDNreS0xY281U1BxVldtQlZnejh0c2U4LVJsYk04dUNEYV93dXNDbXJEcEZYMGNnRzViNG16MVB6RnpLTmx0ZUhYSW1jLV9kZUp5SmFHdzhFYzFsWmpDZi0zeHAtSGh1OGRHOTPSAZIBQVVfeXFMUGZ5aWZiMWhTWkJTXzdYaXlMRER2a1FzQkpoZUJlczIxeW5WazFudVc0RU"
     },
     {
-      "id": "a-144922135990",
+      "id": "a-122094191198",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -669,7 +669,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Caelux (USA). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2027.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2027",
       "invest_proxy": false,
       "geo": {
@@ -685,7 +685,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiogFBVV95cUxQallXNndxWlc4X0JwTnF2RlY3MVVhMDRPTVpVMVlXa29uRTRlMUItckVuOW1odzNYcHl2Y0RpN25EYjBaUGs5cE9aSGNQa0p3ZGEtdGR5R1Z6SmptaDN1U3VVNGNkQ1VCN3lsZlZkYkJQMnZYT3l0Vk5DMm1KdzBOZy00Qms1VWVRZU9KNjNBUXhmN3MtWVBoVy1TR183dzRXYkE?oc=5\" target=\"_blank\">Solx & C"
     },
     {
-      "id": "a-368739120649",
+      "id": "a-886129028500",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -697,7 +697,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Caelux (USA). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2027",
       "invest_proxy": false,
       "geo": {
@@ -713,7 +713,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMizwFBVV95cUxPWHhnSUx5dkhZcktsUW82b3NGNFkxS0ZPN1hHOGFZc2RaMGlqZTZNZG56WkY1UnlaeXZJMHExcXI3Vm9vVXBqU28wLUZubWUwb3p4ZXJNUHZrWE9tSHYxekV1a24wR1B4M0pqMjJRRGp3VzBQTkVWOS1KeHo5M3dLRjFUXzNJdDBBRnR5UjNhSXNpWklVV29mZjhzQnhrM2oteG9jU1Z3a0FvUHFVZS1EMUx5VXlMNEw2TX"
     },
     {
-      "id": "a-484431506070",
+      "id": "a-988491542414",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -725,7 +725,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Caelux (USA). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2027",
       "invest_proxy": false,
       "geo": {
@@ -741,7 +741,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMihAFBVV95cUxNYWF4eURnb05qNDZMUTVkT3h3Y01VUlVlSWJxa1VxdE9fc0lYalIwMHFueDRxMGIxZmZQLTFxVUxXdjRzSGxfeG5LN3d4RDdoX2lha0drWTE5ZDZaNklESWNYM3hLUjZ3UWYzZ2x1MElkZUhCZHNwVTg3Rk1DYVNqTTRwYkU?oc=5\" target=\"_blank\">Solx, Caelux Partner to Scale Solar Energy Techn"
     },
     {
-      "id": "a-266834276758",
+      "id": "a-42361955058",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -753,7 +753,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Caelux (USA). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2027",
       "invest_proxy": false,
       "geo": {
@@ -769,7 +769,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMi7AFBVV95cUxNby1lYUlmcmNjNkFNdlZsOEZ5U3h5MlFjZ281bWl5aVFqZ2dGS2U0NG5JTzdLeDZhWDg3a1oyWG5zbUFVRzZnU1NfbzliN01aczQxdW4zUUxtbGt5Z012WUJyVXo0REsyQUt1Ql9MT05fNHZoanhOYjdubngxekJvZ3RuejFKQ3ZCNUJSR29HaVVla3dVc0l5ZThGaGRMelUzSVFTTENVVjZWNnZYd1l1MVVkZ2stM2JJcW"
     },
     {
-      "id": "a-536977769121",
+      "id": "a-264786641098",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -781,7 +781,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Caelux (USA). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2027",
       "invest_proxy": false,
       "geo": {
@@ -797,7 +797,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMimwFBVV95cUxNaXBYS0lPRTNCMnNyRlE5czhSVkxMLXdScHlvVjhVWnZrVHJhcW9HQV84M29XeUw5aDlvVm80YjlXMEphMnF4bVQ2RE85LXJLTU5WdV9iMEhrV2NZQ0xhb3ZDQWxNOHpWUEhiRkhWRVQtWGFsYTNpU1cxMzNfOFRWX0RDS1A0Tk1Ka29zMmZsemZwTWs0Vmd4M0EzYw?oc=5\" target=\"_blank\">Solx, Caelux agre"
     },
     {
-      "id": "a-642405154816",
+      "id": "a-503263716847",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -809,7 +809,7 @@
       "csi": 0.0,
       "phase": "Operational",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Caelux (USA). Capacidad: 0.000 GW. Fase: Operational. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2027",
       "invest_proxy": false,
       "geo": {
@@ -825,7 +825,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMirgFBVV95cUxPanRuNEM3b091WWcyaWI1S2xTNGxoNFVFWEYwek82RnlYcDNwLXpLYThUZjdNbTF3Qko3SEZkYURpUFBMdFcwd21rcnluOWFFY0Q2ZElsejd3ckRCdjhsRm9wOHdyYkJ4Nmh0ekVsNWpfU1psMG5jWmRGSEE5TzZDa3ozMERRSER2UHFmMHlDRGt0WG5nb0Z0UTVtcjhHaE9pNkdTR1BBV2ZKaU9kYUE?oc=5\" target=\""
     },
     {
-      "id": "a-296836783998",
+      "id": "a-217029517430",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -837,7 +837,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Caelux (USA). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2027",
       "invest_proxy": false,
       "geo": {
@@ -853,7 +853,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMilAFBVV95cUxOOW1nanR6dFJYMGdfSFJTLXhIWjJpSGVxTEJYTjhYeFhkamRldlVoWDYtVWhicllHbXgwYkliMzB6czFmREpaN294OVhFY1dNYTgxOHUtNDQwX0I4YTVLam5pcEM4VFAzeXBjdXMyTUk4UktlRFJKMHE1bXhkZi1ja2tSMWVnRnJhekc0c3hhNUNQQnNG?oc=5\" target=\"_blank\">Caelux, Tandem PV announce "
     },
     {
-      "id": "a-284823717444",
+      "id": "a-628902632381",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -865,7 +865,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Caelux (USA). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2027",
       "invest_proxy": false,
       "geo": {
@@ -881,7 +881,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMivgFBVV95cUxNQnlvRERhbzJXVE9hM0hpek92amowMmljc0ZMZ1FsOGZnOGJVTUdwZkxCUHdpdGQ1SjhxbkdpZHlrTlNNUWtGQzNKVV93aGstYm5tN1djSk44ejl4cHVzc0lzUm9abG9LTjdNTXBiNmx3Tk5CWmItc0lYTy1fQkNxYWEwNEJUaUxaQ2c2d05PWGE0ejlHd3BKMlpuUnkxQ1pSTXhldTNJbjJ0aDhOU3JPbzQ2b3pyQXN6Wi"
     },
     {
-      "id": "a-616682360854",
+      "id": "a-494875623084",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -893,7 +893,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -909,7 +909,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMidkFVX3lxTE0tcTlFNDdZbllWdHF5bTljblRUdzZQTm96clJGSmlZREtjbnNobEpRWEk4TUJIWWN5M3d6NlhLRktPX3lSbV9PZWlnN1BpMkprb3F1bm5vVXg4X1hKNGFHQzhmeGtFUUtuYUdiTk96aWU3aElnOGfSAX5BVV95cUxPTTNyRk9tSkowNlRLOXIxalFKUFJFN3RXbkpRRXRvaDVOd1JBOE5JNnNlYlNDZFJFd3BRVDYyWEgxZF"
     },
     {
-      "id": "a-545556574330",
+      "id": "a-899746974810",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -921,7 +921,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -937,7 +937,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiggFBVV95cUxNdkN2NU0zTUZ5NElWdGJEUG11NUZPc1ZlZ2lqMnpkLVNORHZwUnRYZFp4NERDTEgtSk9DMEg2dXN6S3lqN2lZbTZ1VEREcUtCQkhkWEpicGRTUW9kRmVaY2R2RUVEejluNTZ1bzBIbEJPUEVINjZVUlZRRU5rTm1URlh3?oc=5\" target=\"_blank\">Oxford PV joins vehicle solar panel project</a>&nbs"
     },
     {
-      "id": "a-356941166908",
+      "id": "a-679300609819",
       "company": "Oxford PV",
       "capacityValue": 5.0,
       "capacityUnit": "MW",
@@ -949,7 +949,7 @@
       "csi": 0.0024,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.005 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -965,7 +965,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMilAFBVV95cUxNbnVnOU1qMHZEWlBQNjh2akhWNHBzWjJSbGh0OGZqQjBpYUR0OVdKMGNBbnM2a2RNNUNfM1BKVmJfNW9PdnNJY3owQ1BiQ2pxYk9xYUNCMW9tekgwZVcxT2h4MjVIZDBvMUNMdGZOX1ZSV05QZFVjQndGaFpKN1B5MWw0TE1OZERxdVhvREozd2Zybnhw?oc=5\" target=\"_blank\">Oxford PV’s perovskite expe"
     },
     {
-      "id": "a-412299330637",
+      "id": "a-452121157371",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -977,7 +977,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -993,7 +993,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMikAFBVV95cUxPbnRCaWRmOHlFclpOdGZQV1dsRGtyN2FWaVhXeVNPZHF0SjgxdTJKZ0E3bEFJNHdYeFFNX0ZYSVRLN3E1RE9IeHViR21iTzZjLVFwX2x3NWZZNklueGMtME1tNVhXVHJPREVMOG1pZzdWd3d0LWpSWXdLLVh3SkRBa2txY0MyS0JnUHBtMWVjZ18?oc=5\" target=\"_blank\">Oxford PV joins UK solar EV inte"
     },
     {
-      "id": "a-901660385511",
+      "id": "a-821711547256",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1005,7 +1005,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -1021,7 +1021,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMi0gFBVV95cUxQNS1wSWYwSzRrQmp5N2hyM1BZeWMyMl9OM1pQVmpYNm9FMnE1NjJuQVFONlBUb1oyYm9DVVl0TGhXSk1uVnNvcHZrMk1RZ3FveVY2aEk4bktfRTdRUmdGR2U2N3I3OTYzVWVrT1k5aUxOcjRvRTdPYkN3RVJtX1BhOUlIc2x0VkllQ1FPdDFXdW9KMlZqaklMajBEb25fbFFXbVV6QW1XS3pwNGYtUTlXVjgtOHR2WWYxVk"
     },
     {
-      "id": "a-342577637148",
+      "id": "a-141493127142",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1033,7 +1033,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -1049,7 +1049,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiqwFBVV95cUxQOUozZXhNVlZZOXp5a2hFUk4zaEsyVkNPTWk5XzdsMkdrMFZqZkN0TE9vcmtldHYxWW5EWldOZ3p6NHI5X1I1SXZleHZWQnBmdFptVVlHQlY1RUJXZUFyQnJXaS1hNGpmMjF1NU5OZFVGdzBIc2lKUUdobU5zQWVBVDlaWTU2N2tuOExUU3Q1OXFFdnZwdXMzclBaWUJZbVE5Yy0zbTBiMGZfMUU?oc=5\" target=\"_bla"
     },
     {
-      "id": "a-163718719305",
+      "id": "a-807584844922",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1061,7 +1061,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: GCL (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2024",
       "invest_proxy": false,
       "geo": {
@@ -1077,7 +1077,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMipwFBVV95cUxQLTQwaVNtMGFIQjVUZmFiU1JBdWtYQ1M0SG1SM1E1TDVxODJrNEZHQVJHVkc3N1M5RzBOTnc2Ny1WUGNSR3VRNE51QjRjbFR1VlA5YlZKTl96UjE2cHFFaG5vUEsxeXdNbTVZU04wUC05VEt4d1hiNVEwazhXclhhWGFQQktxc3UtTHNuU3NZOVVOQXNWMUw5dWhiZUpQTzgxM1I1R2Rfaw?oc=5\" target=\"_blank\">G"
     },
     {
-      "id": "a-439710884561",
+      "id": "a-924724341921",
       "company": "BOE",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1089,7 +1089,7 @@
       "csi": 0.0,
       "phase": "Operational",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: BOE (China). Capacidad: 0.000 GW. Fase: Operational. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2026",
       "invest_proxy": false,
       "geo": {
@@ -1105,7 +1105,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiZkFVX3lxTE4zT2I2VV9CdWNLWVluUXFKODFZZER4cVRPT3k5S2NvbDRob2RwTHdwMkpUM2J1cW1YN0tGSGZ1NjZheTlEbTVmR3dtMkhlZkZTSk8xVi0wRkk5R25LNGhROURuMVRzdw?oc=5\" target=\"_blank\">BOE Enters Sample Verification Stage for Gen 8.6 OLED Line, Targets Mass Production in 2H"
     },
     {
-      "id": "a-780889504128",
+      "id": "a-491448876527",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1117,7 +1117,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: GCL (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2024",
       "invest_proxy": false,
       "geo": {
@@ -1133,7 +1133,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiygFBVV95cUxOQTA3eEVja19oM1JFb1VQOWhDaE15SjY2SFVUbHpDZThRYXlMLVRnbzVYWVFpTXRCRW93eHVjUzM3enBodHVnMnRHNy1udHBEbjNzZ1VjOWpUVlZYcXFoc0h0Zi1Jal9lNzh4YjBxZ2pzZ2NnTGRoZG9UVGNTRl9Ec3YwbElialVoc1ZmRFVuTG55T2IzVS1LT0tWZ1NDZWtJOFF4dHNXR09lTmtVUWFFSklhVWNyai1VUm"
     },
     {
-      "id": "a-76822158631",
+      "id": "a-156698229194",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1145,7 +1145,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: GCL (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2024",
       "invest_proxy": false,
       "geo": {
@@ -1161,7 +1161,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMigAFBVV95cUxQRE1PaHo3UElkdHJGT3B3WlpXMWlyNW44a3h4emRNMUozVUt0cVE4a0l3T3BwakpXSzhPVXlfN1dNcU0yeUJkd2RHei1CZDh3STJQamFqWE9kcmNuVDBaell3MFhQdVIzVUFDTnhlYWQ2UjlSLXk4WlNUSjhQNmRrRtIBjgFBVV95cUxPRTBVU1FReUVjWHc0bFhDTXliRE83RG5IWm1sajlaLVpmSW54RmhNMVVTdk92Nk"
     },
     {
-      "id": "a-842105731000",
+      "id": "a-611136890976",
       "company": "BOE",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1173,7 +1173,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: BOE (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2026",
       "invest_proxy": false,
       "geo": {
@@ -1189,7 +1189,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMijgFBVV95cUxQRUgxNWFxYXpmTjd4QXZ3SnRFOFN6TExUbjRJc29pSy1jWTRLbTd3aUlQb0s2enRQdnlKdFNSLTVmVFItbFJFZy02dTZ4OUVRcFIyOG9Odl9pU0NrVU1tZlVDYUFRanJxWFkyU1BpRi0td191OG1VM1ppR3JCMExsRVJTVmVrRmMwOXZPLWt3?oc=5\" target=\"_blank\">BOE signals sustained TV panel pric"
     },
     {
-      "id": "a-81499157549",
+      "id": "a-546735252257",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1201,7 +1201,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -1217,7 +1217,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMioAFBVV95cUxPTTRJQTJmRUoyVTBPWVNyTnV1eWxxaVE2bEt4UGlBT0VTVzEyRmlYMGFjU2J2SGZ6ZkxzNkd3YWtNYi1KN1V1QzZYYnVCWGtqdmViYm1ieU5IMzRHM3BLU2ZCQkVrTUt2SnpFdnpWU0FobjRSLUFva1ZVOEp0MEtwb2x3NnJkN255YW84T0s5S1ByNC1OdXA4VnBTUmw3alVm?oc=5\" target=\"_blank\">Oxford PV p"
     },
     {
-      "id": "a-426836175016",
+      "id": "a-629804673613",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1229,7 +1229,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -1245,7 +1245,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMipwFBVV95cUxPT1BMVFduajFEMVJBN2IwMUZsODFYX1pNYUYxbFNQcHdCV1IzYkRPejNjXzFFODZUSjk3em14UngwOFQ1d1NPajJFWkFOakVaNVRudVFFc0tiYVotRlJfejk2QUZqZ3RMemlMekwxbE1NLUdsQlJ5OUVaRFc4LWxhcGZZTk1sSWtST0xITWt6Uzl5ZUY3NkxyWVJJeDNjZzFhVUFNZXNaaw?oc=5\" target=\"_blank\">F"
     },
     {
-      "id": "a-752341389006",
+      "id": "a-415745478203",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1257,7 +1257,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -1273,7 +1273,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMijwFBVV95cUxNOHA1VjV5UVJsS3NiZmlINUtjdElqZTNXYlVFaXVPZGNhV0tkU1I5T0dCZVdTR0o5Wl8xWlFlLUNpRVlJNWVSaEVPMHVPWlJLSEpSZ1A1M1l6cjVrcWFiVXdUS0wwYnZDQ3Z4NVE0ekJmV2xVakJ6SlBHS3k2RmJVWGdrZXNrVXBhZXJzVFlxZw?oc=5\" target=\"_blank\">First Solar, Oxford PV ink US per"
     },
     {
-      "id": "a-134139916967",
+      "id": "a-105785684290",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1285,7 +1285,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -1301,7 +1301,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMizwFBVV95cUxQVGVYMDNmVnpVaVRzQ1lXeHVtUnNIV1VGUXludFdKMlVWTmhEN3U2bW1ENlVCU1RsRHBtN19idEFBbzV4dVJvaFk1T2JYb1lacU4tdDNaRmUwSnhoQnJlOVpGYVJLd1ZkRXBNNk1aYWFUemhWTDVPYlJNUmtqazZXMU5zLV9lQWoyVXAwdTVVQ0w2NkZnRDBHUFYtSGJwUkoxX2lkVW56QzNpUnFBeEZPbUlsVHZrdk5nSm"
     },
     {
-      "id": "a-581066723611",
+      "id": "a-667585693977",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1313,7 +1313,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -1329,7 +1329,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiqwFBVV95cUxNRGtBYjNpMmRTcG55ZDVqeElaNDgxSEEtSHdkc2d2c044WE91VkxYc2ZGMnJ2ODAyd2w2OEcxOXI4NnNSX3NmM3pHMjUzbndMNGFkekpIbXdreFdTdFllT0dycDJuRVMzWHdDOWhUa2VLNHVRTU9xaWVZOGFEX29udGhqMHd5N2FhYWZDTUJDMERrZnBtTUhGaDdBbHpxa0F4UldkU0tQc1RNcDA?oc=5\" target=\"_bla"
     },
     {
-      "id": "a-32415056994",
+      "id": "a-363926182166",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1341,7 +1341,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -1357,7 +1357,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMi9wFBVV95cUxNU3hHYzBjTUZpU04wYzR5d3Rkb2ZLNXJfazhHam9DYUl4ZXp4aG1FYzI2UmYyeGJZWXQ5TXpMdDZxRE91VWNDQll5cnNoWHFjVGNTc2RkenBwVjVXZVZ0TEVvMnhweVB5N3VKQUVDeG9NQzdDellxUDhSd3JQck10S3RDQmlpVm9aSzYzTDYxTEhLTVAtTVo1WWViSDZtQnBHVC1ZLU1MM1hKSHJhaHhxcndqMjNtMmo5Uz"
     },
     {
-      "id": "a-708445934511",
+      "id": "a-354691023838",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1369,7 +1369,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -1385,7 +1385,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMipAFBVV95cUxQQm9mYkFzeTdtSnJrV0VseFdNVE1aajJlNFFkaWxLdHFUUzdjZHNJVm04TV82eW9EcWNwNEJNMWlPQWhZTWZ1MXI2QjExXzZlSWpfaXVfTF9CLUNwb2dUN0VlbG9pTmZ5TkN2RkJ1b3FFRUE0U1VxUl9PeU1ReERsSEpEcUg0WGlRdUc5U1ZEdHkxOS1INnF4cTJCTnhkNElQdVZlMQ?oc=5\" target=\"_blank\">First"
     },
     {
-      "id": "a-937339925027",
+      "id": "a-512912335195",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1397,7 +1397,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -1413,7 +1413,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMickFVX3lxTE5Rb2lsalJuaEJFZkJzckxqendkbGR6ZW41ZG45aXdHSXJNUzVpUURYZzRCa1VwWE5yNkJIb244aFhKZzRGLXZ4OUloRlRaclhKWkZjOHJ1b3doX215aVA2TGQ4NUtMTXYzN2VlVzJUbmsyQQ?oc=5\" target=\"_blank\">First Solar locks in key perovskite tech with a new Oxford PV deal</a>&nb"
     },
     {
-      "id": "a-362063470669",
+      "id": "a-110533055609",
       "company": "Oxford PV",
       "capacityValue": 3.0,
       "capacityUnit": "GW",
@@ -1425,7 +1425,7 @@
       "csi": 1.419,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 3.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -1441,7 +1441,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiywFBVV95cUxQWUVTRW9VbXpNN0FLMnNMU0h5dkNCbzFZSWgwWXNRZVRFM19uc0QzUzBmQ2RzSWVqWm5ubmQyS2h1djdGRHBDbEU5TjJ2dWk4cG5TQlRtbTNseXEyMHNvdnJyTm4wSUtFZGNsbVh0MllmUWtkZExSVEk0MF95SGs2ZDNmUXQtZWxuM3gwVWV3T2VUNWRybWQyS0ltRXBua29nYTBCbFFBOGxmWUFYcjl3UDdEZnU0aFhldX"
     },
     {
-      "id": "a-599895284366",
+      "id": "a-713655251979",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1453,7 +1453,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2025.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -1469,7 +1469,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMi8AFBVV95cUxQNHBYRXpmWm9Hd1YyUDRMSFhhY3JfcUFNZDEwNTRqVDFSVHNPUC1uRnRxT29KNlh6SGZuZ3pBWE0zSHpqQm9vU2t0Y0FyUlZxUWNfakxQMXJoRnBhYmxCTC1udmR0QjhQaVVoSER2ck52S2NWSFVjNEFQNmt3VS02b0lPMDdXa2J6dzJMVV9HTkZFSVJVbnFkbTVRd2JfM3QxQTZzSjhKN21sTlVfcFo5NkZ5VmpTMnRqbj"
     },
     {
-      "id": "a-384601655817",
+      "id": "a-356484390805",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1481,7 +1481,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -1497,7 +1497,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMipAFBVV95cUxPbVY5bWZmTHdER3lRUmxCcTA3UVRORHlPeFZSZVg1bXRJeTlsRmVPTC1kSXZmVUs0VHhuUUZhUjZaNDdwR0IxWTY5Y2NqMWdvTnVOanBOMXZCYVFmR2ZQcDBad3ZsTWpfa2ZlZTVuRzY2eG5rbWNfeHE1ZFZsdDdWSGNmY19GSzJJR2xkbTgyZElDc19UX0o1cU5ocHc5bGp1UzlXeA?oc=5\" target=\"_blank\">Oxfor"
     },
     {
-      "id": "a-728098389802",
+      "id": "a-881883103282",
       "company": "BOE",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1509,7 +1509,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: BOE (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2026",
       "invest_proxy": false,
       "geo": {
@@ -1525,7 +1525,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMilgFBVV95cUxNRUM5cy1YWnh4SG13NGYxaW5CQVZHSDN4MURYbFIxek85RTZXUThWNkVpVklGeW5TUjQtaG9BSTd2dEVDMkE3aTBoejI0U0tYbWlRc0hQZFJBdEo5TmlWbzM0M3AxeVR5dkN5cGVMcGZSTkdndldseDlrSVlFOHZ3WGR5c0Z5WS0xdUdrNVprTE1PbXRvTGc?oc=5\" target=\"_blank\">Why AI matters for scali"
     },
     {
-      "id": "a-480169075248",
+      "id": "a-108422869784",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1537,7 +1537,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2028.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2028",
       "invest_proxy": false,
       "geo": {
@@ -1553,7 +1553,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMivAFBVV95cUxQOW5ramVoZ2xLalM4U00yMmY4djl4blgtRk5QQ3B1NDAzZnQ3clplRXlmeUphaHBpRnBHZm1nX204aE5SdzIxT0tzbWU3c1VyUjlsbXFGRUIwQkxpSWxLZjZ6SEpXZFlhVFZwbm1wMENNLUNQcC1ES25HMDlKVllJR2pUTFZWV3ZER25uLXF1bVh0NXo3bnZvSEg0T1lQdEJ0RGVZdWNzOHRSdDIzVjkzUFRFUWJvdHJwR1"
     },
     {
-      "id": "a-969641362723",
+      "id": "a-962723304835",
       "company": "BOE",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1565,7 +1565,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: BOE (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2026",
       "invest_proxy": false,
       "geo": {
@@ -1581,7 +1581,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiwAFBVV95cUxOT1E0MzBlOExGWHBEalZicUhydWJUTEk1ak5RaU50ekc2TXMzX01XSkFDZlpNck84Mm5QN0Z2QTNOQTNad3BIalJlS0pEaGRDS1EtOGlVSHY4VWFDVnljcjU3ZERjN1lQenVCNnAyVy1JMmJ6bW40WFBQak5jckNFSUh0cnBPN2VYLUFWTXY5WXpiUU41LUxabkl3b3ZkeGFVRU1FRUI5RUx2Y1J1b05EUHNWOFljY3IyTn"
     },
     {
-      "id": "a-580567427517",
+      "id": "a-9910317918",
       "company": "Sekisui Chemical",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1593,7 +1593,7 @@
       "csi": 0.0,
       "phase": "Operational",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Sekisui Chemical (Japón). Capacidad: 0.000 GW. Fase: Operational. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2027",
       "invest_proxy": false,
       "geo": {
@@ -1609,7 +1609,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiY0FVX3lxTE8yYzdZbC05RE5QcE1HVGxaazBVWGNVenFuUWRVTlNsOEFQN3RxWnJpc0NxX2dkZmFvd2Z4ckJmcjZCS2VWd1gzSnJ0RlZycXJHd0FyUkkwcldEZklUVTF6ZWtoMA?oc=5\" target=\"_blank\">Sekisui Chemical (4204): The 'Absolute Favorite' Perovskite Challenging the World's First Mas"
     },
     {
-      "id": "a-409974603165",
+      "id": "a-347875598178",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1621,7 +1621,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -1637,7 +1637,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMikgFBVV95cUxPeTBpMWdrLVJDZXcyT0hLZTRPVUY5T2xCVHB1eldRNS16NkQ4cG5uaXhZRW9PeTkydnFsYXFycWt0a1BYZGFzNlB5YlcxOXZMRkMzbUVkMHJBbHJXTHpRNmVIWmhjdS1KWWVtdWo0a0I5enZwaUxPV3B2eFl6aER1alBCRTJVUEoxb2JfRGFNbGdCdw?oc=5\" target=\"_blank\">Oxford PV achieves 25% effici"
     },
     {
-      "id": "a-808538337836",
+      "id": "a-714372942690",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1649,7 +1649,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -1665,7 +1665,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMimwFBVV95cUxQeXNjSEJaMFlfZk90Qy1NQndidFRUMWVqMnJuV1d6MC12UTU3ay0wUkhCcE1TQzBBZzljQWdzSmoxalpGRnNaekdOTVoxX0ZJc1EtNXZONEVUeHpBY2lBbFNkMWQ0X3BPTlhXVG1qMDRYdWkxVm1KSldzdlNVNVR4U1BDZ3hvN0ZReEh4Y2ZrNFc0aEJsVGhNWU41bw?oc=5\" target=\"_blank\">Oxford PV achieve"
     },
     {
-      "id": "a-181227451525",
+      "id": "a-163906057377",
       "company": "Renshine Solar",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1677,7 +1677,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Renshine Solar (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2026",
       "invest_proxy": false,
       "geo": {
@@ -1693,7 +1693,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiugFBVV95cUxOQjROSnRmdmpZMUpnb3M5c1dIakxIZURkZ0w5NWNIejRxVEFsX2FXd2h5Zld6NFpqeXFXaWMyTzhNbnBwbTA2M3pGdTlob3RUNzF4QUN3TWh2OUFrWkswUFpWay1TbVVCT0Z5OWxfMl9hQXQyWmFKeEJuUkhKRkVDeDVheEhtT2tpY3BRc1hHWnJRZzVYZDVmSTlBZWtHdDA2WmF5QmdtNDZSLWNSRExmQmNwSGlWaDJXUm"
     },
     {
-      "id": "a-967301491693",
+      "id": "a-376428791342",
       "company": "Oxford PV",
       "capacityValue": 200.0,
       "capacityUnit": "MW",
@@ -1705,7 +1705,7 @@
       "csi": 0.0946,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.200 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -1721,7 +1721,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMixAFBVV95cUxQRGhJZG0wYzdpaUl2Zm1tREJIVFVmazc3Z21CaHJvRkplYzB5a3pTcWg0MklaSm0wT1BFdHNFVzRVQ1Z1TE9uSkpXRWJTUEMta0tuWjV1eEdNSHRad1JrdUR4MzdvdnBhNl9oY2EtMXVlSmdfY3ItaDNyQldBTFFjel9uVEwtRERmNmMxSmtiMDdxU3ZpdlhmTGJNT2R4MmZHMzRMNnQwa3ZOMGdvdm9uY0R0eXhLNGgzY2"
     },
     {
-      "id": "a-606192218018",
+      "id": "a-156017141866",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1733,7 +1733,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -1749,7 +1749,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMivAFBVV95cUxQY0piU3VvYXFXZU9BZkNGTFFPc0R1MVBxdFhEaDRuTTVVNnRrOFdKMUozdTF1YndfektJTEJ5M2VyV0pqZ0tjQlBsc3BpMlFIYndxQy1qMENDdDI4cFc2R3NUd041NmZfTlJOTmxGSWFSeHlRRzV5WDlxYl9DbUJpM00zTUEyNUEzSXM4ZW13VjU3dnJqY3p1S085VWlpLVRkaDc0M0pMVElGWGxHazY5djg0NGNrWFJjNU"
     },
     {
-      "id": "a-722254563343",
+      "id": "a-455121013216",
       "company": "BOE",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1761,7 +1761,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: BOE (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2026",
       "invest_proxy": false,
       "geo": {
@@ -1777,7 +1777,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMimwFBVV95cUxNc21qRTd3ai1fc3hlaV9QeThxQ0ZVb0ZFT2lWRjR6azM5QTNUSU90VmduZmtlM3M0VkFkQXNXdnNLa0lsc2tROFJ6UVJtZEs5OE1xbmh1SmtaYzhlb2JsNk9MLWpEWHRvV2I1R2dBdWNZRkZnUVVFeURLTkRicm5nTjRJRWdWQ21leDdHcW5YVVhaYlF5MDdkRDlSQQ?oc=5\" target=\"_blank\">BOE pivots beyond"
     },
     {
-      "id": "a-195000666924",
+      "id": "a-83489379714",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1789,7 +1789,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Caelux (USA). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2027",
       "invest_proxy": false,
       "geo": {
@@ -1805,7 +1805,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMigwFBVV95cUxPeXpzWm1DQjAyMzZXVWRLNWhTOE9naXI1Z3plamdqQzBJbkpfb3ZsSF9aOGhxbVg0UG1rLVZxVmhPT0F2aks0SlktMVF4THlvOVlkbTFRSlNUcFRiRGZkMHhjRjZ2eFE1VlkxQV85S1dYWVZPTEVudjl5VmNxTGF1OTA5Zw?oc=5\" target=\"_blank\">Caelux ships first order of perovskite glass tech"
     },
     {
-      "id": "a-700661984933",
+      "id": "a-994012434316",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1817,7 +1817,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Caelux (USA). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2027",
       "invest_proxy": false,
       "geo": {
@@ -1833,7 +1833,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMirgFBVV95cUxOa2hoc1o1SHNoRktVZWxVdDNtWUpBVFgtNk1MNnhSYmtSaXVYNUtvSUtIRDVCYVpweHZSUEZGRFJWcXhGQUF0NC1FR1N1YzgxQzF0Zm5jejZVOXZCX01rZkxWLUFLOTJJWjJzR3FYdE1vSFcyVU15dHZsdUJxbDV6bFhHQUozcHUzVTBuNDNQcm45N1lTYllzdkFUMERIdUpOM28zUkZXdG9IcW9BX3c?oc=5\" target=\""
     },
     {
-      "id": "a-200647910291",
+      "id": "a-172419727694",
       "company": "CNNP",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1845,7 +1845,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: CNNP (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2026",
       "invest_proxy": false,
       "geo": {
@@ -1861,7 +1861,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiqwFBVV95cUxPOVM5NnE5ajhIdWR1bEJ1ZUwwLWpVMTlzZUd5S2M1QUJrZ3R5ekQxZlVyMXIzeldqSkE1UmZ0Wm5xM2pqVXZjMmQtU0p0ckc0bGxWbHo4LU8wcG4tOGs4c1pTVFZtd3dabVlKZ3RkbGxzNXN0TWtzbUZvdkRpNG80NjFZS2RBcl8zVlFlSF9WaWdLbDhTeU5sWUhzSXRaRGdieVU5WWNCY0VuRjQ?oc=5\" target=\"_bla"
     },
     {
-      "id": "a-266662387130",
+      "id": "a-243256651046",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1873,7 +1873,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: GCL (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2025.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -1889,7 +1889,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMifkFVX3lxTE1PTEd1LUZXRmg3UHpzWUMtb1FWam5PdDk2QU1NMHV4ZklDUUdLOGlDckkxdWk2b1pwelpRUWh1TjhlWVdGeHBnQ1N2ZUVfYkNheEtva1g1cloxNGdBdjBkVk1KOE9zano4UG5ka1IyaXhjTF95T3VodThZR3BYQdIBiwFBVV95cUxPUHQxaXA1Rk9qRnFzdnM2WEp4c2dXYjFDR205LV9jemowaW11WGhkQ2xJWVFHcWt0U1"
     },
     {
-      "id": "a-132788613143",
+      "id": "a-764998125283",
       "company": "GCL",
       "capacityValue": 1.0,
       "capacityUnit": "GW",
@@ -1901,7 +1901,7 @@
       "csi": 0.473,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: GCL (China). Capacidad: 1.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2024",
       "invest_proxy": false,
       "geo": {
@@ -1917,7 +1917,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxNckViUDlaYld6bmV1Ukl1Vzk1RUNIb0dTay1kVGRRNTFEYlVkOWxuUjVuVWlPaEJoekRaV0VfdDkwYWR6WHlEelhVNE9rQzh0emZRV0pCLWhlcFI5dWljQVNKLWx2LVlrZWY0YlVXdDVmY2p2N0pyWE9XZkhPaXkyNTlSSFJxcTNSWGFacFloYlNvbzhtRFQydTNLSC1pLW5jRDFqVVhRWEpvT1JVWURURHJKSzVVdWJ1?o"
     },
     {
-      "id": "a-548302982566",
+      "id": "a-151146684184",
       "company": "UtmoLight",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1929,7 +1929,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: UtmoLight (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2026",
       "invest_proxy": false,
       "geo": {
@@ -1945,7 +1945,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMi1AFBVV95cUxPM3hFUk55QW5qNkRHNWFVb3pYMXJPME9SVXBuc3Vzekk5VXV2Z3ROcFVRSG1GZllsX0wyWlZMZXQyMzdET0JfQ1VuSktCU3pxcDVWaWJNV2hSaGRTcUFpdDNMQlVjUGdkanNYb2RqcklsZFZrbkpPX0RSa1NMZk5tSlV0SDBDcUE5QU1YUUlPYVU0WmJFZjFKd2pLakdSWkdPZ3dMQkRQNExWNVdhS2RCMUlPNjJhNTF3OG"
     },
     {
-      "id": "a-676545961091",
+      "id": "a-161818726071",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1957,7 +1957,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: GCL (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2024",
       "invest_proxy": false,
       "geo": {
@@ -1973,7 +1973,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMifkFVX3lxTE5fNUFpLWpRRERHWTY3Qi03ZWU2b0N0NWlaQ2Q2NVBlY1hPbTh5SmxCN0FsX2p5MkUwanpzZXRPU1lpbkNuenR6TTMxTDFubEpjdFk2TTZkMExWQk90ZzkzeTFKMF9uakVxSHFXNTl4ZDlxNFhnNEpNWXBoS3Jpd9IBiwFBVV95cUxQUUlZWmw3b0s5Vm1YUmJNMXJONHdBRzQ1VjVPb3pYeDdwMHNMTW8zbU9SZ0o4NU10cG"
     },
     {
-      "id": "a-158983642975",
+      "id": "a-602347789720",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1985,7 +1985,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -2001,7 +2001,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMikgFBVV95cUxQb2ZYOVI3TmY2NDRSN184SDYtMlJJeFNLMlFSOEZ1RWt3UlkxMzZrSWRvUGgzWDcxTm9BeHRtRDV3VVhpS1FFTjcyOUZ1X3BtZy11S2FlNkZrcFdxRmxWeVlRQmFjMkZER0pPTUpUWU9Fcy1SekFhSTRaNmg3bkxzMFUxUl9JOXhVbGROSmZ1dXBqUQ?oc=5\" target=\"_blank\">Oxford PV Raises $41 Million "
     },
     {
-      "id": "a-632486116872",
+      "id": "a-186739731182",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2013,7 +2013,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: GCL (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2024",
       "invest_proxy": false,
       "geo": {
@@ -2029,7 +2029,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiqgFBVV95cUxOVVFqeXh0YXZ3UjJCMHlUU0RXUTJIeFJCNE1NUkxHckZVRlNYNE5qY1Zhc2JuT0tWMmxZdW1Ydm9fTWRXalRTRl83Z0xaMzE0amRTZHh5SVRrdkVlZE5BcW12WUNtSHVhWnQ0Wm5ucVRRbWJrRVZ4eXVVMVd6NFM4bmJlSl93b0xkYzZuYkRhTDlKNWZ6MGxJR0FOVV9rUldtQ0RFRC1HQkE0QQ?oc=5\" target=\"_blan"
     },
     {
-      "id": "a-557183142425",
+      "id": "a-52965430638",
       "company": "Microquanta",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2041,7 +2041,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Microquanta (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2026",
       "invest_proxy": false,
       "geo": {
@@ -2057,7 +2057,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMizwFBVV95cUxPMnBVc1FlNE41QjVXZkR0b2tfNU1fQzdkaEZub0JGRmloZUtnNzZqaXRCako4clhhM0RqYTZNWlFDcmsxSV9ESFNnbFRBMXF2cDVfUmpTMU5oYk9ELUVaVTJpZmtfbWFlcVc5Zy11cnJLYXV1MG1DckRfa2RoRnVfaERSQUl1ejdIYjZoSlVjcmJQYUVKRGdSazh1a1FuWmlMSVQ4R2MybkV6X19peGlRaEthNFg4SWlXNF"
     },
     {
-      "id": "a-666719790873",
+      "id": "a-272062476427",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2069,7 +2069,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: GCL (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2024",
       "invest_proxy": false,
       "geo": {
@@ -2085,7 +2085,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMijgFBVV95cUxPLUJkamlQZTZSOGZvVHdLZzkxQUMxcmpFZWdMbUFDSE92ejFIOGJiSTc1RGJ6bEF0MFN5ZFA2bjlpbzJOcWRJYkZmSm1yd3NwT1J6SFBZMGJ6VGFtR0dXV19oYm4zT0Y0MXlQQVBYRE5Bc2YyTk9zUG53OUh6aldGaWYycVphZHpSLXNNOUln0gGbAUFVX3lxTFBaam5HX0NVTmtkWEFlM2dDb2VkUWJYWG5wb3hZWTZvWX"
     },
     {
-      "id": "a-790827675543",
+      "id": "a-612852451541",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2097,7 +2097,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -2113,7 +2113,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiygFBVV95cUxPZ3NxMnpNMVJsUUlyWTB2UWtMTGVEVFltcjFLZEhVWE1la2otS1pQS2pLU1RxMkFtT2pkalhWS0ZwalRLM0g2WUR0YWVMLUg1OC1CdnhpUkxDandsR0dBdXAyT2g0MkItbTRBNFg2ei1LWlZFV3RkMkJUX0diN2pIQXNDa3Z0MGRsa2puRGZ1NERETkN6UEd4Yk82TVhLVDlWZ3YyekoyNmVqREVQdnQtbUZjSzc3eGFHNT"
     },
     {
-      "id": "a-587018706",
+      "id": "a-804706455279",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2125,7 +2125,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -2141,7 +2141,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMirAFBVV95cUxQTlZtV3NQb2l1TTVKQ3ljSUFyQ2o4Ylp6U0ZOWmI4UWlvOWc5ZGs3RGNZRmdwcmxJbXZ4RkluWmNuSzJoME1hYi1maGhWU0pSMnNlMV9tdVhhQmVUYzNUSE9zYXBRQmNHejhnZEc5TGhEd0xoQlp0aXRqeHNqajRRWS11VDJtd0QtdUl0d2ZxR1ZlcmJMbmFMT3RMaVUyVFZHQnRyRHRTZUR3cnpW?oc=5\" target=\"_bl"
     },
     {
-      "id": "a-451086729497",
+      "id": "a-126027272301",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2153,7 +2153,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Caelux (USA). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2027",
       "invest_proxy": false,
       "geo": {
@@ -2169,7 +2169,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMivwFBVV95cUxNUFNKWVdnTVBFdVI1eVF5ZFZYVnJXQWhXbEVRV0JaMkhoX1daaTEzTHpIc1FHc0ZqSmc4Wk91MFQ3dFQwX3JpQ2lXYVdkUFkzdlI0aS1ZcE1tSG5DSk1XeGNZV2VqNWM4RXdVOWJHczRaRXlmZE1OdnBJcmtZR182RndCbTc4YmFyRUh5WFVpT3ZSeUpSbnNET18xa3F0NFUxa3lnUHl6Zlp6VEdIRTE3U3k1NHhtQ0VvaH"
     },
     {
-      "id": "a-520819321068",
+      "id": "a-961950540491",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2181,7 +2181,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: GCL (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2024",
       "invest_proxy": false,
       "geo": {
@@ -2197,7 +2197,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMimgFBVV95cUxQamNvQTdlV2d1TzdTeVIyWnBlTUVIUmNCcUNKUENLeVBKN01UOVl2WmQtRzlvaGp3VC1BT2U2RWNmRktnTzNvZTNBTUYtZ2xZM1ZtX1pqQXZzZDhjSjdSRDhOWnJJZ0FNdjBBb0Nhb3UxeFVEWjZwN2JoYkxzajItQ3NkZ1dlTXV4Y3RMejdsZU9LTlJvNldRREt3?oc=5\" target=\"_blank\">GCL claims 19.04% e"
     },
     {
-      "id": "a-229019193353",
+      "id": "a-997233625067",
       "company": "UtmoLight",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2209,7 +2209,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: UtmoLight (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2026",
       "invest_proxy": false,
       "geo": {
@@ -2225,7 +2225,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMinAFBVV95cUxQTkxGZTdiaXBpTE5aN01VZXNZMEpzZmxvMV9hU3laZVRxRXZqQU55VENpYXBhTTFaS1V2dHJfSWJPT0Rhb1pVdGY2RnpvcXg3dDlkTi10ZmV1ZUg5ZE96X2lvX0VFdUMtazhFRUp5YmhRbnczNmFPZU4tdXdfdDYzVWQyZUhRU1c3c2NWNl9aM19MZ2t2WXFFWVdua2U?oc=5\" target=\"_blank\">UtmoLight pushes"
     },
     {
-      "id": "a-198678539264",
+      "id": "a-810286736208",
       "company": "Renshine Solar",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2237,7 +2237,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Renshine Solar (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2026",
       "invest_proxy": false,
       "geo": {
@@ -2253,7 +2253,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiuwFBVV95cUxOS0JYcWo1U202aWtJc2R0YzE2Vm1wLUUzTDF3MEhYOWhZVWVpYjZHVGMybVR6VGlsbnlraUx0SGU3OU9RZHNyR3h1S2lwSEdZSHdHbTNqTGllaU41STZMZllqSWxiNDZnSzFMRHVTXzJFMzFHS2dTRDE5VXBNdUd2ZWxDVTNWMG5LcE5EQ19mMi0xQ0twYXFQOVJrazk4WnZJWmVTbFBLeTV4UUdKOEREYWlFRTZ1ZkVYc2"
     },
     {
-      "id": "a-95138959182",
+      "id": "a-121636496554",
       "company": "Microquanta",
       "capacityValue": 3.0,
       "capacityUnit": "MW",
@@ -2265,7 +2265,7 @@
       "csi": 0.0014,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Microquanta (China). Capacidad: 0.003 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2026",
       "invest_proxy": false,
       "geo": {
@@ -2281,7 +2281,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMirgFBVV95cUxPS1NSeU5FTnN3MWEwb3NwR2tJUGJjeHZMSzdFV2NiZjh6U2ktb3JuN0QzRnlaYV94OUpKSmx4cmcxNm12Sk5WZmVpRjNUaTAyaFVfa0I5bmhYNjcwMzcxRHlqZVFxc3h1TTFpMEZyYmtFTFpXWWFnOFZPVC13eG1Ed2gwOGtWRGFYanRSbTlTaGdTOHZNRGpCSnA0amwtWXZlNVk4TzBHVU5IdGVzWHc?oc=5\" target=\""
     },
     {
-      "id": "a-980671706302",
+      "id": "a-704297048378",
       "company": "UtmoLight",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2293,7 +2293,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: UtmoLight (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2026",
       "invest_proxy": false,
       "geo": {
@@ -2309,7 +2309,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiqgFBVV95cUxNQUVXWXVjekEteEExTDFhb1dMb1BoQXlQQk8xLVFpZEMxT3ZGOWhqMHZTQW1PRXhXS1RhYm5EajFSb251dERBMU5pWG1BTTh0M3JPaEkwZE9LZ3JpMEZUT291akEtT2VEQU1LdWZYRFdZbTNsLTRYanZmaGlsYzFWRlA5T2NFdmVqd1h3cDY1NjFZSHU3YjVQS3l5UWdrQW9Td1pjQ1Rmenk4UQ?oc=5\" target=\"_blan"
     },
     {
-      "id": "a-872514326530",
+      "id": "a-950099345018",
       "company": "Microquanta",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2321,7 +2321,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Microquanta (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2026",
       "invest_proxy": false,
       "geo": {
@@ -2337,7 +2337,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMihAFBVV95cUxObzBhTVNaLUdpNlZneFRCX1RIOTI0WThTbHM0cVFqWl9OTTRsampjTG1zT3F2OEFWOFRac3ZELVhVV1BlNDlGSGtnVDR0WmZPek1ZUXdIa09nZHBZZG0wR0dkSXlDMmRhbnNpaE9nSmxMM25lbkFQQ2ZKSlg1MjFQYmx0bXTSAZIBQVVfeXFMT3U3WUF5V09KWXppa2tRUnkySWY1c21MeXN4WDFqdzF3d2FORlVGa3VZMW"
     },
     {
-      "id": "a-939528852027",
+      "id": "a-120503305764",
       "company": "UtmoLight",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2349,7 +2349,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: UtmoLight (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2026",
       "invest_proxy": false,
       "geo": {
@@ -2365,7 +2365,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMi1AFBVV95cUxORXRGZ0tObGhOX1FzTHJIVEZ5OGZ6QnpuSzMxaEk0amdUcDBoLWpUVHU4dTBuemo0bGR4QV8xdVJZY3g1bmJGNWNoRzFEU2J3UUx2d2Y0M2NBVDhIOGdhY3hSNDd0UVE3dlNVSGE2UEhhQ19tVS1KR2FheGZlbkk5WmhLSENDRlN1QTlaUFI5eFJsT1VTUmlZS2pCeWVyOHZQZ04yVjNvM3JpVkt3Y3N5akhsRjNKVjdtWl"
     },
     {
-      "id": "a-449263518955",
+      "id": "a-473453426015",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2377,7 +2377,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: GCL (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2024",
       "invest_proxy": false,
       "geo": {
@@ -2393,7 +2393,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMi-gFBVV95cUxQTTJHU0pCRGVKSFpOTWNBYkZ0TXhtWTh6YTgxdHVGZ0x4TlVBY0tTNmVhQVFBbnFBa0FjZTNzV296T2Joanp6VktkME1CTnJjY3RrVXBEb0V1eTZzZUI4SkVCS25hWXh3TUkzd1hMRFJXU19WVmJOcjY5bUxoeGxTTTdnbF9UYVViR0JjeGUwRDJBTWpVM2NvS001QnRBQ3hLMG4tVzE1Ym5SMHRpUDQ4MnhhUkRSRHdLTX"
     },
     {
-      "id": "a-765408938262",
+      "id": "a-583712599054",
       "company": "Sekisui Chemical",
       "capacityValue": 100.0,
       "capacityUnit": "MW",
@@ -2405,7 +2405,7 @@
       "csi": 0.0473,
       "phase": "Operational",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Sekisui Chemical (Japón). Capacidad: 0.100 GW. Fase: Operational. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2027",
       "invest_proxy": false,
       "geo": {
@@ -2421,7 +2421,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMirwFBVV95cUxPQ08xbTN5NHZsVHpEN2NyRW9MeGF1aXZSRWZFZ20tWVFnOHpUck1IakQ1R3ZHNWJ4Z0RYcm5EdHNnYzc4ZDhTcXk4OVk3UVphSG9UQ05uQTU4aDFIY1BUeE9Wbmk4UWh3NHN4eHF3TGFuQnVqMVNLb21veS16bFVtSjJIVERaRV9aRHhIZUVPVGROdWRqZGdmNTVmeHl2UDRzc3ZrSF9tM0pSZzd2QTRV0gG8AUFVX3lxTE"
     },
     {
-      "id": "a-18074622571",
+      "id": "a-495923585714",
       "company": "Sekisui Chemical",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2433,7 +2433,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Sekisui Chemical (Japón). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2027.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2027",
       "invest_proxy": false,
       "geo": {
@@ -2449,7 +2449,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMivwFBVV95cUxNdDBJd3N0RlZIdHFQQkNmdU5od3NMYml2RUlaR0d1bnRRek0yRlBPUnpsTm5tUW1zQk9uMmlmWUFhWFpJT3ZSbG5aTUVvR0s1UHBnTjBScWhxa01QZGpldU5JMUFuQWZDekoybS1kZGwxQWlheHljaVNyMlNVdXNRU19Cb3NrZEFKM09YOUVIeE9Qcm82NndsczhWcDlyaDMyNlZqWTRHYnp6WC14RWtzZFlLRDREbFNpXz"
     },
     {
-      "id": "a-183037261217",
+      "id": "a-664862292672",
       "company": "Sekisui Chemical",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2461,7 +2461,7 @@
       "csi": 0.0,
       "phase": "Operational",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Sekisui Chemical (Japón). Capacidad: 0.000 GW. Fase: Operational. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2027",
       "invest_proxy": false,
       "geo": {
@@ -2477,7 +2477,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMipgFBVV95cUxOUWZBakt6R2dJTkNOVE4wN2NzUXl3dUVkalY1Umt5TmlLSlR4U1ZDcEZHeUhGTk5zN3h1TGI0aDk3Zzd1REpNWWNYSFRJeXJEc3RLUW85bG5DRGN0T1BnSzFYQldGdWtNUmpCa21WNTA2MDQxZV9ROENTTmVPeVVrUEZIUXNkZ3RjUnFjdXdNQ1R5X0k1V21NeW53SFRqUE93WW0tbVBn?oc=5\" target=\"_blank\">Sek"
     },
     {
-      "id": "a-869658376235",
+      "id": "a-668393305208",
       "company": "Sekisui Chemical",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2489,7 +2489,7 @@
       "csi": 0.0,
       "phase": "Operational",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Sekisui Chemical (Japón). Capacidad: 0.000 GW. Fase: Operational. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2027",
       "invest_proxy": false,
       "geo": {
@@ -2505,7 +2505,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxQMGlSRzNNOTdOSHU0SHRpaHJabVNiQUVMLUY2MXJ2T3VFX1hjdWk2MlYwQWs5T0NLenNlRkM1ZWJoNlpkblowcWhsTFB2SlRxekZjNDVzWExmc2t2djV2SGtjbWUzcjdfZjhEREZmbkRiaUc3dVFhUGN1eWpITnhRRUlFWHB4UV9qWHFPQy1wb00yZmtMenBndFpjUDlLdnowQVZySmNwVWoycnkyUDFOX3oyNURQLWtC0g"
     },
     {
-      "id": "a-111811645783",
+      "id": "a-702614627531",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2517,7 +2517,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Caelux (USA). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2027",
       "invest_proxy": false,
       "geo": {
@@ -2533,7 +2533,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMihAFBVV95cUxNZHZ6bFYwdlRycFJOWUNzekhmQ2JicWdlLU1YalY1VmxyVENiRXZBbUZZMUloSXJQQndNdkkwVGtBUFdZNllwWWV1SnNhSnZyemNOdVV6UnE1emlZaHJjcndRcGRQNExDdlFxaFFodlo0VWRIOW85SE43UTY0LUc4SXg5ejc?oc=5\" target=\"_blank\">Rising Star: Leslie Chang, Caelux</a>&nbsp;&nbsp"
     },
     {
-      "id": "a-76847814121",
+      "id": "a-504190698708",
       "company": "UtmoLight",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2545,7 +2545,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: UtmoLight (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2026",
       "invest_proxy": false,
       "geo": {
@@ -2561,7 +2561,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMirAFBVV95cUxNTXZST25uSDRoUXBUZUxWNU1hQmp0aE93dElrcWVfWTVaRHZBWnd3c1ppelBfTWl3LVFMRWt2WVg2TTlEekpUM2tWZFFIZDloXzRNRW9QRC1wQm42dnlBRFBLS0FBcWJEQ2NzLUJhMjlkUVhlaWZ4S0lUWlVEX0xITUpKLTBxb3JEV0ZrZWRjTFJsQzIzZXdQX0NFVmlycWhaZXg0Vkw3RmFOTXZG?oc=5\" target=\"_bl"
     },
     {
-      "id": "a-879230163293",
+      "id": "a-805324745907",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2573,7 +2573,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -2589,7 +2589,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMid0FVX3lxTFBRQnBGak1OZ29xQy02NG05cFdPTXhZd0c3TDI2UEp1bk9lSTBxWVVtUkkwS0NuSGZDMEpwTkFJNHFlbHgwbDROYklHc0h1Y2RzdEVpU1NoMUtpcEFkY1BlU2IzamRiY2VXQVNhV0lFd3ZvUlI4S05J?oc=5\" target=\"_blank\">Oxford PV Goes Commercial With Perovskite Solar Panels</a>&nbsp;&nb"
     },
     {
-      "id": "a-144891319870",
+      "id": "a-490648547253",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2601,7 +2601,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -2617,7 +2617,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiuwFBVV95cUxNTUdRSVhFUnhzVDVCZTJuMVh6cWFqTzM1aTNqekk1dnl6akNZMXZzN09UTU44ZFQxQXFKeDVpOVo5QWV1dUtDcjhHMkVyU2NtWG5JenBvUTVqSFo0ak16MjlpdFdpRzMxTHBsV21Oc19NNV91blJjMndpUTEwdnZRaGUwanNleUxSWVV6SDJoM3hqNDNaSDRDRTJQcHRQbC12RDN2SkphVEE5RDlDTUQ2dXI2Y2hvZFY3Sm"
     },
     {
-      "id": "a-944113455280",
+      "id": "a-979366320754",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2629,7 +2629,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -2645,7 +2645,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMirAFBVV95cUxOOFRmRWhLXzY4OHRDM2FlT3pYZ05lX19NWS1TYnJmZWFzYUFocXpxQ0VXcDUwM2JTbFYzM3NmaUNlS0xIMG40SF9NbnZOaU4yckN2b0NDc2RWRURHUWQzZEdZcEgybU93MzVEMlU4MHlGT1JGTUl0NnZRcTdWMFVRUHYzWHJiVnRDZ1ZTMnlwWnRZdlZuLWh3U1BlMFlfd1lxQTdabHZUVnFyR2FS?oc=5\" target=\"_bl"
     },
     {
-      "id": "a-62722942135",
+      "id": "a-581125221961",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2657,7 +2657,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -2673,7 +2673,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiiwFBVV95cUxPM1N3LTV0VEJoZmdFMnd0NXloN2lCdjBHRVlNcUpmcW5ZV2R4eUxLV1F4bVBpTHhheEwzSWVXalAtMzM3Tk15YTVnbDlQU0drRXd2ODVLUzZheFdzZXVLNlp0YzBIb243OFZ5SmZQZDhPcDdtc2ZrMTNtdkZXN3FSUm5DRFM5NzY5SVYw?oc=5\" target=\"_blank\">Oxford PV ships first commercial perovs"
     },
     {
-      "id": "a-537500689899",
+      "id": "a-294209963407",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2685,7 +2685,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -2701,7 +2701,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMipwFBVV95cUxNT04tenBCN3lrRTktZFRWMUYzbXJXWXFQYm14YXMzOV9makZCX1JaWEdzTVZVanhfZUtZbk8xcno5dGdnWVI1NE5pakNzWnpuQ2xyMlpXc0RZN2xYdW9EcFpIMU1idjQxaGRIcGNOa3pOWW5LR1VNWTdiNTk4V3ZYRXFQLXB6SHB5emptMjFjQjloZXJPWFVRNVVrNExoWElpOWF0UzAtUQ?oc=5\" target=\"_blank\">O"
     },
     {
-      "id": "a-172471070754",
+      "id": "a-338353576520",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2713,7 +2713,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: GCL (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2024.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2024",
       "invest_proxy": false,
       "geo": {
@@ -2729,7 +2729,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMirwFBVV95cUxQS2pUc1JnZXR4Vk1wb0VpNTFING45cEJOdkIwQmlZY3ZlVS1nclZuU1dMaEtTa3hOYTJ5dkhMQTA1T3NDLWNVTGpMT2RBT3hBU0JrdGRrTFllbmxDUThUdGlRUzR5Tm5hTW5DSTdva0YxdktoQ3RGRE5BNGJyakgtSHdHWVRBZDlFZVRHaC1VcFFoN29yUkFjdnlrTklfN0lIVHk4VjNIZzRyX0FKYlFN0gG8AUFVX3lxTE"
     },
     {
-      "id": "a-824369656218",
+      "id": "a-931315680383",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2741,7 +2741,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: GCL (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2024",
       "invest_proxy": false,
       "geo": {
@@ -2757,7 +2757,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiqAFBVV95cUxONU1JMWc1UGZUSFh5Q0VaLTdZUk9VV09LU3FCZjQ1alJLVlFtVHFzVXRndnlLYkExTGxibkx4OWlXWFFGRjl0ZmgwSkd5cWU1WU83cW44Q055aXhwWHZVSVE1WE01TGVHNXBhTkJ4T1Jsb1A3YnJFTVFBdkVZMzAwY281WTBBLTJOMGxJQkozVVVuTWRaVU50ejNFb3kzTXZMNmN5SktfdEw?oc=5\" target=\"_blank\">"
     },
     {
-      "id": "a-714679330090",
+      "id": "a-520279821756",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2769,7 +2769,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: GCL (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2024",
       "invest_proxy": false,
       "geo": {
@@ -2785,7 +2785,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMimgFBVV95cUxPM0pCV2lCLWdyNnRyaW5QYUNWeUpRTjNPOHQ0U1dYbHFmcnVxZTNxeVVrTkM2MmM4eFJRZGs3NG9Gcl9OZjBsTUNkTEVKSXhnTFdIQ2ZmVXo4Z0VFdk5Rd2RuVVE4amEzYjlNR3Z6RGhaaVFOUnlGU0ZOSWZmZFFCZjlibWFUU2w5RUpvQlViRWtySl80ejZyMm93?oc=5\" target=\"_blank\">New world record se"
     },
     {
-      "id": "a-788720007491",
+      "id": "a-224160734473",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2797,7 +2797,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -2813,7 +2813,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMihgFBVV95cUxQT1Z0QmU1NXpvbWlXZGZsV3dFc2NSNl8yck05NEl6THBWem9FdGEtdF90ZGZNRVFxcVUxdVJWYlZjNEZBa3hVVFk4YW9GcUZST3ROM21SNWRZRmVkNU1obzRUV2YwRTBkUXFGM3ZwaFlISl9jMHNiMUpITjNHX19FVjJnQWlEQQ?oc=5\" target=\"_blank\">Oxford PV unveils record 26.9% perovskite tan"
     },
     {
-      "id": "a-401898245021",
+      "id": "a-734639573586",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2825,7 +2825,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -2841,7 +2841,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMisgFBVV95cUxPZ3h0T083UGktWVZOYUZmazlxb1Fpc3Q0WWRYX1IyVWN3T1lzSkJOeFpLemY4MFBKbUo5RkVnNk1qMTNKa3JRVnVpc2tETDlXNHo1ejNwdHhuMlQ5TkhRUlJfVElDZ0FObW4zckZDTDlXcHRQVmI2cFh0ZXJqeTVNd2piYlBtTFRoTWkzNy0teDFMajRJTmtKcHlObGpZQXlMaDNMN1VEVW1tN2xUejk1MFdB?oc=5\" tar"
     },
     {
-      "id": "a-340305717743",
+      "id": "a-991800453892",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2853,7 +2853,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -2869,7 +2869,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMi2wFBVV95cUxNTl9pUFpodTJQZ0s1Z0F3Ym93eXEtNkVDTTZYZUxuUUNycFk5cGRjOWkwbkFrQmwzQWVWZXAxOXB4Nlg1eXJMakxxVC1vWkxCc3RUdVZwLVE3OXUxMUJnU0NjRG0xUHhqanFsdlhpZ2dmdU9SME1Qa1paODFtRXphQlNvVDRnMVBjNUlLODdvenRScUV0VjVMWF9FeWxrclUzSmFmYl9JTUc2cVpXREZneE5BZ3ZzbXBrVk"
     },
     {
-      "id": "a-244428775036",
+      "id": "a-409765319125",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2881,7 +2881,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -2897,7 +2897,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiuwFBVV95cUxOSmpvM1c1TFFvMlVTSTVydmFlZlJQOFdjUVN2ZkpzVmhRaGl4VmxDZFZiQVE0bkZsZWNtYWNYNm9fam9mRzZ5bzREWmlxOW1Sc1g0bUl3aFpKeTRGOXdMNVFZLVBSa1NTeDdDNVJPQVJEVDlSZEJvVHRoRG1uN0dqS3hDb1B0VFUwNzMtSEpBcDdDdFBxOU9vTWZOT2l5YW1WZnR2Rm5mbW43NngtcW15N0ZJa0I3VmhLTj"
     },
     {
-      "id": "a-102534885120",
+      "id": "a-175619948182",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2909,7 +2909,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -2925,7 +2925,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMipAFBVV95cUxPc2k4bUJwZmhRbWdGaG1EVnJjRlVDOUZZdjJzOWk3R3JSV1k3ejBHMkpqbmNMUlRTNFdSdnJLanJ3SVlaLXUycmt4ZUJ4OTEtV1E0d2twSHVMcng1MDJoM2dDUWoxRll2MHBhMXJvc3h2N2NJWkJPdUp3Sm9pa2M2T3dlYzh1Q25SWUJ5WERNcEFMeDVvQ2RYaTdfSHF3ek5zQlZXXw?oc=5\" target=\"_blank\">Oxfor"
     },
     {
-      "id": "a-320040590770",
+      "id": "a-232947477058",
       "company": "Mellow Energy",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2937,7 +2937,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Mellow Energy (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2026",
       "invest_proxy": false,
       "geo": {
@@ -2953,7 +2953,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMitwFBVV95cUxOaWotNjBnR1VWSzRfVmFhNHIySHlQTEtKQVFKUEF5bGs5WkJsT2RLakd3UTFxdklNVnRZMDVxd3VSUERGaFA5TDdnOUpHX3pjNmpDMndVWFM1dFNCQ0pxYlI4RzFZWWRfMGpRZHdKVGtGb2JSUjJSQ3NfblJOeDNDYWhkVXdpQXJfYVBTTXlFUFc5SGt0ZWNWZ1R3aE9sQ2tUUHRMVzNMVmRldEtyVjJ5WjBEaWoyZms?oc"
     },
     {
-      "id": "a-751445234268",
+      "id": "a-856254240828",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2965,7 +2965,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Caelux (USA). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2027",
       "invest_proxy": false,
       "geo": {
@@ -2981,7 +2981,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMimAFBVV95cUxPT19seFNQSk15b2N1clBPdnd1dG0zREc4UTYycVg1YWVFWmJmRXpvUUl5b242OEN2dDU4NEZaTXAtVlc0YlhiSmlza0g1YXU2Ukd3UENoZUVhRU1PQXd5X3ZEcnVQZ2Y5ZlYzZTdOU3A0UDQ4TVRhbkdwem4wdVQ0a1IwVXdOQzlGUzQ5MVY2QmYwRWxzQm01cA?oc=5\" target=\"_blank\">Caelux appoints new C"
     },
     {
-      "id": "a-198581641636",
+      "id": "a-484381452505",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2993,7 +2993,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Caelux (USA). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2027",
       "invest_proxy": false,
       "geo": {
@@ -3009,7 +3009,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMihwFBVV95cUxQQ2VYbGxuQnB0UmY1ZkRMZ1hwdUJMSUN0aXJJRmYtWm45QjF4SGU4blJUc2duNmE4Q0U5RjhYM2U2Q1pCRFBodWhXbXJSLVJEU3M2S2s1eGplS2pPdDdiQ00yY1J2VXA5bl9Xem1lUUJKM3I2MjRuempLZ0MtT1RFSVVoWkdzenM?oc=5\" target=\"_blank\">Reliance, Others Invest $12 Million in Perov"
     },
     {
-      "id": "a-858870012130",
+      "id": "a-915807276926",
       "company": "Caelux",
       "capacityValue": 120.0,
       "capacityUnit": "MW",
@@ -3021,7 +3021,7 @@
       "csi": 0.0568,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Caelux (USA). Capacidad: 0.120 GW (proxy CAPEX $12M). Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2027",
       "invest_proxy": true,
       "geo": {
@@ -3037,7 +3037,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiogFBVV95cUxPYXUyTHI0NnU2dkJPajE4M1VEVmFNQ2ZNN2V1VTNRNVZEZHhiZTJsT1B1dWhKTk1SMzVqU1NUSzRTbFdyaTI4WFNjbjJ1Y3R5YzAzQzFwVEtuNFg5T19QODh6cDNfSVZOZXh6YlYxUmFzNkFxTUhKcWdJNnFvdmtYT0Rwd24zZGl5dGhKYUZlVkhJcjJvaGNQajB3bUtSazJ0a1E?oc=5\" target=\"_blank\">Perovski"
     },
     {
-      "id": "a-982717384297",
+      "id": "a-26184874227",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3049,7 +3049,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Caelux (USA). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2027",
       "invest_proxy": false,
       "geo": {
@@ -3065,7 +3065,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMic0FVX3lxTE14aEw2aEF0eE1FZ2szbmREcEpIaFlEVUdCdkplaFpSSmZBc2lheVU1b2tadWJYdjJfUnVialRGckEzN3lmWnF5ZUc0U0tObkdydnVQT2hmcDE3MklEVHRLQ2M3a0ZjejJnbHBENVZWQzNGZVk?oc=5\" target=\"_blank\">Caelux Opens New Facility</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Los Angel"
     },
     {
-      "id": "a-200758099663",
+      "id": "a-925606267746",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3077,7 +3077,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Caelux (USA). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2027",
       "invest_proxy": false,
       "geo": {
@@ -3093,7 +3093,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMingFBVV95cUxQQ0xjM2QxUk9ySGhRbWZFbGxCaExZdzY2bXdWeHhlQ3FFNEFTaHVzVHV4ekxuY0tERkhNZE84RVRyT3Z2anRpaVZNVmdSMjIwZFkwamdTS1lxUHJzbzZxSzQxbkg2M0QtVUdtOXgtemxSUXpHRkVxcTJ0M2NlUmM4QmZ0QzhUY0UyRElGY1YzZnA2SUNYQ3l4UFJWRDNxQQ?oc=5\" target=\"_blank\">Exclusive: Ca"
     },
     {
-      "id": "a-178142580180",
+      "id": "a-553588350914",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3105,7 +3105,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -3121,7 +3121,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMimAFBVV95cUxNVjlrUkhuY2RLdHdRTUpqWWhqaktwR3h1aWhYbV95czNpeDdhM1VrZWw3ZXM2cEFVSk93cWxwZ3ZWOExIcnhybmtpdHp6SHNTZWlvMzBFeHdLTnkzZEF4ZWo5WjJSQjQ3UDJ6M2dJTFU2ck9lZ1h5NmtnX21HV051Rmxvcjd3SE94b29qUkRBRklWYXQwdFlCVg?oc=5\" target=\"_blank\">Oxford PV sets new so"
     },
     {
-      "id": "a-319305116182",
+      "id": "a-115024514785",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3133,7 +3133,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -3149,7 +3149,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiowFBVV95cUxNdUd5LVFuSEl4X1E1NjV0eGIzVHRXVk1aTnJLSUFfUjhnbGZ0VHBsY2c4YUNTWjd4WFlBZjFCekVhQ1JRdEUta08tZU1GMF9VbjNMQnNFTG9XSkZjVWdEcFFvSm1BRjZlZ05PZ1dERERLNzBDbGZ1ZllFcTg5c3ZmUVRLay0xNk5DNUpPeE9pX2I3UWNSdU9PdFE3VmNrNWo0X2Y4?oc=5\" target=\"_blank\">Oxford "
     },
     {
-      "id": "a-194565910422",
+      "id": "a-370986495081",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3161,7 +3161,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: GCL (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2024",
       "invest_proxy": false,
       "geo": {
@@ -3177,7 +3177,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMie0FVX3lxTFBSd0pqUFlVdzNaUUYxY01SY3dsT3l2TVgxX3pGdTluS2lEdkZva19oUkxvbm1oVV9wMjZDalJrbUEtZFowOF8ydGMxNlI3SURKU29CeURzODNGcEJtSUE1UUt5QndiODVxRUFCLU94NVZQbmR6TWNodFpxWQ?oc=5\" target=\"_blank\">GCL Perovskite Bags B+ Round of Financing Worth $72M</a>&nbsp"
     },
     {
-      "id": "a-569894943348",
+      "id": "a-472171267270",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3189,7 +3189,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: GCL (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2024",
       "invest_proxy": false,
       "geo": {
@@ -3205,7 +3205,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMimAJBVV95cUxNSllWNTliRVZhNmhuVlpRZDdsSnZ1UWhmeDV4dkRJTzFKa3lIenJjTTZRdXZWQUdTWUczS09mOTBOdmxzYWctbVlXQUFQcVRsVzhGZXB0Uko3aXZ0NmJsQkRXX0ZIcnpGNDliX19IM0Iya0s4dGZka3ZTTlBNUXlqZ2dyckhFa3pqakx5OEZEeWVWZ2ZrN1YzcDlURElVaHBSSWsyOE1PTXA2NTloSFhxOWlVR2YtWkgtT2"
     },
     {
-      "id": "a-814724555225",
+      "id": "a-552094500551",
       "company": "Microquanta",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3217,7 +3217,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Microquanta (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2026",
       "invest_proxy": false,
       "geo": {
@@ -3233,7 +3233,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMitgFBVV95cUxOODZrVDk5Z25ScHp0X1k0LUZFWmpNNVEtSEJ3Q3pRVmNHWVlmVjZQWXRHN1MtREYtS3Q5X2pkaXk3YWsyelE4V05hOTRkUzlNNXZ4ZUF4SFVXdFBsTGo1SEV2WEhmVS0wTkNyZTZOOUZFTjdGckVENVd4R0tIcUxmTmlnY0hkd096UXAtX1VmbDI1aTJUMVFlQ3d0T2g5ZEgyTS03LWRWSUxZVWdZOTJNNFVmNVd1dw?oc="
     },
     {
-      "id": "a-668952137355",
+      "id": "a-311844215980",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3245,7 +3245,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Caelux (USA). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2027",
       "invest_proxy": false,
       "geo": {
@@ -3261,7 +3261,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMinwFBVV95cUxNVXdraG44MkgyYmxDSUF2MDY0a0huNWNwVndETXd1dXdjcDFuRDVYUXZQSkYzdE9aNzI2RGthZW94NTVnLThmMktucnlhUFZuZUNFZDJOdXJHR1pjSFQ3aEM4SW5WYS0tb3ZTeGxhUVM5U1JrRFhFVWhQV3BOUVlHTFZVS3p0a0pfeS05dW9kZW5GSFVSdzF5aTFyaWV1bkU?oc=5\" target=\"_blank\">Reliance New"
     },
     {
-      "id": "a-391297883436",
+      "id": "a-604310538726",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3273,7 +3273,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: GCL (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2024",
       "invest_proxy": false,
       "geo": {
@@ -3289,7 +3289,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMi2AFBVV95cUxPV3pjSW14blZ4REU3SmZtcHlEM2hyU2FxQmx0V0c0RFZURkwtRlJaOWxHN2lvQjY4eW5oZHZHbUdydV8wcTJzZkdmaHZpY3Z4ZkJrcE9VVFExQ0pWNHNjZ0oxa0tYTEtuQXhSa1NqSEpPQnAzb0F0ajMtYk1IYUduWFczTWZJby1nWmp0Q25BWFBHa0ZES2VwY3c0SEcwd2gtcXoyWWVUbVZKMnY1TTZGbHJQWVQ2OEk2Um"
     },
     {
-      "id": "a-183500450295",
+      "id": "a-4759236188",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3301,7 +3301,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -3317,7 +3317,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiwAFBVV95cUxNaXNrSGlaWkdsM3ltNm52VmlvTjdQQ2Y1RlhvazFtZ0VDVkhucWRiVEx4VHktRXlseUFqTnlSaDRPdXllSnU3Wm9sVW5hLTZ5TUJRMVV5SGM5RWM2Zmhia1VxLUxIZUZrWjFwMTcweWhkWkFzMXpKaG5qcEVhMWp6M0tVOWNmYWY5WnhGYzV4SDZ3Nzg0ZUZsdUItYXp6M0tSbk1rOWQtTUVJNEt3dUppSFJDcE14dENOUX"
     },
     {
-      "id": "a-371263411860",
+      "id": "a-21857931192",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3329,7 +3329,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: GCL (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2024",
       "invest_proxy": false,
       "geo": {
@@ -3345,7 +3345,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMijwFBVV95cUxQdkVJRFF3ZkVXS1JQV0E3eEVoRHJtUVdVeHlremtvWFBKdWEyRmstUlBtMDgwZzZRSEZUbmZQNU1iTFh6OXFZM2dfVWNkR1Q0aDN0OC1fRllsRHVkU2ZkT0FJUldjMkhYSUQzaDR1b214LUxHMGdwbHpnWjMyVnItOFhyeHhWVFcxNDEyYmNFY9IBnAFBVV95cUxNWlNMNEJzeFpRWDI2NkwwQU9iWmZmcHFpU0VlU1QwS1"
     },
     {
-      "id": "a-964446003281",
+      "id": "a-123366725751",
       "company": "Oxford PV",
       "capacityValue": 100.0,
       "capacityUnit": "MW",
@@ -3357,7 +3357,7 @@
       "csi": 0.0473,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.100 GW (proxy CAPEX $10M). Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": true,
       "geo": {
@@ -3373,7 +3373,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiywFBVV95cUxNS2FUNlJFXy1UazQtVThRTElYdEphalQzUHJ0S0F0Ykc0UWZfX2FjcmZBMmVHcEFEcTk0a1AxYUhyWVJsYTNDQkxveUlXck4zTGpIS2RsWG1YaktXWWlpb3ZwNGZfQU5ZOURDdXcwb0p4SzIxNDd1TWNFSUFLMXNBV3o2MEZxc2tUU3dsVERSSExJVUFTOHdjNW85bG1ZYVRHcDVSZ1VDQUc1YlphNDB5bkFHa1YwSjR3bV"
     },
     {
-      "id": "a-458585278656",
+      "id": "a-686906178320",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3385,7 +3385,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -3401,7 +3401,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiXkFVX3lxTFB0RHlxcnQtM1RHdXVxclJwb3VuM2FuOElnUUtIMUtPTWdnRlRvcUR3cHlKNU41WktjLTBETE84N1ZJcU8wbEtwZlgwOEdjUDZNRWMxU3RjNlBlZzBWbFE?oc=5\" target=\"_blank\">Oxford PV and the Latest Solar Power Breakthrough</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">AZoM</font>"
     },
     {
-      "id": "a-163400218697",
+      "id": "a-245689689096",
       "company": "Microquanta",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3413,7 +3413,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Microquanta (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2026",
       "invest_proxy": false,
       "geo": {
@@ -3429,7 +3429,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxQNTUxbjEtY2NWRnVVdjZTTjczUHJUYWtiREJiejdRUkJOQS1lTXhEcXV2V1oyZ0hPMlExamh5Ni1PM19oRUZaQ1NJTXZVYXk0YXNIVjRGU2VQQ09WQTMwbDdQS1RDMFAxNjJkNTZ4M2lyaDREbVlmYTh5WEFfdExRWlViOVhlRkZORHFMa282ai1iWHZjMzd5MkJESzFLcXhFOFJhMXl3TUE1Ti1UUElJZ1BMaXEzR1pw?o"
     },
     {
-      "id": "a-834540961543",
+      "id": "a-547065723303",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3441,7 +3441,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2025",
       "invest_proxy": false,
       "geo": {
@@ -3457,7 +3457,35 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiogFBVV95cUxPelNvdmxVMjRubjdCQzZOeEFpZU5uQWxIUGhuZVFHdkhvLUE5NkxEc1BmRGdhWlQwcVNQSkJ1YjRqYnQwd0VLTFBqaThRajBLejlQNG1xT2FmMmxEZ0xQUVY0TEswa2s5WEpXVDBUMDdPZU1ibGxfLUhSdVdUeDZGWkxya0V4NEU2cUxPVk5ZMEt3d1RMbV8wemhNUzBkWnBKX1E?oc=5\" target=\"_blank\">Solar ce"
     },
     {
-      "id": "a-856224687242",
+      "id": "a-332050532943",
+      "company": "Oxford PV",
+      "capacityValue": 0.0,
+      "capacityUnit": "MW",
+      "capacityGw": 0.0,
+      "iodineDemand": 0.0,
+      "pbi2": 0.0,
+      "fai": 0.0,
+      "mai": 0.0,
+      "csi": 0.0,
+      "phase": "Planned",
+      "nivel_riesgo": "Neutral",
+      "resumen_ia": "Sin análisis detallado.",
+      "target_year": "2025",
+      "invest_proxy": false,
+      "geo": {
+        "country": "UK",
+        "continent": "Europa"
+      },
+      "llm_used": false,
+      "radar_only": true,
+      "date": "2018-12-24",
+      "source": "GNews-Oxford PV",
+      "title": "Oxford PV Perovskite Solar Cell Achieves 28% Efficiency - Ink World magazine -",
+      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPTHpBM3B1VHg5TXMwc3FuSmRlNFlBQ0FBZUNTb3JseVRYdVZxY0ZwUG4wUkJmc29sRVM1QXFoMnpweUZCeWxtYUdmOGE0bzhyZy1ZUjRiWTU4YnUyZXhKV20xazhTQUNGRU1MaFVqbTJHZmdTOVZRY2t1UXl1clVPc0hxVkhRbUZaTEJaZjZIT0dyTk5IQXZzaVFJdUFFOWUxZWRzYg?oc=5",
+      "summary": "<a href=\"https://news.google.com/rss/articles/CBMipAFBVV95cUxPTHpBM3B1VHg5TXMwc3FuSmRlNFlBQ0FBZUNTb3JseVRYdVZxY0ZwUG4wUkJmc29sRVM1QXFoMnpweUZCeWxtYUdmOGE0bzhyZy1ZUjRiWTU4YnUyZXhKV20xazhTQUNGRU1MaFVqbTJHZmdTOVZRY2t1UXl1clVPc0hxVkhRbUZaTEJaZjZIT0dyTk5IQXZzaVFJdUFFOWUxZWRzYg?oc=5\" target=\"_blank\">Oxfor"
+    },
+    {
+      "id": "a-796555426066",
       "company": "Microquanta",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3469,7 +3497,7 @@
       "csi": 0.0,
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Microquanta (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "resumen_ia": "Sin análisis detallado.",
       "target_year": "2026",
       "invest_proxy": false,
       "geo": {
@@ -3485,5 +3513,5 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiVkFVX3lxTFBadUlVb1JaQV9ZZkV3dDNCWFlpOXVjMFFQdWdoajNjMlYwbXFlU1dTS1dfTUx1bTVIM3BtR2Y0V1FtSUpDUjhRbWJ0UGprZ2N3cFNoWmFn?oc=5\" target=\"_blank\">Microquanta</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Forbes</font>"
     }
   ],
-  "market_report": "**MEMORÁNDUM EJECUTIVO: ESTRATEGIA DE MERCADO Y PROYECCIÓN DE DEMANDA DE YODO**\n**PARA:** Comité Ejecutivo / Dirección de Desarrollo de Negocios\n**DE:** Oficina del Analista Estratégico Jefe, SQM\n**FECHA:** 22 de junio de 2026\n**ASUNTO:** Evaluación del impacto de la comercialización de celdas de Perovskita en la demanda global de Yodo\n\n---\n\n### 1. Panorama General del Mercado: La Revolución de la Perovskita y el Yodo\n\nLa industria fotovoltaica (PV) se encuentra en un punto de inflexión tecnológico. La transición de las celdas de silicio cristalino (c-Si) convencionales hacia arquitecturas **tándem (Perovskita/Silicio)** representa el cambio de paradigma más significativo de la última década.\n\n*   **Estado de la Tecnología:** La perovskita, un material semiconductor con estructura cristalina ABX3, permite capturar una porción del espectro solar que el silicio desperdicia. La arquitectura tándem supera el límite teórico de eficiencia de Shockley-Queisser del silicio puro (aprox. 29%), alcanzando ya eficiencias de laboratorio superiores al 30%.\n*   **El Rol Fundamental del Yodo:** El yodo es un componente crítico en la síntesis de la mayoría de las perovskitas de alto rendimiento (ej. yoduro de metilamonio, yoduro de formamidinio). La estabilidad y la eficiencia del dispositivo dependen directamente de la pureza y la estequiometría de los precursores de yoduro. Para SQM, esto significa que el yodo deja de ser un insumo químico genérico para convertirse en un **material de grado electrónico estratégico**.\n*   **Barreras:** La durabilidad a largo plazo (degradación por humedad y calor) sigue siendo el principal desafío. Sin embargo, la integración de tecnologías de encapsulación avanzada (como las probadas por Oxford PV y Fraunhofer ISE) está cerrando la brecha de comercialización.\n\n---\n\n### 2. Análisis de Eventos Recientes: Hacia la Madurez Industrial\n\nLas noticias recopiladas entre el 6 y el 21 de junio de 2026 confirman que el mercado ha superado la fase de \"curiosidad científica\" y ha entrado en la **fase de validación de ingeniería a escala**.\n\n*   **Evento Disruptivo:** El hito de **Oxford PV y Fraunhofer ISE (25.6% de eficiencia en módulos tándem)** utilizando interconexión tipo *shingled* (tejas) es el evento más relevante. No solo es una cifra récord, sino que demuestra la viabilidad de integrar perovskitas en líneas de ensamblaje de módulos existentes.\n*   **Consolidación de Actores:** La actividad de **GCL, UtmoLight y BOE** indica que la competencia ya no es solo por eficiencia, sino por **escalabilidad y manufactura**. La orden de 19 MW de UtmoLight es un indicador temprano de demanda real, validando que el mercado está listo para absorber volúmenes de MW antes de escalar a GW.\n*   **Integración Vertical:** La mención de GCL sobre aplicaciones espaciales y la colaboración de BOE en sustratos de vidrio sugiere que la perovskita está siendo diseñada para integrarse en productos de alto valor añadido, donde el costo del precursor (yodo) es marginal frente al valor del producto final.\n\n**Conclusión del análisis:** La tecnología ha demostrado ser funcional. El riesgo tecnológico ha disminuido drásticamente, desplazando el foco hacia la optimización de procesos de producción masiva.\n\n---\n\n### 3. Apreciaciones Objetivas y Proyecciones Financieras\n\nComo líder mundial en la producción de yodo, SQM debe prepararse para un nuevo segmento de demanda de alta pureza.\n\n#### Proyección de Demanda de Yodo (Estimación Conservadora)\nConsiderando que la capa de perovskita requiere aproximadamente 0.5 a 1.0 gramos de yodo por metro cuadrado de celda, y asumiendo una eficiencia de conversión de material:\n\n1.  **Escenario de penetración (2026-2030):**\n    *   Si el mercado fotovoltaico global instala 500 GW anuales para 2030 y las celdas tándem capturan un 10% de cuota (50 GW), la demanda de yodo para este sector se estima en **250 a 500 toneladas métricas anuales** adicionales.\n    *   Aunque este volumen parece pequeño comparado con el mercado total de yodo (aprox. 35,000 - 40,000 toneladas), el **valor añadido** de este yodo de grado electrónico es significativamente superior al grado industrial o farmacéutico.\n\n2.  **Impacto Financiero:**\n    *   **Premium de Precio:** El yodo para perovskitas requiere especificaciones de pureza extrema (99.999% o superior). SQM puede capturar un margen superior al 20-30% sobre el precio spot del yodo estándar mediante contratos de suministro a largo plazo con fabricantes de celdas (Tier 1).\n    *   **Estrategia:** Debemos posicionarnos como el proveedor preferente de precursores de yoduro de alta pureza para los actores mencionados (Oxford PV, UtmoLight).\n\n#### Hoja de Ruta Recomendada:\n*   **Q3 2026:** Iniciar auditoría de capacidad de producción de yodo grado electrónico.\n*   **Q4 2026:** Establecer alianzas estratégicas con los principales fabricantes de precursores químicos que abastecen a Oxford PV y GCL.\n*   **2027-2028:** Escalamiento de la oferta conforme los proyectos de GW alcancen la fase de producción comercial plena.\n\n**Nota final:** La perovskita no reemplazará al silicio, lo \"potenciará\". Para SQM, esto representa una oportunidad de diversificación de cartera hacia el sector de energías renovables, transformando nuestra posición de proveedores de materias primas a socios tecnológicos en la transición energética global.\n\n**Atentamente,**\n\n*Analista Estratégico Jefe*\n*SQM - Inteligencia de Mercado*"
+  "market_report": "Informe en proceso de generación"
 }
