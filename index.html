@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SQM Perovskite Scout — Iodine Intelligence</title>
+  <meta name="description" content="Dashboard corporativo de inteligencia de demanda de yodo para SQM.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            'sqm-purple':      '#5B2C86',
+            'sqm-purple-lt':   '#EDE9F6',
+            'sqm-green':       '#B2D235',
+            'sqm-green-dk':    '#7a9018',
+            'sqm-gray':        '#7A7A7A',
+            'sqm-gray-lt':     '#F5F5F5',
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    /* ── Custom scrollbar ── */
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: #f8fafc; }
+    ::-webkit-scrollbar-thumb { background: #5B2C86; border-radius: 99px; }
+    ::-webkit-scrollbar-thumb:hover { background: #7a35b0; }
+
+    /* ── Card border-top accent ── */
+    .card-accent-purple::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, #5B2C86 0%, #9b5cd6 60%, transparent 100%);
+      border-radius: 12px 12px 0 0;
+    }
+    .card-accent-green::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, #B2D235 0%, #d4ec6e 60%, transparent 100%);
+      border-radius: 12px 12px 0 0;
+    }
+
+    /* ── Risk Radar card left border ── */
+    .radar-beneficioso { border-left: 4px solid #B2D235; }
+    .radar-riesgo      { border-left: 4px solid #ef4444; }
+    .radar-neutral     { border-left: 4px solid #7A7A7A; }
+
+    /* ── Table sortable header ── */
+    th.sortable { cursor: pointer; user-select: none; }
+    th.sortable:hover { color: #5B2C86; }
+
+    /* ── Line clamp ── */
+    .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+    /* ── Divider ── */
+    .sep { border-color: #e2e8f0; }
+
+    /* ── Print: hide controls ── */
+    @media print { .no-print { display: none !important; } }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen">
+
+  <!-- ══════════════════════════════════════════════════ TOPBAR ══ -->
+  <header class="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm no-print">
+    <div class="max-w-screen-2xl mx-auto px-6 h-16 flex items-center justify-between gap-6">
+
+      <!-- Brand -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center font-black text-sm
+                    bg-sqm-purple shadow-md border border-purple-800/20">
+          <span class="text-sqm-green">SQ</span><span class="text-white/70 text-xs">M</span>
+        </div>
+        <div>
+          <p class="text-base font-bold text-slate-900 leading-tight">
+            Perovskite Scout <span class="text-sqm-purple text-sm font-semibold">v3</span>
+          </p>
+          <p class="text-xs text-sqm-gray leading-none">Iodine Demand Intelligence · AI-Powered</p>
+        </div>
+      </div>
+
+      <!-- Center: status bar -->
+      <div class="hidden md:flex items-center gap-3">
+        <div class="flex items-center gap-2 px-3 py-1.5 rounded-full
+                    bg-slate-100 border border-slate-200 text-xs text-slate-600">
+          <span id="agent-dot" class="inline-block w-2 h-2 rounded-full bg-slate-400"></span>
+          <span id="agent-status-text">Iniciando...</span>
+          <span class="text-slate-300">·</span>
+          <span id="last-updated" class="text-sqm-gray font-mono text-xs"></span>
+        </div>
+        <span id="llm-badge"
+          class="px-2.5 py-0.5 rounded-full text-xs font-semibold
+                 bg-amber-100 text-amber-700 border border-amber-300">
+          LLM cargando...
+        </span>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-3">
+        <button onclick="loadAndRender()"
+          class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium
+                 text-slate-600 hover:text-sqm-purple hover:bg-sqm-purple-lt
+                 transition-all border border-slate-200 no-print">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+          </svg>
+          Actualizar
+        </button>
+        <button onclick="exportCSV()"
+          class="flex items-center gap-2 px-4 py-1.5 rounded-lg text-sm font-semibold
+                 bg-sqm-purple hover:bg-[#6d35a0] text-white transition-all
+                 shadow-sm border border-purple-800/30 no-print">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4c-2.89 0-5.4 1.64-6.65 4.04C2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/>
+          </svg>
+          Exportar CSV
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-screen-2xl mx-auto px-6 py-8 space-y-8">
+
+    <!-- ══════════════════════════════════════════════ KPI GRID ══ -->
+    <section class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-10 gap-4">
+
+      <!-- Capacidad Total -->
+      <div class="relative bg-white rounded-2xl border border-slate-200 shadow-sm p-5
+                  card-accent-purple overflow-hidden col-span-2">
+        <p class="text-xs font-semibold text-sqm-gray uppercase tracking-widest mb-2">Capacidad Total Detectada</p>
+        <div class="flex items-baseline gap-1.5">
+          <span id="kpi-gw" class="text-4xl font-extrabold text-sqm-purple">—</span>
+          <span class="text-slate-500 font-medium">GW</span>
+        </div>
+        <p class="text-xs text-sqm-gray mt-1"><span id="kpi-mw">—</span> MW total</p>
+      </div>
+
+      <div class="relative bg-white rounded-2xl border border-slate-200 shadow-sm p-5
+                  card-accent-green overflow-hidden col-span-2">
+        <p class="text-xs font-semibold text-sqm-gray uppercase tracking-widest mb-2">Demanda Yodo Total</p>
+        <div class="flex items-baseline gap-1.5">
+          <span id="kpi-iodine" class="text-4xl font-extrabold text-sqm-green-dk">—</span>
+          <span class="text-slate-500 font-medium">Ton</span>
+        </div>
+        <!-- Factor simulador editable -->
+        <div class="flex items-center gap-2 mt-2">
+          <label class="text-xs text-sqm-gray font-medium whitespace-nowrap">Factor Ton/GW:</label>
+          <input
+            id="iodine_factor"
+            type="number"
+            value="4.73"
+            step="0.01"
+            min="0"
+            class="w-20 px-2 py-0.5 rounded-md border border-sqm-green/40 bg-green-50
+                   text-sqm-green-dk font-mono text-sm font-bold text-center
+                   focus:outline-none focus:ring-2 focus:ring-sqm-green/30
+                   focus:border-sqm-green transition-all"
+            title="Modifica el factor de conversión Ton Yodo / GW"
+          >
+        </div>
+      </div>
+
+      <!-- PbI2 -->
+      <div class="relative bg-white rounded-2xl border border-slate-200 shadow-sm p-4 card-accent-purple overflow-hidden">
+        <p class="text-xs font-bold text-sqm-purple mb-1">PbI₂ <span class="text-sqm-gray font-normal">60%</span></p>
+        <p class="text-2xl font-bold text-slate-900"><span id="kpi-pbi2">—</span></p>
+        <p class="text-xs text-sqm-gray mt-0.5">ton</p>
+      </div>
+      <!-- FAI -->
+      <div class="relative bg-white rounded-2xl border border-slate-200 shadow-sm p-4 card-accent-green overflow-hidden">
+        <p class="text-xs font-bold text-sqm-green-dk mb-1">FAI <span class="text-sqm-gray font-normal">20%</span></p>
+        <p class="text-2xl font-bold text-slate-900"><span id="kpi-fai">—</span></p>
+        <p class="text-xs text-sqm-gray mt-0.5">ton</p>
+      </div>
+      <!-- MAI -->
+      <div class="relative bg-white rounded-2xl border border-slate-200 shadow-sm p-4 overflow-hidden">
+        <p class="text-xs font-bold text-sqm-gray mb-1">MAI <span class="text-sqm-gray font-normal">10%</span></p>
+        <p class="text-2xl font-bold text-slate-900"><span id="kpi-mai">—</span></p>
+        <p class="text-xs text-sqm-gray mt-0.5">ton</p>
+      </div>
+      <!-- CsI -->
+      <div class="relative bg-white rounded-2xl border border-slate-200 shadow-sm p-4 overflow-hidden">
+        <p class="text-xs font-bold text-purple-600 mb-1">CsI <span class="text-sqm-gray font-normal">10%</span></p>
+        <p class="text-2xl font-bold text-slate-900"><span id="kpi-csi">—</span></p>
+        <p class="text-xs text-sqm-gray mt-0.5">ton</p>
+      </div>
+
+      <!-- Distribución de Riesgo + Filtro de Año -->
+      <div class="relative bg-white rounded-2xl border border-slate-200 shadow-sm p-4 col-span-2 xl:col-span-2">
+        <p class="text-xs font-semibold text-sqm-gray uppercase tracking-widest mb-3">Radar IA — Distribución</p>
+        <div class="space-y-2">
+          <div class="flex items-center justify-between text-sm">
+            <span class="font-semibold text-green-700 flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-sqm-green inline-block"></span>Beneficioso
+            </span>
+            <span id="kpi-beneficioso" class="font-mono font-bold text-green-700">—</span>
+          </div>
+          <div class="flex items-center justify-between text-sm">
+            <span class="font-semibold text-red-600 flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-red-500 inline-block"></span>Riesgo
+            </span>
+            <span id="kpi-riesgo" class="font-mono font-bold text-red-600">—</span>
+          </div>
+          <div class="flex items-center justify-between text-sm">
+            <span class="font-semibold text-sqm-gray flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-sqm-gray inline-block"></span>Neutral
+            </span>
+            <span id="kpi-neutral" class="font-mono font-bold text-sqm-gray">—</span>
+          </div>
+        </div>
+
+        <!-- Filtro de año objetivo -->
+        <div class="mt-3 pt-3 border-t border-slate-100">
+          <label class="block text-xs font-semibold text-sqm-gray uppercase tracking-widest mb-1.5">
+            📅 Línea de Tiempo
+          </label>
+          <select
+            id="timeline_filter"
+            class="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 bg-slate-50
+                   text-slate-700 text-xs font-semibold
+                   focus:outline-none focus:border-sqm-purple focus:ring-2
+                   focus:ring-sqm-purple/15 cursor-pointer transition-all"
+          >
+            <option value="ALL">Todas las fechas</option>
+          </select>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ═══════════════════════════════ HYBRID BRAIN CHAT ══ -->
+    <section id="chat-section" class="mb-6">
+      <div class="bg-white/70 backdrop-blur-md rounded-2xl border border-slate-200 shadow-sm overflow-hidden relative card-accent-purple p-6">
+        <h2 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+          <span class="text-sqm-purple">🧠</span> Cerebro Híbrido (Agente IA)
+        </h2>
+        <div id="chat-history" class="space-y-4 mb-4 max-h-80 overflow-y-auto pr-2 text-sm text-slate-700">
+          <div class="p-3 bg-sqm-purple-lt/30 rounded-xl border border-sqm-purple/10">
+            <strong>Agente:</strong> Hola, soy el Analista Comercial Híbrido. ¿Qué deseas investigar o registrar hoy?
+          </div>
+        </div>
+        <div class="flex gap-3 relative">
+          <input type="text" id="chat-input" placeholder="Ej: ¿Qué sabemos sobre nanopartículas de alúmina? o registra TestCorp con 10GW..." 
+                 class="w-full bg-white/80 backdrop-blur-sm border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-sqm-purple focus:border-transparent transition-all shadow-inner">
+          <button id="chat-btn" class="bg-sqm-purple hover:bg-purple-800 text-white font-semibold px-6 py-3 rounded-xl transition-all shadow-md flex items-center gap-2 disabled:opacity-50">
+            <span>Consultar</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════ MARKET REPORT ══ -->
+    <section id="market-report-section" class="hidden">
+
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden relative card-accent-purple">
+
+        <!-- Section header -->
+        <div class="px-6 py-5 border-b border-slate-100"
+             style="background: linear-gradient(135deg,#f8f5fd 0%,#fff 60%);">
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl
+                          bg-sqm-purple shadow-md">
+                <span style="font-size:1.2rem">📊</span>
+              </div>
+              <div>
+                <h2 class="text-lg font-bold text-slate-900">
+                  Inteligencia de Mercado: Análisis de Impacto en Yodo
+                </h2>
+                <p class="text-xs text-sqm-gray mt-0.5">
+                  Redactado por <strong class="text-sqm-purple">Gemini 1.5 Flash</strong>
+                  &middot; Perspectiva estratégica SQM &middot; Actualizado en cada escaneo
+                </p>
+              </div>
+            </div>
+            <span class="px-3 py-1 rounded-full text-xs font-semibold
+                         bg-sqm-purple text-white border border-purple-800/30
+                         shadow-sm">
+              🧠 Análisis Ejecutivo
+            </span>
+          </div>
+        </div>
+
+        <!-- Report body -->
+        <div id="market-report-body"
+             class="px-8 py-6 prose-sm max-w-none overflow-y-auto"
+             style="max-height:640px;">
+          <!-- Content injected by renderMarketReport() -->
+        </div>
+
+        <!-- Gradient fade at bottom to indicate scrollability -->
+        <div class="pointer-events-none h-8
+                    bg-gradient-to-t from-white to-transparent -mt-8 relative z-10"></div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════ CHARTS ══ -->
+    <section class="grid lg:grid-cols-2 gap-6">
+
+      <!-- Bar chart: by company -->
+      <div class="relative bg-white rounded-2xl border border-slate-200 shadow-sm p-6 card-accent-purple overflow-hidden">
+        <div class="flex items-center justify-between mb-5">
+          <div>
+            <h2 class="font-bold text-slate-900">Demanda de Yodo por Empresa</h2>
+            <p class="text-xs text-sqm-gray">Toneladas Métricas de Yodo (solo artículos con capacidad)</p>
+          </div>
+          <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-sqm-purple-lt text-sqm-purple border border-purple-200">
+            <span id="kpi-companies">—</span> empresas
+          </span>
+        </div>
+        <!-- Fixed height prevents Chart.js collapse -->
+        <div class="relative" style="height:260px;">
+          <canvas id="chart-company"></canvas>
+        </div>
+      </div>
+
+      <!-- Doughnut: compound breakdown -->
+      <div class="relative bg-white rounded-2xl border border-slate-200 shadow-sm p-6 card-accent-green overflow-hidden">
+        <div class="flex items-center justify-between mb-5">
+          <div>
+            <h2 class="font-bold text-slate-900">Desglose por Compuesto</h2>
+            <p class="text-xs text-sqm-gray">PbI₂ · FAI · MAI · CsI</p>
+          </div>
+          <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-green-50 text-sqm-green-dk border border-green-200">
+            <span id="kpi-articles">—</span> artículos
+          </span>
+        </div>
+        <div class="relative" style="height:260px;">
+          <canvas id="chart-compound"></canvas>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ══════════════════════════════════════ TABLE + MANUAL FORM ══ -->
+    <section class="grid xl:grid-cols-4 gap-6">
+
+      <!-- Ledger Table (3/4) -->
+      <div class="xl:col-span-3 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden relative card-accent-purple">
+
+        <!-- Header bar -->
+        <div class="px-6 py-4 border-b sep flex flex-wrap items-center justify-between gap-4 no-print">
+          <div>
+            <h2 class="font-bold text-slate-900">Registro de Capacidad (Ledger)</h2>
+            <p class="text-xs text-sqm-gray mt-0.5">Solo artículos con nueva capacidad de producción detectada</p>
+          </div>
+          <div class="flex items-center gap-3 flex-wrap">
+            <div class="relative">
+              <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none"
+                fill="currentColor" viewBox="0 0 24 24">
+                <path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+              </svg>
+              <input id="search-input" type="text" placeholder="Buscar empresa..."
+                class="pl-9 pr-4 py-2 rounded-lg bg-slate-50 border border-slate-200 text-sm
+                       text-slate-800 placeholder-slate-400 focus:outline-none
+                       focus:border-sqm-purple focus:ring-2 focus:ring-sqm-purple/15 transition-all w-52">
+            </div>
+            <select id="filter-phase"
+              class="px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-sm text-slate-700
+                     focus:outline-none focus:border-sqm-purple cursor-pointer">
+              <option value="ALL">Todas las fases</option>
+              <option value="Operational">Operativo</option>
+              <option value="Under Construction">En Construcción</option>
+              <option value="Planned">Planificado</option>
+            </select>
+            <span id="ledger-count" class="text-xs text-sqm-gray font-mono whitespace-nowrap"></span>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead class="bg-slate-50 border-b sep">
+              <tr class="text-xs text-sqm-gray uppercase tracking-wider">
+                <th class="sortable px-4 py-3 text-left font-semibold" onclick="sortTable('company')">Empresa</th>
+                <th class="sortable px-4 py-3 text-left font-semibold" onclick="sortTable('capacityGw')">Capacidad GW</th>
+                <th class="sortable px-4 py-3 text-left font-semibold" onclick="sortTable('iodineDemand')">Yodo (Ton)</th>
+                <th class="px-4 py-3 text-left font-semibold">Compuestos</th>
+                <th class="sortable px-4 py-3 text-left font-semibold" onclick="sortTable('phase')">Fase</th>
+                <th class="sortable px-4 py-3 text-left font-semibold" onclick="sortTable('date')">Fecha</th>
+                <th class="px-4 py-3 text-left font-semibold">Fuente</th>
+                <th class="px-4 py-3 w-12 no-print"></th>
+              </tr>
+            </thead>
+            <tbody id="ledger-body"></tbody>
+          </table>
+        </div>
+
+        <div id="ledger-empty" class="hidden px-6 py-14 text-center">
+          <svg class="w-12 h-12 text-slate-300 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20 6h-2.18c.07-.44.18-.88.18-1.36C18 2.51 15.49 1 13 1c-1.37 0-2.63.57-3.5 1.5C8.63 1.57 7.37 1 6 1 3.51 1 1 2.51 1 4.64c0 .48.1.92.18 1.36H1v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V6z"/>
+          </svg>
+          <p class="text-slate-500 font-semibold">Sin registros de capacidad</p>
+          <p class="text-slate-400 text-sm mt-1">El agente busca anuncios con MW/GW. Inicia con <code class="font-mono text-sqm-purple">py scout_agent.py</code></p>
+        </div>
+      </div>
+
+      <!-- Manual Entry Panel (1/4) -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 relative card-accent-green space-y-4 no-print">
+        <div>
+          <h2 class="font-bold text-slate-900">Entrada Manual</h2>
+          <p class="text-xs text-sqm-gray mt-0.5">Complementa el escaneo automático</p>
+        </div>
+
+        <form id="manual-form" class="space-y-3" onsubmit="return false;">
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-500 mb-1">Empresa *</label>
+            <select id="m-company" required class="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-sm text-slate-800 focus:outline-none focus:border-sqm-green focus:ring-2 focus:ring-sqm-green/20 transition-all">
+              <option value="" disabled selected>— Seleccionar —</option>
+              <option>UtmoLight</option><option>Renshine Solar</option><option>Oxford PV</option>
+              <option>CNNC</option><option>BOE</option><option>GCL</option><option>Microquanta</option>
+              <option>Caelux</option><option>Sekisui Chemical</option>
+              <option>Photon Crystal Energy</option><option>Mellow Energy</option>
+            </select>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="block text-xs font-semibold text-slate-500 mb-1">Capacidad *</label>
+              <input id="m-capacity" type="number" step="any" min="0" placeholder="150" required
+                class="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-sqm-green focus:ring-2 focus:ring-sqm-green/20 transition-all">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-500 mb-1">Unidad *</label>
+              <select id="m-unit" required class="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-sm text-slate-800 focus:outline-none focus:border-sqm-green focus:ring-2 focus:ring-sqm-green/20 transition-all">
+                <option value="MW" selected>MW</option><option value="GW">GW</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-500 mb-1">Fase *</label>
+            <select id="m-phase" required class="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-sm text-slate-800 focus:outline-none focus:border-sqm-green focus:ring-2 focus:ring-sqm-green/20 transition-all">
+              <option value="Planned">Planificado / Piloto</option>
+              <option value="Under Construction">En Construcción</option>
+              <option value="Operational">Operativo (Comercial)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-500 mb-1">Nivel de Riesgo *</label>
+            <select id="m-risk" class="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-sm text-slate-800 focus:outline-none focus:border-sqm-green focus:ring-2 focus:ring-sqm-green/20 transition-all">
+              <option value="Beneficioso">📈 Beneficioso</option>
+              <option value="Neutral" selected>ℹ️ Neutral</option>
+              <option value="Riesgo">⚠️ Riesgo</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-500 mb-1">Fecha *</label>
+            <input id="m-date" type="date" required class="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-sm text-slate-800 focus:outline-none focus:border-sqm-green focus:ring-2 focus:ring-sqm-green/20 transition-all">
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-500 mb-1">Fuente *</label>
+            <input id="m-source" type="text" placeholder="Nombre o URL" required
+              class="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-sqm-green focus:ring-2 focus:ring-sqm-green/20 transition-all">
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-500 mb-1">Notas / Resumen</label>
+            <textarea id="m-notes" rows="2" placeholder="Contexto relevante para el análisis."
+              class="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-sqm-green focus:ring-2 focus:ring-sqm-green/20 transition-all resize-none"></textarea>
+          </div>
+
+          <button type="submit"
+            class="w-full py-2.5 rounded-lg font-semibold text-sm bg-sqm-purple
+                   hover:bg-[#6d35a0] text-white transition-all shadow-sm border border-purple-800/20">
+            Guardar en Ledger
+          </button>
+        </form>
+
+        <!-- Live preview -->
+        <div class="rounded-xl bg-slate-50 border border-slate-200 p-3">
+          <p class="text-xs font-semibold uppercase tracking-wider text-sqm-gray mb-2">Vista previa de cálculo</p>
+          <div id="calc-preview" class="hidden text-xs font-mono space-y-0.5">
+            <div class="text-slate-600">GW equivalente: <span id="calc-gw" class="font-bold text-sqm-purple">—</span></div>
+            <div class="text-slate-600">Yodo total: <span id="calc-iodine" class="font-bold text-sqm-green-dk">—</span> Ton</div>
+            <div class="text-slate-600">PbI₂ (60%): <span id="calc-pbi2" class="text-sqm-purple">—</span> Ton</div>
+          </div>
+          <p id="calc-hint" class="text-xs text-sqm-gray">Introduce un valor de capacidad para previsualizar.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ══════════════════════════════════ RISK RADAR SECTION ══ -->
+    <section>
+
+      <!-- Section header -->
+      <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-sqm-purple-lt border border-purple-200
+                      flex items-center justify-center text-xl shadow-sm">🧠</div>
+          <div>
+            <h2 class="text-lg font-bold text-slate-900">Radar de Inteligencia (I+D)</h2>
+            <p class="text-xs text-sqm-gray">
+              Análisis semántico de riesgo por <strong>Gemini 1.5 Flash</strong>
+              · Perspectiva: impacto en demanda de yodo SQM
+            </p>
+          </div>
+        </div>
+        <!-- Legend pills -->
+        <div class="flex items-center gap-3 text-xs font-semibold">
+          <span class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-green-50 text-green-700 border border-green-200">
+            <span class="w-2 h-2 rounded-full bg-sqm-green"></span>Beneficioso
+          </span>
+          <span class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-red-50 text-red-700 border border-red-200">
+            <span class="w-2 h-2 rounded-full bg-red-500"></span>Riesgo
+          </span>
+          <span class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 border border-slate-200">
+            <span class="w-2 h-2 rounded-full bg-sqm-gray"></span>Neutral
+          </span>
+        </div>
+      </div>
+
+      <!-- Feed -->
+      <div id="risk-radar-feed" class="space-y-3">
+        <!-- Initial loading placeholder -->
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-8 text-center">
+          <div class="w-7 h-7 border-2 border-sqm-purple border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
+          <p class="text-slate-500 text-sm">Cargando análisis de inteligencia...</p>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════════════════ FOOTER ══ -->
+  <footer class="max-w-screen-2xl mx-auto px-6 py-5 mt-4 border-t border-slate-200 no-print">
+    <div class="flex flex-wrap items-center justify-between gap-3 text-xs text-sqm-gray">
+      <span>
+        <strong class="text-slate-700">SQM Perovskite Scout v5.4</strong>
+        · Paleta: <span class="font-semibold" style="color:#5B2C86">#5B2C86</span>
+        · <span class="font-semibold" style="color:#7a9018">#B2D235</span>
+        · <span class="font-semibold text-sqm-gray">#7A7A7A</span>
+      </span>
+      <span>1 GW = 4.73 Ton Yodo · PbI₂ 60% · FAI 20% · MAI 10% · CsI 10%</span>
+      <span>Agente: <code class="font-mono" style="color:#5B2C86">py scout_agent.py</code></span>
+    </div>
+  </footer>
+
+  <!-- Toast container -->
+  <div id="toast-area" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+  <!-- App logic -->
+  <script src="app.js"></script>
+
+  <!-- Live calc preview (inline) -->
+  <script>
+  (function () {
+    function update() {
+      const val  = parseFloat(document.getElementById('m-capacity')?.value || '');
+      const unit = document.getElementById('m-unit')?.value || 'MW';
+      const pre  = document.getElementById('calc-preview');
+      const hint = document.getElementById('calc-hint');
+      if (!val || isNaN(val) || val <= 0) {
+        pre?.classList.add('hidden'); hint?.classList.remove('hidden'); return;
+      }
+      const gw = unit === 'GW' ? val : val / 1000;
+      const io = gw * 4.73;
+      pre?.classList.remove('hidden'); hint?.classList.add('hidden');
+      const s = v => v.toFixed(4);
+      document.getElementById('calc-gw').textContent     = s(gw);
+      document.getElementById('calc-iodine').textContent = s(io);
+      document.getElementById('calc-pbi2').textContent   = s(io * 0.6);
+    }
+    document.getElementById('m-capacity')?.addEventListener('input', update);
+    document.getElementById('m-unit')?.addEventListener('change', update);
+    const di = document.getElementById('m-date');
+    if (di) di.value = new Date().toISOString().split('T')[0];
+  })();
+  </script>
+
+</body>
+</html>
