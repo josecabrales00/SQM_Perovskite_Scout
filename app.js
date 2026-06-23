@@ -12,7 +12,6 @@ const API_BASE      = "";
 const SUPABASE_URL  = "https://rpibprkdzoxfizssvtuf.supabase.co";
 const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwaWJwcmtkem94Zml6c3N2dHVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIxNTc5NDQsImV4cCI6MjA5NzczMzk0NH0.J_tDZOi-5QFMSmwsba4EUGlu29MEng8ru7hXoRMPUGU";
 const DB_URL        = `${SUPABASE_URL}/rest/v1/perovskite_leads?select=*`;
-const DB_LOCAL      = `${API_BASE}/database.json`;
 const REFRESH_MS    = 5 * 60 * 1000;
 const FETCH_TIMEOUT = 10000;
 const RATIOS        = { pbi2: 0.60, fai: 0.20, mai: 0.10, csi: 0.10 };
@@ -63,16 +62,7 @@ async function loadAndRender() {
     });
     if (!Array.isArray(rows)) throw new Error("Respuesta inválida de Supabase");
     
-    // Fetch local db to get market_report and meta info
-    let localDb = {};
-    try {
-      localDb = await fetchWithTimeout(DB_LOCAL, FETCH_TIMEOUT);
-    } catch(e) {
-      console.warn("No se pudo obtener database.json local:", e.message);
-    }
-    
-    // Map rows to original database.json schema
-    const db = { articles: [], meta: localDb.meta || {}, market_report: localDb.market_report || "" };
+    const db = { articles: [], meta: {} };
     let totalGw = 0;
     const targetYears = new Set();
     
@@ -97,21 +87,12 @@ async function loadAndRender() {
         link: r.fuente_noticia,
         summary: r.analisis || 'Sin análisis',
         resumen_ia: r.analisis || 'Sin análisis',
-        title: r.empresa + " - " + r.fuente_noticia, // Fallback title
+        title: r.empresa + " - " + r.fuente_noticia,
         date: r.fecha_publicacion || r.fecha_noticia || r.created_at || new Date().toISOString().split('T')[0]
       });
     });
     
-    // Fetch local database.json strictly to recover the AI market report
-    try {
-      const localDb = await fetchWithTimeout(DB_LOCAL, 5000);
-      if (localDb && localDb.market_report) {
-        db.market_report = localDb.market_report;
-      }
-    } catch (e) {
-      console.warn("Market report not available locally:", e.message);
-    }
-    
+    // Meta processing
     db.meta.target_years = Array.from(targetYears).sort();
     db.meta.total_gw = totalGw;
     db.meta.last_updated = new Date().toISOString();
@@ -316,10 +297,8 @@ function render() {
   if (!state.db) return;
   try { renderKPIs();         } catch(e) { console.error("renderKPIs:", e); }
   try { renderCharts();       } catch(e) { console.error("renderCharts:", e); }
-  try { renderMarketReport(); } catch(e) { console.error("renderMarketReport:", e); }
   try { renderTable();        } catch(e) { console.error("renderTable:", e); }
   try { renderRiskRadar();    } catch(e) { console.error("renderRadar:", e); }
-  try { renderLLMBadge();     } catch(e) { console.error("renderLLM:", e); }
 }
 
 // ── KPIs ───────────────────────────────────────────────────────
@@ -356,11 +335,8 @@ function renderKPIs() {
 function renderLLMBadge() {
   const el = document.getElementById("llm-badge");
   if (!el) return;
-  const on = state.db?.meta?.llm_enabled;
-  el.textContent = on ? "✔ Agente IA Autónomo - Conectado" : "⚠ Sin API Key";
-  el.className   = on
-    ? "px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-green-700 border border-green-300"
-    : "px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-700 border border-amber-300";
+  el.textContent = "✔ Serverless Mode";
+  el.className = "px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-green-700 border border-green-300";
 }
 
 // ── Charts ─────────────────────────────────────────────────────
@@ -466,67 +442,7 @@ function renderCompoundChartFiltered(totalIod) {
   });
 }
 
-// ── Market Report — with ERROR FATAL API detection ─────────────
-function markdownToHtml(md) {
-  if (!md || typeof md !== "string") return "";
-  let html = escHtml(md);
-  html = html.replace(/^### (.+)$/gm, '<h3 class="text-base font-bold text-sqm-purple mt-5 mb-2">$1</h3>');
-  html = html.replace(/^## (.+)$/gm,  '<h2 class="text-lg font-bold text-sqm-purple mt-6 mb-2 pb-1 border-b border-purple-100">$1</h2>');
-  html = html.replace(/^# (.+)$/gm,   '<h2 class="text-xl font-extrabold text-sqm-purple mt-6 mb-3">$1</h2>');
-  html = html.replace(/\*\*(.+?)\*\*/g, '<strong class="font-semibold text-slate-900">$1</strong>');
-  html = html.replace(/\*(.+?)\*/g,     '<em class="italic text-slate-700">$1</em>');
-  html = html.replace(/^[-*] (.+)$/gm,  '<li class="ml-4 pl-2 text-slate-700 leading-relaxed list-disc">$1</li>');
-  html = html.replace(/^\d+\. (.+)$/gm, '<li class="ml-4 pl-2 text-slate-700 leading-relaxed list-decimal">$1</li>');
-  html = html.replace(/(<li[^>]*>.*?<\/li>\n?)+/gs, m => `<ul class="my-2 space-y-1">${m}</ul>`);
-  html = html.replace(/^(?!<)(.*\S.*)$/gm, '<p class="text-slate-700 leading-relaxed mb-3">$1</p>');
-  html = html.replace(/^---+$/gm, '<hr class="my-4 border-purple-100">');
-  return html;
-}
 
-function renderMarketReport() {
-  const section = document.getElementById("market-report-section");
-  const body    = document.getElementById("market-report-body");
-  if (!section || !body) return;
-  section.classList.remove("hidden");
-
-  const report = state.db?.market_report || "";
-
-  // ── ERROR FATAL API detection ──────────────────────────────
-  if (typeof report === "string" && report.startsWith("ERROR FATAL API:")) {
-    body.parentElement?.classList.remove("bg-white");
-    body.parentElement?.classList.add("bg-red-50", "border-red-300");
-    body.innerHTML = `
-      <div class="flex flex-col gap-3 py-6 px-2">
-        <div class="flex items-center gap-2">
-          <span class="text-2xl">🚨</span>
-          <p class="text-red-700 font-bold text-base">Error de conexión con Gemini API</p>
-        </div>
-        <div class="rounded-lg bg-red-100 border border-red-300 px-4 py-3">
-          <p class="text-xs font-mono text-red-800 leading-relaxed break-all">${escHtml(report)}</p>
-        </div>
-        <p class="text-red-500 text-xs">
-          Verifica que la API Key sea válida y que el proxy no bloquee
-          <code class="font-mono bg-red-100 px-1 rounded">generativelanguage.googleapis.com</code>.
-        </p>
-      </div>`;
-    return;
-  }
-
-  // Reset error styles in case it was previously in error state
-  body.parentElement?.classList.remove("bg-red-50", "border-red-300");
-  body.parentElement?.classList.add("bg-white");
-
-  if (!report || report === "Informe en proceso de generación") {
-    body.innerHTML = `
-      <div class="flex flex-col items-center justify-center py-10 gap-3">
-        <div class="w-8 h-8 border-2 border-sqm-purple border-t-transparent rounded-full animate-spin"></div>
-        <p class="text-slate-500 text-sm font-medium">Informe en proceso de generación&hellip;</p>
-        <p class="text-slate-400 text-xs">El agente Gemini redactará el análisis tras el primer escaneo completo.</p>
-      </div>`;
-    return;
-  }
-  body.innerHTML = markdownToHtml(report);
-}
 
 // ── Geo tag helper ─────────────────────────────────────────────
 function geoTag(geo) {
