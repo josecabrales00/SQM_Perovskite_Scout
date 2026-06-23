@@ -1,6 +1,6 @@
 {
   "meta": {
-    "last_updated": "2026-06-23T15:30:20.927243+00:00",
+    "last_updated": "2026-06-23T16:30:40.268686+00:00",
     "total_gw": 8.048,
     "total_iodine_ton": 38.0671,
     "total_pbi2_ton": 22.8403,
@@ -8,11 +8,11 @@
     "total_mai_ton": 3.8067,
     "total_csi_ton": 3.8067,
     "unique_companies": 6,
-    "article_count": 122,
+    "article_count": 123,
     "capacity_count": 12,
     "iodine_per_gw": 4.73,
     "risk_counts": {
-      "Beneficioso": 41,
+      "Beneficioso": 42,
       "Riesgo": 0,
       "Neutral": 81
     },
@@ -3429,6 +3429,34 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxQNTUxbjEtY2NWRnVVdjZTTjczUHJUYWtiREJiejdRUkJOQS1lTXhEcXV2V1oyZ0hPMlExamh5Ni1PM19oRUZaQ1NJTXZVYXk0YXNIVjRGU2VQQ09WQTMwbDdQS1RDMFAxNjJkNTZ4M2lyaDREbVlmYTh5WEFfdExRWlViOVhlRkZORHFMa282ai1iWHZjMzd5MkJESzFLcXhFOFJhMXl3TUE1Ti1UUElJZ1BMaXEzR1pw?o"
     },
     {
+      "id": "a-473637930232",
+      "company": "Oxford PV",
+      "capacityValue": 0.0,
+      "capacityUnit": "MW",
+      "capacityGw": 0.0,
+      "iodineDemand": 0.0,
+      "pbi2": 0.0,
+      "fai": 0.0,
+      "mai": 0.0,
+      "csi": 0.0,
+      "phase": "Planned",
+      "nivel_riesgo": "Beneficioso",
+      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "target_year": "2025",
+      "invest_proxy": false,
+      "geo": {
+        "country": "UK",
+        "continent": "Europa"
+      },
+      "llm_used": false,
+      "radar_only": true,
+      "date": "2019-07-05",
+      "source": "GNews-Finance",
+      "title": "Solar cell producer Oxford PV closes €74 million Series D round - EU-Startups",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPelNvdmxVMjRubjdCQzZOeEFpZU5uQWxIUGhuZVFHdkhvLUE5NkxEc1BmRGdhWlQwcVNQSkJ1YjRqYnQwd0VLTFBqaThRajBLejlQNG1xT2FmMmxEZ0xQUVY0TEswa2s5WEpXVDBUMDdPZU1ibGxfLUhSdVdUeDZGWkxya0V4NEU2cUxPVk5ZMEt3d1RMbV8wemhNUzBkWnBKX1E?oc=5",
+      "summary": "<a href=\"https://news.google.com/rss/articles/CBMiogFBVV95cUxPelNvdmxVMjRubjdCQzZOeEFpZU5uQWxIUGhuZVFHdkhvLUE5NkxEc1BmRGdhWlQwcVNQSkJ1YjRqYnQwd0VLTFBqaThRajBLejlQNG1xT2FmMmxEZ0xQUVY0TEswa2s5WEpXVDBUMDdPZU1ibGxfLUhSdVdUeDZGWkxya0V4NEU2cUxPVk5ZMEt3d1RMbV8wemhNUzBkWnBKX1E?oc=5\" target=\"_blank\">Solar ce"
+    },
+    {
       "id": "a-120607380255",
       "company": "Microquanta",
       "capacityValue": 0.0,
@@ -3457,5 +3485,5 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiVkFVX3lxTFBadUlVb1JaQV9ZZkV3dDNCWFlpOXVjMFFQdWdoajNjMlYwbXFlU1dTS1dfTUx1bTVIM3BtR2Y0V1FtSUpDUjhRbWJ0UGprZ2N3cFNoWmFn?oc=5\" target=\"_blank\">Microquanta</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Forbes</font>"
     }
   ],
-  "market_report": "**MEMORÁNDUM EJECUTIVO: ESTRATEGIA DE MERCADO Y PROYECCIÓN DE DEMANDA DE YODO**\n**PARA:** Comité Ejecutivo, SQM\n**DE:** Analista Estratégico Jefe, Inteligencia de Mercado\n**FECHA:** 22 de junio de 2026\n**ASUNTO:** Impacto de la comercialización de celdas de perovskita en la demanda estructural de Yodo\n\n---\n\n### 1. Panorama General del Mercado: La Revolución de la Perovskita y el Yodo\n\nLa industria fotovoltaica (PV) atraviesa un punto de inflexión tecnológico. La transición del silicio monocristalino convencional (PERC/TOPCon) hacia arquitecturas de **celdas tándem (Perovskita-Silicio)** no es solo una mejora incremental, sino un cambio de paradigma en la eficiencia de conversión de energía (PCE).\n\n*   **Estado de la Tecnología:** Las celdas de perovskita han superado la barrera teórica de eficiencia del silicio, alcanzando registros de laboratorio superiores al 30%. La arquitectura tándem permite capturar un espectro solar más amplio, utilizando la perovskita para absorber fotones de alta energía (azul/UV) y el silicio para los de baja energía (infrarrojo).\n*   **Barreras:** Históricamente, la estabilidad a largo plazo y la degradación por humedad han sido los principales obstáculos. Sin embargo, los avances en encapsulamiento y química de precursores han mitigado estos riesgos, permitiendo el paso a la fase de pilotaje industrial.\n*   **El Rol Fundamental del Yodo:** El yodo es un componente crítico en la síntesis de perovskitas de haluro de plomo (ej. $MAPbI_3$ o $FAPbI_3$). La pureza y la estabilidad del yodo son determinantes para la vida útil del panel. Como líderes globales en la producción de yodo, SQM se posiciona no solo como proveedor, sino como habilitador tecnológico de esta transición energética.\n\n### 2. Análisis de Eventos Recientes: Consolidación y Escalabilidad\n\nLas noticias recopiladas entre el 8 y el 21 de junio de 2026 confirman que el mercado ha dejado atrás la fase de \"investigación teórica\" para entrar en la fase de **\"validación de ingeniería y escalabilidad\"**.\n\n*   **Evento Disruptivo (Hito de Eficiencia):** La colaboración entre **Oxford PV y Fraunhofer ISE** (anunciada el 18-20 de junio) logrando un **25.6% de eficiencia** en módulos tándem con diseño *shingled* (interconexión tipo teja) marca un antes y un después. No es solo la eficiencia, sino la integración de un diseño de empaquetado que optimiza el área activa del módulo. Esto valida la viabilidad comercial de la tecnología tándem en formatos de gran escala.\n*   **Tendencias Observadas:**\n    *   **Diversificación de Aplicaciones:** GCL está explorando aplicaciones espaciales, lo que implica requisitos de alta densidad energética y ligereza, donde el yodo es insustituible.\n    *   **Despliegue Comercial:** El pedido de 19 MW de UtmoLight (08-06-2026) es una señal clara de que el mercado está absorbiendo los primeros volúmenes de producción real.\n    *   **Maduración de Procesos:** Aunque BOE reporta desafíos en los rendimientos de producción (07-06-2026), esto es típico de la curva de aprendizaje de cualquier tecnología disruptiva. La industria está resolviendo los cuellos de botella de manufactura (yield management).\n\n### 3. Apreciaciones Objetivas y Proyecciones Financieras\n\nBasado en la aceleración de la capacidad instalada y la eficiencia de los módulos, SQM debe ajustar sus proyecciones de demanda de yodo.\n\n**Cifras y Supuestos:**\n*   **Carga de Yodo:** Se estima una necesidad de aproximadamente **0.5 a 0.8 gramos de yodo por metro cuadrado** de celda de perovskita (dependiendo del espesor de la capa activa).\n*   **Proyección de Mercado:** Considerando que la capacidad de producción de perovskita podría alcanzar los 10-15 GW para 2027-2028, y asumiendo un rendimiento de 200 W/m², requeriremos una superficie de 50-75 millones de $m^2$.\n*   **Impacto en Toneladas de Yodo:**\n    *   **Escenario Conservador:** 25 toneladas métricas (TM) adicionales de yodo de alta pureza anuales para 2028.\n    *   **Escenario de Adopción Masiva (2030):** Si la tecnología tándem captura el 10% del mercado solar global (aprox. 100 GW anuales), la demanda incremental de yodo para este sector alcanzaría las **250 - 400 TM anuales**.\n\n**Conclusión Estratégica:**\nEl mercado de perovskita no es una amenaza para el mercado de yodo, sino un **nuevo motor de crecimiento de alto valor agregado**. A diferencia de las aplicaciones tradicionales (rayos X, biocidas), el sector fotovoltaico exige grados de pureza electrónicos que SQM puede suministrar con sus procesos actuales. \n\n**Recomendación:** SQM debe priorizar el desarrollo de alianzas estratégicas con los principales actores (Oxford PV, GCL, UtmoLight) para asegurar contratos de suministro a largo plazo de yodo de grado fotovoltaico, garantizando que nuestra capacidad de producción escale en sincronía con los hitos de GW anunciados en junio de 2026.\n\n---\n**Firma:**\n*Analista Estratégico Jefe de Inteligencia de Mercado*\n**SQM**"
+  "market_report": "ERROR FATAL API: 503 — This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later."
 }
