@@ -476,18 +476,23 @@ def deep_scrape(url: str) -> dict:
             "Devuelve estrictamente un JSON con las llaves 'fecha_publicacion' y 'analisis'.\n\n"
             f"TEXTO:\n{text}"
         )
-        model = genai.GenerativeModel('gemini-1.5-flash')
-        resp = model.generate_content(prompt)
-        t = resp.text
-        idx1 = t.find("{")
-        idx2 = t.rfind("}")
-        if idx1 != -1 and idx2 != -1:
-            data = json.loads(t[idx1:idx2+1])
-            res["fecha_publicacion"] = data.get("fecha_publicacion", "Fecha Desconocida")
-            res["analisis"] = data.get("analisis", "Sin análisis detallado.")
+        try:
+            model = genai.GenerativeModel('gemini-1.5-flash')
+            resp = model.generate_content(prompt)
+            t = resp.text
+            idx1 = t.find("{")
+            idx2 = t.rfind("}")
+            if idx1 != -1 and idx2 != -1:
+                data = json.loads(t[idx1:idx2+1])
+                res["fecha_publicacion"] = data.get("fecha_publicacion", "Fecha Desconocida")
+                res["analisis"] = data.get("analisis", "Sin análisis detallado.")
+            else:
+                print(f"Error Gemini: No se encontró JSON en la respuesta: {t}")
+        except Exception as e:
+            print(f"Error Gemini: {e}")
         time.sleep(2) # avoid rate limit
     except Exception as e:
-        log.debug(f"Deep scrape falló para {url}: {e}")
+        print(f"Error Gemini: {e}")
         time.sleep(2)
         
     return res
