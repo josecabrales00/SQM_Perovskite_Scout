@@ -2,13 +2,19 @@ import sys
 import os
 import json
 
-# Agregamos la ruta principal del proyecto para poder importar scout_agent
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from scout_agent import Handler
 import scout_agent
 
 class handler(Handler):
+    def send_json(self, status, data):
+        self.send_response(status)
+        self.send_header('Content-type', 'application/json')
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.end_headers()
+        self.wfile.write(json.dumps(data).encode('utf-8'))
+
     def do_POST(self):
         """Vercel Serverless entrypoint for POST /api/chat"""
         try:
@@ -27,16 +33,17 @@ class handler(Handler):
                 scout_agent._SB_HEADERS["apikey"] = supa_key
                 scout_agent.SUPABASE_ENABLED = True
 
-            self.handle_chat()
+            result = self.handle_chat()
+            status = result.pop("status", 200)
+            self.send_json(status, result)
+            
         except Exception as e:
-            self.send_response(500)
-            self._cors()
-            self.send_header('Content-Type', 'application/json')
-            self.end_headers()
-            self.wfile.write(json.dumps({"error": str(e)}).encode('utf-8'))
+            self.send_json(500, {"error": str(e)})
 
     def do_OPTIONS(self):
         """CORS Preflight"""
         self.send_response(200)
-        self._cors()
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+        self.send_header('Access-Control-Allow-Headers', 'Content-Type, Authorization, apikey')
         self.end_headers()
