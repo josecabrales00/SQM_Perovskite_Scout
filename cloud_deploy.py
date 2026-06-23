@@ -3,6 +3,17 @@ import requests
 import base64
 import json
 
+def _load_dotenv():
+    env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env")
+    if os.path.exists(env_path):
+        with open(env_path, encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith("#") and "=" in line:
+                    k, v = line.split("=", 1)
+                    os.environ[k.strip()] = v.strip()
+_load_dotenv()
+
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
 VERCEL_TOKEN = os.environ.get("VERCEL_TOKEN", "")
 REPO_NAME = "SQM_Perovskite_Scout"
@@ -41,7 +52,7 @@ def deploy():
         file_url = f"https://api.github.com/repos/{username}/{REPO_NAME}/contents/{f}"
         file_res = requests.get(file_url, headers=gh_headers)
         payload = {
-            "message": f"v1.1.9 - Deep Scraping & Real Dates - Add {f}",
+            "message": f"v1.2.0 - Final UI Decoupling - Add {f}",
             "content": base64.b64encode(content).decode('utf-8')
         }
         if file_res.ok:
