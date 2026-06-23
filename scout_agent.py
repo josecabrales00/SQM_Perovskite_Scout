@@ -28,9 +28,9 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import quote_plus
 
 try:
-    from duckduckgo_search import DDGS
+    from googlesearch import search
 except ImportError:
-    DDGS = None
+    search = None
 
 # ── Silenciar InsecureRequestWarning del proxy corporativo (SSL MITM) ──
 try:
@@ -842,13 +842,14 @@ def tool_buscar_docs(query: str) -> str:
         return f"Error en búsqueda: {e}"
 
 def tool_buscar_web(query: str) -> str:
-    """Busca en DuckDuckGo en tiempo real."""
-    if not DDGS: return "Error: Librería duckduckgo_search no está instalada."
+    """Busca en Google en tiempo real."""
+    if not search: return "Error: Librería googlesearch no está instalada."
     try:
-        results = DDGS().text(query, max_results=3)
+        results = []
+        for res in search(query, num_results=3, advanced=True):
+            results.append(f"[Fuente: {res.url}] {res.title}: {res.description}")
         if not results: return "No se encontraron resultados en la web."
-        text_res = "\n".join([f"[Fuente: {r['href']}] {r['title']}: {r['body']}" for r in results])
-        return text_res
+        return "\n".join(results)
     except Exception as e:
         return f"Error en búsqueda web: {e}"
 
