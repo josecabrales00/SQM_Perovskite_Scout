@@ -98,7 +98,7 @@ async function loadAndRender() {
         summary: r.resumen_ia || "",
         resumen_ia: r.resumen_ia || "Sin análisis detallado.",
         title: r.empresa + " - " + r.fuente_noticia, // Fallback title
-        date: r.created_at || ""
+        date: r.fecha_noticia || r.created_at || new Date().toISOString().split('T')[0]
       });
     });
     
