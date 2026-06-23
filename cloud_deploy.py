@@ -30,7 +30,7 @@ def deploy():
     time.sleep(3) # Wait for auto_init
     
     print("Subiendo archivos principales a GitHub...")
-    files_to_upload = ['index.html', 'app.js', 'AGENTS.md', 'scout_agent.py', 'database.json', 'rag_ingest.py', 'migrate_knowledge.sql', 'rls_patch.sql', 'cloud_deploy.py']
+    files_to_upload = ['index.html', 'app.js', 'AGENTS.md', 'scout_agent.py', 'database.json', 'rag_ingest.py', 'migrate_knowledge.sql', 'rls_patch.sql', 'cloud_deploy.py', 'requirements.txt', 'api/chat.py']
     
     for f in files_to_upload:
         if not os.path.exists(f): continue
@@ -41,7 +41,7 @@ def deploy():
         file_url = f"https://api.github.com/repos/{username}/{REPO_NAME}/contents/{f}"
         file_res = requests.get(file_url, headers=gh_headers)
         payload = {
-            "message": f"Add {f} - v1.0 SQM Enterprise Release",
+            "message": f"v1.1 - Serverless Backend Fix - Add {f}",
             "content": base64.b64encode(content).decode('utf-8')
         }
         if file_res.ok:
@@ -56,8 +56,47 @@ def deploy():
     gh_url = f"https://github.com/{username}/{REPO_NAME}"
     print(f"\\n[GITHUB] Repositorio configurado y código subido: {gh_url}")
 
-    # 2. VERCEL DEPLOY (Skipped per user request)
-    print("\\nDespliegue Vercel omitido en esta ejecución.")
+    # 2. VERCEL DEPLOY
+    print("\\nIniciando despliegue en Vercel...")
+    v_headers = {"Authorization": f"Bearer {VERCEL_TOKEN}"}
+    
+    vercel_files = []
+    # Deploy only code files for frontend/backend (no docs or binaries to avoid payload limits)
+    allowed_exts = [".html", ".js", ".json", ".css", ".md", ".py", ".sql", ".txt"] # Added .txt for requirements.txt
+    
+    for root, dirs, files in os.walk("."):
+        if any(ig in root for ig in ignore_dirs + ["docs", "tmp"]):
+            continue
+        for f in files:
+            if f in ignore_files:
+                continue
+            if not any(f.endswith(ext) for ext in allowed_exts):
+                continue
+                
+            filepath = os.path.join(root, f)
+            relpath = os.path.relpath(filepath, ".").replace("\\", "/")
+            
+            with open(filepath, "rb") as file_obj:
+                content = file_obj.read()
+            
+            try:
+                decoded_content = content.decode('utf-8')
+                vercel_files.append({"file": relpath, "data": decoded_content})
+            except UnicodeDecodeError:
+                pass
+            
+    v_payload = {
+        "name": "sqm-perovskite-scout",
+        "projectSettings": {"framework": None},
+        "files": vercel_files
+    }
+    
+    v_res = requests.post("https://api.vercel.com/v13/deployments", headers=v_headers, json=v_payload)
+    if v_res.status_code in [200, 201]:
+        v_url = v_res.json()["url"]
+        print(f"[VERCEL] Despliegue exitoso: https://{v_url}")
+    else:
+        print(f"[VERCEL] Error de despliegue: {v_res.text}")
 
 if __name__ == "__main__":
     deploy()
