@@ -95,12 +95,23 @@ async function loadAndRender() {
         radar_only: gw === 0,
         source: r.fuente_noticia,
         link: r.fuente_noticia,
-        summary: r.resumen_ia || "",
-        resumen_ia: r.resumen_ia || "Sin análisis detallado.",
+        summary: r.analisis || "",
+        resumen_ia: r.analisis || "Sin análisis detallado.",
         title: r.empresa + " - " + r.fuente_noticia, // Fallback title
         date: r.fecha_publicacion || r.fecha_noticia || r.created_at || new Date().toISOString().split('T')[0]
       });
     });
+    
+    // Fetch local database.json strictly to recover the AI market report
+    try {
+      const localDb = await fetchWithTimeout(DB_LOCAL, 5000);
+      if (localDb && localDb.market_report) {
+        document.getElementById("executive-report-container").style.display = "block";
+        document.getElementById("executive-report-content").textContent = localDb.market_report;
+      }
+    } catch (e) {
+      console.warn("Market report not available locally:", e.message);
+    }
     
     db.meta.target_years = Array.from(targetYears).sort();
     db.meta.total_gw = totalGw;
