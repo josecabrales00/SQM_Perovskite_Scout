@@ -13,4 +13,6 @@ class handler(Handler):
 
     def do_OPTIONS(self):
         """CORS Preflight"""
-        super().do_OPTIONS()
+        self.send_response(200)
+        self._cors()
+        self.end_headers()
