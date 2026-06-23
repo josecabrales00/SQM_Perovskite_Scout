@@ -41,7 +41,7 @@ def deploy():
         file_url = f"https://api.github.com/repos/{username}/{REPO_NAME}/contents/{f}"
         file_res = requests.get(file_url, headers=gh_headers)
         payload = {
-            "message": f"v1.1.5 - Search Parser & Date Fix - Add {f}",
+            "message": f"v1.1.6 - Vercel Headers & DB Wipe - Add {f}",
             "content": base64.b64encode(content).decode('utf-8')
         }
         if file_res.ok:
