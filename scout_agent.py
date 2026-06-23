@@ -749,6 +749,7 @@ def sync_to_supabase(db: dict):
             "nivel_riesgo":     e.get("nivel_riesgo", "Neutral"),
             "invest_proxy":     bool(e.get("invest_proxy", False)),
             "fecha_publicacion": e.get("date", "")[:10],
+            "analisis":         (e.get("resumen_ia") or e.get("analisis") or "Sin análisis detallado.")[:500],
         })
 
     if not records:
@@ -854,12 +855,15 @@ def tool_buscar_web(query: str) -> str:
     except Exception as e:
         return f"Error en búsqueda web: {e}"
 
-def tool_insertar_lead(empresa: str, capacidad_gw: float, target_year: str, fuente: str, fecha_publicacion: str = "") -> str:
+def tool_insertar_lead(empresa: str, capacidad_gw: float, target_year: str, fuente: str, fecha_publicacion: str = "", analisis: str = "") -> str:
     """Inserta un lead automáticamente en Supabase."""
     if not SUPABASE_ENABLED: return "Error: Base de datos de leads no disponible."
     
     if not fecha_publicacion:
         fecha_publicacion = datetime.now().strftime("%Y-%m-%d")
+        
+    if not analisis:
+        analisis = f"Anuncio de capacidad de {capacidad_gw} GW por {empresa} para {target_year}."
 
     table_url = f"{SUPABASE_URL}/rest/v1/perovskite_leads"
     payload = {
@@ -877,7 +881,8 @@ def tool_insertar_lead(empresa: str, capacidad_gw: float, target_year: str, fuen
         "geo_continente": geo_lookup(empresa).get("continent", ""),
         "nivel_riesgo": "Agente IA (Automático)",
         "invest_proxy": False,
-        "fecha_publicacion": fecha_publicacion[:10]
+        "fecha_publicacion": fecha_publicacion[:10],
+        "analisis": analisis[:500]
     }
     try:
         resp = requests.post(table_url, json=payload, headers={**_SB_HEADERS, "Prefer": "return=minimal"}, verify=False, timeout=10)
@@ -922,9 +927,10 @@ TOOLS_DECLARATION = {
                     "capacidad_gw": {"type": "NUMBER", "description": "Capacidad en Gigawatts (GW). Convierte MW a GW."},
                     "target_year": {"type": "STRING", "description": "Año objetivo de producción o 'TBD'"},
                     "fuente": {"type": "STRING", "description": "URL exacta o documento de origen del anuncio"},
-                    "fecha_publicacion": {"type": "STRING", "description": "Fecha de publicación original de la noticia o anuncio (formato YYYY-MM-DD)."}
+                    "fecha_publicacion": {"type": "STRING", "description": "Fecha de publicación original de la noticia o anuncio (formato YYYY-MM-DD)."},
+                    "analisis": {"type": "STRING", "description": "Resumen ejecutivo de 2 líneas sobre el lead."}
                 },
-                "required": ["empresa", "capacidad_gw", "target_year", "fuente", "fecha_publicacion"]
+                "required": ["empresa", "capacidad_gw", "target_year", "fuente", "fecha_publicacion", "analisis"]
             }
         }
     ]
@@ -1109,7 +1115,7 @@ class Handler(BaseHTTPRequestHandler):
                         tool_res_text = tool_insertar_lead(
                             args.get("empresa",""), args.get("capacidad_gw",0),
                             args.get("target_year",""), args.get("fuente",""),
-                            args.get("fecha_publicacion","")
+                            args.get("fecha_publicacion",""), args.get("analisis","")
                         )
                     else:
                         tool_res_text = "Error: Herramienta desconocida."
