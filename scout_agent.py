@@ -10,6 +10,7 @@ CONFIGURACIÓN DE API — pon tu clave aquí:
 #   ⚙️  PON AQUÍ TU CLAVE DE GOOGLE AI STUDIO
 #   Obtén una gratis en: https://aistudio.google.com/apikey
 # ─────────────────────────────────────────────────────────────────
+import os
 API_KEY = os.environ.get("GEMINI_API_KEY", "")
 # ─────────────────────────────────────────────────────────────────
 
@@ -19,7 +20,6 @@ import time
 import math
 import difflib
 import threading
-import os
 import sys
 import logging
 import requests
@@ -847,14 +847,8 @@ def tool_buscar_web(query: str) -> str:
     if not search: return "Error: Librería googlesearch no está instalada."
     try:
         results = []
-        for res in search(query, num_results=3, advanced=True):
-            if hasattr(res, "url"):
-                url = getattr(res, "url", "")
-                title = getattr(res, "title", "")
-                desc = getattr(res, "description", "")
-                results.append(f"[Fuente: {url}] {title}: {desc}")
-            else:
-                results.append(f"[Fuente: {str(res)}]")
+        for url_str in search(query, num_results=3):
+            results.append(f"[Fuente: {str(url_str)}]")
         if not results: return "No se encontraron resultados en la web."
         return "\n".join(results)
     except Exception as e:
@@ -999,7 +993,11 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         if self.path == "/api/chat":
-            return self.handle_chat()
+            result = self.handle_chat()
+            status = result.pop("status", 200)
+            self.send_response(status); self._cors(); self.end_headers()
+            self.wfile.write(json.dumps(result).encode("utf-8"))
+            return
         
         if self.path != "/api/entries":
             self.send_response(404); self.end_headers(); return
@@ -1051,12 +1049,10 @@ class Handler(BaseHTTPRequestHandler):
             self.send_response(400); self._cors(); self.end_headers()
             self.wfile.write(json.dumps({"error": str(e)}).encode())
 
-    def handle_chat(self):
+    def handle_chat(self) -> dict:
         """Maneja el endpoint /api/chat con Function Calling para Gemini."""
         if not LLM_ENABLED:
-            self.send_response(503); self._cors(); self.end_headers()
-            self.wfile.write(b'{"error": "LLM API Key not configured."}')
-            return
+            return {"error": "LLM API Key not configured.", "status": 503}
             
         try:
             body = self.rfile.read(int(self.headers.get("Content-Length", 0)))
@@ -1081,9 +1077,7 @@ class Handler(BaseHTTPRequestHandler):
                 
                 resp = requests.post(url, json=payload, verify=False, timeout=30)
                 if not resp.ok:
-                    self.send_response(500); self._cors(); self.end_headers()
-                    self.wfile.write(json.dumps({"error": f"API Error: {resp.text}"}).encode())
-                    return
+                    return {"error": f"API Error: {resp.text}", "status": 500}
                 
                 resp_json = resp.json()
                 try:
@@ -1091,9 +1085,7 @@ class Handler(BaseHTTPRequestHandler):
                     message = candidate["content"]
                     parts = message.get("parts", [])
                 except KeyError:
-                    self.send_response(500); self._cors(); self.end_headers()
-                    self.wfile.write(b'{"error": "Invalid response format from Gemini."}')
-                    return
+                    return {"error": "Invalid response format from Gemini.", "status": 500}
                 
                 # Check for function call
                 function_call = None
@@ -1142,18 +1134,14 @@ class Handler(BaseHTTPRequestHandler):
                         if "text" in part:
                             final_text += part["text"]
                             
-                    self.send_response(200); self._cors(); self.end_headers()
-                    self.wfile.write(json.dumps({"reply": final_text}).encode("utf-8"))
-                    return
+                    return {"reply": final_text, "status": 200}
                     
             # Si excede iteraciones
-            self.send_response(500); self._cors(); self.end_headers()
-            self.wfile.write(b'{"error": "Max tool loop iterations reached."}')
+            return {"error": "Max tool loop iterations reached.", "status": 500}
             
         except Exception as e:
             log.error("POST /api/chat: %s", e)
-            self.send_response(400); self._cors(); self.end_headers()
-            self.wfile.write(json.dumps({"error": str(e)}).encode())
+            return {"error": str(e), "status": 400}
 
 # ── Entry Point ────────────────────────────────────────────────
 if __name__ == "__main__":
