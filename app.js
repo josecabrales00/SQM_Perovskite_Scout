@@ -8,7 +8,7 @@
  *  - ERROR FATAL API: detectado y mostrado en rojo con diagnóstico crudo
  */
 
-const API_BASE      = "http://localhost:8080";
+const API_BASE      = "";
 const SUPABASE_URL  = "https://rpibprkdzoxfizssvtuf.supabase.co";
 const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwaWJwcmtkem94Zml6c3N2dHVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIxNTc5NDQsImV4cCI6MjA5NzczMzk0NH0.J_tDZOi-5QFMSmwsba4EUGlu29MEng8ru7hXoRMPUGU";
 const DB_URL        = `${SUPABASE_URL}/rest/v1/perovskite_leads?select=*`;
