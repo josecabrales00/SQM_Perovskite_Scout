@@ -748,6 +748,7 @@ def sync_to_supabase(db: dict):
             "geo_continente":   e.get("geo", {}).get("continent", ""),
             "nivel_riesgo":     e.get("nivel_riesgo", "Neutral"),
             "invest_proxy":     bool(e.get("invest_proxy", False)),
+            "fecha_publicacion": e.get("date", "")[:10],
         })
 
     if not records:
