@@ -30,7 +30,7 @@ def deploy():
     time.sleep(3) # Wait for auto_init
     
     print("Subiendo archivos principales a GitHub...")
-    files_to_upload = ['index.html', 'app.js', 'AGENTS.md', 'scout_agent.py', 'database.json', 'rag_ingest.py', 'migrate_knowledge.sql', 'rls_patch.sql', 'cloud_deploy.py', 'requirements.txt', 'api/chat.py']
+    files_to_upload = ['index.html', 'app.js', 'AGENTS.md', 'scout_agent.py', 'database.json', 'rag_ingest.py', 'migrate_knowledge.sql', 'rls_patch.sql', 'cloud_deploy.py', 'requirements.txt', 'api/chat.py', 'logo.png']
     
     for f in files_to_upload:
         if not os.path.exists(f): continue
@@ -41,7 +41,7 @@ def deploy():
         file_url = f"https://api.github.com/repos/{username}/{REPO_NAME}/contents/{f}"
         file_res = requests.get(file_url, headers=gh_headers)
         payload = {
-            "message": f"v1.1.6 - Vercel Headers & DB Wipe - Add {f}",
+            "message": f"v1.1.7 - UI Polish, Report & Logo - Add {f}",
             "content": base64.b64encode(content).decode('utf-8')
         }
         if file_res.ok:
@@ -62,7 +62,7 @@ def deploy():
     
     vercel_files = []
     # Deploy only code files for frontend/backend (no docs or binaries to avoid payload limits)
-    allowed_exts = [".html", ".js", ".json", ".css", ".md", ".py", ".sql", ".txt"] # Added .txt for requirements.txt
+    allowed_exts = [".html", ".js", ".json", ".css", ".md", ".py", ".sql", ".txt", ".png"]
     
     for root, dirs, files in os.walk("."):
         if any(ig in root for ig in ignore_dirs + ["docs", "tmp"]):
@@ -79,11 +79,14 @@ def deploy():
             with open(filepath, "rb") as file_obj:
                 content = file_obj.read()
             
-            try:
-                decoded_content = content.decode('utf-8')
-                vercel_files.append({"file": relpath, "data": decoded_content})
-            except UnicodeDecodeError:
-                pass
+            if filepath.endswith('.png'):
+                vercel_files.append({"file": relpath, "data": base64.b64encode(content).decode('utf-8'), "encoding": "base64"})
+            else:
+                try:
+                    decoded_content = content.decode('utf-8')
+                    vercel_files.append({"file": relpath, "data": decoded_content})
+                except UnicodeDecodeError:
+                    pass
             
     v_payload = {
         "name": "sqm-perovskite-scout",
