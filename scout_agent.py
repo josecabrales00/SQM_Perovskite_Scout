@@ -453,6 +453,45 @@ def parse_date(pub_raw: str) -> str:
     except Exception:
         return pub_raw[:10]
 
+# ── Deep Scrape HTML + IA ──────────────────────────────────────
+def deep_scrape(url: str) -> dict:
+    import requests, json, time
+    from bs4 import BeautifulSoup
+    import google.generativeai as genai
+    
+    res = {"fecha_publicacion": "Fecha Desconocida", "analisis": "Sin análisis detallado."}
+    if not API_KEY or not url: return res
+        
+    try:
+        r = requests.get(url, timeout=10, headers={"User-Agent": "Mozilla/5.0"}, verify=False)
+        if not r.ok: return res
+        soup = BeautifulSoup(r.content, "html.parser")
+        for tag in soup(["script", "style", "nav", "footer", "header"]): tag.extract()
+        text = soup.get_text(separator=' ', strip=True)[:15000]
+        
+        prompt = (
+            "Actúa como un analista comercial. Lee el siguiente texto extraído de una web y extrae:\n"
+            "1. La fecha original de publicación (formato YYYY-MM-DD). Si el texto no menciona o no tiene una fecha de publicación clara, responde EXACTAMENTE 'Fecha Desconocida'. ¡QUEDA ESTRICTAMENTE PROHIBIDO usar la fecha actual (de hoy) como respuesta por defecto!\n"
+            "2. Un análisis comercial de 2 líneas resumidas sobre la empresa y sus planes o capacidades de producción.\n"
+            "Devuelve estrictamente un JSON con las llaves 'fecha_publicacion' y 'analisis'.\n\n"
+            f"TEXTO:\n{text}"
+        )
+        model = genai.GenerativeModel('gemini-1.5-flash')
+        resp = model.generate_content(prompt)
+        t = resp.text
+        idx1 = t.find("{")
+        idx2 = t.rfind("}")
+        if idx1 != -1 and idx2 != -1:
+            data = json.loads(t[idx1:idx2+1])
+            res["fecha_publicacion"] = data.get("fecha_publicacion", "Fecha Desconocida")
+            res["analisis"] = data.get("analisis", "Sin análisis detallado.")
+        time.sleep(2) # avoid rate limit
+    except Exception as e:
+        log.debug(f"Deep scrape falló para {url}: {e}")
+        time.sleep(2)
+        
+    return res
+
 # ── Main Analysis — 100% Local (Regex) + Dedup + Geo ──────────
 def analyse(raw_articles: list[dict]) -> list[dict]:
     """
@@ -542,6 +581,15 @@ def analyse(raw_articles: list[dict]) -> list[dict]:
         if is_duplicate(candidate_entry, entries):
             dedup_count += 1
             continue
+
+        log.info("  Deep scraping [%s]...", link)
+        ia_data = deep_scrape(link)
+        if ia_data["fecha_publicacion"] != "Fecha Desconocida":
+            candidate_entry["date"] = ia_data["fecha_publicacion"]
+        elif candidate_entry["date"] == "":
+            candidate_entry["date"] = "Fecha Desconocida"
+            
+        candidate_entry["resumen_ia"] = ia_data["analisis"]
 
         entries.append(candidate_entry)
 
@@ -748,8 +796,8 @@ def sync_to_supabase(db: dict):
             "geo_continente":   e.get("geo", {}).get("continent", ""),
             "nivel_riesgo":     e.get("nivel_riesgo", "Neutral"),
             "invest_proxy":     bool(e.get("invest_proxy", False)),
-            "fecha_publicacion": e.get("date", "")[:10],
-            "analisis":         (e.get("resumen_ia") or e.get("analisis") or "Sin análisis detallado.")[:500],
+            "fecha_publicacion": e.get("date", "Fecha Desconocida")[:30],
+            "analisis":         (e.get("resumen_ia") or e.get("analisis") or "Sin análisis detallado.")[:800],
         })
 
     if not records:
