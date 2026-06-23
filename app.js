@@ -95,8 +95,8 @@ async function loadAndRender() {
         radar_only: gw === 0,
         source: r.fuente_noticia,
         link: r.fuente_noticia,
-        summary: r.analisis || "",
-        resumen_ia: r.analisis || "Sin análisis detallado.",
+        summary: r.analisis || 'Sin análisis',
+        resumen_ia: r.analisis || 'Sin análisis',
         title: r.empresa + " - " + r.fuente_noticia, // Fallback title
         date: r.fecha_publicacion || r.fecha_noticia || r.created_at || new Date().toISOString().split('T')[0]
       });
@@ -106,8 +106,7 @@ async function loadAndRender() {
     try {
       const localDb = await fetchWithTimeout(DB_LOCAL, 5000);
       if (localDb && localDb.market_report) {
-        document.getElementById("executive-report-container").style.display = "block";
-        document.getElementById("executive-report-content").textContent = localDb.market_report;
+        db.market_report = localDb.market_report;
       }
     } catch (e) {
       console.warn("Market report not available locally:", e.message);
