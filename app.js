@@ -456,8 +456,12 @@ async function renderMarketReport() {
 
   const reportPrompt =
     'Actua como Analista Senior de SQM (Sociedad Quimica y Minera de Chile), especialista en demanda de yodo para celdas perovskita. ' +
-    'Lee estas noticias recientes sobre perovskita y redacta un informe ejecutivo de exactamente 3 parrafos cruzando esta actualidad con la proyeccion de demanda ' +
-    'de yodo (usando la metrica de ' + factor + ' Ton/GW). Se especifico y cita las empresas mencionadas. No uses bullet points, solo parrafos corporativos.\n\n' +
+    'Lee estas noticias recientes sobre perovskita y redacta un informe ejecutivo. ' +
+    'DEVUELVE EL INFORME FORMATEADO EN HTML PURO (usando <h3>, <ul>, <li>, <strong>) para que se vea como un verdadero Dashboard Ejecutivo. ' +
+    'Debe incluir exactamente estas 3 secciones:\n' +
+    '1. <h3>Tendencias del Mercado (basado en las ultimas noticias de la DB)</h3>\n' +
+    '2. <h3>Impacto en Demanda de Yodo (Metrica ' + factor + ' Ton/GW)</h3>\n' +
+    '3. <h3>Riesgos/Oportunidades</h3>\n\n' +
     'METRICAS: ' + fmt(totalGw, 2) + ' GW detectados | ' + fmt(totalIod, 1) + ' Ton Yodo proyectadas | ' + articles.length + ' fuentes\n\n' +
     'NOTICIAS:\n' + noticiasCtx;
 
@@ -469,12 +473,10 @@ async function renderMarketReport() {
     });
     if (res.ok) {
       const data = await res.json();
-      const reply = (data.reply || '').trim();
+      let reply = (data.reply || '').trim();
       if (reply && !reply.toLowerCase().startsWith('error')) {
-        const paragraphs = reply.split(/\n\n+/).filter(p => p.trim().length > 20);
-        geminiBody.innerHTML = (paragraphs.length
-          ? paragraphs.map(p => '<p class="text-sm text-slate-700 leading-relaxed mb-3">' + escHtml(p.trim()) + '</p>').join('')
-          : '<p class="text-sm text-slate-700 leading-relaxed">' + escHtml(reply) + '</p>');
+        reply = reply.replace(/^```html\s*/i, '').replace(/```$/i, '').trim();
+        geminiBody.innerHTML = '<div class="prose prose-sm prose-slate max-w-none">' + reply + '</div>';
         return;
       }
     }
