@@ -61,8 +61,25 @@ async function loadAndRender() {
         "Authorization": `Bearer ${SUPABASE_ANON}`
       }
     });
-    if (!Array.isArray(rows)) throw new Error("Respuesta inválida de Supabase");
-    
+    if (!rows || rows.length === 0) {
+      const main = document.querySelector("main");
+      if (main) {
+        main.innerHTML = `
+          <div class="min-h-[80vh] flex flex-col items-center justify-center p-6">
+            <div class="max-w-md w-full backdrop-blur-md bg-white/40 border border-white/60 shadow-xl rounded-2xl p-8 text-center" style="box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);">
+              <div class="text-5xl mb-4 animate-pulse">📡</div>
+              <h2 class="text-xl font-bold text-slate-800 mb-2">Escaneando fuentes globales</h2>
+              <p class="text-slate-600 font-medium">Esperando nuevos datos de Perovskita...</p>
+              <div class="mt-6 flex justify-center">
+                <div class="w-6 h-6 border-4 border-sqm-purple border-t-transparent rounded-full animate-spin"></div>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+      setAgentStatus("online");
+      return;
+    }
     const db = { articles: [], meta: {} };
     let totalGw = 0;
     const targetYears = new Set();
@@ -73,29 +90,29 @@ async function loadAndRender() {
       if (r.target_year) targetYears.add(r.target_year);
       
       // Fix 1: garantizar que title y resumen_ia nunca sean cadenas vacías
-      const _title = (r.titulo || '').trim()
-                  || (r.empresa + (r.fuente_noticia ? ' — ' + r.fuente_noticia.substring(0, 80) : ''));
-      const _analisis = (r.analisis || '').trim()
+      const _title = (r?.titulo || '').trim()
+                  || (r?.empresa + (r?.fuente_noticia ? ' — ' + r?.fuente_noticia.substring(0, 80) : ''));
+      const _analisis = (r?.analisis || '').trim()
                      || _title
                      || 'Sin análisis disponible.';
       db.articles.push({
-        id: r.id,
-        company: r.empresa,
+        id: r?.id,
+        company: r?.empresa,
         capacityGw: gw,
         capacityValue: "",
         capacityUnit: "",
         phase: "Planned",
-        target_year: r.target_year,
-        geo: { country: r.geo_pais || "", continent: r.geo_continente || "Global" },
-        nivel_riesgo: r.nivel_riesgo || "Neutral",
-        invest_proxy: r.invest_proxy || false,
+        target_year: r?.target_year,
+        geo: { country: r?.geo_pais || "", continent: r?.geo_continente || "Global" },
+        nivel_riesgo: r?.nivel_riesgo || "Neutral",
+        invest_proxy: r?.invest_proxy || false,
         radar_only: gw === 0,
-        source: r.fuente_noticia,
-        link: r.fuente_noticia,
+        source: r?.fuente_noticia,
+        link: r?.fuente_noticia,
         summary:    _analisis,
         resumen_ia: _analisis,
         title:      _title,
-        date: r.fecha_publicacion || r.fecha_noticia || r.created_at || 'Fecha Desconocida'
+        date: r?.fecha_publicacion || r?.fecha_noticia || r?.created_at || 'Fecha Desconocida'
       });
     });
     
@@ -628,11 +645,11 @@ function renderTable() {
   const factor  = getLiveFactor();
 
   let rows = (state.db?.articles || []).filter(e => {
-    if (e.radar_only) return false;
-    const ms = (e.company || "").toLowerCase().includes(search) ||
-               (e.title   || "").toLowerCase().includes(search);
-    const mp = phase   === "ALL" || e.phase        === phase;
-    const my = yearSel === "ALL" || e.target_year  === yearSel;
+    if (e?.radar_only) return false;
+    const ms = (e?.company || "").toLowerCase().includes(search) ||
+               (e?.title   || "").toLowerCase().includes(search);
+    const mp = phase   === "ALL" || e?.phase        === phase;
+    const my = yearSel === "ALL" || e?.target_year  === yearSel;
     return ms && mp && my;
   });
 
@@ -658,30 +675,30 @@ function renderTable() {
   const riskEmoji = { Beneficioso: "📈", Riesgo: "⚠️", Neutral: "ℹ️" };
 
   tbody.innerHTML = rows.map(e => {
-    const ph      = phaseMap[e.phase] || phaseMap.Planned;
-    const emoji   = riskEmoji[e.nivel_riesgo] || "ℹ️";
-    const date    = (e.date || "").split("-").reverse().join("/") || "—";
-    const iodLive = (e.capacityGw || 0) * factor;
-    const yearTag = e.target_year
-      ? `<span class="ml-1 px-1.5 py-0.5 rounded text-xs bg-blue-50 text-blue-700 border border-blue-200 font-mono">${e.target_year}</span>`
+    const ph      = phaseMap[e?.phase] || phaseMap.Planned;
+    const emoji   = riskEmoji[e?.nivel_riesgo] || "ℹ️";
+    const date    = (e?.date || "").split("-").reverse().join("/") || "—";
+    const iodLive = (e?.capacityGw || 0) * factor;
+    const yearTag = e?.target_year
+      ? `<span class="ml-1 px-1.5 py-0.5 rounded text-xs bg-blue-50 text-blue-700 border border-blue-200 font-mono">${e?.target_year}</span>`
       : "";
-    const link    = e.link
-      ? `<a href="${e.link}" target="_blank" rel="noopener"
+    const link    = e?.link
+      ? `<a href="${e?.link}" target="_blank" rel="noopener"
              class="text-sqm-purple hover:underline text-xs font-medium">↗ Fuente</a>`
       : `<span class="text-slate-400 text-xs">Manual</span>`;
-    const capTag  = e.invest_proxy
+    const capTag  = e?.invest_proxy
       ? `<span class="ml-1 px-1 py-0.5 text-xs bg-amber-50 text-amber-700 border border-amber-200 rounded">CAPEX</span>`
       : "";
 
     // data-gw enables in-place update by updateLedgerIodine()
     return `<tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors group"
-                data-gw="${e.capacityGw || 0}">
+                data-gw="${e?.capacityGw || 0}">
       <td class="px-4 py-3">
-        <div class="font-semibold text-slate-800 text-sm">${escHtml(e.company)}</div>
-        <div class="mt-0.5">${geoTag(e.geo)}</div>
+        <div class="font-semibold text-slate-800 text-sm">${escHtml(e?.company || "")}</div>
+        <div class="mt-0.5">${geoTag(e?.geo)}</div>
       </td>
       <td class="px-4 py-3">
-        <span class="font-bold text-slate-900">${fmt(e.capacityGw, 3)}</span>
+        <span class="font-bold text-slate-900">${fmt(e?.capacityGw, 3)}</span>
         <span class="text-slate-400 text-xs ml-1">GW</span>${capTag}
       </td>
       <td class="px-4 py-3 font-bold text-sqm-purple text-sm">
@@ -702,11 +719,11 @@ function renderTable() {
       </td>
       <td class="px-4 py-3 text-slate-600 text-sm">${date}${yearTag}</td>
       <td class="px-4 py-3 max-w-xs">
-        <div class="text-slate-700 text-sm truncate" title="${escHtml(e.title)}">${emoji} ${escHtml(e.title || e.source)}</div>
+        <div class="text-slate-700 text-sm truncate" title="${escHtml(e?.title || "")}">${emoji} ${escHtml(e?.title || e?.source || "")}</div>
         <div class="mt-1">${link}</div>
       </td>
       <td class="px-4 py-3 text-center">
-        <button onclick="deleteEntry('${e.id}')"
+        <button onclick="deleteEntry('${e?.id}')"
           class="opacity-0 group-hover:opacity-100 p-1.5 rounded text-slate-400
                  hover:text-red-600 hover:bg-red-50 transition-all" title="Eliminar">
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -727,13 +744,13 @@ function renderRiskRadar() {
   const yearSel     = document.getElementById("timeline_filter")?.value || "ALL";
   const allArticles = state.db?.articles || [];
   // Fix 1: filtrar solo por nivel_riesgo — siempre hay resumen_ia (garantizado en data mapper)
-  let radarItems = allArticles.filter(e => e.nivel_riesgo);
-  if (yearSel !== "ALL") radarItems = radarItems.filter(e => e.target_year === yearSel);
+  let radarItems = allArticles.filter(e => e?.nivel_riesgo);
+  if (yearSel !== "ALL") radarItems = radarItems.filter(e => e?.target_year === yearSel);
 
   radarItems.sort((a, b) => {
     const ord = { Riesgo: 0, Beneficioso: 1, Neutral: 2 };
-    const oa = ord[a.nivel_riesgo] ?? 3, ob = ord[b.nivel_riesgo] ?? 3;
-    return oa !== ob ? oa - ob : (b.date || "").localeCompare(a.date || "");
+    const oa = ord[a?.nivel_riesgo] ?? 3, ob = ord[b?.nivel_riesgo] ?? 3;
+    return oa !== ob ? oa - ob : (b?.date || "").localeCompare(a?.date || "");
   });
 
   if (!radarItems.length) {
@@ -755,25 +772,25 @@ function renderRiskRadar() {
   };
 
   container.innerHTML = radarItems.map(e => {
-    const c       = cfg[e.nivel_riesgo] || cfg.Neutral;
-    const date    = (e.date || "").split("-").reverse().join("/") || "—";
-    const iodLive = (e.capacityGw || 0) * factor;
-    const capInfo = (e.capacityGw || 0) > 0
-      ? `<span class="font-mono text-sqm-purple font-semibold">${fmt(e.capacityGw, 3)} GW</span>
+    const c       = cfg[e?.nivel_riesgo] || cfg.Neutral;
+    const date    = (e?.date || "").split("-").reverse().join("/") || "—";
+    const iodLive = (e?.capacityGw || 0) * factor;
+    const capInfo = (e?.capacityGw || 0) > 0
+      ? `<span class="font-mono text-sqm-purple font-semibold">${fmt(e?.capacityGw, 3)} GW</span>
          <span class="text-slate-400 mx-1">→</span>
          <span class="font-mono font-semibold" style="color:#5B2C86">
            <span data-role="radar-iodine">${fmt(iodLive, 3)}</span> Ton Yodo
          </span>`
       : `<span class="text-slate-400 text-xs italic">Sin nueva capacidad anunciada</span>`;
 
-    const yearTag = e.target_year
-      ? `<span class="px-1.5 py-0.5 rounded text-xs bg-blue-50 text-blue-700 border border-blue-200 font-mono">${e.target_year}</span>`
+    const yearTag = e?.target_year
+      ? `<span class="px-1.5 py-0.5 rounded text-xs bg-blue-50 text-blue-700 border border-blue-200 font-mono">${e?.target_year}</span>`
       : "";
-    const capexBadge = e.invest_proxy
+    const capexBadge = e?.invest_proxy
       ? `<span class="px-1.5 py-0.5 rounded text-xs bg-amber-50 text-amber-700 border border-amber-200">💰 CAPEX proxy</span>`
       : "";
-    const src = e.link
-      ? `<a href="${e.link}" target="_blank" rel="noopener"
+    const src = e?.link
+      ? `<a href="${e?.link}" target="_blank" rel="noopener"
              class="text-sqm-purple hover:underline text-xs font-medium">↗ Ver artículo</a>`
       : "";
 
@@ -781,15 +798,15 @@ function renderRiskRadar() {
     return `
       <article class="flex rounded-xl border border-slate-200 bg-white shadow-sm
                       ${c.card} hover:shadow-md transition-all overflow-hidden"
-               data-radar-gw="${e.capacityGw || 0}">
+               data-radar-gw="${e?.capacityGw || 0}">
         <div class="flex-1 p-4">
           <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
             <div class="flex items-center gap-2 flex-wrap">
               <span class="px-2.5 py-0.5 rounded-full text-xs font-bold border ${c.badge}">
-                ${c.icon} ${e.nivel_riesgo}
+                ${c.icon} ${e?.nivel_riesgo || "Neutral"}
               </span>
-              <span class="text-sm font-bold text-slate-800">${escHtml(e.company)}</span>
-              ${geoTag(e.geo)}
+              <span class="text-sm font-bold text-slate-800">${escHtml(e?.company || "")}</span>
+              ${geoTag(e?.geo)}
               ${yearTag}
               ${capexBadge}
               <span class="text-slate-400 text-xs">· ${date}</span>
@@ -798,13 +815,13 @@ function renderRiskRadar() {
           </div>
           <!-- Fix 1: título obligatorio + análisis/resumen siempre visibles -->
           <h3 class="text-sm font-semibold text-slate-800 leading-snug mb-2 line-clamp-2">
-            ${escHtml(e.title || e.source || e.link || e.company)}
+            ${escHtml(e?.title || e?.source || e?.link || e?.company || "")}
           </h3>
           <div class="rounded-lg bg-slate-50 border border-slate-200 px-3 py-2">
             <p class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
               Análisis — Perspectiva Demanda Yodo SQM
             </p>
-            <p class="text-sm text-slate-700 leading-relaxed">${escHtml(e.resumen_ia || e.summary || e.title || e.link || 'Sin análisis disponible.')}</p>
+            <p class="text-sm text-slate-700 leading-relaxed">${escHtml(e?.resumen_ia || e?.summary || e?.title || e?.link || 'Sin análisis disponible.')}</p>
           </div>
           ${src ? `<div class="mt-2">${src}</div>` : ""}
         </div>
