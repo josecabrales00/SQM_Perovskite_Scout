@@ -1,4 +1,4 @@
-﻿/**
+/**
  * SQM Perovskite Scout — Frontend v5.2 (Structural Patch Edition)
  * ─────────────────────────────────────────────────────────────────
  * v5.2:
@@ -344,7 +344,7 @@ function renderKPIs() {
 function renderLLMBadge() {
   const el = document.getElementById("llm-badge");
   if (!el) return;
-  el.textContent = "✔ Serverless Mode";
+  el.textContent = "✔ Sistema Online";
   el.className = "px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-green-700 border border-green-300";
 }
 
