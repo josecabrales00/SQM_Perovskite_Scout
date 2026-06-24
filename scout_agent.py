@@ -6,13 +6,16 @@ v6.0: Escritura dual â€” database.json (cache local) + Supabase Postgres (a
 CONFIGURACIÃ“N DE API â€” pon tu clave aquÃ­:
 """
 
-# â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-#   âš™ï¸  PON AQUÃ TU CLAVE DE GOOGLE AI STUDIO
-#   ObtÃ©n una gratis en: https://aistudio.google.com/apikey
-# â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# ─────────────────────────────────────────────────────────────────
+#   ⚙️  PON AQUÍ TU CLAVE DE GOOGLE AI STUDIO
+#   Obtén una gratis en: https://aistudio.google.com/apikey
+# ─────────────────────────────────────────────────────────────────
 import os
+from dotenv import load_dotenv
+load_dotenv()
+
 API_KEY = os.environ.get("GEMINI_API_KEY", "")
-# â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# ─────────────────────────────────────────────────────────────────
 
 import json
 import re
@@ -616,6 +619,18 @@ def deep_scrape(url: str) -> dict:
 
     return res
 
+def detect_company(text: str) -> str:
+    for c in COMPANIES:
+        if c.lower() in text.lower():
+            return c
+    return ""
+
+def parse_date(raw: str) -> str:
+    if raw:
+        return raw[:10]
+    return "Fecha Desconocida"
+
+
 # â”€â”€ Main Analysis â€” 100% Local (Regex) + Dedup + Geo â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 def analyse(raw_articles: list[dict]) -> list[dict]:
     """
@@ -1124,9 +1139,30 @@ def run_scan():
              f"Gemini 1.5 Flash âœ“ ({_RESOLVED_KEY[:8]}...)" if LLM_ENABLED else "OFF")
     log.info("=" * 65)
 
+    if not search:
+        log.error("googlesearch-python no instalado.")
+        return
+
     raw = []
-    for feed in FEED_URLS:
-        raw.extend(fetch_feed(feed))
+    for co in COMPANIES:
+        query = f'"{co}" perovskite solar news'
+        log.info("Google Search: %s", query)
+        try:
+            for url in search(query, num_results=3, sleep_interval=2):
+                log.info(" Deep Scrape: %s", url)
+                ds = deep_scrape(url)
+                title = ds.get("titulo", "Sin titulo")
+                if ds and ds.get("analisis") and title:
+                    raw.append({
+                        "title": title,
+                        "link": url,
+                        "summary": ds.get("analisis", ""),
+                        "pub_raw": ds.get("fecha_publicacion", ""),
+                        "full_text": title + " " + ds.get("analisis", "")
+                    })
+        except Exception as e:
+            log.error("Error buscando %s: %s", co, e)
+
     log.info("Total raw: %d artÃ­culos", len(raw))
 
     entries = analyse(raw)
