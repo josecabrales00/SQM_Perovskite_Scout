@@ -1,20 +1,20 @@
 {
   "meta": {
-    "last_updated": "2026-06-23T20:58:55.467397+00:00",
-    "total_gw": 8.048,
-    "total_iodine_ton": 38.0671,
-    "total_pbi2_ton": 22.8403,
-    "total_fai_ton": 7.6134,
-    "total_mai_ton": 3.8067,
-    "total_csi_ton": 3.8067,
-    "unique_companies": 6,
+    "last_updated": "2026-06-24T20:47:48.486126+00:00",
+    "total_gw": 8.045,
+    "total_iodine_ton": 38.0529,
+    "total_pbi2_ton": 22.8317,
+    "total_fai_ton": 7.6106,
+    "total_mai_ton": 3.8053,
+    "total_csi_ton": 3.8053,
+    "unique_companies": 5,
     "article_count": 124,
-    "capacity_count": 12,
+    "capacity_count": 11,
     "iodine_per_gw": 4.73,
     "risk_counts": {
-      "Beneficioso": 42,
+      "Beneficioso": 43,
       "Riesgo": 0,
-      "Neutral": 82
+      "Neutral": 81
     },
     "llm_enabled": true,
     "target_years": [
@@ -41,7 +41,91 @@
   ],
   "articles": [
     {
-      "id": "a-440665494450",
+      "id": "a-102239261200",
+      "company": "GCL",
+      "capacityValue": 0.0,
+      "capacityUnit": "MW",
+      "capacityGw": 0.0,
+      "iodineDemand": 0.0,
+      "pbi2": 0.0,
+      "fai": 0.0,
+      "mai": 0.0,
+      "csi": 0.0,
+      "phase": "Planned",
+      "nivel_riesgo": "Beneficioso",
+      "resumen_ia": "Análisis local — Empresa: GCL (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "target_year": "2024",
+      "invest_proxy": false,
+      "geo": {
+        "country": "China",
+        "continent": "Asia"
+      },
+      "llm_used": false,
+      "radar_only": true,
+      "date": "2026-06-24",
+      "source": "Perovskite-Info",
+      "title": "China highlights two perovskite projects in 2026 national smart PV case list",
+      "link": "https://www.perovskite-info.com/china-highlights-two-perovskite-projects-2026-national-smart-pv-case-list",
+      "summary": "<p>China’s Ministry of Industry and Information Technology (MIIT), together with four other key government bodies, has announced its 2026 list of typical smart photovoltaic (PV) projects, selecting 73 initiatives nationwide. Among them, two perovskite-based projects were recognized, signaling contin"
+    },
+    {
+      "id": "a-798552107135",
+      "company": "Oxford PV",
+      "capacityValue": 0.0,
+      "capacityUnit": "MW",
+      "capacityGw": 0.0,
+      "iodineDemand": 0.0,
+      "pbi2": 0.0,
+      "fai": 0.0,
+      "mai": 0.0,
+      "csi": 0.0,
+      "phase": "Planned",
+      "nivel_riesgo": "Neutral",
+      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "target_year": "2025",
+      "invest_proxy": false,
+      "geo": {
+        "country": "UK",
+        "continent": "Europa"
+      },
+      "llm_used": false,
+      "radar_only": true,
+      "date": "2026-06-24",
+      "source": "GNews-Oxford PV",
+      "title": "Oxford PV and Fraunhofer unveil 25.6 per cent tandem modules - The Engineer - Home",
+      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPV1dfVzBKRU4zRG1TUG5xYnIxdkVrWWdicTVRZDVmTlZyM3dvOEx3LW51NkVFTGQ4NnN4Ukd1YXIwdlN5RU5lXzBsLWU4M1gtVExySWFaN25TWFZqMVZBOWVnOHVwekxKR01HY3dDVmJhT21CVnVOelZlNUFXd09mQUtEa0IxWUtyNTBObms5NnQ1ZGpHR3FsSXdxZkh6OW9oV3ljbFFzM3B1dDdSS0E?oc=5",
+      "summary": "<a href=\"https://news.google.com/rss/articles/CBMirgFBVV95cUxPV1dfVzBKRU4zRG1TUG5xYnIxdkVrWWdicTVRZDVmTlZyM3dvOEx3LW51NkVFTGQ4NnN4Ukd1YXIwdlN5RU5lXzBsLWU4M1gtVExySWFaN25TWFZqMVZBOWVnOHVwekxKR01HY3dDVmJhT21CVnVOelZlNUFXd09mQUtEa0IxWUtyNTBObms5NnQ1ZGpHR3FsSXdxZkh6OW9oV3ljbFFzM3B1dDdSS0E?oc=5\" target=\""
+    },
+    {
+      "id": "a-970740128775",
+      "company": "Oxford PV",
+      "capacityValue": 3.0,
+      "capacityUnit": "GW",
+      "capacityGw": 3.0,
+      "iodineDemand": 14.19,
+      "pbi2": 8.514,
+      "fai": 2.838,
+      "mai": 1.419,
+      "csi": 1.419,
+      "phase": "Planned",
+      "nivel_riesgo": "Neutral",
+      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 3.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "target_year": "2025",
+      "invest_proxy": false,
+      "geo": {
+        "country": "UK",
+        "continent": "Europa"
+      },
+      "llm_used": false,
+      "radar_only": false,
+      "date": "2026-06-23",
+      "source": "GNews-Oxford PV",
+      "title": "Oxford PV achieves 25.6% efficiency for perovskite-silicon tandem module based on shingled design - pv magazine Australia",
+      "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxNWXBDMEVfYkpJOFVvYWhwQ1VHSHVnOWd3ZTcwWGo5T1k5bjZwMEE2a3prdW5DWXZFckNqY1MyYzdEaDl6T0VUS04wVzBwbDduS3daMzQ3LUdtLWxPYnhTcmdjR0JaU3gwc0NEajJTeEdVSUxFYnd4TFhtUXRuTjRQcnh0bEFCbzFkNDE3YU1aXzBwTmhnTTRndGZzZTVxTEFVeC1YdHNiRkdXV3lkOHA0aTBBVXhjSXNzNEMyM19IQ18ycThHdmtNMXpZa05uNnF6U0xDc2Y3WVNvWkd2Wlhz?oc=5",
+      "summary": "<a href=\"https://news.google.com/rss/articles/CBMi3wFBVV95cUxNWXBDMEVfYkpJOFVvYWhwQ1VHSHVnOWd3ZTcwWGo5T1k5bjZwMEE2a3prdW5DWXZFckNqY1MyYzdEaDl6T0VUS04wVzBwbDduS3daMzQ3LUdtLWxPYnhTcmdjR0JaU3gwc0NEajJTeEdVSUxFYnd4TFhtUXRuTjRQcnh0bEFCbzFkNDE3YU1aXzBwTmhnTTRndGZzZTVxTEFVeC1YdHNiRkdXV3lkOHA0aTBBVXhjSXNzNE"
+    },
+    {
+      "id": "a-886119400110",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -69,7 +153,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMi5wFBVV95cUxQTFZCY2t4VENPbTdXbU9DdllwelFTYzU0R3YyZVluMFFiYmNoUHJ6T2dCazdKZWhFMVJiVlp2Y0pIc0JXSjNGU3lWbmNiVGRTQThUcTJ5V1d1NlVYSlh1TWZ5RXpvMHF4MFlZbUZjQ25WVG8zSnJwUTVqVEFQSGktdy1XQlFqMGxLX2VIXy1fcjI5cVNuamxhZmd5eFBldlJfQ09IanB5cjFNM2NwbWFMbm40WFUyeF9EZU"
     },
     {
-      "id": "a-329845309667",
+      "id": "a-489249769570",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -97,7 +181,7 @@
       "summary": "<p>Fraunhofer ISE, in collaboration with <a href=\"https://www.perovskite-info.com/oxford-photovoltaics-oxford-pv\">Oxford PV</a>, has developed advanced shingled perovskite-silicon (perovskite-Si) tandem PV modules under Germany’s government-backed HoTSun research initiative.</p><div class=\"align-cen"
     },
     {
-      "id": "a-794525961965",
+      "id": "a-682727351364",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -125,7 +209,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMirgFBVV95cUxOaER4Qk9XbTJzMGlfUG5tYXc1bEZJNWlSUXhvNkRjYm4taFpIel8xYlA3Q2x3VW1ESUUyUVN6NEhOMWFLcXoyVExFWWJ0STBYOFhpeE5iVVpYWEhRRVp0bE1lZHdaTV83VUdocGRsaUU2VmU5ZTBfQ21oakFsbG9nOHl6ajhNYndqcmVKTFR2QVZCa1ZsVVpSczR4OEFvYUlkYVFKa1F4WFI2VEVoMGc?oc=5\" target=\""
     },
     {
-      "id": "a-438029681532",
+      "id": "a-753095902539",
       "company": "GCL",
       "capacityValue": 0.5,
       "capacityUnit": "GW",
@@ -153,35 +237,7 @@
       "summary": "<p>An interview with Dr. Bin Fan, Founder and Chairman of <a href=\"https://www.perovskite-info.com/gcl-optoelectronic-material\">GCL Optoelectronic</a>, took place at a recent conference, providing interesting updates and shedding light on GCL’s perovskite commercialization strategy and 4‑terminal ta"
     },
     {
-      "id": "a-141982572332",
-      "company": "Oxford PV",
-      "capacityValue": 0.0,
-      "capacityUnit": "MW",
-      "capacityGw": 0.0,
-      "iodineDemand": 0.0,
-      "pbi2": 0.0,
-      "fai": 0.0,
-      "mai": 0.0,
-      "csi": 0.0,
-      "phase": "Planned",
-      "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
-      "target_year": "2025",
-      "invest_proxy": false,
-      "geo": {
-        "country": "UK",
-        "continent": "Europa"
-      },
-      "llm_used": false,
-      "radar_only": true,
-      "date": "2026-06-19",
-      "source": "GNews-Oxford PV",
-      "title": "Oxford PV, Fraunhofer ISE develop shingled perovskite-silicon module - Renewables Now",
-      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNRUYwOTJ1ZHdFd1RUMldhb2hubE1Wemo2azBiOEo3ZkpFR2NvQnRYbmQ4TllVRGRTbzNxOS1QcWpWajcwVVFBd2VWZ043QUdLRFlIakhySVR1Q01HbGJMbUh4Qjh3TTd3S2ZOUm04eC1XZHd6UVF4MlMxTDlzRDJIZHVQTzF6RWdTbmEwQ21HTGJoOEJGOGE2c0RfTW83UUw4UDVDR3FRYVQzbEk?oc=5",
-      "summary": "<a href=\"https://news.google.com/rss/articles/CBMiqwFBVV95cUxNRUYwOTJ1ZHdFd1RUMldhb2hubE1Wemo2azBiOEo3ZkpFR2NvQnRYbmQ4TllVRGRTbzNxOS1QcWpWajcwVVFBd2VWZ043QUdLRFlIakhySVR1Q01HbGJMbUh4Qjh3TTd3S2ZOUm04eC1XZHd6UVF4MlMxTDlzRDJIZHVQTzF6RWdTbmEwQ21HTGJoOEJGOGE2c0RfTW83UUw4UDVDR3FRYVQzbEk?oc=5\" target=\"_bla"
-    },
-    {
-      "id": "a-625730925390",
+      "id": "a-40692562286",
       "company": "BOE",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -209,7 +265,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiqwFBVV95cUxNT2V5TEZSNGpYU1IyVXdiZEJZckE5TkxNSk5aaTN3a3JBM1R3a3ZJZHRvUUZzYTZvYXZ1b09ULTNFNzVvUHdESW91NGk5VzN2Y21nRVRWY1JtNURjUFpFU2RpM19nS2tJOEtGV214LXl0dkNBOEQ0aF9pc3FZRzBRajFuWS0tYmdETnVQb1BMbWpnX0VjcE93VFpfTzNwQXBvejV0VnQ3NTl4cFnSAbgBQVVfeXFMT0o1OU"
     },
     {
-      "id": "a-954984309794",
+      "id": "a-158445710867",
       "company": "UtmoLight",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -237,7 +293,7 @@
       "summary": "<p><a href=\"https://www.perovskite-info.com/wuxi-utmost-light-technology-utmolight\">UtmoLight</a> has introduced a new series of solar modules at SNEC 2026 in Shanghai, marking a shift toward application-focused product design rather than purely scaling efficiency and size. The launch includes two d"
     },
     {
-      "id": "a-998933094796",
+      "id": "a-144058535324",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -265,35 +321,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMivgFBVV95cUxPVm9uX1NrNFREZTlGajNJSnV3RXhyMjdfZU1pR05VSjhhcllLaXkyZUQ4VGM5LUNEeUljNDlocmpuN3RBY3JMZzJrX2dLNVRTeW0wQ0pqNXpUd3RTeFhZd2FTWTNnM3VQaWlmcmo5c3ZOcm9fcG1hNmRuY19MRW9oY04zNFY5YTQwSXB5V2VVTGFhR19rejc1cDlEcmg4LTRXdFNTTERfdW1kUzFPU2QtMVItQWVraE9XYW"
     },
     {
-      "id": "a-577393861198",
-      "company": "Oxford PV",
-      "capacityValue": 0.0,
-      "capacityUnit": "MW",
-      "capacityGw": 0.0,
-      "iodineDemand": 0.0,
-      "pbi2": 0.0,
-      "fai": 0.0,
-      "mai": 0.0,
-      "csi": 0.0,
-      "phase": "Planned",
-      "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
-      "target_year": "2025",
-      "invest_proxy": false,
-      "geo": {
-        "country": "UK",
-        "continent": "Europa"
-      },
-      "llm_used": false,
-      "radar_only": true,
-      "date": "2026-06-18",
-      "source": "GNews-Oxford PV",
-      "title": "Oxford PV achieves 25.6% efficiency for perovskite-silicon tandem module based on shingled design - pv magazine Global",
-      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNRWZOdFRRTTNYV0YyVGplWThLbTFOaHR4ZkpfeTFXNElyUmU0TmljZS1zazhlQUpLX2E5ZlI5Q1RXYjQxS1IwRmV3NUNiYXk3ZlR5N3ZBakVSR0NvdE5VRUZ1YTBGQXJpZXFrcWh3WU11eHhUOVBSb2hZUEtQWGVFZVJGTjZGWWtKbllCU01kLXpzNEdKQ3NnbXZNeV9DMVhfLU5lRU1Xd1JuRHZMNHRWWm9JZ01odklNUDFBeHduRXdJbEdEU2x3VGNPYlJWeVB5dkE?oc=5",
-      "summary": "<a href=\"https://news.google.com/rss/articles/CBMi0gFBVV95cUxNRWZOdFRRTTNYV0YyVGplWThLbTFOaHR4ZkpfeTFXNElyUmU0TmljZS1zazhlQUpLX2E5ZlI5Q1RXYjQxS1IwRmV3NUNiYXk3ZlR5N3ZBakVSR0NvdE5VRUZ1YTBGQXJpZXFrcWh3WU11eHhUOVBSb2hZUEtQWGVFZVJGTjZGWWtKbllCU01kLXpzNEdKQ3NnbXZNeV9DMVhfLU5lRU1Xd1JuRHZMNHRWWm9JZ01odklNUD"
-    },
-    {
-      "id": "a-593158985345",
+      "id": "a-54101103694",
       "company": "Oxford PV",
       "capacityValue": 1.0,
       "capacityUnit": "MW",
@@ -321,7 +349,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMipAFBVV95cUxPemJqcHNaQ05oUDhRTW9SWk1aQWhtNWxfaTJmY1RrVmpuNEIzdC12ak16S0cyX20waC1VNGRQRWotUDZOXzZNOEMxTzFYRkZzdTNRTnFiRkdvLWhLLWI2VWpFQzROSmIxLVRmUml6eTd5ZGJRS1ZSRzV2MVp4T0dvaWJxZm5Gb1Q2UmxPdUs1RGVrdWlPeHdVcXU1MWU2ZkVLejdYbNIBsgFBVV95cUxNZXVURm1VUVlRRj"
     },
     {
-      "id": "a-5639546234",
+      "id": "a-42110413306",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -349,7 +377,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMivwFBVV95cUxNWTNqVFpzTzRHY0x3czFmUWR6eE92SnpCZjRlVmJZbkl3MzNha1ZxY2xDOG5XcGpOVm9xbDJvaFk1T3hnRmlNS2RFQVZMTVk5TmJyZUJrY3EtX01ndzYtR1B1ZkZFcGVpWHF6cU5zTU4xcHFPSmp3T1RiUjhmNXl6T3AwY0xoTDdhZ09BZHZRdDV4WVhMLXBMQ2ZjZnJlVzd4UGE1TUwxRU9GU1FNMmlWbFU0TVZ0MDlsM1"
     },
     {
-      "id": "a-850460750656",
+      "id": "a-33788709711",
       "company": "Renshine Solar",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -362,7 +390,7 @@
       "phase": "Operational",
       "nivel_riesgo": "Beneficioso",
       "resumen_ia": "Análisis local — Empresa: Renshine Solar (China). Capacidad: 0.000 GW. Fase: Operational. Nivel: Beneficioso. Año objetivo: 2026.",
-      "target_year": "2026",
+      "target_year": "2025",
       "invest_proxy": false,
       "geo": {
         "country": "China",
@@ -377,7 +405,7 @@
       "summary": "<p>Researchers at Nanjing University, National Innovation Institute of Defense Technology, Chinese Academy of Sciences, University of Science and Technology of China and <a href=\"https://www.perovskite-info.com/renshine-solar\">Renshine Solar</a> have developed a new interconnecting strategy for all-"
     },
     {
-      "id": "a-39571488914",
+      "id": "a-934061540766",
       "company": "UtmoLight",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -405,7 +433,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMimAFBVV95cUxNZkFGVFhqSDdwY2lnUnpWb2pFQVAxczVOQkJkYUtvSVpXUkxXcUg0R1lMZXdwOWh0WUZTNkJqRUVnQmVFc05rUl9HeUs4dlZMd19DSlBiRF8wUUtEVTlwdGpfdDgwT0lfOVZnWkRkTk5IVHVvc0c1TTY0alRFLUJTS2s1Z09PeEtMTG9BYmVWWWNyZHdKWnBobQ?oc=5\" target=\"_blank\">UtmoLight launches ne"
     },
     {
-      "id": "a-700867068126",
+      "id": "a-713424021258",
       "company": "UtmoLight",
       "capacityValue": 19.0,
       "capacityUnit": "MW",
@@ -433,7 +461,7 @@
       "summary": "<p>During a recent industry exhibition, <a href=\"https://www.perovskite-info.com/wuxi-utmost-light-technology-utmolight\">UtmoLight</a> reportedly signed a cooperation agreement with the China Construction Fourth Engineering Division (CSCEC 4th Bureau) for a \"19MW Perovskite PV Module Project,\" marki"
     },
     {
-      "id": "a-950804331152",
+      "id": "a-823992005523",
       "company": "BOE",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -461,35 +489,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMimAFBVV95cUxQQnJqU2sxUVpmcmx4YUE3WkgwRkhGWkI2V0dETXhDUkJpNlRLc0QwLWpSV2tPTlRibGJOMEtDVW44U1N6bFpYS1FHRUM2aDFSeUZkM1N4UlJEd3h0Y01CSDdCR2tVc1A1ajJSZlhsSzJwVGFtZUNWZmZJbzhiMUl5a2ZheEVoeXY2NHNYOXg5RThZX3FUazRURQ?oc=5\" target=\"_blank\">BOE says glass-based "
     },
     {
-      "id": "a-972217104222",
-      "company": "GCL",
-      "capacityValue": 0.0,
-      "capacityUnit": "MW",
-      "capacityGw": 0.0,
-      "iodineDemand": 0.0,
-      "pbi2": 0.0,
-      "fai": 0.0,
-      "mai": 0.0,
-      "csi": 0.0,
-      "phase": "Planned",
-      "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: GCL (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
-      "target_year": "2024",
-      "invest_proxy": false,
-      "geo": {
-        "country": "China",
-        "continent": "Asia"
-      },
-      "llm_used": false,
-      "radar_only": true,
-      "date": "2026-06-06",
-      "source": "Perovskite-Info",
-      "title": "China launches new space energy alliances with focus on perovskite and tandem PV",
-      "link": "https://www.perovskite-info.com/china-launches-new-space-energy-alliances-focus-perovskite-and-tandem-pv",
-      "summary": "<p>China’s solar and clean energy industry has launched two new industry alliances focused on space-based energy technologies, announced at SNEC 2026 in Shanghai. These developments underline growing interest in combining photovoltaics, energy storage, aerospace technology and satellite infrastructu"
-    },
-    {
-      "id": "a-460278407533",
+      "id": "a-66744123150",
       "company": "BOE",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -517,7 +517,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMifkFVX3lxTE1LQkh5bDBSeHlmdDVBZW1oVHFrY0RJMUk0ZUdEcDg0Ukl4QmVBZG9ZYzBsV3MybkV3SGNjWVpNWkZ2YlhwTVRjSjVKYmNqQjQ5dU40TGJuNXI3cjNqdF9IdkpFV0NOX0loVlhXdkE2N1B2QkNqZEhmOFgwWFlVZ9IBiwFBVV95cUxQRDVDVUFNdXd4VVpuR3R3djRnem9Ga1RSRmcxT21mMmZHYS12eGxReHBhODFDako1TX"
     },
     {
-      "id": "a-823583816574",
+      "id": "a-455522955934",
       "company": "BOE",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -545,7 +545,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMikgFBVV95cUxOVUtBSUhWRGRlRV9zNUxVZ29XUllXdlZTZkVSSzJyQktSTjcxUUxJTVFraldpVmFYMzFNT0ZRdzRmT08xZWh2YTRFNGpJUnlpMEM4NGlpYWtsamRUU201WnVWYmFKajdERWJHZGpWWW9aMmd0MnM4cWdUa3FpZHN2cHpQYnFSTjVsUDlxMWlLSTdadw?oc=5\" target=\"_blank\">BOE, Corning target glass sub"
     },
     {
-      "id": "a-130097019832",
+      "id": "a-85167922331",
       "company": "BOE",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -573,7 +573,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMirAFBVV95cUxQVWNQOExQaHhCMHRJbW1jd0dENTh6dU4yMVhnbldQd2FaRWlCWTQyRGgxRE1ZSkJCQ1lHdzVQMHRhcW9OeWR2dURZQlRkRmY5R25fWjBxUkItQWVGNDZWeTRIclhtckYxT3Y0X0pKMi1FSVYzcTYtU0t3U3ZkUlR5WEwxTnZTc25XVnFaS0gwd2Q3b0V4TlBoakhRRnFFRjBXMWhESUZiYS0zY3VY?oc=5\" target=\"_bl"
     },
     {
-      "id": "a-105288629086",
+      "id": "a-734595178027",
       "company": "BOE",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -601,7 +601,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiowFBVV95cUxPMmRjaWVqc2pKUEx2b3JpNXd1Z0tTN01LU0Q4dHk3azRqOExhUjlqR3hhR3pLdzZRVGZJcldWWjBoT3NnWThmZ2tNaUV5UWlfZ0w4STN3b1F0c3pPZHNOOWYxaW83c0FvUHhXUEFzRjcwYThIdnFYQTZLbVdwV3NGZlNsSVpSd3V5ZWthd2dUckNkdklLbFJwTlpwVVVDczU5bkRB?oc=5\" target=\"_blank\">BOE Par"
     },
     {
-      "id": "a-885667280165",
+      "id": "a-735509068237",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -629,7 +629,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMimgFBVV95cUxOU2EtYnl2S0NBWWtqWk1rb1RlMl9yZmpCbXdYTVgxQ21xVWtLNFdnREZGQnJpcUR2TUZVOXhUUFFQNWJ1ZFJkMTZXYm03UUxVN2ozMW80U1ZlcWJManRraGlTcE50VHRyUDViTlNndWt0OTJFS0MtTVBlTUl2clpWdEp2d2hQMWdHbHY3NGdCYnN4WVV4LUVZdUdn0gGnAUFVX3lxTE1YR0ZYNXRpWDBCZGFGemlRQ1Ztb2"
     },
     {
-      "id": "a-236436322136",
+      "id": "a-364459220409",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -657,7 +657,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiqgFBVV95cUxNQjFiUjU0b2NWcTZVTVhnbUpZRlNtM04tUUxLUmVscFl4V3hKemFfOGZNc2JXZEhWNmd1VktoVTUtaDNtVUo0bmZybWFIOTVNZ1Y0a0x4VHJWSEpXaTdiZGp3eUQ2RXZOZjZoRXF4djNhZTViTi1nSXVoRXowYWFPd1dJMGh5cjdoYVBsMFRYZ2hVNlpreFNMTlltYy04alI5X2xHRG1YQ3U5UQ?oc=5\" target=\"_blan"
     },
     {
-      "id": "a-589831742409",
+      "id": "a-406099699915",
       "company": "Caelux",
       "capacityValue": 3.0,
       "capacityUnit": "GW",
@@ -685,7 +685,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMihAFBVV95cUxNZ3ROWGZyV3lSdUlTMkdLcnlzZG0tcDZfTDNreS0xY281U1BxVldtQlZnejh0c2U4LVJsYk04dUNEYV93dXNDbXJEcEZYMGNnRzViNG16MVB6RnpLTmx0ZUhYSW1jLV9kZUp5SmFHdzhFYzFsWmpDZi0zeHAtSGh1OGRHOTPSAZIBQVVfeXFMUGZ5aWZiMWhTWkJTXzdYaXlMRER2a1FzQkpoZUJlczIxeW5WazFudVc0RU"
     },
     {
-      "id": "a-144922135990",
+      "id": "a-154323932908",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -713,35 +713,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiogFBVV95cUxQallXNndxWlc4X0JwTnF2RlY3MVVhMDRPTVpVMVlXa29uRTRlMUItckVuOW1odzNYcHl2Y0RpN25EYjBaUGs5cE9aSGNQa0p3ZGEtdGR5R1Z6SmptaDN1U3VVNGNkQ1VCN3lsZlZkYkJQMnZYT3l0Vk5DMm1KdzBOZy00Qms1VWVRZU9KNjNBUXhmN3MtWVBoVy1TR183dzRXYkE?oc=5\" target=\"_blank\">Solx & C"
     },
     {
-      "id": "a-368739120649",
-      "company": "Caelux",
-      "capacityValue": 0.0,
-      "capacityUnit": "MW",
-      "capacityGw": 0.0,
-      "iodineDemand": 0.0,
-      "pbi2": 0.0,
-      "fai": 0.0,
-      "mai": 0.0,
-      "csi": 0.0,
-      "phase": "Planned",
-      "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Caelux (USA). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
-      "target_year": "2027",
-      "invest_proxy": false,
-      "geo": {
-        "country": "USA",
-        "continent": "Norteamérica"
-      },
-      "llm_used": false,
-      "radar_only": true,
-      "date": "2026-04-21",
-      "source": "GNews-Capacity",
-      "title": "Solx and Caelux announce partnership to offer domestic perovskite-silicon tandem solar modules - pv magazine USA",
-      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPWHhnSUx5dkhZcktsUW82b3NGNFkxS0ZPN1hHOGFZc2RaMGlqZTZNZG56WkY1UnlaeXZJMHExcXI3Vm9vVXBqU28wLUZubWUwb3p4ZXJNUHZrWE9tSHYxekV1a24wR1B4M0pqMjJRRGp3VzBQTkVWOS1KeHo5M3dLRjFUXzNJdDBBRnR5UjNhSXNpWklVV29mZjhzQnhrM2oteG9jU1Z3a0FvUHFVZS1EMUx5VXlMNEw2TXdiRHJjTDFDb05pN3JYbWZzdkF6dDQ?oc=5",
-      "summary": "<a href=\"https://news.google.com/rss/articles/CBMizwFBVV95cUxPWHhnSUx5dkhZcktsUW82b3NGNFkxS0ZPN1hHOGFZc2RaMGlqZTZNZG56WkY1UnlaeXZJMHExcXI3Vm9vVXBqU28wLUZubWUwb3p4ZXJNUHZrWE9tSHYxekV1a24wR1B4M0pqMjJRRGp3VzBQTkVWOS1KeHo5M3dLRjFUXzNJdDBBRnR5UjNhSXNpWklVV29mZjhzQnhrM2oteG9jU1Z3a0FvUHFVZS1EMUx5VXlMNEw2TX"
-    },
-    {
-      "id": "a-484431506070",
+      "id": "a-264857173720",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -769,7 +741,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMihAFBVV95cUxNYWF4eURnb05qNDZMUTVkT3h3Y01VUlVlSWJxa1VxdE9fc0lYalIwMHFueDRxMGIxZmZQLTFxVUxXdjRzSGxfeG5LN3d4RDdoX2lha0drWTE5ZDZaNklESWNYM3hLUjZ3UWYzZ2x1MElkZUhCZHNwVTg3Rk1DYVNqTTRwYkU?oc=5\" target=\"_blank\">Solx, Caelux Partner to Scale Solar Energy Techn"
     },
     {
-      "id": "a-266834276758",
+      "id": "a-604690864136",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -797,7 +769,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMi7AFBVV95cUxNby1lYUlmcmNjNkFNdlZsOEZ5U3h5MlFjZ281bWl5aVFqZ2dGS2U0NG5JTzdLeDZhWDg3a1oyWG5zbUFVRzZnU1NfbzliN01aczQxdW4zUUxtbGt5Z012WUJyVXo0REsyQUt1Ql9MT05fNHZoanhOYjdubngxekJvZ3RuejFKQ3ZCNUJSR29HaVVla3dVc0l5ZThGaGRMelUzSVFTTENVVjZWNnZYd1l1MVVkZ2stM2JJcW"
     },
     {
-      "id": "a-536977769121",
+      "id": "a-780858779289",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -825,7 +797,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMimwFBVV95cUxNaXBYS0lPRTNCMnNyRlE5czhSVkxMLXdScHlvVjhVWnZrVHJhcW9HQV84M29XeUw5aDlvVm80YjlXMEphMnF4bVQ2RE85LXJLTU5WdV9iMEhrV2NZQ0xhb3ZDQWxNOHpWUEhiRkhWRVQtWGFsYTNpU1cxMzNfOFRWX0RDS1A0Tk1Ka29zMmZsemZwTWs0Vmd4M0EzYw?oc=5\" target=\"_blank\">Solx, Caelux agre"
     },
     {
-      "id": "a-642405154816",
+      "id": "a-369177974447",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -853,7 +825,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMirgFBVV95cUxPanRuNEM3b091WWcyaWI1S2xTNGxoNFVFWEYwek82RnlYcDNwLXpLYThUZjdNbTF3Qko3SEZkYURpUFBMdFcwd21rcnluOWFFY0Q2ZElsejd3ckRCdjhsRm9wOHdyYkJ4Nmh0ekVsNWpfU1psMG5jWmRGSEE5TzZDa3ozMERRSER2UHFmMHlDRGt0WG5nb0Z0UTVtcjhHaE9pNkdTR1BBV2ZKaU9kYUE?oc=5\" target=\""
     },
     {
-      "id": "a-296836783998",
+      "id": "a-250110775123",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -881,7 +853,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMilAFBVV95cUxOOW1nanR6dFJYMGdfSFJTLXhIWjJpSGVxTEJYTjhYeFhkamRldlVoWDYtVWhicllHbXgwYkliMzB6czFmREpaN294OVhFY1dNYTgxOHUtNDQwX0I4YTVLam5pcEM4VFAzeXBjdXMyTUk4UktlRFJKMHE1bXhkZi1ja2tSMWVnRnJhekc0c3hhNUNQQnNG?oc=5\" target=\"_blank\">Caelux, Tandem PV announce "
     },
     {
-      "id": "a-284823717444",
+      "id": "a-815560843907",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -909,7 +881,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMivgFBVV95cUxNQnlvRERhbzJXVE9hM0hpek92amowMmljc0ZMZ1FsOGZnOGJVTUdwZkxCUHdpdGQ1SjhxbkdpZHlrTlNNUWtGQzNKVV93aGstYm5tN1djSk44ejl4cHVzc0lzUm9abG9LTjdNTXBiNmx3Tk5CWmItc0lYTy1fQkNxYWEwNEJUaUxaQ2c2d05PWGE0ejlHd3BKMlpuUnkxQ1pSTXhldTNJbjJ0aDhOU3JPbzQ2b3pyQXN6Wi"
     },
     {
-      "id": "a-616682360854",
+      "id": "a-474400957470",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -937,7 +909,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMidkFVX3lxTE0tcTlFNDdZbllWdHF5bTljblRUdzZQTm96clJGSmlZREtjbnNobEpRWEk4TUJIWWN5M3d6NlhLRktPX3lSbV9PZWlnN1BpMkprb3F1bm5vVXg4X1hKNGFHQzhmeGtFUUtuYUdiTk96aWU3aElnOGfSAX5BVV95cUxPTTNyRk9tSkowNlRLOXIxalFKUFJFN3RXbkpRRXRvaDVOd1JBOE5JNnNlYlNDZFJFd3BRVDYyWEgxZF"
     },
     {
-      "id": "a-545556574330",
+      "id": "a-314446343038",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -965,7 +937,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiggFBVV95cUxNdkN2NU0zTUZ5NElWdGJEUG11NUZPc1ZlZ2lqMnpkLVNORHZwUnRYZFp4NERDTEgtSk9DMEg2dXN6S3lqN2lZbTZ1VEREcUtCQkhkWEpicGRTUW9kRmVaY2R2RUVEejluNTZ1bzBIbEJPUEVINjZVUlZRRU5rTm1URlh3?oc=5\" target=\"_blank\">Oxford PV joins vehicle solar panel project</a>&nbs"
     },
     {
-      "id": "a-356941166908",
+      "id": "a-322348510028",
       "company": "Oxford PV",
       "capacityValue": 5.0,
       "capacityUnit": "MW",
@@ -993,7 +965,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMilAFBVV95cUxNbnVnOU1qMHZEWlBQNjh2akhWNHBzWjJSbGh0OGZqQjBpYUR0OVdKMGNBbnM2a2RNNUNfM1BKVmJfNW9PdnNJY3owQ1BiQ2pxYk9xYUNCMW9tekgwZVcxT2h4MjVIZDBvMUNMdGZOX1ZSV05QZFVjQndGaFpKN1B5MWw0TE1OZERxdVhvREozd2Zybnhw?oc=5\" target=\"_blank\">Oxford PV’s perovskite expe"
     },
     {
-      "id": "a-412299330637",
+      "id": "a-202260437967",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1021,7 +993,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMikAFBVV95cUxPbnRCaWRmOHlFclpOdGZQV1dsRGtyN2FWaVhXeVNPZHF0SjgxdTJKZ0E3bEFJNHdYeFFNX0ZYSVRLN3E1RE9IeHViR21iTzZjLVFwX2x3NWZZNklueGMtME1tNVhXVHJPREVMOG1pZzdWd3d0LWpSWXdLLVh3SkRBa2txY0MyS0JnUHBtMWVjZ18?oc=5\" target=\"_blank\">Oxford PV joins UK solar EV inte"
     },
     {
-      "id": "a-901660385511",
+      "id": "a-122031462968",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1049,7 +1021,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMi0gFBVV95cUxQNS1wSWYwSzRrQmp5N2hyM1BZeWMyMl9OM1pQVmpYNm9FMnE1NjJuQVFONlBUb1oyYm9DVVl0TGhXSk1uVnNvcHZrMk1RZ3FveVY2aEk4bktfRTdRUmdGR2U2N3I3OTYzVWVrT1k5aUxOcjRvRTdPYkN3RVJtX1BhOUlIc2x0VkllQ1FPdDFXdW9KMlZqaklMajBEb25fbFFXbVV6QW1XS3pwNGYtUTlXVjgtOHR2WWYxVk"
     },
     {
-      "id": "a-342577637148",
+      "id": "a-936354584016",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1077,7 +1049,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiqwFBVV95cUxQOUozZXhNVlZZOXp5a2hFUk4zaEsyVkNPTWk5XzdsMkdrMFZqZkN0TE9vcmtldHYxWW5EWldOZ3p6NHI5X1I1SXZleHZWQnBmdFptVVlHQlY1RUJXZUFyQnJXaS1hNGpmMjF1NU5OZFVGdzBIc2lKUUdobU5zQWVBVDlaWTU2N2tuOExUU3Q1OXFFdnZwdXMzclBaWUJZbVE5Yy0zbTBiMGZfMUU?oc=5\" target=\"_bla"
     },
     {
-      "id": "a-163718719305",
+      "id": "a-715613867176",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1105,7 +1077,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMipwFBVV95cUxQLTQwaVNtMGFIQjVUZmFiU1JBdWtYQ1M0SG1SM1E1TDVxODJrNEZHQVJHVkc3N1M5RzBOTnc2Ny1WUGNSR3VRNE51QjRjbFR1VlA5YlZKTl96UjE2cHFFaG5vUEsxeXdNbTVZU04wUC05VEt4d1hiNVEwazhXclhhWGFQQktxc3UtTHNuU3NZOVVOQXNWMUw5dWhiZUpQTzgxM1I1R2Rfaw?oc=5\" target=\"_blank\">G"
     },
     {
-      "id": "a-439710884561",
+      "id": "a-20137942015",
       "company": "BOE",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1133,7 +1105,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiZkFVX3lxTE4zT2I2VV9CdWNLWVluUXFKODFZZER4cVRPT3k5S2NvbDRob2RwTHdwMkpUM2J1cW1YN0tGSGZ1NjZheTlEbTVmR3dtMkhlZkZTSk8xVi0wRkk5R25LNGhROURuMVRzdw?oc=5\" target=\"_blank\">BOE Enters Sample Verification Stage for Gen 8.6 OLED Line, Targets Mass Production in 2H"
     },
     {
-      "id": "a-780889504128",
+      "id": "a-259355908523",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1161,7 +1133,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiygFBVV95cUxOQTA3eEVja19oM1JFb1VQOWhDaE15SjY2SFVUbHpDZThRYXlMLVRnbzVYWVFpTXRCRW93eHVjUzM3enBodHVnMnRHNy1udHBEbjNzZ1VjOWpUVlZYcXFoc0h0Zi1Jal9lNzh4YjBxZ2pzZ2NnTGRoZG9UVGNTRl9Ec3YwbElialVoc1ZmRFVuTG55T2IzVS1LT0tWZ1NDZWtJOFF4dHNXR09lTmtVUWFFSklhVWNyai1VUm"
     },
     {
-      "id": "a-76822158631",
+      "id": "a-311372332233",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1189,7 +1161,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMigAFBVV95cUxQRE1PaHo3UElkdHJGT3B3WlpXMWlyNW44a3h4emRNMUozVUt0cVE4a0l3T3BwakpXSzhPVXlfN1dNcU0yeUJkd2RHei1CZDh3STJQamFqWE9kcmNuVDBaell3MFhQdVIzVUFDTnhlYWQ2UjlSLXk4WlNUSjhQNmRrRtIBjgFBVV95cUxPRTBVU1FReUVjWHc0bFhDTXliRE83RG5IWm1sajlaLVpmSW54RmhNMVVTdk92Nk"
     },
     {
-      "id": "a-842105731000",
+      "id": "a-26993045048",
       "company": "BOE",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1217,7 +1189,35 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMijgFBVV95cUxQRUgxNWFxYXpmTjd4QXZ3SnRFOFN6TExUbjRJc29pSy1jWTRLbTd3aUlQb0s2enRQdnlKdFNSLTVmVFItbFJFZy02dTZ4OUVRcFIyOG9Odl9pU0NrVU1tZlVDYUFRanJxWFkyU1BpRi0td191OG1VM1ppR3JCMExsRVJTVmVrRmMwOXZPLWt3?oc=5\" target=\"_blank\">BOE signals sustained TV panel pric"
     },
     {
-      "id": "a-81499157549",
+      "id": "a-493763481067",
+      "company": "Renshine Solar",
+      "capacityValue": 0.0,
+      "capacityUnit": "MW",
+      "capacityGw": 0.0,
+      "iodineDemand": 0.0,
+      "pbi2": 0.0,
+      "fai": 0.0,
+      "mai": 0.0,
+      "csi": 0.0,
+      "phase": "Planned",
+      "nivel_riesgo": "Neutral",
+      "resumen_ia": "Análisis local — Empresa: Renshine Solar (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2025.",
+      "target_year": "2025",
+      "invest_proxy": false,
+      "geo": {
+        "country": "China",
+        "continent": "Asia"
+      },
+      "llm_used": false,
+      "radar_only": true,
+      "date": "2026-02-26",
+      "source": "GNews-Renshine Solar",
+      "title": "Cybrid Receives Renshine Solar’s 2025 Annual Outstanding Contribution Award - SolarQuarter",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOLVV2SXlQZjNXRmNpUFhfTWZTV19DWGI1UUh4TzBWM18xNDNVN2dKT0pyMFBqLXZCa2FVdnpVclBqTUtodlBuT2ppTDF6bTBUS0JVZjVGVEpjdXllczMtbVJldmFXa2FMbENRTkdNcHBwTkhoQXF4Um5WbnpidXBrVXI4SWRQb1M2VjlqM21vcENYWGNMMTVVVnVPVTlmZXM0d1NENC1sRDhxRzNpT01laA?oc=5",
+      "summary": "<a href=\"https://news.google.com/rss/articles/CBMisAFBVV95cUxOLVV2SXlQZjNXRmNpUFhfTWZTV19DWGI1UUh4TzBWM18xNDNVN2dKT0pyMFBqLXZCa2FVdnpVclBqTUtodlBuT2ppTDF6bTBUS0JVZjVGVEpjdXllczMtbVJldmFXa2FMbENRTkdNcHBwTkhoQXF4Um5WbnpidXBrVXI4SWRQb1M2VjlqM21vcENYWGNMMTVVVnVPVTlmZXM0d1NENC1sRDhxRzNpT01laA?oc=5\" targe"
+    },
+    {
+      "id": "a-203742270373",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1245,35 +1245,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMioAFBVV95cUxPTTRJQTJmRUoyVTBPWVNyTnV1eWxxaVE2bEt4UGlBT0VTVzEyRmlYMGFjU2J2SGZ6ZkxzNkd3YWtNYi1KN1V1QzZYYnVCWGtqdmViYm1ieU5IMzRHM3BLU2ZCQkVrTUt2SnpFdnpWU0FobjRSLUFva1ZVOEp0MEtwb2x3NnJkN255YW84T0s5S1ByNC1OdXA4VnBTUmw3alVm?oc=5\" target=\"_blank\">Oxford PV p"
     },
     {
-      "id": "a-752341389006",
-      "company": "Oxford PV",
-      "capacityValue": 0.0,
-      "capacityUnit": "MW",
-      "capacityGw": 0.0,
-      "iodineDemand": 0.0,
-      "pbi2": 0.0,
-      "fai": 0.0,
-      "mai": 0.0,
-      "csi": 0.0,
-      "phase": "Planned",
-      "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
-      "target_year": "2025",
-      "invest_proxy": false,
-      "geo": {
-        "country": "UK",
-        "continent": "Europa"
-      },
-      "llm_used": false,
-      "radar_only": true,
-      "date": "2026-02-25",
-      "source": "GNews-Oxford PV",
-      "title": "First Solar, Oxford PV ink US perovskite patent licensing deal - PV Tech",
-      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNOHA1VjV5UVJsS3NiZmlINUtjdElqZTNXYlVFaXVPZGNhV0tkU1I5T0dCZVdTR0o5Wl8xWlFlLUNpRVlJNWVSaEVPMHVPWlJLSEpSZ1A1M1l6cjVrcWFiVXdUS0wwYnZDQ3Z4NVE0ekJmV2xVakJ6SlBHS3k2RmJVWGdrZXNrVXBhZXJzVFlxZw?oc=5",
-      "summary": "<a href=\"https://news.google.com/rss/articles/CBMijwFBVV95cUxNOHA1VjV5UVJsS3NiZmlINUtjdElqZTNXYlVFaXVPZGNhV0tkU1I5T0dCZVdTR0o5Wl8xWlFlLUNpRVlJNWVSaEVPMHVPWlJLSEpSZ1A1M1l6cjVrcWFiVXdUS0wwYnZDQ3Z4NVE0ekJmV2xVakJ6SlBHS3k2RmJVWGdrZXNrVXBhZXJzVFlxZw?oc=5\" target=\"_blank\">First Solar, Oxford PV ink US per"
-    },
-    {
-      "id": "a-426836175016",
+      "id": "a-627727770662",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1301,7 +1273,35 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMipwFBVV95cUxPT1BMVFduajFEMVJBN2IwMUZsODFYX1pNYUYxbFNQcHdCV1IzYkRPejNjXzFFODZUSjk3em14UngwOFQ1d1NPajJFWkFOakVaNVRudVFFc0tiYVotRlJfejk2QUZqZ3RMemlMekwxbE1NLUdsQlJ5OUVaRFc4LWxhcGZZTk1sSWtST0xITWt6Uzl5ZUY3NkxyWVJJeDNjZzFhVUFNZXNaaw?oc=5\" target=\"_blank\">F"
     },
     {
-      "id": "a-134139916967",
+      "id": "a-565870101362",
+      "company": "Oxford PV",
+      "capacityValue": 0.0,
+      "capacityUnit": "MW",
+      "capacityGw": 0.0,
+      "iodineDemand": 0.0,
+      "pbi2": 0.0,
+      "fai": 0.0,
+      "mai": 0.0,
+      "csi": 0.0,
+      "phase": "Planned",
+      "nivel_riesgo": "Neutral",
+      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "target_year": "2025",
+      "invest_proxy": false,
+      "geo": {
+        "country": "UK",
+        "continent": "Europa"
+      },
+      "llm_used": false,
+      "radar_only": true,
+      "date": "2026-02-25",
+      "source": "GNews-Oxford PV",
+      "title": "First Solar, Oxford PV ink US perovskite patent licensing deal - PV Tech",
+      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNOHA1VjV5UVJsS3NiZmlINUtjdElqZTNXYlVFaXVPZGNhV0tkU1I5T0dCZVdTR0o5Wl8xWlFlLUNpRVlJNWVSaEVPMHVPWlJLSEpSZ1A1M1l6cjVrcWFiVXdUS0wwYnZDQ3Z4NVE0ekJmV2xVakJ6SlBHS3k2RmJVWGdrZXNrVXBhZXJzVFlxZw?oc=5",
+      "summary": "<a href=\"https://news.google.com/rss/articles/CBMijwFBVV95cUxNOHA1VjV5UVJsS3NiZmlINUtjdElqZTNXYlVFaXVPZGNhV0tkU1I5T0dCZVdTR0o5Wl8xWlFlLUNpRVlJNWVSaEVPMHVPWlJLSEpSZ1A1M1l6cjVrcWFiVXdUS0wwYnZDQ3Z4NVE0ekJmV2xVakJ6SlBHS3k2RmJVWGdrZXNrVXBhZXJzVFlxZw?oc=5\" target=\"_blank\">First Solar, Oxford PV ink US per"
+    },
+    {
+      "id": "a-768867511894",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1329,7 +1329,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMizwFBVV95cUxQVGVYMDNmVnpVaVRzQ1lXeHVtUnNIV1VGUXludFdKMlVWTmhEN3U2bW1ENlVCU1RsRHBtN19idEFBbzV4dVJvaFk1T2JYb1lacU4tdDNaRmUwSnhoQnJlOVpGYVJLd1ZkRXBNNk1aYWFUemhWTDVPYlJNUmtqazZXMU5zLV9lQWoyVXAwdTVVQ0w2NkZnRDBHUFYtSGJwUkoxX2lkVW56QzNpUnFBeEZPbUlsVHZrdk5nSm"
     },
     {
-      "id": "a-581066723611",
+      "id": "a-330364371650",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1357,7 +1357,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiqwFBVV95cUxNRGtBYjNpMmRTcG55ZDVqeElaNDgxSEEtSHdkc2d2c044WE91VkxYc2ZGMnJ2ODAyd2w2OEcxOXI4NnNSX3NmM3pHMjUzbndMNGFkekpIbXdreFdTdFllT0dycDJuRVMzWHdDOWhUa2VLNHVRTU9xaWVZOGFEX29udGhqMHd5N2FhYWZDTUJDMERrZnBtTUhGaDdBbHpxa0F4UldkU0tQc1RNcDA?oc=5\" target=\"_bla"
     },
     {
-      "id": "a-32415056994",
+      "id": "a-565092195113",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1385,7 +1385,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMi9wFBVV95cUxNU3hHYzBjTUZpU04wYzR5d3Rkb2ZLNXJfazhHam9DYUl4ZXp4aG1FYzI2UmYyeGJZWXQ5TXpMdDZxRE91VWNDQll5cnNoWHFjVGNTc2RkenBwVjVXZVZ0TEVvMnhweVB5N3VKQUVDeG9NQzdDellxUDhSd3JQck10S3RDQmlpVm9aSzYzTDYxTEhLTVAtTVo1WWViSDZtQnBHVC1ZLU1MM1hKSHJhaHhxcndqMjNtMmo5Uz"
     },
     {
-      "id": "a-708445934511",
+      "id": "a-552050744147",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1413,7 +1413,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMipAFBVV95cUxQQm9mYkFzeTdtSnJrV0VseFdNVE1aajJlNFFkaWxLdHFUUzdjZHNJVm04TV82eW9EcWNwNEJNMWlPQWhZTWZ1MXI2QjExXzZlSWpfaXVfTF9CLUNwb2dUN0VlbG9pTmZ5TkN2RkJ1b3FFRUE0U1VxUl9PeU1ReERsSEpEcUg0WGlRdUc5U1ZEdHkxOS1INnF4cTJCTnhkNElQdVZlMQ?oc=5\" target=\"_blank\">First"
     },
     {
-      "id": "a-937339925027",
+      "id": "a-927530802600",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1441,35 +1441,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMickFVX3lxTE5Rb2lsalJuaEJFZkJzckxqendkbGR6ZW41ZG45aXdHSXJNUzVpUURYZzRCa1VwWE5yNkJIb244aFhKZzRGLXZ4OUloRlRaclhKWkZjOHJ1b3doX215aVA2TGQ4NUtMTXYzN2VlVzJUbmsyQQ?oc=5\" target=\"_blank\">First Solar locks in key perovskite tech with a new Oxford PV deal</a>&nb"
     },
     {
-      "id": "a-362063470669",
-      "company": "Oxford PV",
-      "capacityValue": 3.0,
-      "capacityUnit": "GW",
-      "capacityGw": 3.0,
-      "iodineDemand": 14.19,
-      "pbi2": 8.514,
-      "fai": 2.838,
-      "mai": 1.419,
-      "csi": 1.419,
-      "phase": "Planned",
-      "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 3.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
-      "target_year": "2025",
-      "invest_proxy": false,
-      "geo": {
-        "country": "UK",
-        "continent": "Europa"
-      },
-      "llm_used": false,
-      "radar_only": false,
-      "date": "2026-02-24",
-      "source": "GNews-Oxford PV",
-      "title": "First Solar, Oxford PV Enter into Patent Licensing Agreement for US Markets - Business Wire",
-      "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQWUVTRW9VbXpNN0FLMnNMU0h5dkNCbzFZSWgwWXNRZVRFM19uc0QzUzBmQ2RzSWVqWm5ubmQyS2h1djdGRHBDbEU5TjJ2dWk4cG5TQlRtbTNseXEyMHNvdnJyTm4wSUtFZGNsbVh0MllmUWtkZExSVEk0MF95SGs2ZDNmUXQtZWxuM3gwVWV3T2VUNWRybWQyS0ltRXBua29nYTBCbFFBOGxmWUFYcjl3UDdEZnU0aFhldXd6cUU2d1pHZ2g0aWlZODFiaw?oc=5",
-      "summary": "<a href=\"https://news.google.com/rss/articles/CBMiywFBVV95cUxQWUVTRW9VbXpNN0FLMnNMU0h5dkNCbzFZSWgwWXNRZVRFM19uc0QzUzBmQ2RzSWVqWm5ubmQyS2h1djdGRHBDbEU5TjJ2dWk4cG5TQlRtbTNseXEyMHNvdnJyTm4wSUtFZGNsbVh0MllmUWtkZExSVEk0MF95SGs2ZDNmUXQtZWxuM3gwVWV3T2VUNWRybWQyS0ltRXBua29nYTBCbFFBOGxmWUFYcjl3UDdEZnU0aFhldX"
-    },
-    {
-      "id": "a-599895284366",
+      "id": "a-52633962699",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1497,7 +1469,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMi8AFBVV95cUxQNHBYRXpmWm9Hd1YyUDRMSFhhY3JfcUFNZDEwNTRqVDFSVHNPUC1uRnRxT29KNlh6SGZuZ3pBWE0zSHpqQm9vU2t0Y0FyUlZxUWNfakxQMXJoRnBhYmxCTC1udmR0QjhQaVVoSER2ck52S2NWSFVjNEFQNmt3VS02b0lPMDdXa2J6dzJMVV9HTkZFSVJVbnFkbTVRd2JfM3QxQTZzSjhKN21sTlVfcFo5NkZ5VmpTMnRqbj"
     },
     {
-      "id": "a-384601655817",
+      "id": "a-265674346332",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1525,7 +1497,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMipAFBVV95cUxPbVY5bWZmTHdER3lRUmxCcTA3UVRORHlPeFZSZVg1bXRJeTlsRmVPTC1kSXZmVUs0VHhuUUZhUjZaNDdwR0IxWTY5Y2NqMWdvTnVOanBOMXZCYVFmR2ZQcDBad3ZsTWpfa2ZlZTVuRzY2eG5rbWNfeHE1ZFZsdDdWSGNmY19GSzJJR2xkbTgyZElDc19UX0o1cU5ocHc5bGp1UzlXeA?oc=5\" target=\"_blank\">Oxfor"
     },
     {
-      "id": "a-728098389802",
+      "id": "a-235069237146",
       "company": "BOE",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1553,7 +1525,35 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMilgFBVV95cUxNRUM5cy1YWnh4SG13NGYxaW5CQVZHSDN4MURYbFIxek85RTZXUThWNkVpVklGeW5TUjQtaG9BSTd2dEVDMkE3aTBoejI0U0tYbWlRc0hQZFJBdEo5TmlWbzM0M3AxeVR5dkN5cGVMcGZSTkdndldseDlrSVlFOHZ3WGR5c0Z5WS0xdUdrNVprTE1PbXRvTGc?oc=5\" target=\"_blank\">Why AI matters for scali"
     },
     {
-      "id": "a-480169075248",
+      "id": "a-390995750785",
+      "company": "GCL",
+      "capacityValue": 0.0,
+      "capacityUnit": "MW",
+      "capacityGw": 0.0,
+      "iodineDemand": 0.0,
+      "pbi2": 0.0,
+      "fai": 0.0,
+      "mai": 0.0,
+      "csi": 0.0,
+      "phase": "Planned",
+      "nivel_riesgo": "Neutral",
+      "resumen_ia": "Análisis local — Empresa: GCL (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "target_year": "2024",
+      "invest_proxy": false,
+      "geo": {
+        "country": "China",
+        "continent": "Asia"
+      },
+      "llm_used": false,
+      "radar_only": true,
+      "date": "2026-02-04",
+      "source": "GNews-GCL",
+      "title": "GCL says Musk's delegation visited company, Chinese state media reports - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNQmJXMWZnZ3VyS0VFQWlvOUZPd2lPREZmMzVqQlh4cndxaWhLS0h0Skw3N1JaNjRHZEttQWNoeWdOalJobmhlWDlpX19CQnRkcnhTbmhpNVQ2MjM2R2dhQXhtYURNcTV2a3ctQTJxc3NRYjdncEI0cVlwblk3RjAwMmdyNWFXWXJuZzNkZXZnbDJGRmJPZDZYdUdxbUgtZnN6LXZuNlpJTVpub0wzNDJ3VWJpajhoX3kwSGgydF9WZWRnWEZWdURQOXhaNG90SUFL?oc=5",
+      "summary": "<a href=\"https://news.google.com/rss/articles/CBMi0AFBVV95cUxNQmJXMWZnZ3VyS0VFQWlvOUZPd2lPREZmMzVqQlh4cndxaWhLS0h0Skw3N1JaNjRHZEttQWNoeWdOalJobmhlWDlpX19CQnRkcnhTbmhpNVQ2MjM2R2dhQXhtYURNcTV2a3ctQTJxc3NRYjdncEI0cVlwblk3RjAwMmdyNWFXWXJuZzNkZXZnbDJGRmJPZDZYdUdxbUgtZnN6LXZuNlpJTVpub0wzNDJ3VWJpajhoX3kwSG"
+    },
+    {
+      "id": "a-42080357801",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1581,7 +1581,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMivAFBVV95cUxQOW5ramVoZ2xLalM4U00yMmY4djl4blgtRk5QQ3B1NDAzZnQ3clplRXlmeUphaHBpRnBHZm1nX204aE5SdzIxT0tzbWU3c1VyUjlsbXFGRUIwQkxpSWxLZjZ6SEpXZFlhVFZwbm1wMENNLUNQcC1ES25HMDlKVllJR2pUTFZWV3ZER25uLXF1bVh0NXo3bnZvSEg0T1lQdEJ0RGVZdWNzOHRSdDIzVjkzUFRFUWJvdHJwR1"
     },
     {
-      "id": "a-969641362723",
+      "id": "a-351628922080",
       "company": "BOE",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1609,7 +1609,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiwAFBVV95cUxOT1E0MzBlOExGWHBEalZicUhydWJUTEk1ak5RaU50ekc2TXMzX01XSkFDZlpNck84Mm5QN0Z2QTNOQTNad3BIalJlS0pEaGRDS1EtOGlVSHY4VWFDVnljcjU3ZERjN1lQenVCNnAyVy1JMmJ6bW40WFBQak5jckNFSUh0cnBPN2VYLUFWTXY5WXpiUU41LUxabkl3b3ZkeGFVRU1FRUI5RUx2Y1J1b05EUHNWOFljY3IyTn"
     },
     {
-      "id": "a-580567427517",
+      "id": "a-10440625159",
       "company": "Sekisui Chemical",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1637,7 +1637,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiY0FVX3lxTE8yYzdZbC05RE5QcE1HVGxaazBVWGNVenFuUWRVTlNsOEFQN3RxWnJpc0NxX2dkZmFvd2Z4ckJmcjZCS2VWd1gzSnJ0RlZycXJHd0FyUkkwcldEZklUVTF6ZWtoMA?oc=5\" target=\"_blank\">Sekisui Chemical (4204): The 'Absolute Favorite' Perovskite Challenging the World's First Mas"
     },
     {
-      "id": "a-409974603165",
+      "id": "a-176851366178",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1665,7 +1665,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMikgFBVV95cUxPeTBpMWdrLVJDZXcyT0hLZTRPVUY5T2xCVHB1eldRNS16NkQ4cG5uaXhZRW9PeTkydnFsYXFycWt0a1BYZGFzNlB5YlcxOXZMRkMzbUVkMHJBbHJXTHpRNmVIWmhjdS1KWWVtdWo0a0I5enZwaUxPV3B2eFl6aER1alBCRTJVUEoxb2JfRGFNbGdCdw?oc=5\" target=\"_blank\">Oxford PV achieves 25% effici"
     },
     {
-      "id": "a-808538337836",
+      "id": "a-370182481268",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1693,7 +1693,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMimwFBVV95cUxQeXNjSEJaMFlfZk90Qy1NQndidFRUMWVqMnJuV1d6MC12UTU3ay0wUkhCcE1TQzBBZzljQWdzSmoxalpGRnNaekdOTVoxX0ZJc1EtNXZONEVUeHpBY2lBbFNkMWQ0X3BPTlhXVG1qMDRYdWkxVm1KSldzdlNVNVR4U1BDZ3hvN0ZReEh4Y2ZrNFc0aEJsVGhNWU41bw?oc=5\" target=\"_blank\">Oxford PV achieve"
     },
     {
-      "id": "a-181227451525",
+      "id": "a-205071308946",
       "company": "Renshine Solar",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1706,7 +1706,7 @@
       "phase": "Planned",
       "nivel_riesgo": "Neutral",
       "resumen_ia": "Análisis local — Empresa: Renshine Solar (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
-      "target_year": "2026",
+      "target_year": "2025",
       "invest_proxy": false,
       "geo": {
         "country": "China",
@@ -1721,7 +1721,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiugFBVV95cUxOQjROSnRmdmpZMUpnb3M5c1dIakxIZURkZ0w5NWNIejRxVEFsX2FXd2h5Zld6NFpqeXFXaWMyTzhNbnBwbTA2M3pGdTlob3RUNzF4QUN3TWh2OUFrWkswUFpWay1TbVVCT0Z5OWxfMl9hQXQyWmFKeEJuUkhKRkVDeDVheEhtT2tpY3BRc1hHWnJRZzVYZDVmSTlBZWtHdDA2WmF5QmdtNDZSLWNSRExmQmNwSGlWaDJXUm"
     },
     {
-      "id": "a-967301491693",
+      "id": "a-610070115353",
       "company": "Oxford PV",
       "capacityValue": 200.0,
       "capacityUnit": "MW",
@@ -1749,7 +1749,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMixAFBVV95cUxQRGhJZG0wYzdpaUl2Zm1tREJIVFVmazc3Z21CaHJvRkplYzB5a3pTcWg0MklaSm0wT1BFdHNFVzRVQ1Z1TE9uSkpXRWJTUEMta0tuWjV1eEdNSHRad1JrdUR4MzdvdnBhNl9oY2EtMXVlSmdfY3ItaDNyQldBTFFjel9uVEwtRERmNmMxSmtiMDdxU3ZpdlhmTGJNT2R4MmZHMzRMNnQwa3ZOMGdvdm9uY0R0eXhLNGgzY2"
     },
     {
-      "id": "a-606192218018",
+      "id": "a-450437107455",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1777,7 +1777,35 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMivAFBVV95cUxQY0piU3VvYXFXZU9BZkNGTFFPc0R1MVBxdFhEaDRuTTVVNnRrOFdKMUozdTF1YndfektJTEJ5M2VyV0pqZ0tjQlBsc3BpMlFIYndxQy1qMENDdDI4cFc2R3NUd041NmZfTlJOTmxGSWFSeHlRRzV5WDlxYl9DbUJpM00zTUEyNUEzSXM4ZW13VjU3dnJqY3p1S085VWlpLVRkaDc0M0pMVElGWGxHazY5djg0NGNrWFJjNU"
     },
     {
-      "id": "a-722254563343",
+      "id": "a-635158964354",
+      "company": "GCL",
+      "capacityValue": 0.0,
+      "capacityUnit": "MW",
+      "capacityGw": 0.0,
+      "iodineDemand": 0.0,
+      "pbi2": 0.0,
+      "fai": 0.0,
+      "mai": 0.0,
+      "csi": 0.0,
+      "phase": "Planned",
+      "nivel_riesgo": "Beneficioso",
+      "resumen_ia": "Análisis local — Empresa: GCL (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "target_year": "2024",
+      "invest_proxy": false,
+      "geo": {
+        "country": "China",
+        "continent": "Asia"
+      },
+      "llm_used": false,
+      "radar_only": true,
+      "date": "2025-07-21",
+      "source": "GNews-GCL",
+      "title": "GCL Optoelectronics Secures Nearly 200 Million Yuan in Series C2 Financing to Speed Up Perovskite Commercialization Process - 36Kr",
+      "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFAwWkdPei1JYkxIa21HeWFmNURVTHYyZjRWdGlvc0cwUUc5QjBpM05XMnpacHoyejZVWGlaQXdxZVdnMWtUQzZab2RxTzFXLVpKMUpn?oc=5",
+      "summary": "<a href=\"https://news.google.com/rss/articles/CBMiU0FVX3lxTFAwWkdPei1JYkxIa21HeWFmNURVTHYyZjRWdGlvc0cwUUc5QjBpM05XMnpacHoyejZVWGlaQXdxZVdnMWtUQzZab2RxTzFXLVpKMUpn?oc=5\" target=\"_blank\">GCL Optoelectronics Secures Nearly 200 Million Yuan in Series C2 Financing to Speed Up Perovskite Commercialization"
+    },
+    {
+      "id": "a-981061818441",
       "company": "BOE",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1805,7 +1833,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMimwFBVV95cUxNc21qRTd3ai1fc3hlaV9QeThxQ0ZVb0ZFT2lWRjR6azM5QTNUSU90VmduZmtlM3M0VkFkQXNXdnNLa0lsc2tROFJ6UVJtZEs5OE1xbmh1SmtaYzhlb2JsNk9MLWpEWHRvV2I1R2dBdWNZRkZnUVVFeURLTkRicm5nTjRJRWdWQ21leDdHcW5YVVhaYlF5MDdkRDlSQQ?oc=5\" target=\"_blank\">BOE pivots beyond"
     },
     {
-      "id": "a-195000666924",
+      "id": "a-270402268127",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1833,7 +1861,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMigwFBVV95cUxPeXpzWm1DQjAyMzZXVWRLNWhTOE9naXI1Z3plamdqQzBJbkpfb3ZsSF9aOGhxbVg0UG1rLVZxVmhPT0F2aks0SlktMVF4THlvOVlkbTFRSlNUcFRiRGZkMHhjRjZ2eFE1VlkxQV85S1dYWVZPTEVudjl5VmNxTGF1OTA5Zw?oc=5\" target=\"_blank\">Caelux ships first order of perovskite glass tech"
     },
     {
-      "id": "a-700661984933",
+      "id": "a-633063233402",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1861,7 +1889,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMirgFBVV95cUxOa2hoc1o1SHNoRktVZWxVdDNtWUpBVFgtNk1MNnhSYmtSaXVYNUtvSUtIRDVCYVpweHZSUEZGRFJWcXhGQUF0NC1FR1N1YzgxQzF0Zm5jejZVOXZCX01rZkxWLUFLOTJJWjJzR3FYdE1vSFcyVU15dHZsdUJxbDV6bFhHQUozcHUzVTBuNDNQcm45N1lTYllzdkFUMERIdUpOM28zUkZXdG9IcW9BX3c?oc=5\" target=\""
     },
     {
-      "id": "a-200647910291",
+      "id": "a-824110255400",
       "company": "CNNP",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1889,7 +1917,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiqwFBVV95cUxPOVM5NnE5ajhIdWR1bEJ1ZUwwLWpVMTlzZUd5S2M1QUJrZ3R5ekQxZlVyMXIzeldqSkE1UmZ0Wm5xM2pqVXZjMmQtU0p0ckc0bGxWbHo4LU8wcG4tOGs4c1pTVFZtd3dabVlKZ3RkbGxzNXN0TWtzbUZvdkRpNG80NjFZS2RBcl8zVlFlSF9WaWdLbDhTeU5sWUhzSXRaRGdieVU5WWNCY0VuRjQ?oc=5\" target=\"_bla"
     },
     {
-      "id": "a-266662387130",
+      "id": "a-499028823373",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1917,7 +1945,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMifkFVX3lxTE1PTEd1LUZXRmg3UHpzWUMtb1FWam5PdDk2QU1NMHV4ZklDUUdLOGlDckkxdWk2b1pwelpRUWh1TjhlWVdGeHBnQ1N2ZUVfYkNheEtva1g1cloxNGdBdjBkVk1KOE9zano4UG5ka1IyaXhjTF95T3VodThZR3BYQdIBiwFBVV95cUxPUHQxaXA1Rk9qRnFzdnM2WEp4c2dXYjFDR205LV9jemowaW11WGhkQ2xJWVFHcWt0U1"
     },
     {
-      "id": "a-132788613143",
+      "id": "a-716840612906",
       "company": "GCL",
       "capacityValue": 1.0,
       "capacityUnit": "GW",
@@ -1945,7 +1973,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxNckViUDlaYld6bmV1Ukl1Vzk1RUNIb0dTay1kVGRRNTFEYlVkOWxuUjVuVWlPaEJoekRaV0VfdDkwYWR6WHlEelhVNE9rQzh0emZRV0pCLWhlcFI5dWljQVNKLWx2LVlrZWY0YlVXdDVmY2p2N0pyWE9XZkhPaXkyNTlSSFJxcTNSWGFacFloYlNvbzhtRFQydTNLSC1pLW5jRDFqVVhRWEpvT1JVWURURHJKSzVVdWJ1?o"
     },
     {
-      "id": "a-548302982566",
+      "id": "a-664321989851",
       "company": "UtmoLight",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -1973,7 +2001,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMi1AFBVV95cUxPM3hFUk55QW5qNkRHNWFVb3pYMXJPME9SVXBuc3Vzekk5VXV2Z3ROcFVRSG1GZllsX0wyWlZMZXQyMzdET0JfQ1VuSktCU3pxcDVWaWJNV2hSaGRTcUFpdDNMQlVjUGdkanNYb2RqcklsZFZrbkpPX0RSa1NMZk5tSlV0SDBDcUE5QU1YUUlPYVU0WmJFZjFKd2pLakdSWkdPZ3dMQkRQNExWNVdhS2RCMUlPNjJhNTF3OG"
     },
     {
-      "id": "a-676545961091",
+      "id": "a-151996507644",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2001,7 +2029,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMifkFVX3lxTE5fNUFpLWpRRERHWTY3Qi03ZWU2b0N0NWlaQ2Q2NVBlY1hPbTh5SmxCN0FsX2p5MkUwanpzZXRPU1lpbkNuenR6TTMxTDFubEpjdFk2TTZkMExWQk90ZzkzeTFKMF9uakVxSHFXNTl4ZDlxNFhnNEpNWXBoS3Jpd9IBiwFBVV95cUxQUUlZWmw3b0s5Vm1YUmJNMXJONHdBRzQ1VjVPb3pYeDdwMHNMTW8zbU9SZ0o4NU10cG"
     },
     {
-      "id": "a-158983642975",
+      "id": "a-373640162017",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2029,7 +2057,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMikgFBVV95cUxQb2ZYOVI3TmY2NDRSN184SDYtMlJJeFNLMlFSOEZ1RWt3UlkxMzZrSWRvUGgzWDcxTm9BeHRtRDV3VVhpS1FFTjcyOUZ1X3BtZy11S2FlNkZrcFdxRmxWeVlRQmFjMkZER0pPTUpUWU9Fcy1SekFhSTRaNmg3bkxzMFUxUl9JOXhVbGROSmZ1dXBqUQ?oc=5\" target=\"_blank\">Oxford PV Raises $41 Million "
     },
     {
-      "id": "a-632486116872",
+      "id": "a-2564868220",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2057,7 +2085,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiqgFBVV95cUxOVVFqeXh0YXZ3UjJCMHlUU0RXUTJIeFJCNE1NUkxHckZVRlNYNE5qY1Zhc2JuT0tWMmxZdW1Ydm9fTWRXalRTRl83Z0xaMzE0amRTZHh5SVRrdkVlZE5BcW12WUNtSHVhWnQ0Wm5ucVRRbWJrRVZ4eXVVMVd6NFM4bmJlSl93b0xkYzZuYkRhTDlKNWZ6MGxJR0FOVV9rUldtQ0RFRC1HQkE0QQ?oc=5\" target=\"_blan"
     },
     {
-      "id": "a-557183142425",
+      "id": "a-90761182606",
       "company": "Microquanta",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2085,7 +2113,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMizwFBVV95cUxPMnBVc1FlNE41QjVXZkR0b2tfNU1fQzdkaEZub0JGRmloZUtnNzZqaXRCako4clhhM0RqYTZNWlFDcmsxSV9ESFNnbFRBMXF2cDVfUmpTMU5oYk9ELUVaVTJpZmtfbWFlcVc5Zy11cnJLYXV1MG1DckRfa2RoRnVfaERSQUl1ejdIYjZoSlVjcmJQYUVKRGdSazh1a1FuWmlMSVQ4R2MybkV6X19peGlRaEthNFg4SWlXNF"
     },
     {
-      "id": "a-666719790873",
+      "id": "a-897846858521",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2113,7 +2141,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMijgFBVV95cUxPLUJkamlQZTZSOGZvVHdLZzkxQUMxcmpFZWdMbUFDSE92ejFIOGJiSTc1RGJ6bEF0MFN5ZFA2bjlpbzJOcWRJYkZmSm1yd3NwT1J6SFBZMGJ6VGFtR0dXV19oYm4zT0Y0MXlQQVBYRE5Bc2YyTk9zUG53OUh6aldGaWYycVphZHpSLXNNOUln0gGbAUFVX3lxTFBaam5HX0NVTmtkWEFlM2dDb2VkUWJYWG5wb3hZWTZvWX"
     },
     {
-      "id": "a-790827675543",
+      "id": "a-808705662577",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2141,7 +2169,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiygFBVV95cUxPZ3NxMnpNMVJsUUlyWTB2UWtMTGVEVFltcjFLZEhVWE1la2otS1pQS2pLU1RxMkFtT2pkalhWS0ZwalRLM0g2WUR0YWVMLUg1OC1CdnhpUkxDandsR0dBdXAyT2g0MkItbTRBNFg2ei1LWlZFV3RkMkJUX0diN2pIQXNDa3Z0MGRsa2puRGZ1NERETkN6UEd4Yk82TVhLVDlWZ3YyekoyNmVqREVQdnQtbUZjSzc3eGFHNT"
     },
     {
-      "id": "a-587018706",
+      "id": "a-406631902264",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2169,7 +2197,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMirAFBVV95cUxQTlZtV3NQb2l1TTVKQ3ljSUFyQ2o4Ylp6U0ZOWmI4UWlvOWc5ZGs3RGNZRmdwcmxJbXZ4RkluWmNuSzJoME1hYi1maGhWU0pSMnNlMV9tdVhhQmVUYzNUSE9zYXBRQmNHejhnZEc5TGhEd0xoQlp0aXRqeHNqajRRWS11VDJtd0QtdUl0d2ZxR1ZlcmJMbmFMT3RMaVUyVFZHQnRyRHRTZUR3cnpW?oc=5\" target=\"_bl"
     },
     {
-      "id": "a-451086729497",
+      "id": "a-174297719457",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2197,7 +2225,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMivwFBVV95cUxNUFNKWVdnTVBFdVI1eVF5ZFZYVnJXQWhXbEVRV0JaMkhoX1daaTEzTHpIc1FHc0ZqSmc4Wk91MFQ3dFQwX3JpQ2lXYVdkUFkzdlI0aS1ZcE1tSG5DSk1XeGNZV2VqNWM4RXdVOWJHczRaRXlmZE1OdnBJcmtZR182RndCbTc4YmFyRUh5WFVpT3ZSeUpSbnNET18xa3F0NFUxa3lnUHl6Zlp6VEdIRTE3U3k1NHhtQ0VvaH"
     },
     {
-      "id": "a-520819321068",
+      "id": "a-197760730351",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2225,7 +2253,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMimgFBVV95cUxQamNvQTdlV2d1TzdTeVIyWnBlTUVIUmNCcUNKUENLeVBKN01UOVl2WmQtRzlvaGp3VC1BT2U2RWNmRktnTzNvZTNBTUYtZ2xZM1ZtX1pqQXZzZDhjSjdSRDhOWnJJZ0FNdjBBb0Nhb3UxeFVEWjZwN2JoYkxzajItQ3NkZ1dlTXV4Y3RMejdsZU9LTlJvNldRREt3?oc=5\" target=\"_blank\">GCL claims 19.04% e"
     },
     {
-      "id": "a-229019193353",
+      "id": "a-279199597830",
       "company": "UtmoLight",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2253,7 +2281,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMinAFBVV95cUxQTkxGZTdiaXBpTE5aN01VZXNZMEpzZmxvMV9hU3laZVRxRXZqQU55VENpYXBhTTFaS1V2dHJfSWJPT0Rhb1pVdGY2RnpvcXg3dDlkTi10ZmV1ZUg5ZE96X2lvX0VFdUMtazhFRUp5YmhRbnczNmFPZU4tdXdfdDYzVWQyZUhRU1c3c2NWNl9aM19MZ2t2WXFFWVdua2U?oc=5\" target=\"_blank\">UtmoLight pushes"
     },
     {
-      "id": "a-198678539264",
+      "id": "a-191148322985",
       "company": "Renshine Solar",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2266,7 +2294,7 @@
       "phase": "Planned",
       "nivel_riesgo": "Beneficioso",
       "resumen_ia": "Análisis local — Empresa: Renshine Solar (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
-      "target_year": "2026",
+      "target_year": "2025",
       "invest_proxy": false,
       "geo": {
         "country": "China",
@@ -2281,35 +2309,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiuwFBVV95cUxOS0JYcWo1U202aWtJc2R0YzE2Vm1wLUUzTDF3MEhYOWhZVWVpYjZHVGMybVR6VGlsbnlraUx0SGU3OU9RZHNyR3h1S2lwSEdZSHdHbTNqTGllaU41STZMZllqSWxiNDZnSzFMRHVTXzJFMzFHS2dTRDE5VXBNdUd2ZWxDVTNWMG5LcE5EQ19mMi0xQ0twYXFQOVJrazk4WnZJWmVTbFBLeTV4UUdKOEREYWlFRTZ1ZkVYc2"
     },
     {
-      "id": "a-95138959182",
-      "company": "Microquanta",
-      "capacityValue": 3.0,
-      "capacityUnit": "MW",
-      "capacityGw": 0.003,
-      "iodineDemand": 0.0142,
-      "pbi2": 0.0085,
-      "fai": 0.0028,
-      "mai": 0.0014,
-      "csi": 0.0014,
-      "phase": "Planned",
-      "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Microquanta (China). Capacidad: 0.003 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
-      "target_year": "2026",
-      "invest_proxy": false,
-      "geo": {
-        "country": "China",
-        "continent": "Asia"
-      },
-      "llm_used": false,
-      "radar_only": false,
-      "date": "2025-02-17",
-      "source": "GNews-Microquanta",
-      "title": "Microquanta developing perovskite solar modules for BIPV applications - pv magazine Global",
-      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPS1NSeU5FTnN3MWEwb3NwR2tJUGJjeHZMSzdFV2NiZjh6U2ktb3JuN0QzRnlaYV94OUpKSmx4cmcxNm12Sk5WZmVpRjNUaTAyaFVfa0I5bmhYNjcwMzcxRHlqZVFxc3h1TTFpMEZyYmtFTFpXWWFnOFZPVC13eG1Ed2gwOGtWRGFYanRSbTlTaGdTOHZNRGpCSnA0amwtWXZlNVk4TzBHVU5IdGVzWHc?oc=5",
-      "summary": "<a href=\"https://news.google.com/rss/articles/CBMirgFBVV95cUxPS1NSeU5FTnN3MWEwb3NwR2tJUGJjeHZMSzdFV2NiZjh6U2ktb3JuN0QzRnlaYV94OUpKSmx4cmcxNm12Sk5WZmVpRjNUaTAyaFVfa0I5bmhYNjcwMzcxRHlqZVFxc3h1TTFpMEZyYmtFTFpXWWFnOFZPVC13eG1Ed2gwOGtWRGFYanRSbTlTaGdTOHZNRGpCSnA0amwtWXZlNVk4TzBHVU5IdGVzWHc?oc=5\" target=\""
-    },
-    {
-      "id": "a-980671706302",
+      "id": "a-954444178257",
       "company": "UtmoLight",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2337,7 +2337,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiqgFBVV95cUxNQUVXWXVjekEteEExTDFhb1dMb1BoQXlQQk8xLVFpZEMxT3ZGOWhqMHZTQW1PRXhXS1RhYm5EajFSb251dERBMU5pWG1BTTh0M3JPaEkwZE9LZ3JpMEZUT291akEtT2VEQU1LdWZYRFdZbTNsLTRYanZmaGlsYzFWRlA5T2NFdmVqd1h3cDY1NjFZSHU3YjVQS3l5UWdrQW9Td1pjQ1Rmenk4UQ?oc=5\" target=\"_blan"
     },
     {
-      "id": "a-872514326530",
+      "id": "a-738572643769",
       "company": "Microquanta",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2365,7 +2365,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMihAFBVV95cUxObzBhTVNaLUdpNlZneFRCX1RIOTI0WThTbHM0cVFqWl9OTTRsampjTG1zT3F2OEFWOFRac3ZELVhVV1BlNDlGSGtnVDR0WmZPek1ZUXdIa09nZHBZZG0wR0dkSXlDMmRhbnNpaE9nSmxMM25lbkFQQ2ZKSlg1MjFQYmx0bXTSAZIBQVVfeXFMT3U3WUF5V09KWXppa2tRUnkySWY1c21MeXN4WDFqdzF3d2FORlVGa3VZMW"
     },
     {
-      "id": "a-939528852027",
+      "id": "a-493810037646",
       "company": "UtmoLight",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2393,7 +2393,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMi1AFBVV95cUxORXRGZ0tObGhOX1FzTHJIVEZ5OGZ6QnpuSzMxaEk0amdUcDBoLWpUVHU4dTBuemo0bGR4QV8xdVJZY3g1bmJGNWNoRzFEU2J3UUx2d2Y0M2NBVDhIOGdhY3hSNDd0UVE3dlNVSGE2UEhhQ19tVS1KR2FheGZlbkk5WmhLSENDRlN1QTlaUFI5eFJsT1VTUmlZS2pCeWVyOHZQZ04yVjNvM3JpVkt3Y3N5akhsRjNKVjdtWl"
     },
     {
-      "id": "a-449263518955",
+      "id": "a-523159384531",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2421,7 +2421,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMi-gFBVV95cUxQTTJHU0pCRGVKSFpOTWNBYkZ0TXhtWTh6YTgxdHVGZ0x4TlVBY0tTNmVhQVFBbnFBa0FjZTNzV296T2Joanp6VktkME1CTnJjY3RrVXBEb0V1eTZzZUI4SkVCS25hWXh3TUkzd1hMRFJXU19WVmJOcjY5bUxoeGxTTTdnbF9UYVViR0JjeGUwRDJBTWpVM2NvS001QnRBQ3hLMG4tVzE1Ym5SMHRpUDQ4MnhhUkRSRHdLTX"
     },
     {
-      "id": "a-765408938262",
+      "id": "a-267621303050",
       "company": "Sekisui Chemical",
       "capacityValue": 100.0,
       "capacityUnit": "MW",
@@ -2449,7 +2449,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMirwFBVV95cUxPQ08xbTN5NHZsVHpEN2NyRW9MeGF1aXZSRWZFZ20tWVFnOHpUck1IakQ1R3ZHNWJ4Z0RYcm5EdHNnYzc4ZDhTcXk4OVk3UVphSG9UQ05uQTU4aDFIY1BUeE9Wbmk4UWh3NHN4eHF3TGFuQnVqMVNLb21veS16bFVtSjJIVERaRV9aRHhIZUVPVGROdWRqZGdmNTVmeHl2UDRzc3ZrSF9tM0pSZzd2QTRV0gG8AUFVX3lxTE"
     },
     {
-      "id": "a-18074622571",
+      "id": "a-108440352209",
       "company": "Sekisui Chemical",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2477,7 +2477,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMivwFBVV95cUxNdDBJd3N0RlZIdHFQQkNmdU5od3NMYml2RUlaR0d1bnRRek0yRlBPUnpsTm5tUW1zQk9uMmlmWUFhWFpJT3ZSbG5aTUVvR0s1UHBnTjBScWhxa01QZGpldU5JMUFuQWZDekoybS1kZGwxQWlheHljaVNyMlNVdXNRU19Cb3NrZEFKM09YOUVIeE9Qcm82NndsczhWcDlyaDMyNlZqWTRHYnp6WC14RWtzZFlLRDREbFNpXz"
     },
     {
-      "id": "a-183037261217",
+      "id": "a-9918590230",
       "company": "Sekisui Chemical",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2505,7 +2505,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMipgFBVV95cUxOUWZBakt6R2dJTkNOVE4wN2NzUXl3dUVkalY1Umt5TmlLSlR4U1ZDcEZHeUhGTk5zN3h1TGI0aDk3Zzd1REpNWWNYSFRJeXJEc3RLUW85bG5DRGN0T1BnSzFYQldGdWtNUmpCa21WNTA2MDQxZV9ROENTTmVPeVVrUEZIUXNkZ3RjUnFjdXdNQ1R5X0k1V21NeW53SFRqUE93WW0tbVBn?oc=5\" target=\"_blank\">Sek"
     },
     {
-      "id": "a-869658376235",
+      "id": "a-79693192175",
       "company": "Sekisui Chemical",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2533,7 +2533,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxQMGlSRzNNOTdOSHU0SHRpaHJabVNiQUVMLUY2MXJ2T3VFX1hjdWk2MlYwQWs5T0NLenNlRkM1ZWJoNlpkblowcWhsTFB2SlRxekZjNDVzWExmc2t2djV2SGtjbWUzcjdfZjhEREZmbkRiaUc3dVFhUGN1eWpITnhRRUlFWHB4UV9qWHFPQy1wb00yZmtMenBndFpjUDlLdnowQVZySmNwVWoycnkyUDFOX3oyNURQLWtC0g"
     },
     {
-      "id": "a-111811645783",
+      "id": "a-606803595750",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2561,7 +2561,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMihAFBVV95cUxNZHZ6bFYwdlRycFJOWUNzekhmQ2JicWdlLU1YalY1VmxyVENiRXZBbUZZMUloSXJQQndNdkkwVGtBUFdZNllwWWV1SnNhSnZyemNOdVV6UnE1emlZaHJjcndRcGRQNExDdlFxaFFodlo0VWRIOW85SE43UTY0LUc4SXg5ejc?oc=5\" target=\"_blank\">Rising Star: Leslie Chang, Caelux</a>&nbsp;&nbsp"
     },
     {
-      "id": "a-76847814121",
+      "id": "a-520983675496",
       "company": "UtmoLight",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2589,7 +2589,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMirAFBVV95cUxNTXZST25uSDRoUXBUZUxWNU1hQmp0aE93dElrcWVfWTVaRHZBWnd3c1ppelBfTWl3LVFMRWt2WVg2TTlEekpUM2tWZFFIZDloXzRNRW9QRC1wQm42dnlBRFBLS0FBcWJEQ2NzLUJhMjlkUVhlaWZ4S0lUWlVEX0xITUpKLTBxb3JEV0ZrZWRjTFJsQzIzZXdQX0NFVmlycWhaZXg0Vkw3RmFOTXZG?oc=5\" target=\"_bl"
     },
     {
-      "id": "a-879230163293",
+      "id": "a-303232499382",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2617,7 +2617,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMid0FVX3lxTFBRQnBGak1OZ29xQy02NG05cFdPTXhZd0c3TDI2UEp1bk9lSTBxWVVtUkkwS0NuSGZDMEpwTkFJNHFlbHgwbDROYklHc0h1Y2RzdEVpU1NoMUtpcEFkY1BlU2IzamRiY2VXQVNhV0lFd3ZvUlI4S05J?oc=5\" target=\"_blank\">Oxford PV Goes Commercial With Perovskite Solar Panels</a>&nbsp;&nb"
     },
     {
-      "id": "a-144891319870",
+      "id": "a-74588208248",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2645,7 +2645,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiuwFBVV95cUxNTUdRSVhFUnhzVDVCZTJuMVh6cWFqTzM1aTNqekk1dnl6akNZMXZzN09UTU44ZFQxQXFKeDVpOVo5QWV1dUtDcjhHMkVyU2NtWG5JenBvUTVqSFo0ak16MjlpdFdpRzMxTHBsV21Oc19NNV91blJjMndpUTEwdnZRaGUwanNleUxSWVV6SDJoM3hqNDNaSDRDRTJQcHRQbC12RDN2SkphVEE5RDlDTUQ2dXI2Y2hvZFY3Sm"
     },
     {
-      "id": "a-944113455280",
+      "id": "a-444635854548",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2673,7 +2673,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMirAFBVV95cUxOOFRmRWhLXzY4OHRDM2FlT3pYZ05lX19NWS1TYnJmZWFzYUFocXpxQ0VXcDUwM2JTbFYzM3NmaUNlS0xIMG40SF9NbnZOaU4yckN2b0NDc2RWRURHUWQzZEdZcEgybU93MzVEMlU4MHlGT1JGTUl0NnZRcTdWMFVRUHYzWHJiVnRDZ1ZTMnlwWnRZdlZuLWh3U1BlMFlfd1lxQTdabHZUVnFyR2FS?oc=5\" target=\"_bl"
     },
     {
-      "id": "a-62722942135",
+      "id": "a-250918341311",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2701,7 +2701,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiiwFBVV95cUxPM1N3LTV0VEJoZmdFMnd0NXloN2lCdjBHRVlNcUpmcW5ZV2R4eUxLV1F4bVBpTHhheEwzSWVXalAtMzM3Tk15YTVnbDlQU0drRXd2ODVLUzZheFdzZXVLNlp0YzBIb243OFZ5SmZQZDhPcDdtc2ZrMTNtdkZXN3FSUm5DRFM5NzY5SVYw?oc=5\" target=\"_blank\">Oxford PV ships first commercial perovs"
     },
     {
-      "id": "a-537500689899",
+      "id": "a-986401425869",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2729,7 +2729,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMipwFBVV95cUxNT04tenBCN3lrRTktZFRWMUYzbXJXWXFQYm14YXMzOV9makZCX1JaWEdzTVZVanhfZUtZbk8xcno5dGdnWVI1NE5pakNzWnpuQ2xyMlpXc0RZN2xYdW9EcFpIMU1idjQxaGRIcGNOa3pOWW5LR1VNWTdiNTk4V3ZYRXFQLXB6SHB5emptMjFjQjloZXJPWFVRNVVrNExoWElpOWF0UzAtUQ?oc=5\" target=\"_blank\">O"
     },
     {
-      "id": "a-172471070754",
+      "id": "a-5573815442",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2757,7 +2757,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMirwFBVV95cUxQS2pUc1JnZXR4Vk1wb0VpNTFING45cEJOdkIwQmlZY3ZlVS1nclZuU1dMaEtTa3hOYTJ5dkhMQTA1T3NDLWNVTGpMT2RBT3hBU0JrdGRrTFllbmxDUThUdGlRUzR5Tm5hTW5DSTdva0YxdktoQ3RGRE5BNGJyakgtSHdHWVRBZDlFZVRHaC1VcFFoN29yUkFjdnlrTklfN0lIVHk4VjNIZzRyX0FKYlFN0gG8AUFVX3lxTE"
     },
     {
-      "id": "a-824369656218",
+      "id": "a-419855908782",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2785,7 +2785,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiqAFBVV95cUxONU1JMWc1UGZUSFh5Q0VaLTdZUk9VV09LU3FCZjQ1alJLVlFtVHFzVXRndnlLYkExTGxibkx4OWlXWFFGRjl0ZmgwSkd5cWU1WU83cW44Q055aXhwWHZVSVE1WE01TGVHNXBhTkJ4T1Jsb1A3YnJFTVFBdkVZMzAwY281WTBBLTJOMGxJQkozVVVuTWRaVU50ejNFb3kzTXZMNmN5SktfdEw?oc=5\" target=\"_blank\">"
     },
     {
-      "id": "a-714679330090",
+      "id": "a-773686117145",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2813,7 +2813,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMimgFBVV95cUxPM0pCV2lCLWdyNnRyaW5QYUNWeUpRTjNPOHQ0U1dYbHFmcnVxZTNxeVVrTkM2MmM4eFJRZGs3NG9Gcl9OZjBsTUNkTEVKSXhnTFdIQ2ZmVXo4Z0VFdk5Rd2RuVVE4amEzYjlNR3Z6RGhaaVFOUnlGU0ZOSWZmZFFCZjlibWFUU2w5RUpvQlViRWtySl80ejZyMm93?oc=5\" target=\"_blank\">New world record se"
     },
     {
-      "id": "a-788720007491",
+      "id": "a-35039922554",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2841,7 +2841,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMihgFBVV95cUxQT1Z0QmU1NXpvbWlXZGZsV3dFc2NSNl8yck05NEl6THBWem9FdGEtdF90ZGZNRVFxcVUxdVJWYlZjNEZBa3hVVFk4YW9GcUZST3ROM21SNWRZRmVkNU1obzRUV2YwRTBkUXFGM3ZwaFlISl9jMHNiMUpITjNHX19FVjJnQWlEQQ?oc=5\" target=\"_blank\">Oxford PV unveils record 26.9% perovskite tan"
     },
     {
-      "id": "a-401898245021",
+      "id": "a-272833698971",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2869,7 +2869,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMisgFBVV95cUxPZ3h0T083UGktWVZOYUZmazlxb1Fpc3Q0WWRYX1IyVWN3T1lzSkJOeFpLemY4MFBKbUo5RkVnNk1qMTNKa3JRVnVpc2tETDlXNHo1ejNwdHhuMlQ5TkhRUlJfVElDZ0FObW4zckZDTDlXcHRQVmI2cFh0ZXJqeTVNd2piYlBtTFRoTWkzNy0teDFMajRJTmtKcHlObGpZQXlMaDNMN1VEVW1tN2xUejk1MFdB?oc=5\" tar"
     },
     {
-      "id": "a-340305717743",
+      "id": "a-954057969883",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2897,7 +2897,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMi2wFBVV95cUxNTl9pUFpodTJQZ0s1Z0F3Ym93eXEtNkVDTTZYZUxuUUNycFk5cGRjOWkwbkFrQmwzQWVWZXAxOXB4Nlg1eXJMakxxVC1vWkxCc3RUdVZwLVE3OXUxMUJnU0NjRG0xUHhqanFsdlhpZ2dmdU9SME1Qa1paODFtRXphQlNvVDRnMVBjNUlLODdvenRScUV0VjVMWF9FeWxrclUzSmFmYl9JTUc2cVpXREZneE5BZ3ZzbXBrVk"
     },
     {
-      "id": "a-244428775036",
+      "id": "a-952786615175",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2925,7 +2925,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiuwFBVV95cUxOSmpvM1c1TFFvMlVTSTVydmFlZlJQOFdjUVN2ZkpzVmhRaGl4VmxDZFZiQVE0bkZsZWNtYWNYNm9fam9mRzZ5bzREWmlxOW1Sc1g0bUl3aFpKeTRGOXdMNVFZLVBSa1NTeDdDNVJPQVJEVDlSZEJvVHRoRG1uN0dqS3hDb1B0VFUwNzMtSEpBcDdDdFBxOU9vTWZOT2l5YW1WZnR2Rm5mbW43NngtcW15N0ZJa0I3VmhLTj"
     },
     {
-      "id": "a-102534885120",
+      "id": "a-96864477104",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -2953,35 +2953,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMipAFBVV95cUxPc2k4bUJwZmhRbWdGaG1EVnJjRlVDOUZZdjJzOWk3R3JSV1k3ejBHMkpqbmNMUlRTNFdSdnJLanJ3SVlaLXUycmt4ZUJ4OTEtV1E0d2twSHVMcng1MDJoM2dDUWoxRll2MHBhMXJvc3h2N2NJWkJPdUp3Sm9pa2M2T3dlYzh1Q25SWUJ5WERNcEFMeDVvQ2RYaTdfSHF3ek5zQlZXXw?oc=5\" target=\"_blank\">Oxfor"
     },
     {
-      "id": "a-320040590770",
-      "company": "Mellow Energy",
-      "capacityValue": 0.0,
-      "capacityUnit": "MW",
-      "capacityGw": 0.0,
-      "iodineDemand": 0.0,
-      "pbi2": 0.0,
-      "fai": 0.0,
-      "mai": 0.0,
-      "csi": 0.0,
-      "phase": "Planned",
-      "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Mellow Energy (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
-      "target_year": "2026",
-      "invest_proxy": false,
-      "geo": {
-        "country": "China",
-        "continent": "Asia"
-      },
-      "llm_used": false,
-      "radar_only": true,
-      "date": "2024-01-03",
-      "source": "GNews-Mellow Energy",
-      "title": "Mellow Energy achieves record 22.86% efficiency in large-area perovskite solar modules - Solarbe Global",
-      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOaWotNjBnR1VWSzRfVmFhNHIySHlQTEtKQVFKUEF5bGs5WkJsT2RLakd3UTFxdklNVnRZMDVxd3VSUERGaFA5TDdnOUpHX3pjNmpDMndVWFM1dFNCQ0pxYlI4RzFZWWRfMGpRZHdKVGtGb2JSUjJSQ3NfblJOeDNDYWhkVXdpQXJfYVBTTXlFUFc5SGt0ZWNWZ1R3aE9sQ2tUUHRMVzNMVmRldEtyVjJ5WjBEaWoyZms?oc=5",
-      "summary": "<a href=\"https://news.google.com/rss/articles/CBMitwFBVV95cUxOaWotNjBnR1VWSzRfVmFhNHIySHlQTEtKQVFKUEF5bGs5WkJsT2RLakd3UTFxdklNVnRZMDVxd3VSUERGaFA5TDdnOUpHX3pjNmpDMndVWFM1dFNCQ0pxYlI4RzFZWWRfMGpRZHdKVGtGb2JSUjJSQ3NfblJOeDNDYWhkVXdpQXJfYVBTTXlFUFc5SGt0ZWNWZ1R3aE9sQ2tUUHRMVzNMVmRldEtyVjJ5WjBEaWoyZms?oc"
-    },
-    {
-      "id": "a-751445234268",
+      "id": "a-227648149270",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3009,7 +2981,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMimAFBVV95cUxPT19seFNQSk15b2N1clBPdnd1dG0zREc4UTYycVg1YWVFWmJmRXpvUUl5b242OEN2dDU4NEZaTXAtVlc0YlhiSmlza0g1YXU2Ukd3UENoZUVhRU1PQXd5X3ZEcnVQZ2Y5ZlYzZTdOU3A0UDQ4TVRhbkdwem4wdVQ0a1IwVXdOQzlGUzQ5MVY2QmYwRWxzQm01cA?oc=5\" target=\"_blank\">Caelux appoints new C"
     },
     {
-      "id": "a-198581641636",
+      "id": "a-245120566991",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3037,35 +3009,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMihwFBVV95cUxQQ2VYbGxuQnB0UmY1ZkRMZ1hwdUJMSUN0aXJJRmYtWm45QjF4SGU4blJUc2duNmE4Q0U5RjhYM2U2Q1pCRFBodWhXbXJSLVJEU3M2S2s1eGplS2pPdDdiQ00yY1J2VXA5bl9Xem1lUUJKM3I2MjRuempLZ0MtT1RFSVVoWkdzenM?oc=5\" target=\"_blank\">Reliance, Others Invest $12 Million in Perov"
     },
     {
-      "id": "a-858870012130",
-      "company": "Caelux",
-      "capacityValue": 120.0,
-      "capacityUnit": "MW",
-      "capacityGw": 0.12,
-      "iodineDemand": 0.5676,
-      "pbi2": 0.3406,
-      "fai": 0.1135,
-      "mai": 0.0568,
-      "csi": 0.0568,
-      "phase": "Planned",
-      "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Caelux (USA). Capacidad: 0.120 GW (proxy CAPEX $12M). Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
-      "target_year": "2027",
-      "invest_proxy": true,
-      "geo": {
-        "country": "USA",
-        "continent": "Norteamérica"
-      },
-      "llm_used": false,
-      "radar_only": false,
-      "date": "2023-08-14",
-      "source": "GNews-Finance",
-      "title": "Perovskite startup Caelux bags US$12 million for tandem solar glass facility - PV Tech",
-      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPYXUyTHI0NnU2dkJPajE4M1VEVmFNQ2ZNN2V1VTNRNVZEZHhiZTJsT1B1dWhKTk1SMzVqU1NUSzRTbFdyaTI4WFNjbjJ1Y3R5YzAzQzFwVEtuNFg5T19QODh6cDNfSVZOZXh6YlYxUmFzNkFxTUhKcWdJNnFvdmtYT0Rwd24zZGl5dGhKYUZlVkhJcjJvaGNQajB3bUtSazJ0a1E?oc=5",
-      "summary": "<a href=\"https://news.google.com/rss/articles/CBMiogFBVV95cUxPYXUyTHI0NnU2dkJPajE4M1VEVmFNQ2ZNN2V1VTNRNVZEZHhiZTJsT1B1dWhKTk1SMzVqU1NUSzRTbFdyaTI4WFNjbjJ1Y3R5YzAzQzFwVEtuNFg5T19QODh6cDNfSVZOZXh6YlYxUmFzNkFxTUhKcWdJNnFvdmtYT0Rwd24zZGl5dGhKYUZlVkhJcjJvaGNQajB3bUtSazJ0a1E?oc=5\" target=\"_blank\">Perovski"
-    },
-    {
-      "id": "a-982717384297",
+      "id": "a-279778659042",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3093,7 +3037,35 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMic0FVX3lxTE14aEw2aEF0eE1FZ2szbmREcEpIaFlEVUdCdkplaFpSSmZBc2lheVU1b2tadWJYdjJfUnVialRGckEzN3lmWnF5ZUc0U0tObkdydnVQT2hmcDE3MklEVHRLQ2M3a0ZjejJnbHBENVZWQzNGZVk?oc=5\" target=\"_blank\">Caelux Opens New Facility</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Los Angel"
     },
     {
-      "id": "a-200758099663",
+      "id": "a-755550879983",
+      "company": "Caelux",
+      "capacityValue": 120.0,
+      "capacityUnit": "MW",
+      "capacityGw": 0.12,
+      "iodineDemand": 0.5676,
+      "pbi2": 0.3406,
+      "fai": 0.1135,
+      "mai": 0.0568,
+      "csi": 0.0568,
+      "phase": "Planned",
+      "nivel_riesgo": "Beneficioso",
+      "resumen_ia": "Análisis local — Empresa: Caelux (USA). Capacidad: 0.120 GW (proxy CAPEX $12M). Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
+      "target_year": "2027",
+      "invest_proxy": true,
+      "geo": {
+        "country": "USA",
+        "continent": "Norteamérica"
+      },
+      "llm_used": false,
+      "radar_only": false,
+      "date": "2023-08-14",
+      "source": "GNews-Finance",
+      "title": "Perovskite startup Caelux bags US$12 million for tandem solar glass facility - PV Tech",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPYXUyTHI0NnU2dkJPajE4M1VEVmFNQ2ZNN2V1VTNRNVZEZHhiZTJsT1B1dWhKTk1SMzVqU1NUSzRTbFdyaTI4WFNjbjJ1Y3R5YzAzQzFwVEtuNFg5T19QODh6cDNfSVZOZXh6YlYxUmFzNkFxTUhKcWdJNnFvdmtYT0Rwd24zZGl5dGhKYUZlVkhJcjJvaGNQajB3bUtSazJ0a1E?oc=5",
+      "summary": "<a href=\"https://news.google.com/rss/articles/CBMiogFBVV95cUxPYXUyTHI0NnU2dkJPajE4M1VEVmFNQ2ZNN2V1VTNRNVZEZHhiZTJsT1B1dWhKTk1SMzVqU1NUSzRTbFdyaTI4WFNjbjJ1Y3R5YzAzQzFwVEtuNFg5T19QODh6cDNfSVZOZXh6YlYxUmFzNkFxTUhKcWdJNnFvdmtYT0Rwd24zZGl5dGhKYUZlVkhJcjJvaGNQajB3bUtSazJ0a1E?oc=5\" target=\"_blank\">Perovski"
+    },
+    {
+      "id": "a-17251823291",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3121,7 +3093,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMingFBVV95cUxQQ0xjM2QxUk9ySGhRbWZFbGxCaExZdzY2bXdWeHhlQ3FFNEFTaHVzVHV4ekxuY0tERkhNZE84RVRyT3Z2anRpaVZNVmdSMjIwZFkwamdTS1lxUHJzbzZxSzQxbkg2M0QtVUdtOXgtemxSUXpHRkVxcTJ0M2NlUmM4QmZ0QzhUY0UyRElGY1YzZnA2SUNYQ3l4UFJWRDNxQQ?oc=5\" target=\"_blank\">Exclusive: Ca"
     },
     {
-      "id": "a-178142580180",
+      "id": "a-742278229041",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3149,7 +3121,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMimAFBVV95cUxNVjlrUkhuY2RLdHdRTUpqWWhqaktwR3h1aWhYbV95czNpeDdhM1VrZWw3ZXM2cEFVSk93cWxwZ3ZWOExIcnhybmtpdHp6SHNTZWlvMzBFeHdLTnkzZEF4ZWo5WjJSQjQ3UDJ6M2dJTFU2ck9lZ1h5NmtnX21HV051Rmxvcjd3SE94b29qUkRBRklWYXQwdFlCVg?oc=5\" target=\"_blank\">Oxford PV sets new so"
     },
     {
-      "id": "a-319305116182",
+      "id": "a-415661574939",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3177,7 +3149,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiowFBVV95cUxNdUd5LVFuSEl4X1E1NjV0eGIzVHRXVk1aTnJLSUFfUjhnbGZ0VHBsY2c4YUNTWjd4WFlBZjFCekVhQ1JRdEUta08tZU1GMF9VbjNMQnNFTG9XSkZjVWdEcFFvSm1BRjZlZ05PZ1dERERLNzBDbGZ1ZllFcTg5c3ZmUVRLay0xNk5DNUpPeE9pX2I3UWNSdU9PdFE3VmNrNWo0X2Y4?oc=5\" target=\"_blank\">Oxford "
     },
     {
-      "id": "a-194565910422",
+      "id": "a-50224614590",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3205,7 +3177,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMie0FVX3lxTFBSd0pqUFlVdzNaUUYxY01SY3dsT3l2TVgxX3pGdTluS2lEdkZva19oUkxvbm1oVV9wMjZDalJrbUEtZFowOF8ydGMxNlI3SURKU29CeURzODNGcEJtSUE1UUt5QndiODVxRUFCLU94NVZQbmR6TWNodFpxWQ?oc=5\" target=\"_blank\">GCL Perovskite Bags B+ Round of Financing Worth $72M</a>&nbsp"
     },
     {
-      "id": "a-569894943348",
+      "id": "a-401918585461",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3233,7 +3205,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMimAJBVV95cUxNSllWNTliRVZhNmhuVlpRZDdsSnZ1UWhmeDV4dkRJTzFKa3lIenJjTTZRdXZWQUdTWUczS09mOTBOdmxzYWctbVlXQUFQcVRsVzhGZXB0Uko3aXZ0NmJsQkRXX0ZIcnpGNDliX19IM0Iya0s4dGZka3ZTTlBNUXlqZ2dyckhFa3pqakx5OEZEeWVWZ2ZrN1YzcDlURElVaHBSSWsyOE1PTXA2NTloSFhxOWlVR2YtWkgtT2"
     },
     {
-      "id": "a-814724555225",
+      "id": "a-543638309416",
       "company": "Microquanta",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3261,7 +3233,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMitgFBVV95cUxOODZrVDk5Z25ScHp0X1k0LUZFWmpNNVEtSEJ3Q3pRVmNHWVlmVjZQWXRHN1MtREYtS3Q5X2pkaXk3YWsyelE4V05hOTRkUzlNNXZ4ZUF4SFVXdFBsTGo1SEV2WEhmVS0wTkNyZTZOOUZFTjdGckVENVd4R0tIcUxmTmlnY0hkd096UXAtX1VmbDI1aTJUMVFlQ3d0T2g5ZEgyTS03LWRWSUxZVWdZOTJNNFVmNVd1dw?oc="
     },
     {
-      "id": "a-668952137355",
+      "id": "a-18930899392",
       "company": "Caelux",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3289,7 +3261,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMinwFBVV95cUxNVXdraG44MkgyYmxDSUF2MDY0a0huNWNwVndETXd1dXdjcDFuRDVYUXZQSkYzdE9aNzI2RGthZW94NTVnLThmMktucnlhUFZuZUNFZDJOdXJHR1pjSFQ3aEM4SW5WYS0tb3ZTeGxhUVM5U1JrRFhFVWhQV3BOUVlHTFZVS3p0a0pfeS05dW9kZW5GSFVSdzF5aTFyaWV1bkU?oc=5\" target=\"_blank\">Reliance New"
     },
     {
-      "id": "a-391297883436",
+      "id": "a-117601783615",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3317,7 +3289,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMi2AFBVV95cUxPV3pjSW14blZ4REU3SmZtcHlEM2hyU2FxQmx0V0c0RFZURkwtRlJaOWxHN2lvQjY4eW5oZHZHbUdydV8wcTJzZkdmaHZpY3Z4ZkJrcE9VVFExQ0pWNHNjZ0oxa0tYTEtuQXhSa1NqSEpPQnAzb0F0ajMtYk1IYUduWFczTWZJby1nWmp0Q25BWFBHa0ZES2VwY3c0SEcwd2gtcXoyWWVUbVZKMnY1TTZGbHJQWVQ2OEk2Um"
     },
     {
-      "id": "a-183500450295",
+      "id": "a-212723078970",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3345,7 +3317,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiwAFBVV95cUxNaXNrSGlaWkdsM3ltNm52VmlvTjdQQ2Y1RlhvazFtZ0VDVkhucWRiVEx4VHktRXlseUFqTnlSaDRPdXllSnU3Wm9sVW5hLTZ5TUJRMVV5SGM5RWM2Zmhia1VxLUxIZUZrWjFwMTcweWhkWkFzMXpKaG5qcEVhMWp6M0tVOWNmYWY5WnhGYzV4SDZ3Nzg0ZUZsdUItYXp6M0tSbk1rOWQtTUVJNEt3dUppSFJDcE14dENOUX"
     },
     {
-      "id": "a-371263411860",
+      "id": "a-480830126128",
       "company": "GCL",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3373,7 +3345,35 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMijwFBVV95cUxQdkVJRFF3ZkVXS1JQV0E3eEVoRHJtUVdVeHlremtvWFBKdWEyRmstUlBtMDgwZzZRSEZUbmZQNU1iTFh6OXFZM2dfVWNkR1Q0aDN0OC1fRllsRHVkU2ZkT0FJUldjMkhYSUQzaDR1b214LUxHMGdwbHpnWjMyVnItOFhyeHhWVFcxNDEyYmNFY9IBnAFBVV95cUxNWlNMNEJzeFpRWDI2NkwwQU9iWmZmcHFpU0VlU1QwS1"
     },
     {
-      "id": "a-964446003281",
+      "id": "a-358782527116",
+      "company": "Microquanta",
+      "capacityValue": 0.0,
+      "capacityUnit": "MW",
+      "capacityGw": 0.0,
+      "iodineDemand": 0.0,
+      "pbi2": 0.0,
+      "fai": 0.0,
+      "mai": 0.0,
+      "csi": 0.0,
+      "phase": "Planned",
+      "nivel_riesgo": "Neutral",
+      "resumen_ia": "Análisis local — Empresa: Microquanta (China). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "target_year": "2026",
+      "invest_proxy": false,
+      "geo": {
+        "country": "China",
+        "continent": "Asia"
+      },
+      "llm_used": false,
+      "radar_only": true,
+      "date": "2021-05-17",
+      "source": "GNews-Microquanta",
+      "title": "Microquanta claims 20.2% efficiency on small perovskite module - pv magazine Global",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPY3JZMXpxaXhXeVVVRVJzd1dWTWZyRTZROUx6MUNvQzVKbWVBb1dEbXFvSDk3N3FPa0dpVjI1LWhqUkRSREJ1MFl6TGNFQlpDTndQVjFoeC1RdF9rVXBwOWd6S0FjTmdieDJxNE9zbWoyYjc2VVJIemNCcHFZT2x1NW1STzdLNDIwUEFXVHNXTnV2c0U0Um1nTmNBZnhZMXlWWXM4?oc=5",
+      "summary": "<a href=\"https://news.google.com/rss/articles/CBMiowFBVV95cUxPY3JZMXpxaXhXeVVVRVJzd1dWTWZyRTZROUx6MUNvQzVKbWVBb1dEbXFvSDk3N3FPa0dpVjI1LWhqUkRSREJ1MFl6TGNFQlpDTndQVjFoeC1RdF9rVXBwOWd6S0FjTmdieDJxNE9zbWoyYjc2VVJIemNCcHFZT2x1NW1STzdLNDIwUEFXVHNXTnV2c0U0Um1nTmNBZnhZMXlWWXM4?oc=5\" target=\"_blank\">Microqu"
+    },
+    {
+      "id": "a-893415211814",
       "company": "Oxford PV",
       "capacityValue": 100.0,
       "capacityUnit": "MW",
@@ -3401,7 +3401,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiywFBVV95cUxNS2FUNlJFXy1UazQtVThRTElYdEphalQzUHJ0S0F0Ykc0UWZfX2FjcmZBMmVHcEFEcTk0a1AxYUhyWVJsYTNDQkxveUlXck4zTGpIS2RsWG1YaktXWWlpb3ZwNGZfQU5ZOURDdXcwb0p4SzIxNDd1TWNFSUFLMXNBV3o2MEZxc2tUU3dsVERSSExJVUFTOHdjNW85bG1ZYVRHcDVSZ1VDQUc1YlphNDB5bkFHa1YwSjR3bV"
     },
     {
-      "id": "a-458585278656",
+      "id": "a-926315454565",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3429,7 +3429,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiXkFVX3lxTFB0RHlxcnQtM1RHdXVxclJwb3VuM2FuOElnUUtIMUtPTWdnRlRvcUR3cHlKNU41WktjLTBETE84N1ZJcU8wbEtwZlgwOEdjUDZNRWMxU3RjNlBlZzBWbFE?oc=5\" target=\"_blank\">Oxford PV and the Latest Solar Power Breakthrough</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">AZoM</font>"
     },
     {
-      "id": "a-163400218697",
+      "id": "a-215230638485",
       "company": "Microquanta",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3457,7 +3457,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxQNTUxbjEtY2NWRnVVdjZTTjczUHJUYWtiREJiejdRUkJOQS1lTXhEcXV2V1oyZ0hPMlExamh5Ni1PM19oRUZaQ1NJTXZVYXk0YXNIVjRGU2VQQ09WQTMwbDdQS1RDMFAxNjJkNTZ4M2lyaDREbVlmYTh5WEFfdExRWlViOVhlRkZORHFMa282ai1iWHZjMzd5MkJESzFLcXhFOFJhMXl3TUE1Ti1UUElJZ1BMaXEzR1pw?o"
     },
     {
-      "id": "a-834540961543",
+      "id": "a-473637930232",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3485,7 +3485,7 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiogFBVV95cUxPelNvdmxVMjRubjdCQzZOeEFpZU5uQWxIUGhuZVFHdkhvLUE5NkxEc1BmRGdhWlQwcVNQSkJ1YjRqYnQwd0VLTFBqaThRajBLejlQNG1xT2FmMmxEZ0xQUVY0TEswa2s5WEpXVDBUMDdPZU1ibGxfLUhSdVdUeDZGWkxya0V4NEU2cUxPVk5ZMEt3d1RMbV8wemhNUzBkWnBKX1E?oc=5\" target=\"_blank\">Solar ce"
     },
     {
-      "id": "a-856224687242",
+      "id": "a-120607380255",
       "company": "Microquanta",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -3513,5 +3513,5 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiVkFVX3lxTFBadUlVb1JaQV9ZZkV3dDNCWFlpOXVjMFFQdWdoajNjMlYwbXFlU1dTS1dfTUx1bTVIM3BtR2Y0V1FtSUpDUjhRbWJ0UGprZ2N3cFNoWmFn?oc=5\" target=\"_blank\">Microquanta</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Forbes</font>"
     }
   ],
-  "market_report": "**MEMORÁNDUM EJECUTIVO: ESTRATEGIA DE MERCADO Y PROYECCIONES DE DEMANDA DE YODO**\n\n**PARA:** Comité Ejecutivo / Dirección de Estrategia SQM\n**DE:** Oficina del Analista Estratégico Jefe, Inteligencia de Mercado\n**FECHA:** 22 de junio de 2026\n**ASUNTO:** Impacto de la maduración tecnológica de celdas de Perovskita en la demanda de Yodo\n\n---\n\n### 1. Panorama General del Mercado: El Yodo como habilitador crítico\nEl mercado fotovoltaico (PV) se encuentra en un punto de inflexión tecnológico. La transición de las celdas de silicio convencionales hacia las **celdas tándem de Perovskita-Silicio** representa el salto más significativo en eficiencia energética de la última década.\n\n*   **Estado de la Tecnología:** La perovskita permite capturar una porción del espectro solar que el silicio desperdicia. La arquitectura tándem (apilamiento) permite superar el límite teórico de Shockley-Queisser del silicio puro (aprox. 29%), alcanzando eficiencias de conversión que ya superan el 26% en laboratorio y prototipos industriales.\n*   **El Rol del Yodo:** El yodo es un componente químico fundamental en la síntesis de perovskitas de haluro de plomo (como el triyoduro de metilamonio y plomo, $CH_3NH_3PbI_3$). La pureza y la estabilidad de la estructura cristalina dependen directamente de la calidad de los precursores de yodo. A medida que la perovskita se escala a nivel industrial, el yodo deja de ser un reactivo de laboratorio para convertirse en un *commodity* estratégico de alta pureza.\n*   **Barreras:** La durabilidad a largo plazo (degradación por humedad y calor) y la escalabilidad de la manufactura (rendimiento de producción) son los desafíos principales. Sin embargo, los avances en encapsulamiento y diseño de módulos (como el *shingled interconnection*) están mitigando estos riesgos.\n\n### 2. Análisis de Eventos Recientes: Hacia la Industrialización\nEl flujo de noticias de junio de 2026 confirma que el sector ha pasado de la fase de \"investigación académica\" a la fase de \"validación de ingeniería de procesos\".\n\n*   **Evento Disruptivo (Hito de Eficiencia):** La colaboración entre **Oxford PV y Fraunhofer ISE** al alcanzar un **25.6% de eficiencia** en un módulo tándem con diseño *shingled* (interconexión tipo teja) es el evento más relevante.\n    *   *Cambio en las reglas del juego:* El diseño *shingled* no solo mejora la eficiencia, sino que optimiza el uso del área del módulo y reduce las pérdidas resistivas. Esto valida la viabilidad comercial de la perovskita para aplicaciones de alta potencia, aumentando la presión sobre la cadena de suministro de precursores químicos.\n*   **Consolidación Comercial:** La noticia de **UtmoLight** sobre un pedido de 19 MW y el lanzamiento de nuevas series de módulos, junto con los avances de **GCL** en aplicaciones espaciales y 4T (cuatro terminales), indican que la capacidad instalada dejará de ser marginal en 2027.\n*   **Desafíos de Manufactura:** La nota sobre **BOE** respecto a los rendimientos de producción en su línea piloto de sustratos de vidrio subraya que el \"cuello de botella\" actual ya no es la eficiencia, sino la **estabilidad del proceso de manufactura a gran escala**.\n\n### 3. Apreciaciones Objetivas y Proyecciones Financieras\n\nComo líder global en la producción de yodo, SQM debe monitorear la demanda no solo por volumen, sino por **especificación técnica**.\n\n*   **Cifras de Mercado:**\n    *   La eficiencia del 25.6% lograda por Oxford PV es el nuevo estándar de referencia para la comercialización masiva.\n    *   Proyectamos que para finales de 2027, la capacidad instalada de perovskita superará los 2 GW anuales, con una tasa de crecimiento compuesto (CAGR) superior al 40% hacia 2030.\n*   **Impacto en la Demanda de Yodo:**\n    *   **Consumo específico:** Se estima un consumo de aproximadamente 0.5 a 1.0 kg de yodo de alta pureza por cada MW de capacidad instalada de perovskita (considerando pérdidas en el proceso de deposición).\n    *   **Proyección de Demanda:**\n        *   **2026:** Demanda marginal (pilotos e investigación).\n        *   **2027-2028:** Demanda estimada entre 2 y 5 toneladas métricas de yodo grado electrónico/fotovoltaico.\n        *   **2030:** Si la perovskita captura el 10% del mercado solar global (aprox. 50-100 GW de nuevas instalaciones tándem), la demanda de yodo para este segmento podría escalar a **50-100 toneladas anuales**.\n\n**Recomendación Estratégica:**\nSQM debe posicionarse como el proveedor preferente de **Yodo de Ultra-Alta Pureza** para la industria fotovoltaica. La volatilidad del mercado de yodo tradicional (nutrición/rayos X) se verá compensada por este nuevo segmento de \"energía verde\". Sugiero iniciar alianzas estratégicas con los principales actores mencionados (Oxford PV, GCL, UtmoLight) para asegurar contratos de suministro a largo plazo antes de que la tecnología alcance su punto de inflexión de adopción masiva en 2028.\n\n**Atentamente,**\n\n*Analista Estratégico Jefe*\n*Inteligencia de Mercado, SQM*"
+  "market_report": "**INFORME EJECUTIVO: ESTRATEGIA DE MERCADO Y PROYECCIÓN DE DEMANDA DE YODO**\n**PARA:** Comité Ejecutivo / Gerencia de Desarrollo de Negocios\n**DE:** Analista Estratégico Jefe, Inteligencia de Mercado\n**FECHA:** 24 de junio de 2026\n**ASUNTO:** Impacto de la aceleración en la comercialización de celdas de Perovskita sobre la demanda de Yodo\n\n---\n\n### 1. Panorama General del Mercado: La Era de la Eficiencia Tándem\nLa industria fotovoltaica (PV) atraviesa un punto de inflexión tecnológico. La limitación teórica del silicio monocristalino (límite de Shockley-Queisser) ha impulsado la adopción de las **celdas tándem Perovskita-Silicio**. Esta arquitectura permite capturar una porción más amplia del espectro solar, superando eficiencias del 25-26%, un umbral crítico para la viabilidad comercial a gran escala.\n\n**El Rol Fundamental del Yodo:**\nEl yodo es un componente químico esencial en la síntesis de perovskitas de haluro de plomo (CH₃NH₃PbI₃). Actúa como el precursor fundamental para la estructura cristalina que permite la absorción fotónica. A diferencia de otros insumos, la pureza y la disponibilidad de yodo de grado electrónico son determinantes para la estabilidad operativa y la vida útil de los módulos. SQM, como líder global en la producción de yodo, se encuentra en una posición estratégica para capitalizar esta transición, ya que la perovskita no es solo una alternativa, sino el complemento necesario para la próxima generación de paneles solares.\n\n---\n\n### 2. Análisis de Eventos Recientes: Hacia la Madurez Industrial\nLas noticias recopiladas entre el 8 y el 24 de junio de 2026 confirman que el mercado ha dejado atrás la fase de \"laboratorio\" para entrar en la **fase de validación de ingeniería y escalamiento de módulos**.\n\n*   **Evento Disruptivo - El Hito de Oxford PV y Fraunhofer ISE:** La validación de un módulo tándem con una eficiencia del **25.6%** mediante la técnica de *shingled interconnection* (interconexión tipo teja) es el evento más significativo. No es solo un récord de eficiencia; es una solución de empaquetamiento que resuelve problemas de degradación y resistencia eléctrica.\n*   **Consolidación de la Cadena de Suministro:** La inclusión de proyectos de perovskita en la lista nacional de casos de PV inteligente de China (GCL) y los pedidos comerciales (ej. los 19 MW de UtmoLight) demuestran que el mercado ya no está experimentando, sino ejecutando.\n*   **Integración de Tecnologías:** La colaboración entre Oxford PV y Fraunhofer ISE valida que la industria está estandarizando el diseño de módulos tándem, lo cual es la señal definitiva de que la producción masiva es inminente.\n\n**Conclusión del análisis:** No estamos ante una tendencia aislada, sino ante una sincronización industrial donde la tecnología, el diseño de módulos y la demanda comercial están convergiendo simultáneamente.\n\n---\n\n### 3. Apreciaciones Objetivas y Proyecciones Financieras\nLa transición hacia la perovskita implica un cambio en el perfil de consumo de yodo. Mientras que el silicio tradicional no consume yodo, cada GW de capacidad de perovskita instalada requiere una carga inicial de precursores de yoduro.\n\n**Cifras y Proyecciones:**\n1.  **Capacidad Instalada:** Con los avances reportados (Oxford PV con 3 GW de capacidad objetivo para 2025 y GCL escalando sus líneas de 0.5 GW), proyectamos que la capacidad de producción de perovskita alcanzará los **15-20 GW para finales de 2027**.\n2.  **Intensidad de Uso:** Estimamos un consumo promedio de **1.5 a 2.0 toneladas de yodo por cada GW** de capacidad de producción de celdas de perovskita (considerando pérdidas en el proceso de deposición y eficiencia de conversión).\n3.  **Impacto en la Demanda de Yodo:**\n    *   **Escenario Base (2027):** Con 15 GW de capacidad, la demanda incremental de yodo para el sector solar será de aproximadamente **30 toneladas anuales**.\n    *   **Escenario de Crecimiento Acelerado (2030):** Si la perovskita captura el 10% del mercado fotovoltaico global (aprox. 50-70 GW de nueva capacidad anual), la demanda de yodo para este segmento podría escalar a **100-140 toneladas anuales**.\n\n**Recomendación Estratégica:**\nEl impacto en el volumen total de yodo de SQM es, por ahora, moderado en comparación con los mercados de rayos X o nutrición animal. Sin embargo, el **valor estratégico es disruptivo**. La perovskita requiere yodo de alta pureza (grado fotovoltaico), lo que permite a SQM capturar márgenes superiores mediante contratos de suministro a largo plazo con fabricantes de celdas (como Oxford PV, GCL y UtmoLight).\n\n**Acción Sugerida:** Debemos iniciar un programa de \"Certificación de Pureza para Fotovoltaica\" para asegurar que nuestro yodo sea el estándar de la industria, blindando nuestra posición ante la inevitable adopción masiva de la tecnología tándem.\n\n---\n*Fin del Informe.*"
 }
