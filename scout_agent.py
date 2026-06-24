@@ -1148,7 +1148,7 @@ def run_scan():
         query = f'"{co}" perovskite solar news'
         log.info("Google Search: %s", query)
         try:
-            for url in search(query, num_results=3, sleep_interval=2):
+            for url in search(query, num_results=3, sleep_interval=5):
                 log.info(" Deep Scrape: %s", url)
                 ds = deep_scrape(url)
                 title = ds.get("titulo", "Sin titulo")
@@ -1162,6 +1162,9 @@ def run_scan():
                     })
         except Exception as e:
             log.error("Error buscando %s: %s", co, e)
+        
+        log.info("Anti-Ban: durmiendo 15s...")
+        time.sleep(15)
 
     log.info("Total raw: %d artÃ­culos", len(raw))
 
