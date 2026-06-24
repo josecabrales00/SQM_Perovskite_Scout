@@ -31,9 +31,9 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import quote_plus
 
 try:
-    from googlesearch import search
+    from duckduckgo_search import DDGS
 except ImportError:
-    search = None
+    DDGS = None
 
 # â”€â”€ Silenciar InsecureRequestWarning del proxy corporativo (SSL MITM) â”€â”€
 try:
@@ -1143,32 +1143,45 @@ def run_scan():
              f"Gemini 1.5 Flash âœ“ ({_RESOLVED_KEY[:8]}...)" if LLM_ENABLED else "OFF")
     log.info("=" * 65)
 
-    if not search:
-        log.error("googlesearch-python no instalado.")
+    if not DDGS:
+        log.error("duckduckgo_search no instalado.")
         return
 
-    raw = []
-    for co in COMPANIES:
-        query = f'"{co}" perovskite solar news'
-        log.info("Google Search: %s", query)
+    if SUPABASE_ENABLED:
         try:
-            for url in search(query, num_results=3, sleep_interval=5):
-                log.info(" Deep Scrape: %s", url)
-                ds = deep_scrape(url)
-                title = ds.get("titulo", "Sin titulo")
-                if ds and ds.get("analisis") and title:
-                    raw.append({
-                        "title": title,
-                        "link": url,
-                        "summary": ds.get("analisis", ""),
-                        "pub_raw": ds.get("fecha_publicacion", ""),
-                        "full_text": title + " " + ds.get("analisis", "")
-                    })
+            log.info("Auto-Wipe Supabase DB antes de escanear...")
+            import requests as _req
+            del_url = f"{SUPABASE_URL}/rest/v1/perovskite_leads?id=gte.1"
+            _req.delete(del_url, headers=_SB_HEADERS, verify=False, timeout=20)
         except Exception as e:
-            log.error("Error buscando %s: %s", co, e)
-        
-        log.info("Anti-Ban: durmiendo 15s...")
-        time.sleep(15)
+            log.warning("Fallo en Auto-Wipe: %s", e)
+
+    raw = []
+    try:
+        with DDGS() as ddgs:
+            for co in COMPANIES:
+                query = f'"{co}" perovskite solar news'
+                log.info("DuckDuckGo Search: %s", query)
+                try:
+                    results = list(ddgs.text(query, max_results=3))
+                    for res in results:
+                        url = res.get("href")
+                        if not url: continue
+                        log.info(" Deep Scrape: %s", url)
+                        ds = deep_scrape(url)
+                        title = ds.get("titulo", "Sin titulo")
+                        if ds and ds.get("analisis") and title:
+                            raw.append({
+                                "title": title,
+                                "link": url,
+                                "summary": ds.get("analisis", ""),
+                                "pub_raw": ds.get("fecha_publicacion", ""),
+                                "full_text": title + " " + ds.get("analisis", "")
+                            })
+                except Exception as e:
+                    log.error("Error buscando %s: %s", co, e)
+    except Exception as e:
+        log.error("Error inicializando DDGS: %s", e)
 
     log.info("Total raw: %d artÃ­culos", len(raw))
 
