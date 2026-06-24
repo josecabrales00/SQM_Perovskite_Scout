@@ -72,13 +72,19 @@ async function loadAndRender() {
       totalGw += gw;
       if (r.target_year) targetYears.add(r.target_year);
       
+      // Fix 1: garantizar que title y resumen_ia nunca sean cadenas vacías
+      const _title = (r.titulo || '').trim()
+                  || (r.empresa + (r.fuente_noticia ? ' — ' + r.fuente_noticia.substring(0, 80) : ''));
+      const _analisis = (r.analisis || '').trim()
+                     || _title
+                     || 'Sin análisis disponible.';
       db.articles.push({
         id: r.id,
         company: r.empresa,
         capacityGw: gw,
         capacityValue: "",
         capacityUnit: "",
-        phase: "Planned", // Default fallback if missing
+        phase: "Planned",
         target_year: r.target_year,
         geo: { country: r.geo_pais || "", continent: r.geo_continente || "Global" },
         nivel_riesgo: r.nivel_riesgo || "Neutral",
@@ -86,10 +92,10 @@ async function loadAndRender() {
         radar_only: gw === 0,
         source: r.fuente_noticia,
         link: r.fuente_noticia,
-        summary: r.analisis || r.titulo || '',
-        resumen_ia: r.analisis || r.titulo || '',
-        title: r.titulo || (r.empresa + ' — ' + (r.fuente_noticia || '').substring(0, 80)),
-        date: r.fecha_publicacion || r.fecha_noticia || r.created_at || new Date().toISOString().split('T')[0]
+        summary:    _analisis,
+        resumen_ia: _analisis,
+        title:      _title,
+        date: r.fecha_publicacion || r.fecha_noticia || r.created_at || 'Fecha Desconocida'
       });
     });
     
@@ -694,7 +700,8 @@ function renderRiskRadar() {
   const factor      = getLiveFactor();
   const yearSel     = document.getElementById("timeline_filter")?.value || "ALL";
   const allArticles = state.db?.articles || [];
-  let radarItems    = allArticles.filter(e => e.nivel_riesgo && e.resumen_ia);
+  // Fix 1: filtrar solo por nivel_riesgo — siempre hay resumen_ia (garantizado en data mapper)
+  let radarItems = allArticles.filter(e => e.nivel_riesgo);
   if (yearSel !== "ALL") radarItems = radarItems.filter(e => e.target_year === yearSel);
 
   radarItems.sort((a, b) => {
@@ -763,14 +770,15 @@ function renderRiskRadar() {
             </div>
             <div class="text-xs flex items-center gap-1">${capInfo}</div>
           </div>
+          <!-- Fix 1: título obligatorio + análisis/resumen siempre visibles -->
           <h3 class="text-sm font-semibold text-slate-800 leading-snug mb-2 line-clamp-2">
-            ${escHtml(e.title || e.source)}
+            ${escHtml(e.title || e.source || e.link || e.company)}
           </h3>
           <div class="rounded-lg bg-slate-50 border border-slate-200 px-3 py-2">
             <p class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
               Análisis — Perspectiva Demanda Yodo SQM
             </p>
-            <p class="text-sm text-slate-700 leading-relaxed">${escHtml(e.resumen_ia)}</p>
+            <p class="text-sm text-slate-700 leading-relaxed">${escHtml(e.resumen_ia || e.summary || e.title || e.link || 'Sin análisis disponible.')}</p>
           </div>
           ${src ? `<div class="mt-2">${src}</div>` : ""}
         </div>
