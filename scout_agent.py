@@ -1,18 +1,18 @@
-"""
-SQM Perovskite Scout — Agent v6.0  (Supabase Integration)
+﻿"""
+SQM Perovskite Scout â€” Agent v6.0  (Supabase Integration)
 =========================================================
 Arquitectura: procesamiento 100% local (regex) + informe ejecutivo REST/SSL bypass.
-v6.0: Escritura dual — database.json (cache local) + Supabase Postgres (analytics).
-CONFIGURACIÓN DE API — pon tu clave aquí:
+v6.0: Escritura dual â€” database.json (cache local) + Supabase Postgres (analytics).
+CONFIGURACIÃ“N DE API â€” pon tu clave aquÃ­:
 """
 
-# ─────────────────────────────────────────────────────────────────
-#   ⚙️  PON AQUÍ TU CLAVE DE GOOGLE AI STUDIO
-#   Obtén una gratis en: https://aistudio.google.com/apikey
-# ─────────────────────────────────────────────────────────────────
+# â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+#   âš™ï¸  PON AQUÃ TU CLAVE DE GOOGLE AI STUDIO
+#   ObtÃ©n una gratis en: https://aistudio.google.com/apikey
+# â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 import os
 API_KEY = os.environ.get("GEMINI_API_KEY", "")
-# ─────────────────────────────────────────────────────────────────
+# â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 import json
 import re
@@ -32,14 +32,14 @@ try:
 except ImportError:
     search = None
 
-# ── Silenciar InsecureRequestWarning del proxy corporativo (SSL MITM) ──
+# â”€â”€ Silenciar InsecureRequestWarning del proxy corporativo (SSL MITM) â”€â”€
 try:
     import urllib3
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 except ImportError:
     pass
 
-# ── Logging ────────────────────────────────────────────────────
+# â”€â”€ Logging â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s  %(levelname)-8s  %(message)s",
@@ -47,7 +47,7 @@ logging.basicConfig(
 )
 log = logging.getLogger("SQM")
 
-# ── .env Loader (credenciales backend — nunca en el cliente) ────
+# â”€â”€ .env Loader (credenciales backend â€” nunca en el cliente) â”€â”€â”€â”€
 def _load_dotenv() -> dict:
     """Lee el archivo .env del directorio del proyecto."""
     env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env")
@@ -63,7 +63,7 @@ def _load_dotenv() -> dict:
 
 _DOTENV = _load_dotenv()
 
-# ── Supabase config (solo backend — regla AGENTS.md) ───────────
+# â”€â”€ Supabase config (solo backend â€” regla AGENTS.md) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 SUPABASE_URL      = _DOTENV.get("SUPABASE_URL", os.environ.get("SUPABASE_URL", "")).rstrip("/")
 SUPABASE_SRK      = _DOTENV.get("SUPABASE_SERVICE_ROLE_KEY",
                                   os.environ.get("SUPABASE_SERVICE_ROLE_KEY", ""))
@@ -75,14 +75,14 @@ _SB_HEADERS = {
     "Prefer":        "return=minimal",
 } if SUPABASE_ENABLED else {}
 
-# ── Resolve API key ────────────────────────────────────────────
+# â”€â”€ Resolve API key â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 _RESOLVED_KEY = (
     os.environ.get("GEMINI_API_KEY", "").strip()
     or API_KEY.strip()
 )
 LLM_ENABLED = bool(_RESOLVED_KEY)
 
-# ── Constants ──────────────────────────────────────────────────
+# â”€â”€ Constants â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 IODINE_PER_GW      = 4.73
 RATIOS             = {"pbi2": 0.60, "fai": 0.20, "mai": 0.10, "csi": 0.10}
 SCAN_INTERVAL_SEC  = 3600
@@ -90,57 +90,57 @@ DB_FILE            = os.path.join(os.path.dirname(os.path.abspath(__file__)), "d
 HTTP_PORT          = 8080
 CURRENT_YEAR       = str(datetime.now().year)   # e.g. "2026"
 
-# ── Gemini REST endpoints (requests only — no SDK) ────────────
+# â”€â”€ Gemini REST endpoints (requests only â€” no SDK) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 # Primary: gemini-3.1-flash-lite (capa gratuita 2026)
 GEMINI_ENDPOINTS = [
     "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent?key={key}",
 ]
 
-# ── Hybrid Brain System Prompt ────────────────────────────────
+# â”€â”€ Hybrid Brain System Prompt â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 HYBRID_SYSTEM_PROMPT = (
     "Eres un Analista de Inteligencia Comercial Experto para SQM Perovskite Scout. "
     "Tu objetivo es rastrear la web en busca de anuncios de nuevas plantas solares y "
-    "responder preguntas técnicas sobre celdas de perovskita.\n\n"
+    "responder preguntas tÃ©cnicas sobre celdas de perovskita.\n\n"
     "REGLA DE CITAS (Grounding Estricto): Tienes terminantemente prohibido inventar datos. "
-    "Si extraes información de la base de datos (buscar_docs), debes citar el documento "
+    "Si extraes informaciÃ³n de la base de datos (buscar_docs), debes citar el documento "
     "de origen exacto (ej: '[Fuente: doc_perovskita.pdf]'). Si extraes de internet "
     "(buscar_web), cita obligatoriamente la URL (ej: '[Fuente: https://solarnews.com/...]').\n\n"
-    "Flujo de Resolución:\n"
+    "Flujo de ResoluciÃ³n:\n"
     "1. Siempre usa primero 'buscar_docs' para buscar conocimiento interno corporativo.\n"
-    "2. Si la información no está o es insuficiente, usa 'buscar_web' para buscar en internet.\n"
+    "2. Si la informaciÃ³n no estÃ¡ o es insuficiente, usa 'buscar_web' para buscar en internet.\n"
     "3. Si detectas un anuncio de una nueva planta comercial, usa 'insertar_lead' para registrarlo. "
-    "Aplica matemáticamente la regla de 4.73 toneladas métricas de yodo por cada 1 GW instalado.\n\n"
-    "Genera una respuesta en español, clara, ejecutiva y profesional."
+    "Aplica matemÃ¡ticamente la regla de 4.73 toneladas mÃ©tricas de yodo por cada 1 GW instalado.\n\n"
+    "Genera una respuesta en espaÃ±ol, clara, ejecutiva y profesional."
 )
 
-# ── Executive Market Report Prompt ────────────────────────────
+# â”€â”€ Executive Market Report Prompt â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 EXECUTIVE_REPORT_SYSTEM_PROMPT = (
-    "Eres el Analista Estratégico Jefe de inteligencia de mercado en SQM. "
-    "Redacta un informe ejecutivo completo, exhaustivo y sin límite de extensión "
+    "Eres el Analista EstratÃ©gico Jefe de inteligencia de mercado en SQM. "
+    "Redacta un informe ejecutivo completo, exhaustivo y sin lÃ­mite de extensiÃ³n "
     "(usa todo el espacio que necesites, incluso una plana entera) sobre el mercado "
     "de celdas solares de perovskita y su impacto en la demanda global de Yodo. "
     "Estructura obligatoria: "
-    "1. Panorama General del Mercado: Estado actual de la tecnología, barreras, "
-    "celdas tándem y el rol fundamental del Yodo. "
-    "2. Análisis de Eventos Recientes: Analiza las noticias que te estoy entregando. "
-    "Si hay un evento disruptivo (ej. nuevas inversiones, eficiencias récord, GW construidos), "
-    "destácalo y explica cómo cambia las reglas del juego. Si no hay nada disruptivo, "
+    "1. Panorama General del Mercado: Estado actual de la tecnologÃ­a, barreras, "
+    "celdas tÃ¡ndem y el rol fundamental del Yodo. "
+    "2. AnÃ¡lisis de Eventos Recientes: Analiza las noticias que te estoy entregando. "
+    "Si hay un evento disruptivo (ej. nuevas inversiones, eficiencias rÃ©cord, GW construidos), "
+    "destÃ¡calo y explica cÃ³mo cambia las reglas del juego. Si no hay nada disruptivo, "
     "integra las noticias para confirmar las tendencias actuales. "
-    "3. Apreciaciones Objetivas y Cifras: Incluye fechas, volúmenes de GW, y proyecta "
+    "3. Apreciaciones Objetivas y Cifras: Incluye fechas, volÃºmenes de GW, y proyecta "
     "de forma directa y financiera el impacto futuro en las toneladas de Yodo. "
     "Usa un tono corporativo, experto y certero."
 )
 
-# ── Company Dictionary ─────────────────────────────────────────
+# â”€â”€ Company Dictionary â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 COMPANIES = [
     "UtmoLight", "Renshine Solar", "Oxford PV", "CNNC", "CNNP",
     "BOE", "GCL", "Microquanta", "Caelux", "Sekisui Chemical",
     "Photon Crystal Energy", "Mellow Energy",
 ]
 
-# ── Geographic Dictionary (static) ────────────────────────────
+# â”€â”€ Geographic Dictionary (static) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 GEO_MAP: dict[str, dict] = {
-    "Caelux":             {"country": "USA",    "continent": "Norteamérica"},
+    "Caelux":             {"country": "USA",    "continent": "NorteamÃ©rica"},
     "Saule Technologies": {"country": "Polonia", "continent": "Europa"},
     "Oxford PV":          {"country": "UK",      "continent": "Europa"},
     "CNNC":               {"country": "China",   "continent": "Asia"},
@@ -152,14 +152,14 @@ GEO_MAP: dict[str, dict] = {
     "Renshine Solar":     {"country": "China",   "continent": "Asia"},
     "Photon Crystal Energy": {"country": "China","continent": "Asia"},
     "Mellow Energy":      {"country": "China",   "continent": "Asia"},
-    "Sekisui Chemical":   {"country": "Japón",   "continent": "Asia"},
+    "Sekisui Chemical":   {"country": "JapÃ³n",   "continent": "Asia"},
 }
 GEO_DEFAULT = {"country": "Desconocido", "continent": "Global"}
 
 def geo_lookup(company: str) -> dict:
     return GEO_MAP.get(company, GEO_DEFAULT)
 
-# ── RSS Sources ────────────────────────────────────────────────
+# â”€â”€ RSS Sources â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 def build_feed_urls():
     base = "https://news.google.com/rss/search?q={q}&hl=en-US&gl=US&ceid=US:en"
     urls = [
@@ -174,17 +174,17 @@ def build_feed_urls():
 
 FEED_URLS = build_feed_urls()
 
-# ── Regex: capacity ────────────────────────────────────────────
+# â”€â”€ Regex: capacity â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 _CAP_RE = re.compile(
     r"(\d+(?:[.,]\d+)?)\s*"
     r"(gw|gwp|gigawat\w*|gigavatio\w*|mw|mwp|megawat\w*|megavatio\w*)",
     re.IGNORECASE,
 )
 
-# ── Regex: investment / financial proxy ────────────────────────
-# Matches: "$10 million", "100M USD", "€50 million", "£200M", "500 million dollars"
+# â”€â”€ Regex: investment / financial proxy â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# Matches: "$10 million", "100M USD", "â‚¬50 million", "Â£200M", "500 million dollars"
 _INVEST_RE = re.compile(
-    r"(?:[\$€£¥])?\s*(\d+(?:[.,]\d+)?)\s*"
+    r"(?:[\$â‚¬Â£Â¥])?\s*(\d+(?:[.,]\d+)?)\s*"
     r"(?:M\b|million|billion|B\b|bn\b)(?:\s*(?:USD|EUR|GBP|dollars?|euros?))?",
     re.IGNORECASE,
 )
@@ -194,7 +194,7 @@ _CAPEX_CONTEXT_RE = re.compile(
     r"\b(factory|plant|facility|manufacturing|capacity|production.line|module.line|fab\b)",
     re.IGNORECASE,
 )
-# CAPEX proxy: $100M = 1 GW  → each $1M = 0.01 GW
+# CAPEX proxy: $100M = 1 GW  â†’ each $1M = 0.01 GW
 CAPEX_GW_PER_MILLION = 0.01
 CAPEX_MAX_GW         = 5.0   # hard cap per article to prevent inflation
 
@@ -209,7 +209,7 @@ def regex_investment_gw(text: str) -> float:
     if not m:
         return 0.0
 
-    # ── Context guard: require facility keyword within 50 chars ──
+    # â”€â”€ Context guard: require facility keyword within 50 chars â”€â”€
     start = max(0, m.start() - 50)
     end   = min(len(text), m.end() + 50)
     window = text[start:end]
@@ -226,13 +226,13 @@ def regex_investment_gw(text: str) -> float:
     gw = raw_millions * CAPEX_GW_PER_MILLION
     return round(min(gw, CAPEX_MAX_GW), 4)
 
-# ── Regex: phase & sentiment ───────────────────────────────────
+# â”€â”€ Regex: phase & sentiment â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 _PHASE_OP  = re.compile(r"inaugur|commission|operational|mass.produc|production.start|en.marcha", re.I)
 _PHASE_CON = re.compile(r"under.construct|en.construcci|groundbreak|building", re.I)
 _KW_GOOD   = re.compile(r"produc|manufactur|commerci|factory|gigawatt|megawatt|plant|line|facility|invest|fund", re.I)
 _KW_BAD    = re.compile(r"lead.free|tin.based|without.iodine|no.iodine|cancel|stability.issue|recall", re.I)
 
-# ── Regex: target year (EXPANDED — any 2024-2035) ──────────────
+# â”€â”€ Regex: target year (EXPANDED â€” any 2024-2035) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 _YEAR_RE = re.compile(
     r"(?:by|in|until|for|target(?:ing)?|by\s+end\s+of|expected\s+(?:in|by)|planned\s+for|goal\s+(?:of|for))?"
     r"\s*(20[2-3]\d)\b",
@@ -258,7 +258,7 @@ def keyword_sentiment(text: str) -> str:
 
 def regex_target_year(text: str, fallback: str = CURRENT_YEAR) -> str:
     """
-    Extract the earliest year in range 2024–2039 from text.
+    Extract the earliest year in range 2024â€“2039 from text.
     Falls back to `fallback` (default: current year) if none found.
     """
     years = _YEAR_RE.findall(text)
@@ -266,7 +266,7 @@ def regex_target_year(text: str, fallback: str = CURRENT_YEAR) -> str:
         return fallback
     return str(min(int(y) for y in years))
 
-# ── Iodine Math ────────────────────────────────────────────────
+# â”€â”€ Iodine Math â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 def calc_iodine(gw: float) -> dict:
     total = round(gw * IODINE_PER_GW, 4)
     return {
@@ -277,7 +277,7 @@ def calc_iodine(gw: float) -> dict:
         "csi":   round(total * RATIOS["csi"],  4),
     }
 
-# ── Anti-duplicates engine (difflib) ──────────────────────────
+# â”€â”€ Anti-duplicates engine (difflib) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 def is_duplicate(new_entry: dict, existing_entries: list[dict]) -> bool:
     """
     Returns True if new_entry duplicates any existing entry.
@@ -298,7 +298,7 @@ def is_duplicate(new_entry: dict, existing_entries: list[dict]) -> bool:
         # Criterion 1: title similarity
         ratio = difflib.SequenceMatcher(None, new_title, ex_title).ratio()
         if ratio >= 0.80:
-            log.debug("Dedup (título %.0f%%): %s", ratio * 100, new_title[:60])
+            log.debug("Dedup (tÃ­tulo %.0f%%): %s", ratio * 100, new_title[:60])
             return True
 
         # Criterion 2: same company + identical GW (non-zero)
@@ -318,7 +318,7 @@ def is_duplicate(new_entry: dict, existing_entries: list[dict]) -> bool:
 
     return False
 
-# ── Executive Market Report Generator ─────────────────────────
+# â”€â”€ Executive Market Report Generator â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 def generate_market_report(articles: list[dict]) -> str:
     """
     REST call to Gemini with verify=False (SSL MITM bypass).
@@ -327,16 +327,16 @@ def generate_market_report(articles: list[dict]) -> str:
     frontend can display it for triage.
     """
     if not LLM_ENABLED:
-        log.info("Informe ejecutivo omitido — LLM deshabilitado.")
-        return "Informe en proceso de generación"
+        log.info("Informe ejecutivo omitido â€” LLM deshabilitado.")
+        return "Informe en proceso de generaciÃ³n"
 
     try:
         import requests
     except ImportError:
         return "ERROR FATAL API: requests no instalado"
 
-    # ── Build context (Optimized Payload) ──────────────────────
-    # Limitar a las 15 más recientes y enviar JSON compacto sin 'summary'
+    # â”€â”€ Build context (Optimized Payload) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    # Limitar a las 15 mÃ¡s recientes y enviar JSON compacto sin 'summary'
     # para evitar sobrepasar los tokens de la capa gratuita (Error 429).
     sorted_articles = sorted(articles, key=lambda x: x.get("date", ""), reverse=True)
     top_articles = []
@@ -359,8 +359,8 @@ def generate_market_report(articles: list[dict]) -> str:
         "generationConfig": {"temperature": 0.4, "maxOutputTokens": 8192},
     }
 
-    # ── Try each endpoint in order ────────────────────────────
-    last_error = "ERROR FATAL API: ningún endpoint respondió"
+    # â”€â”€ Try each endpoint in order â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    last_error = "ERROR FATAL API: ningÃºn endpoint respondiÃ³"
     for endpoint_tpl in GEMINI_ENDPOINTS:
         url = endpoint_tpl.format(key=_RESOLVED_KEY)
         model_name = url.split("/models/")[1].split(":")[0]
@@ -368,12 +368,12 @@ def generate_market_report(articles: list[dict]) -> str:
             log.info("Intentando Gemini endpoint: %s", model_name)
             resp = requests.post(url, json=payload, verify=False, timeout=120)
 
-            # 404 → model not found → try next endpoint
+            # 404 â†’ model not found â†’ try next endpoint
             if resp.status_code == 404:
-                log.warning("Endpoint %s → 404, probando siguiente...", model_name)
+                log.warning("Endpoint %s â†’ 404, probando siguiente...", model_name)
                 continue
 
-            # Other HTTP errors → unmask and return diagnostic
+            # Other HTTP errors â†’ unmask and return diagnostic
             if not resp.ok:
                 try:
                     err_json = resp.json()
@@ -384,120 +384,123 @@ def generate_market_report(articles: list[dict]) -> str:
                     )
                 except Exception:
                     reason = resp.reason or "Sin detalle"
-                last_error = f"ERROR FATAL API: {resp.status_code} — {reason}"
+                last_error = f"ERROR FATAL API: {resp.status_code} â€” {reason}"
                 log.error("Informe Ejecutivo (%s): %s", model_name, last_error)
                 # Non-404 errors (e.g. 400 bad key) are not retried
                 return last_error
 
             data = resp.json()
             report_text = data["candidates"][0]["content"]["parts"][0]["text"].strip()
-            log.info("✓ Informe Ejecutivo [%s] — %d caracteres.", model_name, len(report_text))
+            log.info("âœ“ Informe Ejecutivo [%s] â€” %d caracteres.", model_name, len(report_text))
             return report_text
 
         except Exception as e:
-            last_error = f"ERROR FATAL API: {type(e).__name__} — {str(e)[:200]}"
-            log.warning("Informe Ejecutivo (%s) excepción: %s", model_name, last_error)
+            last_error = f"ERROR FATAL API: {type(e).__name__} â€” {str(e)[:200]}"
+            log.warning("Informe Ejecutivo (%s) excepciÃ³n: %s", model_name, last_error)
             continue   # try next endpoint
 
     log.error("Todos los endpoints de Gemini fallaron.")
     return last_error
 
-# ── RSS Fetch ──────────────────────────────────────────────────
-def fetch_feed(feed: dict) -> list[dict]:
-    try:
-        import feedparser, requests
-        try:
-            r = requests.get(feed["url"], timeout=15,
-                             headers={"User-Agent": "SQM-Scout/5.2"})
-        except requests.exceptions.SSLError:
-            r = requests.get(feed["url"], timeout=15, verify=False,
-                             headers={"User-Agent": "SQM-Scout/5.2"})
-        r.raise_for_status()
-        parsed = feedparser.parse(r.content)
-    except Exception as e:
-        log.debug("Feed '%s' falló: %s", feed["label"], e)
-        return []
-
-    items = []
-    for e in parsed.entries:
-        title   = getattr(e, "title",    "") or ""
-        summary = getattr(e, "summary",  "") or ""
-        link    = getattr(e, "link",     "") or ""
-        pub     = getattr(e, "published","") or ""
-        items.append({
-            "title":    title,
-            "summary":  summary[:700],
-            "link":     link,
-            "pub_raw":  pub,
-            "source":   feed["label"],
-            "full_text":f"{title} {summary}",
-        })
-    log.info("  ✓ %-40s %3d", feed["label"], len(items))
-    return items
-
-# ── Company pre-filter ────────────────────────────────────────
-def detect_company(text: str) -> str | None:
-    for co in sorted(COMPANIES, key=len, reverse=True):
-        pattern = re.escape(co).replace(r"\ ", r"\s*")
-        if re.search(pattern, text, re.IGNORECASE):
-            return co
-    return None
-
-# ── Parse pub date ─────────────────────────────────────────────
-def parse_date(pub_raw: str) -> str:
-    if not pub_raw:
-        return ""
-    try:
-        from email.utils import parsedate_to_datetime
-        return parsedate_to_datetime(pub_raw).strftime("%Y-%m-%d")
-    except Exception:
-        return pub_raw[:10]
-
-# ── Deep Scrape HTML + IA ──────────────────────────────────────
+# â”€â”€ RSS Fetch â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â# â”€â”€ Deep Scrape HTML + IA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 def deep_scrape(url: str) -> dict:
     import requests, json, time
     from bs4 import BeautifulSoup
     import google.generativeai as genai
-    
-    res = {"fecha_publicacion": "Fecha Desconocida", "analisis": "Sin análisis detallado."}
-    if not API_KEY or not url: return res
-        
+
+    res = {"fecha_publicacion": "Fecha Desconocida", "analisis": "Sin anÃ¡lisis detallado.", "titulo": ""}
+    if not API_KEY or not url:
+        return res
+
     try:
         r = requests.get(url, timeout=10, headers={"User-Agent": "Mozilla/5.0"}, verify=False)
-        if not r.ok: return res
+        if not r.ok:
+            return res
+
         soup = BeautifulSoup(r.content, "html.parser")
-        for tag in soup(["script", "style", "nav", "footer", "header"]): tag.extract()
-        text = soup.get_text(separator=' ', strip=True)[:15000]
-        
+
+        # â€” Pre-extract structural date signals for the LLM â€”
+        meta_signals = []
+        for attr in ["article:published_time", "og:article:published_time",
+                     "datePublished", "date", "dc.date", "publish_date",
+                     "article:modified_time", "og:updated_time"]:
+            tag = soup.find("meta", property=attr) or soup.find("meta", attrs={"name": attr})
+            if tag and tag.get("content"):
+                meta_signals.append(f"META[{attr}]={tag['content'][:30]}")
+        time_tags = soup.find_all("time", attrs={"datetime": True})
+        for t in time_tags[:3]:
+            meta_signals.append(f"<time datetime={t['datetime'][:30]}>")
+        schema = soup.find("script", type="application/ld+json")
+        schema_hint = ""
+        if schema:
+            try:
+                sdata = json.loads(schema.string or "{}")
+                for k in ["datePublished", "dateCreated", "dateModified"]:
+                    if sdata.get(k):
+                        meta_signals.append(f"JSON-LD[{k}]={sdata[k][:30]}")
+            except Exception:
+                pass
+
+        for tag in soup(["script", "style", "nav", "footer", "header"]):
+            tag.extract()
+        text = soup.get_text(separator=" ", strip=True)[:12000]
+
+        date_signals_str = "\n".join(meta_signals) if meta_signals else "(ninguna seÃ±al estructurada encontrada)"
+
         prompt = (
-            "Actúa como un analista comercial. Lee el siguiente texto extraído de una web y extrae:\n"
-            "1. La fecha original de publicación (formato YYYY-MM-DD). Si el texto no menciona o no tiene una fecha de publicación clara, responde EXACTAMENTE 'Fecha Desconocida'. ¡QUEDA ESTRICTAMENTE PROHIBIDO usar la fecha actual (de hoy) como respuesta por defecto!\n"
-            "2. Un análisis comercial de 2 líneas resumidas sobre la empresa y sus planes o capacidades de producción.\n"
-            "Devuelve estrictamente un JSON con las llaves 'fecha_publicacion' y 'analisis'.\n\n"
-            f"TEXTO:\n{text}"
+            "Eres un extractor de datos estructurado para inteligencia comercial.\n"
+            "Lee el texto de la pÃ¡gina web y las seÃ±ales de fecha que se te entregan.\n\n"
+            "TAREA 1 â€” FECHA DE PUBLICACIÃ“N ORIGINAL:\n"
+            "  - Busca la fecha en que el ARTÃCULO fue publicado por primera vez.\n"
+            "  - Prioridad: seÃ±ales estructuradas META / JSON-LD / <time> > byline del periodista > fecha en el cuerpo del texto.\n"
+            "  - Formato de respuesta: YYYY-MM-DD (ej. 2024-11-15).\n"
+            "  - âš ï¸ PROHIBICIÃ“N ABSOLUTA: Si NO encuentras una fecha original del artÃ­culo, "
+            "responde EXACTAMENTE la cadena 'Fecha Desconocida'. NUNCA inventes una fecha, "
+            "NUNCA uses la fecha de hoy ni ninguna fecha post-acceso como respuesta por defecto.\n\n"
+            "TAREA 2 â€” TÃTULO DEL ARTÃCULO:\n"
+            "  - Extrae el tÃ­tulo del artÃ­culo tal como aparece publicado (no parafrasear).\n\n"
+            "TAREA 3 â€” RESUMEN COMERCIAL (2 lÃ­neas mÃ¡ximo):\n"
+            "  - QuÃ© anuncia la empresa y cuÃ¡l es su impacto potencial en la demanda de yodo.\n\n"
+            f"SEÃ‘ALES DE FECHA ESTRUCTURALES:\n{date_signals_str}\n\n"
+            "RESPONDE ÃšnicaMENTE un JSON vÃ¡lido con exactamente estas 3 llaves:\n"
+            "{\"fecha_publicacion\": \"YYYY-MM-DD o Fecha Desconocida\","
+            " \"titulo\": \"TÃ­tulo del artÃ­culo\","
+            " \"analisis\": \"Resumen comercial de 2 lÃ­neas\"}\n\n"
+            f"TEXTO DE LA PÃGINA:\n{text}"
         )
+
         try:
-            model = genai.GenerativeModel('gemini-1.5-flash')
+            genai.configure(api_key=API_KEY)
+            model = genai.GenerativeModel("gemini-1.5-flash")
             resp = model.generate_content(prompt)
             t = resp.text
             idx1 = t.find("{")
             idx2 = t.rfind("}")
             if idx1 != -1 and idx2 != -1:
-                data = json.loads(t[idx1:idx2+1])
-                res["fecha_publicacion"] = data.get("fecha_publicacion", "Fecha Desconocida")
-                res["analisis"] = data.get("analisis", "Sin análisis detallado.")
+                data = json.loads(t[idx1:idx2 + 1])
+                fecha = data.get("fecha_publicacion", "Fecha Desconocida").strip()
+                # Final guard: reject today's date or empty string
+                import re as _re
+                hoy = datetime.now().strftime("%Y-%m-%d")
+                if fecha and fecha != hoy and _re.match(r"\d{4}-\d{2}-\d{2}$", fecha):
+                    res["fecha_publicacion"] = fecha
+                else:
+                    res["fecha_publicacion"] = "Fecha Desconocida"
+                res["titulo"]   = data.get("titulo", "").strip()[:200]
+                res["analisis"] = data.get("analisis", "Sin anÃ¡lisis detallado.").strip()[:800]
             else:
-                print(f"Error Gemini: No se encontró JSON en la respuesta: {t}")
+                log.warning("deep_scrape: no JSON en respuesta Gemini para %s", url[:60])
         except Exception as e:
-            print(f"Error Gemini: {e}")
-        time.sleep(2) # avoid rate limit
+            log.warning("deep_scrape Gemini error (%s): %s", url[:60], e)
+
+        time.sleep(2)   # avoid rate limit
     except Exception as e:
-        print(f"Error Gemini: {e}")
+        log.warning("deep_scrape request error (%s): %s", url[:60], e)
         time.sleep(2)
-        
+
     return res
 
-# ── Main Analysis — 100% Local (Regex) + Dedup + Geo ──────────
+# â”€â”€ Main Analysis â€” 100% Local (Regex) + Dedup + Geo â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 def analyse(raw_articles: list[dict]) -> list[dict]:
     """
     v5.2:
@@ -522,7 +525,7 @@ def analyse(raw_articles: list[dict]) -> list[dict]:
         art["pre_company"] = co
         candidates.append(art)
 
-    log.info("Pre-filtro: %d artículos candidatos de %d totales.",
+    log.info("Pre-filtro: %d artÃ­culos candidatos de %d totales.",
              len(candidates), len(raw_articles))
 
     entries    = []
@@ -536,7 +539,7 @@ def analyse(raw_articles: list[dict]) -> list[dict]:
         pub_date = parse_date(art["pub_raw"])
         full     = art["full_text"]
 
-        # ── Capacity: explicit GW/MW first, then financial proxy ──
+        # â”€â”€ Capacity: explicit GW/MW first, then financial proxy â”€â”€
         cap_gw = regex_capacity(full)
         invest_proxy = 0.0
         if cap_gw == 0.0:
@@ -549,10 +552,10 @@ def analyse(raw_articles: list[dict]) -> list[dict]:
         geo         = geo_lookup(company)
 
         resumen = (
-            f"Análisis local — Empresa: {company} ({geo['country']}). "
+            f"AnÃ¡lisis local â€” Empresa: {company} ({geo['country']}). "
             f"Capacidad: {cap_gw:.3f} GW"
             + (f" (proxy CAPEX ${invest_proxy/CAPEX_GW_PER_MILLION:.0f}M)" if invest_proxy > 0 else "")
-            + f". Fase: {phase}. Nivel: {riesgo}. Año objetivo: {target_year}."
+            + f". Fase: {phase}. Nivel: {riesgo}. AÃ±o objetivo: {target_year}."
         )
 
         iodine     = calc_iodine(cap_gw)
@@ -589,17 +592,25 @@ def analyse(raw_articles: list[dict]) -> list[dict]:
 
         log.info("  Deep scraping [%s]...", link)
         ia_data = deep_scrape(link)
-        if ia_data["fecha_publicacion"] != "Fecha Desconocida":
-            candidate_entry["date"] = ia_data["fecha_publicacion"]
-        elif candidate_entry["date"] == "":
+
+        # Fix 3: Only override date if IA returned a valid date (never today's timestamp)
+        fecha_ia = ia_data.get("fecha_publicacion", "Fecha Desconocida")
+        if fecha_ia != "Fecha Desconocida":
+            candidate_entry["date"] = fecha_ia
+        elif not candidate_entry["date"]:
             candidate_entry["date"] = "Fecha Desconocida"
-            
-        candidate_entry["resumen_ia"] = ia_data["analisis"]
+
+        # Fix 4: Store analysis + extracted headline in resumen_ia and titulo
+        candidate_entry["resumen_ia"] = ia_data.get("analisis", "Sin anÃ¡lisis detallado.")
+        titulo_ia = ia_data.get("titulo", "").strip()
+        if titulo_ia:
+            candidate_entry["title"] = titulo_ia[:160]
+        candidate_entry["titulo"] = candidate_entry["title"]  # keep alias for Supabase column
 
         entries.append(candidate_entry)
 
     log.info(
-        "Análisis local: %d artículos (%d con cap, %d solo-radar, %d CAPEX-proxy, %d dedup).",
+        "AnÃ¡lisis local: %d artÃ­culos (%d con cap, %d solo-radar, %d CAPEX-proxy, %d dedup).",
         len(entries),
         sum(1 for e in entries if not e["radar_only"]),
         sum(1 for e in entries if e["radar_only"]),
@@ -607,7 +618,7 @@ def analyse(raw_articles: list[dict]) -> list[dict]:
         dedup_count,
     )
 
-    # ── Company-level consolidation: propagate target_year across articles ──
+    # â”€â”€ Company-level consolidation: propagate target_year across articles â”€â”€
     return consolidate_by_company(entries)
 
 
@@ -617,7 +628,7 @@ def consolidate_by_company(entries: list[dict]) -> list[dict]:
     Articles that have a year but no GW get the company's best GW, and vice-versa.
     This fixes the filter de-coupling bug: filtering by year now returns capacity data.
 
-    CAPEX inflation guard (v5.5 — Regla de Hierro #3):
+    CAPEX inflation guard (v5.5 â€” Regla de Hierro #3):
       If a company has multiple CAPEX-proxy articles, the TOTAL proxy GW attributed
       to that company is capped at CAPEX_COMPANY_MAX_GW. Articles whose cumulative
       sum would exceed this cap have their capacityGw (and iodine fields) zeroed out
@@ -652,8 +663,8 @@ def consolidate_by_company(entries: list[dict]) -> list[dict]:
         remaining = max(CAPEX_COMPANY_MAX_GW - accrued, 0.0)
 
         if remaining <= 0:
-            # Company already at cap — demote this article to radar-only
-            log.debug("CAPEX company cap: %s — artículo zeroed (acum %.2f GW)", co, accrued)
+            # Company already at cap â€” demote this article to radar-only
+            log.debug("CAPEX company cap: %s â€” artÃ­culo zeroed (acum %.2f GW)", co, accrued)
             e["capacityGw"]    = 0.0
             e["capacityValue"] = 0.0
             e["capacityUnit"]  = "GW"
@@ -663,7 +674,7 @@ def consolidate_by_company(entries: list[dict]) -> list[dict]:
         else:
             allowed_gw = min(art_gw, remaining)
             if allowed_gw < art_gw:
-                log.debug("CAPEX company cap: %s — GW recortado %.4f→%.4f", co, art_gw, allowed_gw)
+                log.debug("CAPEX company cap: %s â€” GW recortado %.4fâ†’%.4f", co, art_gw, allowed_gw)
                 e["capacityGw"]    = allowed_gw
                 e["capacityValue"] = allowed_gw if e["capacityUnit"] == "GW" else round(allowed_gw * 1000, 1)
                 iodine_adjusted = calc_iodine(allowed_gw)
@@ -674,7 +685,7 @@ def consolidate_by_company(entries: list[dict]) -> list[dict]:
     return entries
 
 
-# ── Build & Merge Database ─────────────────────────────────────
+# â”€â”€ Build & Merge Database â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 def build_database(new_entries: list[dict], market_report: str = "") -> dict:
     manual = []
     existing_report = ""
@@ -740,28 +751,28 @@ def build_database(new_entries: list[dict], market_report: str = "") -> dict:
         "market_report": final_report,
     }
 
-# ── Atomic Write ───────────────────────────────────────────────
+# â”€â”€ Atomic Write â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 def write_database(db: dict):
     tmp = DB_FILE + ".tmp"
     with open(tmp, "w", encoding="utf-8") as f:
         json.dump(db, f, ensure_ascii=False, indent=2)
     os.replace(tmp, DB_FILE)
     m = db["meta"]
-    log.info("database.json — %d art | %.3f GW | %.3f Ton I | LLM:%s | Anos:%s",
+    log.info("database.json â€” %d art | %.3f GW | %.3f Ton I | LLM:%s | Anos:%s",
              m["article_count"], m["total_gw"], m["total_iodine_ton"],
              "ON" if m["llm_enabled"] else "OFF",
              ",".join(m.get("target_years", [])) or "-")
 
 
-# ── Supabase Sync ──────────────────────────────────────
+# â”€â”€ Supabase Sync â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 def sync_to_supabase(db: dict):
     """
-    Sincroniza todos los artículos al warehouse Postgres en Supabase.
+    Sincroniza todos los artÃ­culos al warehouse Postgres en Supabase.
     Estrategia: DELETE de filas autogeneradas + batch INSERT del ciclo actual.
     Las credenciales vienen exclusivamente del .env (nunca del cliente).
     """
     if not SUPABASE_ENABLED:
-        log.debug("Supabase deshabilitado — omitiendo sync.")
+        log.debug("Supabase deshabilitado â€” omitiendo sync.")
         return
 
     try:
@@ -772,7 +783,7 @@ def sync_to_supabase(db: dict):
 
     table_url = f"{SUPABASE_URL}/rest/v1/perovskite_leads"
 
-    # ── 1. DELETE filas autogeneradas (invest_proxy = true o false, no-manual) ──
+    # â”€â”€ 1. DELETE filas autogeneradas (invest_proxy = true o false, no-manual) â”€â”€
     # Usamos el filtro neq=id.like.manual-% para borrar solo filas del agente
     del_url = f"{table_url}?id=gte.1"   # borra todo (el agente no tiene PKs tipo 'manual-')
     del_resp = requests.delete(del_url, headers=_SB_HEADERS, verify=False, timeout=20)
@@ -780,7 +791,7 @@ def sync_to_supabase(db: dict):
         log.warning("Supabase DELETE: %s %s", del_resp.status_code,
                     del_resp.text[:120].encode("ascii", errors="replace").decode())
 
-    # ── 2. Preparar registros para INSERT ──────────────────────
+    # â”€â”€ 2. Preparar registros para INSERT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     articles = db.get("articles", [])
     records  = []
     for e in articles:
@@ -788,7 +799,7 @@ def sync_to_supabase(db: dict):
         records.append({
             "empresa":          e.get("company", ""),
             "capacidad_gw":     round(gw, 6),
-            # yodo_teorico_toneladas es columna GENERATED — no se envía
+            # yodo_teorico_toneladas es columna GENERATED â€” no se envÃ­a
             "desglose_quimico": {
                 "pbi2_ton": round(gw * IODINE_PER_GW * RATIOS["pbi2"], 6),
                 "fai_ton":  round(gw * IODINE_PER_GW * RATIOS["fai"],  6),
@@ -802,14 +813,14 @@ def sync_to_supabase(db: dict):
             "nivel_riesgo":     e.get("nivel_riesgo", "Neutral"),
             "invest_proxy":     bool(e.get("invest_proxy", False)),
             "fecha_publicacion": e.get("date", "Fecha Desconocida")[:30],
-            "analisis":         (e.get("resumen_ia") or e.get("analisis") or "Sin análisis detallado.")[:800],
+            "analisis":         (e.get("resumen_ia") or e.get("analisis") or "Sin anÃ¡lisis detallado.")[:800],
         })
 
     if not records:
         log.info("Supabase sync: sin registros para insertar.")
         return
 
-    # ── 3. Batch INSERT (50 filas por lote para evitar payload limits) ──
+    # â”€â”€ 3. Batch INSERT (50 filas por lote para evitar payload limits) â”€â”€
     BATCH = 50
     total_ok = 0
     headers_insert = {**_SB_HEADERS, "Prefer": "return=minimal"}
@@ -827,7 +838,7 @@ def sync_to_supabase(db: dict):
     log.info("Supabase sync: %d/%d registros insertados en perovskite_leads.",
              total_ok, len(records))
 
-# ── Hybrid Brain Tools ─────────────────────────────────────────
+# â”€â”€ Hybrid Brain Tools â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 def _get_embedding(text: str) -> list[float]:
     if not LLM_ENABLED: return []
@@ -858,7 +869,7 @@ def tool_buscar_docs(query: str) -> str:
     if not SUPABASE_ENABLED: return "Error: Base de datos corporativa no disponible."
     
     q_emb = _get_embedding(query)
-    if not q_emb: return "Error: No se pudo generar embedding para la búsqueda."
+    if not q_emb: return "Error: No se pudo generar embedding para la bÃºsqueda."
     
     # 1. Intentar RPC match_knowledge
     url_rpc = f"{SUPABASE_URL}/rest/v1/rpc/match_knowledge"
@@ -867,13 +878,13 @@ def tool_buscar_docs(query: str) -> str:
         resp = requests.post(url_rpc, json=payload, headers=_SB_HEADERS, verify=False, timeout=10)
         if resp.ok:
             results = resp.json()
-            if not results: return "No se encontró información en la base de datos corporativa."
+            if not results: return "No se encontrÃ³ informaciÃ³n en la base de datos corporativa."
             text_res = "\n".join([f"[Fuente: {r['fuente']}] {r['contenido']}" for r in results])
             return text_res
     except Exception as e:
         log.error("RPC Fallback: %s", e)
         
-    # 2. Fallback local (simulación)
+    # 2. Fallback local (simulaciÃ³n)
     url_all = f"{SUPABASE_URL}/rest/v1/perovskite_knowledge?select=contenido,fuente,embedding&limit=100"
     try:
         resp = requests.get(url_all, headers=_SB_HEADERS, verify=False, timeout=10)
@@ -890,15 +901,15 @@ def tool_buscar_docs(query: str) -> str:
             if sim > 0.5:
                 scored.append((sim, r))
         scored.sort(key=lambda x: x[0], reverse=True)
-        if not scored: return "No se encontró información en la base de datos corporativa."
+        if not scored: return "No se encontrÃ³ informaciÃ³n en la base de datos corporativa."
         text_res = "\n".join([f"[Fuente: {r[1]['fuente']}] {r[1]['contenido']}" for r in scored[:3]])
         return text_res
     except Exception as e:
-        return f"Error en búsqueda: {e}"
+        return f"Error en bÃºsqueda: {e}"
 
 def tool_buscar_web(query: str) -> str:
     """Busca en Google en tiempo real."""
-    if not search: return "Error: Librería googlesearch no está instalada."
+    if not search: return "Error: LibrerÃ­a googlesearch no estÃ¡ instalada."
     try:
         results = []
         for url_str in search(query, num_results=3):
@@ -906,10 +917,10 @@ def tool_buscar_web(query: str) -> str:
         if not results: return "No se encontraron resultados en la web."
         return "\n".join(results)
     except Exception as e:
-        return f"Error en búsqueda web: {e}"
+        return f"Error en bÃºsqueda web: {e}"
 
 def tool_insertar_lead(empresa: str, capacidad_gw: float, target_year: str, fuente: str, fecha_publicacion: str = "", analisis: str = "") -> str:
-    """Inserta un lead automáticamente en Supabase."""
+    """Inserta un lead automÃ¡ticamente en Supabase."""
     if not SUPABASE_ENABLED: return "Error: Base de datos de leads no disponible."
     
     if not fecha_publicacion:
@@ -932,7 +943,7 @@ def tool_insertar_lead(empresa: str, capacidad_gw: float, target_year: str, fuen
         "target_year": str(target_year),
         "geo_pais": geo_lookup(empresa).get("country", ""),
         "geo_continente": geo_lookup(empresa).get("continent", ""),
-        "nivel_riesgo": "Agente IA (Automático)",
+        "nivel_riesgo": "Agente IA (AutomÃ¡tico)",
         "invest_proxy": False,
         "fecha_publicacion": fecha_publicacion[:10],
         "analisis": analisis[:500]
@@ -940,9 +951,9 @@ def tool_insertar_lead(empresa: str, capacidad_gw: float, target_year: str, fuen
     try:
         resp = requests.post(table_url, json=payload, headers={**_SB_HEADERS, "Prefer": "return=minimal"}, verify=False, timeout=10)
         if resp.ok:
-            return f"Éxito: Lead de {empresa} ({capacidad_gw} GW) insertado correctamente."
+            return f"Ã‰xito: Lead de {empresa} ({capacidad_gw} GW) insertado correctamente."
         else:
-            return f"Error de inserción: {resp.text}"
+            return f"Error de inserciÃ³n: {resp.text}"
     except Exception as e:
         return f"Error al insertar: {e}"
 
@@ -950,18 +961,18 @@ TOOLS_DECLARATION = {
     "functionDeclarations": [
         {
             "name": "buscar_docs",
-            "description": "Busca en la base de datos de conocimiento corporativo sobre perovskita (Supabase pgvector) usando similitud semántica. Obligatorio usar primero.",
+            "description": "Busca en la base de datos de conocimiento corporativo sobre perovskita (Supabase pgvector) usando similitud semÃ¡ntica. Obligatorio usar primero.",
             "parameters": {
                 "type": "OBJECT",
                 "properties": {
-                    "query": {"type": "STRING", "description": "Consulta técnica a buscar en la documentación interna."}
+                    "query": {"type": "STRING", "description": "Consulta tÃ©cnica a buscar en la documentaciÃ³n interna."}
                 },
                 "required": ["query"]
             }
         },
         {
             "name": "buscar_web",
-            "description": "Busca en la web en tiempo real información reciente, noticias o datos faltantes. Usa esto si buscar_docs no tiene la respuesta.",
+            "description": "Busca en la web en tiempo real informaciÃ³n reciente, noticias o datos faltantes. Usa esto si buscar_docs no tiene la respuesta.",
             "parameters": {
                 "type": "OBJECT",
                 "properties": {
@@ -978,10 +989,10 @@ TOOLS_DECLARATION = {
                 "properties": {
                     "empresa": {"type": "STRING"},
                     "capacidad_gw": {"type": "NUMBER", "description": "Capacidad en Gigawatts (GW). Convierte MW a GW."},
-                    "target_year": {"type": "STRING", "description": "Año objetivo de producción o 'TBD'"},
+                    "target_year": {"type": "STRING", "description": "AÃ±o objetivo de producciÃ³n o 'TBD'"},
                     "fuente": {"type": "STRING", "description": "URL exacta o documento de origen del anuncio"},
-                    "fecha_publicacion": {"type": "STRING", "description": "Fecha de publicación original de la noticia o anuncio (formato YYYY-MM-DD)."},
-                    "analisis": {"type": "STRING", "description": "Resumen ejecutivo de 2 líneas sobre el lead."}
+                    "fecha_publicacion": {"type": "STRING", "description": "Fecha de publicaciÃ³n original de la noticia o anuncio (formato YYYY-MM-DD)."},
+                    "analisis": {"type": "STRING", "description": "Resumen ejecutivo de 2 lÃ­neas sobre el lead."}
                 },
                 "required": ["empresa", "capacidad_gw", "target_year", "fuente", "fecha_publicacion", "analisis"]
             }
@@ -989,18 +1000,18 @@ TOOLS_DECLARATION = {
     ]
 }
 
-# ── Scan Cycle ─────────────────────────────────────────────────
+# â”€â”€ Scan Cycle â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 def run_scan():
     log.info("=" * 65)
-    log.info("SCAN — %s | LLM: %s",
+    log.info("SCAN â€” %s | LLM: %s",
              datetime.now().strftime("%Y-%m-%d %H:%M"),
-             f"Gemini 1.5 Flash ✓ ({_RESOLVED_KEY[:8]}...)" if LLM_ENABLED else "OFF")
+             f"Gemini 1.5 Flash âœ“ ({_RESOLVED_KEY[:8]}...)" if LLM_ENABLED else "OFF")
     log.info("=" * 65)
 
     raw = []
     for feed in FEED_URLS:
         raw.extend(fetch_feed(feed))
-    log.info("Total raw: %d artículos", len(raw))
+    log.info("Total raw: %d artÃ­culos", len(raw))
 
     entries = analyse(raw)
 
@@ -1017,7 +1028,7 @@ def schedule_scans():
     t.daemon = True
     t.start()
 
-# ── HTTP Server ────────────────────────────────────────────────
+# â”€â”€ HTTP Server â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 class Handler(BaseHTTPRequestHandler):
     BASE = os.path.dirname(os.path.abspath(__file__))
     MIME = {
@@ -1118,13 +1129,13 @@ class Handler(BaseHTTPRequestHandler):
             req_data = json.loads(body)
             user_msg = req_data.get("message", "")
             
-            # Historial de conversación (si se implementara state)
+            # Historial de conversaciÃ³n (si se implementara state)
             history = req_data.get("history", [])
             contents = history + [{"role": "user", "parts": [{"text": user_msg}]}]
             
             url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent?key={_RESOLVED_KEY}"
             
-            # Ejecución en bucle para resolver Function Calls (max 3 iteraciones)
+            # EjecuciÃ³n en bucle para resolver Function Calls (max 3 iteraciones)
             MAX_ITERS = 3
             
             for iter_count in range(MAX_ITERS):
@@ -1156,7 +1167,7 @@ class Handler(BaseHTTPRequestHandler):
                 if function_call:
                     name = function_call["name"]
                     args = function_call.get("args", {})
-                    log.info("Cerebro Híbrido invoca herramienta: %s(%s)", name, args)
+                    log.info("Cerebro HÃ­brido invoca herramienta: %s(%s)", name, args)
                     
                     # Ejecutar herramienta localmente
                     tool_res_text = ""
@@ -1175,7 +1186,7 @@ class Handler(BaseHTTPRequestHandler):
                         
                     log.info("Resultado %s: %s...", name, tool_res_text[:50])
                     
-                    # Añadir la respuesta del modelo (functionCall) y el result (functionResponse) al historial
+                    # AÃ±adir la respuesta del modelo (functionCall) y el result (functionResponse) al historial
                     contents.append(message)
                     contents.append({
                         "role": "function",
@@ -1202,7 +1213,7 @@ class Handler(BaseHTTPRequestHandler):
             log.error("POST /api/chat: %s", e)
             return {"error": str(e), "status": 400}
 
-# ── Entry Point ────────────────────────────────────────────────
+# â”€â”€ Entry Point â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 if __name__ == "__main__":
     import argparse
     ap = argparse.ArgumentParser()
@@ -1218,13 +1229,13 @@ if __name__ == "__main__":
         import feedparser, requests
 
     if not LLM_ENABLED:
-        log.warning("╔═══════════════════════════════════════════════════════════╗")
-        log.warning("║  GEMINI_API_KEY no configurado.                           ║")
-        log.warning("║  Edita la variable API_KEY en la línea 18 del script.     ║")
-        log.warning("║  Obtén tu clave gratis en: https://aistudio.google.com   ║")
-        log.warning("╚═══════════════════════════════════════════════════════════╝")
+        log.warning("â•”â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—")
+        log.warning("â•‘  GEMINI_API_KEY no configurado.                           â•‘")
+        log.warning("â•‘  Edita la variable API_KEY en la lÃ­nea 18 del script.     â•‘")
+        log.warning("â•‘  ObtÃ©n tu clave gratis en: https://aistudio.google.com   â•‘")
+        log.warning("â•šâ•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•")
     else:
-        log.info("✓ Gemini API Key configurada (%s...)", _RESOLVED_KEY[:8])
+        log.info("âœ“ Gemini API Key configurada (%s...)", _RESOLVED_KEY[:8])
 
     if args.scan_only:
         run_scan(); sys.exit(0)
@@ -1235,7 +1246,7 @@ if __name__ == "__main__":
     time.sleep(2)
 
     server = HTTPServer(("0.0.0.0", HTTP_PORT), Handler)
-    log.info("Servidor en puerto %d — Ctrl+C para detener.", HTTP_PORT)
+    log.info("Servidor en puerto %d â€” Ctrl+C para detener.", HTTP_PORT)
     try:
         server.serve_forever()
     except KeyboardInterrupt:
