@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupTableControls();
   setupSimulatorControls();
   setupChatControls();
-  renderLLMBadge(); // Fix 5: set badge immediately on load
   loadAndRender();
   setInterval(loadAndRender, REFRESH_MS);
 });
@@ -324,7 +323,6 @@ function render() {
   try { renderTable();        } catch(e) { console.error("renderTable:", e); }
   try { renderRiskRadar();    } catch(e) { console.error("renderRadar:", e); }
   try { renderMarketReport(); } catch(e) { console.error("renderReport:", e); }
-  try { renderLLMBadge();     } catch(e) { console.error("renderLLMBadge:", e); } // Fix 5
 }
 
 // ── KPIs ───────────────────────────────────────────────────────
@@ -357,13 +355,6 @@ function renderKPIs() {
   setText("kpi-neutral",     rc.Neutral);
 }
 
-// ── LLM Badge ─────────────────────────────────────────────────
-function renderLLMBadge() {
-  const el = document.getElementById("llm-badge");
-  if (!el) return;
-  el.textContent = "✔ Sistema Online";
-  el.className = "px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-green-700 border border-green-300";
-}
 
 // -- Dynamic Market Report (Fix 2 -- RAG con Gemini via /api/chat) --------
 async function renderMarketReport() {
@@ -483,11 +474,15 @@ async function renderMarketReport() {
     'NOTICIAS:\n' + noticiasCtx;
 
   try {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 8000);
     const res = await fetch(API_BASE + '/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: reportPrompt })
+      body: JSON.stringify({ message: reportPrompt }),
+      signal: ctrl.signal
     });
+    clearTimeout(timer);
     if (res.ok) {
       const data = await res.json();
       let reply = (data.reply || '').trim();
@@ -809,7 +804,7 @@ function renderRiskRadar() {
               ${geoTag(e?.geo)}
               ${yearTag}
               ${capexBadge}
-              <span class="text-slate-400 text-xs">· ${date}</span>
+              <span class="date" style="font-size: 0.8rem; color: #aaa;">${e?.fecha_publicacion || e?.fecha || e?.date || 'Fecha Desconocida'}</span>
             </div>
             <div class="text-xs flex items-center gap-1">${capInfo}</div>
           </div>
@@ -821,7 +816,7 @@ function renderRiskRadar() {
             <p class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
               Análisis — Perspectiva Demanda Yodo SQM
             </p>
-            <p class="text-sm text-slate-700 leading-relaxed">${escHtml(e?.resumen_ia || e?.summary || e?.title || e?.link || 'Sin análisis disponible.')}</p>
+            <p class="text-sm text-slate-700 leading-relaxed">${escHtml(e?.analisis || e?.resumen_ia || e?.summary || 'Sin análisis')}</p>
           </div>
           ${src ? `<div class="mt-2">${src}</div>` : ""}
         </div>
