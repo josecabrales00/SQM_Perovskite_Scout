@@ -479,8 +479,12 @@ def deep_scrape(url: str) -> dict:
         return res
 
     try:
-        r = _req.get(url, timeout=10, headers={"User-Agent": "Mozilla/5.0"}, verify=False)
-        if not r.ok:
+        try:
+            r = _req.get(url, timeout=10, headers={"User-Agent": "Mozilla/5.0"}, verify=False)
+            if not r.ok:
+                return res
+        except _req.exceptions.RequestException as e:
+            log.warning("Página muy lenta, saltando... (%s)", url[:60])
             return res
 
         soup = BeautifulSoup(r.content, "html.parser")
