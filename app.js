@@ -493,7 +493,6 @@ async function renderMarketReport() {
     '<p class="text-xs text-slate-400 italic mt-2">Informe ejecutivo de Gemini no disponible en modo serverless sin backend activo.</p>';
 }
 
-}
 
 // ── Charts ─────────────────────────────────────────────────────
 function renderCharts() {
