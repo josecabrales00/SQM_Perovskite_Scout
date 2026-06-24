@@ -1,4 +1,4 @@
-/**
+﻿/**
  * SQM Perovskite Scout — Frontend v5.2 (Structural Patch Edition)
  * ─────────────────────────────────────────────────────────────────
  * v5.2:
@@ -348,8 +348,8 @@ function renderLLMBadge() {
   el.className = "px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-green-700 border border-green-300";
 }
 
-// ── Dynamic Market Report (Fix 2) ──────────────────────────────
-function renderMarketReport() {
+// -- Dynamic Market Report (Fix 2 -- RAG con Gemini via /api/chat) --------
+async function renderMarketReport() {
   const skeleton = document.getElementById('report-skeleton');
   const content  = document.getElementById('report-content');
   if (!content) return;
@@ -377,97 +377,122 @@ function renderMarketReport() {
     .sort((a, b) => b[1].gw - a[1].gw)
     .slice(0, 5);
 
-  // Recent newsworthy articles (with actual analysis text)
+  // Recent newsworthy articles
   const newsItems = articles
-    .filter(e => e.resumen_ia && e.resumen_ia.length > 20 && !e.resumen_ia.startsWith('Análisis local'))
+    .filter(e => e.resumen_ia && e.resumen_ia.length > 15)
     .sort((a, b) => (b.date || '').localeCompare(a.date || ''))
     .slice(0, 6);
 
-  // Risk icon map
-  const riskColor = { Beneficioso: 'text-green-700', Riesgo: 'text-red-600', Neutral: 'text-slate-500' };
-  const riskIcon  = { Beneficioso: '📈', Riesgo: '⚠️', Neutral: 'ℹ️' };
+  const riskIcon  = { Beneficioso: 'up', Riesgo: 'warn', Neutral: 'info' };
+  const riskEmoji = { Beneficioso: '', Riesgo: '', Neutral: '' };
 
-  const top5HTML = top5.map(([co, d]) => `
-    <tr class="border-b border-slate-100">
-      <td class="py-2 pr-4 font-semibold text-slate-800 text-sm">${escHtml(co)}</td>
-      <td class="py-2 pr-4 font-mono text-sqm-purple font-bold text-sm">${fmt(d.gw, 3)} GW</td>
-      <td class="py-2 pr-4 font-mono text-sqm-green-dk font-bold text-sm">${fmt(d.gw * factor, 2)} T</td>
-      <td class="py-2 text-xs text-blue-700 font-mono">${d.year || '—'}</td>
-    </tr>`).join('');
+  const top5HTML = top5.map(([co, d]) =>
+    '<tr class="border-b border-slate-100">' +
+    '<td class="py-2 pr-4 font-semibold text-slate-800 text-sm">' + escHtml(co) + '</td>' +
+    '<td class="py-2 pr-4 font-mono text-sqm-purple font-bold text-sm">' + fmt(d.gw, 3) + ' GW</td>' +
+    '<td class="py-2 pr-4 font-mono text-sqm-green-dk font-bold text-sm">' + fmt(d.gw * factor, 2) + ' T</td>' +
+    '<td class="py-2 text-xs text-blue-700 font-mono">' + (d.year || '--') + '</td>' +
+    '</tr>'
+  ).join('');
 
-  const newsHTML = newsItems.length ? newsItems.map(e => `
-    <div class="border-l-2 border-sqm-purple/30 pl-3 py-1">
-      <p class="text-xs font-bold text-slate-700 mb-0.5">${riskIcon[e.nivel_riesgo] || 'ℹ️'} ${escHtml(e.company)}
-        <span class="font-normal text-slate-400 ml-1">${(e.date || '').split('-').reverse().join('/')}</span>
-      </p>
-      <p class="text-xs text-slate-600 leading-relaxed">${escHtml(e.resumen_ia)}</p>
-    </div>`).join('') : '<p class="text-slate-400 text-sm italic">Sin análisis profundo disponible aún. Ejecuta el agente para enriquecer los datos.</p>';
+  const newsHTML = newsItems.length ? newsItems.map(e =>
+    '<div class="border-l-2 border-sqm-purple/30 pl-3 py-1">' +
+    '<p class="text-xs font-bold text-slate-700 mb-0.5">' + escHtml(e.company) +
+    '<span class="font-normal text-slate-400 ml-1">' + ((e.date || 'Fecha Desconocida').split('-').reverse().join('/')) + '</span></p>' +
+    '<p class="text-xs font-semibold text-slate-600 leading-snug mb-0.5">' + escHtml(e.title || '') + '</p>' +
+    '<p class="text-xs text-slate-500 leading-relaxed">' + escHtml(e.resumen_ia || '') + '</p>' +
+    '</div>'
+  ).join('') : '<p class="text-slate-400 text-sm italic">Sin analisis disponible aun.</p>';
 
-  content.innerHTML = `
-    <h2 class="text-xl font-extrabold text-sqm-purple mb-1">Inteligencia de Mercado — Perovskita & Yodo</h2>
-    <p class="text-xs text-slate-400 mb-5">Generado dinámicamente · ${articles.length} fuentes activas · Factor: ${factor} Ton/GW</p>
+  // -- Fix 2: Render inmediato con datos locales --
+  content.innerHTML =
+    '<h2 class="text-xl font-extrabold text-sqm-purple mb-1">Inteligencia de Mercado &mdash; Perovskita &amp; Yodo</h2>' +
+    '<p class="text-xs text-slate-400 mb-5">Generado dinamicamente &middot; ' + articles.length + ' fuentes activas &middot; Factor: ' + factor + ' Ton/GW</p>' +
+    '<div class="grid grid-cols-3 gap-4 mb-6">' +
+      '<div class="rounded-xl bg-sqm-purple-lt border border-purple-200 p-4 text-center">' +
+        '<p class="text-3xl font-extrabold text-sqm-purple">' + fmt(totalGw, 2) + '</p>' +
+        '<p class="text-xs font-semibold text-sqm-gray mt-1 uppercase tracking-widest">GW Detectados</p>' +
+      '</div>' +
+      '<div class="rounded-xl bg-green-50 border border-green-200 p-4 text-center">' +
+        '<p class="text-3xl font-extrabold text-sqm-green-dk">' + fmt(totalIod, 1) + '</p>' +
+        '<p class="text-xs font-semibold text-sqm-gray mt-1 uppercase tracking-widest">Ton Yodo</p>' +
+      '</div>' +
+      '<div class="rounded-xl bg-slate-50 border border-slate-200 p-4 text-center">' +
+        '<p class="text-3xl font-extrabold text-slate-700">' + articles.length + '</p>' +
+        '<p class="text-xs font-semibold text-sqm-gray mt-1 uppercase tracking-widest">Noticias</p>' +
+      '</div>' +
+    '</div>' +
+    '<h3 class="text-base font-bold text-sqm-purple mt-5 mb-3">&#128202; Top Empresas por Capacidad Declarada</h3>' +
+    (top5.length
+      ? '<table class="w-full mb-5"><thead><tr class="text-xs font-semibold text-sqm-gray uppercase tracking-wider"><th class="text-left pb-2">Empresa</th><th class="text-left pb-2">Capacidad</th><th class="text-left pb-2">Yodo</th><th class="text-left pb-2">Ano Obj.</th></tr></thead><tbody>' + top5HTML + '</tbody></table>'
+      : '<p class="text-slate-400 italic text-sm mb-5">Sin datos de capacidad registrados.</p>') +
+    '<h3 class="text-base font-bold text-sqm-purple mt-5 mb-3">&#128240; Analisis de Noticias Recientes</h3>' +
+    '<div class="space-y-3 mb-5">' + newsHTML + '</div>' +
+    '<h3 class="text-base font-bold text-sqm-purple mt-5 mb-3">&#129504; Distribucion de Senales de Riesgo</h3>' +
+    '<div class="flex gap-4 flex-wrap mb-6">' +
+      '<div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-sqm-green inline-block"></span><span class="text-sm font-semibold text-green-700">Beneficioso: ' + riskCounts.Beneficioso + '</span></div>' +
+      '<div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span><span class="text-sm font-semibold text-red-600">Riesgo: ' + riskCounts.Riesgo + '</span></div>' +
+      '<div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-sqm-gray inline-block"></span><span class="text-sm font-semibold text-sqm-gray">Neutral: ' + riskCounts.Neutral + '</span></div>' +
+    '</div>' +
+    '<div class="mt-2 pt-4 border-t border-slate-100">' +
+      '<h3 class="text-base font-bold text-sqm-purple mb-3">&#127981; Informe Ejecutivo &mdash; Analista SQM (Gemini)</h3>' +
+      '<div id="gemini-report-body"><div class="flex items-center gap-2 text-xs text-slate-400 animate-pulse">' +
+        '<div class="w-4 h-4 border-2 border-sqm-purple border-t-transparent rounded-full animate-spin"></div>' +
+        '<span>Generando informe ejecutivo con Gemini...</span></div></div>' +
+    '</div>';
 
-    <div class="grid grid-cols-3 gap-4 mb-6">
-      <div class="rounded-xl bg-sqm-purple-lt border border-purple-200 p-4 text-center">
-        <p class="text-3xl font-extrabold text-sqm-purple">${fmt(totalGw, 2)}</p>
-        <p class="text-xs font-semibold text-sqm-gray mt-1 uppercase tracking-widest">GW Detectados</p>
-      </div>
-      <div class="rounded-xl bg-green-50 border border-green-200 p-4 text-center">
-        <p class="text-3xl font-extrabold text-sqm-green-dk">${fmt(totalIod, 1)}</p>
-        <p class="text-xs font-semibold text-sqm-gray mt-1 uppercase tracking-widest">Ton Yodo</p>
-      </div>
-      <div class="rounded-xl bg-slate-50 border border-slate-200 p-4 text-center">
-        <p class="text-3xl font-extrabold text-slate-700">${articles.length}</p>
-        <p class="text-xs font-semibold text-sqm-gray mt-1 uppercase tracking-widest">Noticias</p>
-      </div>
-    </div>
-
-    <h3 class="text-base font-bold text-sqm-purple mt-5 mb-3">📊 Top Empresas por Capacidad Declarada</h3>
-    ${top5.length ? `<table class="w-full mb-5">
-      <thead><tr class="text-xs font-semibold text-sqm-gray uppercase tracking-wider">
-        <th class="text-left pb-2">Empresa</th>
-        <th class="text-left pb-2">Capacidad</th>
-        <th class="text-left pb-2">Yodo</th>
-        <th class="text-left pb-2">Año Obj.</th>
-      </tr></thead>
-      <tbody>${top5HTML}</tbody>
-    </table>` : '<p class="text-slate-400 italic text-sm mb-5">Sin datos de capacidad registrados.</p>'}
-
-    <h3 class="text-base font-bold text-sqm-purple mt-5 mb-3">📰 Análisis de Noticias Recientes</h3>
-    <div class="space-y-3 mb-5">${newsHTML}</div>
-
-    <h3 class="text-base font-bold text-sqm-purple mt-5 mb-3">🧠 Distribución de Señales de Riesgo</h3>
-    <div class="flex gap-4 flex-wrap">
-      <div class="flex items-center gap-2">
-        <span class="w-3 h-3 rounded-full bg-sqm-green inline-block"></span>
-        <span class="text-sm font-semibold text-green-700">Beneficioso: ${riskCounts.Beneficioso}</span>
-      </div>
-      <div class="flex items-center gap-2">
-        <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
-        <span class="text-sm font-semibold text-red-600">Riesgo: ${riskCounts.Riesgo}</span>
-      </div>
-      <div class="flex items-center gap-2">
-        <span class="w-3 h-3 rounded-full bg-sqm-gray inline-block"></span>
-        <span class="text-sm font-semibold text-sqm-gray">Neutral: ${riskCounts.Neutral}</span>
-      </div>
-    </div>
-
-    <div class="mt-6 pt-4 border-t border-slate-100">
-      <h3 class="text-base font-bold text-sqm-purple mb-2">🏭 Conclusión Estratégica SQM</h3>
-      <p class="text-sm text-slate-700 leading-relaxed">
-        Con <strong>${fmt(totalGw, 2)} GW</strong> de capacidad anunciada rastreada globalmente,
-        la demanda proyectada de yodo asciende a <strong>${fmt(totalIod, 1)} toneladas métricas</strong>
-        (factor ${factor} T/GW). De las ${articles.length} fuentes monitoreadas,
-        <strong class="text-green-700">${riskCounts.Beneficioso} son señales positivas</strong>
-        y <strong class="text-red-600">${riskCounts.Riesgo} representan riesgo</strong> para la demanda.
-        SQM mantiene posición estratégica única como proveedor global de yodo en grado solar.
-      </p>
-    </div>
-  `;
-
-  // Swap skeleton → content
+  // Swap skeleton -> content immediately
   if (skeleton) skeleton.classList.add('hidden');
   content.classList.remove('hidden');
+
+  // -- Fix 2: Solicitar informe ejecutivo al backend via /api/chat ----------
+  const geminiBody = document.getElementById('gemini-report-body');
+  if (!geminiBody) return;
+
+  const noticiasCtx = articles.slice(0, 15).map(a =>
+    '[' + (a.date || 'sin fecha') + '] ' + a.company + ' (' + fmt(a.capacityGw, 3) + ' GW) | ' + a.nivel_riesgo + '\n' +
+    '  Titulo: ' + (a.title || '') + '\n  Analisis: ' + (a.resumen_ia || '')
+  ).join('\n');
+
+  const reportPrompt =
+    'Actua como Analista Senior de SQM (Sociedad Quimica y Minera de Chile), especialista en demanda de yodo para celdas perovskita. ' +
+    'Lee estas noticias recientes sobre perovskita y redacta un informe ejecutivo de exactamente 3 parrafos cruzando esta actualidad con la proyeccion de demanda ' +
+    'de yodo (usando la metrica de ' + factor + ' Ton/GW). Se especifico y cita las empresas mencionadas. No uses bullet points, solo parrafos corporativos.\n\n' +
+    'METRICAS: ' + fmt(totalGw, 2) + ' GW detectados | ' + fmt(totalIod, 1) + ' Ton Yodo proyectadas | ' + articles.length + ' fuentes\n\n' +
+    'NOTICIAS:\n' + noticiasCtx;
+
+  try {
+    const res = await fetch(API_BASE + '/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: reportPrompt })
+    });
+    if (res.ok) {
+      const data = await res.json();
+      const reply = (data.reply || '').trim();
+      if (reply && !reply.toLowerCase().startsWith('error')) {
+        const paragraphs = reply.split(/\n\n+/).filter(p => p.trim().length > 20);
+        geminiBody.innerHTML = (paragraphs.length
+          ? paragraphs.map(p => '<p class="text-sm text-slate-700 leading-relaxed mb-3">' + escHtml(p.trim()) + '</p>').join('')
+          : '<p class="text-sm text-slate-700 leading-relaxed">' + escHtml(reply) + '</p>');
+        return;
+      }
+    }
+  } catch (_) { /* fallback */ }
+
+  // Fallback local si Gemini no responde
+  geminiBody.innerHTML =
+    '<p class="text-sm text-slate-700 leading-relaxed">' +
+    'Con <strong>' + fmt(totalGw, 2) + ' GW</strong> de capacidad anunciada rastreada globalmente, ' +
+    'la demanda proyectada de yodo asciende a <strong>' + fmt(totalIod, 1) + ' toneladas metricas</strong> ' +
+    '(factor ' + factor + ' T/GW). De las ' + articles.length + ' fuentes monitoreadas, ' +
+    '<strong class="text-green-700">' + riskCounts.Beneficioso + ' son senales positivas</strong> ' +
+    'y <strong class="text-red-600">' + riskCounts.Riesgo + ' representan riesgo</strong> para la demanda de yodo. ' +
+    'SQM mantiene posicion estrategica unica como proveedor global de yodo en grado solar.' +
+    '</p>' +
+    '<p class="text-xs text-slate-400 italic mt-2">Informe ejecutivo de Gemini no disponible en modo serverless sin backend activo.</p>';
+}
+
 }
 
 // ── Charts ─────────────────────────────────────────────────────
