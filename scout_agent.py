@@ -1,4 +1,4 @@
-﻿"""
+"""
 SQM Perovskite Scout â€” Agent v6.0  (Supabase Integration)
 =========================================================
 Arquitectura: procesamiento 100% local (regex) + informe ejecutivo REST/SSL bypass.
@@ -1039,7 +1039,7 @@ def tool_insertar_lead(empresa: str, capacidad_gw: float, target_year: str, fuen
     if not SUPABASE_ENABLED: return "Error: Base de datos de leads no disponible."
     
     if not fecha_publicacion:
-        fecha_publicacion = datetime.now().strftime("%Y-%m-%d")
+        fecha_publicacion = "Fecha Desconocida"
         
     if not analisis:
         analisis = f"Anuncio de capacidad de {capacidad_gw} GW por {empresa} para {target_year}."
