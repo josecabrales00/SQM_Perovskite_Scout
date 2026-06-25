@@ -1054,16 +1054,19 @@ def tool_buscar_docs(query: str) -> str:
         return f"Error en bÃºsqueda: {e}"
 
 def tool_buscar_web(query: str) -> str:
-    """Busca en Google en tiempo real."""
-    if not search: return "Error: LibrerÃ­a googlesearch no estÃ¡ instalada."
+    """Busca en DuckDuckGo en tiempo real."""
+    if not DDGS: return "Error: Libreria duckduckgo_search no esta instalada."
     try:
         results = []
-        for url_str in search(query, num_results=3):
-            results.append(f"[Fuente: {str(url_str)}]")
+        with DDGS() as ddgs:
+            for r in ddgs.text(query, max_results=3):
+                url_str = r.get("href", "")
+                title   = r.get("title", "")
+                results.append(f"[Fuente: {url_str}] {title}")
         if not results: return "No se encontraron resultados en la web."
         return "\n".join(results)
     except Exception as e:
-        return f"Error en bÃºsqueda web: {e}"
+        return f"Error en busqueda web: {e}"
 
 def tool_insertar_lead(empresa: str, capacidad_gw: float, target_year: str, fuente: str, fecha_publicacion: str = "", analisis: str = "") -> str:
     """Inserta un lead automÃ¡ticamente en Supabase."""
