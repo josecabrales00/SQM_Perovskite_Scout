@@ -14,28 +14,54 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-API_KEY = os.environ.get("GEMINI_API_KEY", "")
-# ─────────────────────────────────────────────────────────────────
-
-import json
-import re
-import time
-import math
-import difflib
-import threading
-import sys
-import logging
-import requests
-from datetime import datetime, timezone
-from http.server import HTTPServer, BaseHTTPRequestHandler
-from urllib.parse import quote_plus
-
 try:
     from duckduckgo_search import DDGS
 except ImportError:
     DDGS = None
 
-# â”€â”€ Silenciar InsecureRequestWarning del proxy corporativo (SSL MITM) â”€â”€
+
+API_KEY = os.environ.get("GEMINI_API_KEY", "")
+# ─────────────────────────────────────────────────────────────────
+
+import os
+
+import json
+
+import re
+
+import time
+
+import math
+
+import difflib
+
+import threading
+
+import sys
+
+import logging
+
+import requests
+
+import feedparser
+
+import urllib.parse
+
+from datetime import datetime, timezone
+
+from http.server import HTTPServer, BaseHTTPRequestHandler
+
+from urllib.parse import quote_plus
+
+
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
+
+# ── Silenciar InsecureRequestWarning del proxy corporativo (SSL MITM) ──
 try:
     import urllib3
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -345,7 +371,7 @@ def generate_market_report(articles: list[dict]) -> str:
             sb_url = (
                 f"{SUPABASE_URL}/rest/v1/perovskite_leads"
                 f"?select=empresa,capacidad_gw,titulo,analisis,fecha_publicacion,nivel_riesgo"
-                f"&order=created_at.desc&limit=20"
+                f"&order=created_at.desc"
             )
             sb_resp = _req.get(sb_url, headers=_SB_HEADERS, verify=False, timeout=15)
             if sb_resp.ok:
@@ -636,136 +662,105 @@ def parse_date(raw: str) -> str:
 
 # â”€â”€ Main Analysis â€” 100% Local (Regex) + Dedup + Geo â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 def analyse(raw_articles: list[dict]) -> list[dict]:
-    """
-    v5.2:
-      - Expanded year regex with current-year fallback
-      - Financial CAPEX proxy when no explicit GW found
-      - Geo-tagging from static GEO_MAP
-      - Company-level consolidation: if an article has a year but no GW,
-        and the same company already has a GW article without a year,
-        the year propagates forward in build_database().
-      - Anti-duplicates via difflib
-    """
     seen: set = set()
     candidates = []
+    
     for art in raw_articles:
-        link = art["link"]
+        link = art.get("link") or art.get("url") or ""
         if not link or link in seen:
             continue
-        co = detect_company(art["full_text"])
+        co = detect_company(art.get("full_text", ""))
         if not co:
             continue
         seen.add(link)
         art["pre_company"] = co
         candidates.append(art)
-
-    log.info("Pre-filtro: %d artÃ­culos candidatos de %d totales.",
-             len(candidates), len(raw_articles))
-
-    entries    = []
+        
+    log.info("Pre-filtro: %d artículos candidatos de %d totales.", len(candidates), len(raw_articles))
+    
+    entries = []
     dedup_count = 0
-
+    
     for art in candidates:
-        title    = art["title"]
-        content  = art["summary"]
-        link     = art["link"]
-        company  = art["pre_company"]
-        pub_date = parse_date(art["pub_raw"])
-        full     = art["full_text"]
-
-        # â”€â”€ Capacity: explicit GW/MW first, then financial proxy â”€â”€
+        title = art.get("title", "")
+        content_summary = art.get("summary", "")
+        link = art.get("link") or art.get("url") or ""
+        company = art["pre_company"]
+        pub_date = parse_date(art.get("pub_raw", ""))
+        full = art.get("full_text", "")
+        source = art.get("source", "Google News")
+        
+        # ── Capacity: explicit GW/MW first, then financial proxy ──
         cap_gw = regex_capacity(full)
         invest_proxy = 0.0
         if cap_gw == 0.0:
             invest_proxy = regex_investment_gw(full)
             cap_gw = invest_proxy
-
-        phase       = regex_phase(full)
-        riesgo      = keyword_sentiment(full)
-        target_year = regex_target_year(full)   # uses CURRENT_YEAR as fallback
-        geo         = geo_lookup(company)
-
-        resumen = (
-            f"AnÃ¡lisis local â€” Empresa: {company} ({geo['country']}). "
-            f"Capacidad: {cap_gw:.3f} GW"
-            + (f" (proxy CAPEX ${invest_proxy/CAPEX_GW_PER_MILLION:.0f}M)" if invest_proxy > 0 else "")
-            + f". Fase: {phase}. Nivel: {riesgo}. AÃ±o objetivo: {target_year}."
-        )
-
-        iodine     = calc_iodine(cap_gw)
+            
+        phase = regex_phase(full)
+        riesgo = keyword_sentiment(full)
+        target_year = regex_target_year(full)
+        geo = geo_lookup(company)
+        
+        iodine = calc_iodine(cap_gw)
         radar_only = (cap_gw == 0.0)
-        unit       = "GW" if cap_gw >= 0.5 else "MW"
-        disp_v     = cap_gw if unit == "GW" else round(cap_gw * 1000, 1)
-        cache_key  = str(abs(hash(link)) % 10**12)
-
+        unit = "GW" if cap_gw >= 0.5 else "MW"
+        disp_v = cap_gw if unit == "GW" else round(cap_gw * 1000, 1)
+        cache_key = str(abs(hash(link)) % 10**12)
+        
+        # FIX: Evitar doble deep_scrape. run_scan ya hizo el deep_scrape y lo guardó en art["summary"], art["title"] y art["pub_raw"].
+        fecha_ia = art.get("pub_raw") or "Fecha Desconocida"
+        if not fecha_ia:
+            fecha_ia = "Fecha Desconocida"
+            
+        resumen_ia_real = content_summary if content_summary else "Sin análisis detallado."
+        titulo_real = title[:160] if title else ""
+        
         candidate_entry = {
-            "id":            f"a-{cache_key}",
-            "company":       company,
+            "id": f"a-{cache_key}",
+            "company": company,
             "capacityValue": disp_v,
-            "capacityUnit":  unit,
-            "capacityGw":    cap_gw,
+            "capacityUnit": unit,
+            "capacityGw": cap_gw,
             **iodine,
-            "phase":         phase,
-            "nivel_riesgo":  riesgo,
-            "resumen_ia":    resumen,
-            "target_year":   target_year,
-            "invest_proxy":  invest_proxy > 0,   # flag: True if GW came from CAPEX
-            "geo":           geo,
-            "llm_used":      False,
-            "radar_only":    radar_only,
-            "date":          pub_date,
-            "source":        art["source"],
-            "title":         title[:160],
-            "link":          link,
-            "summary":       content[:300],
+            "phase": phase,
+            "nivel_riesgo": riesgo,
+            "resumen_ia": resumen_ia_real,
+            "target_year": target_year,
+            "invest_proxy": invest_proxy > 0,
+            "geo": geo,
+            "llm_used": False,
+            "radar_only": radar_only,
+            "date": fecha_ia,
+            "fecha_publicacion": fecha_ia,
+            "source": source,
+            "title": titulo_real,
+            "titulo": titulo_real,
+            "link": link,
+            "summary": content_summary[:300],
         }
-
+        
+        # FIX: Ahora is_duplicate compara el resumen_ia_real (que es el análisis de Gemini), no un string estático genérico.
+        # Esto soluciona el bug crítico donde se borraban todas las noticias.
         if is_duplicate(candidate_entry, entries):
             dedup_count += 1
             continue
-
-        log.info("  Deep scraping [%s]...", link)
-        try:
-            ia_data = deep_scrape(link)
-        except Exception as e:
-            # Blindaje: un solo artículo roto NUNCA debe tumbar el ciclo de
-            # escaneo completo. Antes, una excepción aquí mataba el hilo de
-            # fondo para siempre y el agente dejaba de refrescar datos.
-            log.warning("  deep_scrape falló para %s: %s -- usando defaults.", link[:60], e)
-            ia_data = {"fecha_publicacion": "Fecha Desconocida", "analisis": "", "titulo": ""}
-
-        # Fix 3: Only override date if IA returned a valid date (never today's timestamp)
-        fecha_ia = ia_data.get("fecha_publicacion") or "Fecha Desconocida"
-        if fecha_ia != "Fecha Desconocida":
-            candidate_entry["date"] = fecha_ia
-        elif not candidate_entry["date"]:
-            candidate_entry["date"] = "Fecha Desconocida"
-
-        # NUEVO: alias estandarizado, mismo nombre exacto que la columna de Supabase,
-        # para que el dato viaje sin ambigüedad de punta a punta:
-        # scraping -> database.json -> Supabase -> frontend.
-        candidate_entry["fecha_publicacion"] = candidate_entry["date"]
-
-        # Fix 4: Store analysis + extracted headline in resumen_ia and titulo
-        candidate_entry["resumen_ia"] = ia_data.get("analisis") or "Sin análisis detallado."
-        titulo_ia = (ia_data.get("titulo") or "").strip()
-        if titulo_ia:
-            candidate_entry["title"] = titulo_ia[:160]
-        candidate_entry["titulo"] = candidate_entry["title"]  # keep alias for Supabase column
-
+            
         entries.append(candidate_entry)
-
+        
     log.info(
-        "AnÃ¡lisis local: %d artÃ­culos (%d con cap, %d solo-radar, %d CAPEX-proxy, %d dedup).",
+        "Análisis local: %d artículos (%d con cap, %d solo-radar, %d CAPEX-proxy, %d dedup).",
         len(entries),
         sum(1 for e in entries if not e["radar_only"]),
         sum(1 for e in entries if e["radar_only"]),
         sum(1 for e in entries if e.get("invest_proxy")),
         dedup_count,
     )
-
-    # â”€â”€ Company-level consolidation: propagate target_year across articles â”€â”€
+    
     return consolidate_by_company(entries)
+
+
+
 
 
 def consolidate_by_company(entries: list[dict]) -> list[dict]:
@@ -1152,53 +1147,68 @@ TOOLS_DECLARATION = {
 # â”€â”€ Scan Cycle â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 def run_scan():
     log.info("=" * 65)
-    log.info("SCAN â€” %s | LLM: %s",
-             datetime.now().strftime("%Y-%m-%d %H:%M"),
-             f"Gemini 1.5 Flash âœ“ ({_RESOLVED_KEY[:8]}...)" if LLM_ENABLED else "OFF")
+    log.info("SCAN ── %s | LLM: %s", datetime.now().strftime("%Y-%m-%d %H:%M"),
+             f"Gemini Flash ✓ ({_RESOLVED_KEY[:8]}...)" if LLM_ENABLED else "OFF")
     log.info("=" * 65)
 
-    if not DDGS:
-        log.error("duckduckgo_search no instalado.")
-        return
 
-    if SUPABASE_ENABLED:
-        try:
-            log.info("Auto-Wipe Supabase DB antes de escanear...")
-            import requests as _req
-            del_url = f"{SUPABASE_URL}/rest/v1/perovskite_leads?id=gte.1"
-            _req.delete(del_url, headers=_SB_HEADERS, verify=False, timeout=20)
-        except Exception as e:
-            log.warning("Fallo en Auto-Wipe: %s", e)
 
     raw = []
-    try:
-        with DDGS() as ddgs:
-            for co in COMPANIES:
-                query = f'"{co}" perovskite solar news'
-                log.info("DuckDuckGo Search: %s", query)
+
+    for empresa in COMPANIES:
+        import urllib.parse
+        query = urllib.parse.quote(f"{empresa} perovskite solar news")
+        feed_url = (
+            f"https://news.google.com/rss/search"
+            f"?q={query}&hl=en-US&gl=US&ceid=US:en"
+        )
+        log.info("Google News RSS: %s", empresa)
+
+        try:
+            import feedparser
+            feed = feedparser.parse(feed_url)
+            entries = feed.entries[:20]
+
+            if not entries:
+                log.info(" Sin resultados para %s", empresa)
+                continue
+
+            for entry in entries:
+                link = getattr(entry, "link", "") or ""
+                title = getattr(entry, "title", "Sin título") or "Sin título"
+                summary = getattr(entry, "summary", "") or ""
+                pub_raw = getattr(entry, "published", "") or ""
+
+                if not link:
+                    continue
+
+                log.info(" Deep Scrape: %s", link)
                 try:
-                    results = list(ddgs.text(query, max_results=3))
-                    for res in results:
-                        url = res.get("href")
-                        if not url: continue
-                        log.info(" Deep Scrape: %s", url)
-                        ds = deep_scrape(url)
-                        title = ds.get("titulo", "Sin titulo")
-                        if ds and ds.get("analisis") and title:
-                            raw.append({
-                                "title": title,
-                                "link": url,
-                                "summary": ds.get("analisis", ""),
-                                "pub_raw": ds.get("fecha_publicacion", ""),
-                                "full_text": title + " " + ds.get("analisis", "")
-                            })
+                    ds = deep_scrape(link)
                 except Exception as e:
-                    log.error("Error buscando %s: %s", co, e)
-    except Exception as e:
-        log.error("Error inicializando DDGS: %s", e)
+                    log.warning(" deep_scrape falló para %s: %s", link[:60], e)
+                    ds = {"fecha_publicacion": "Fecha Desconocida", "analisis": "", "titulo": ""}
 
-    log.info("Total raw: %d artÃ­culos", len(raw))
+                titulo_final = (ds.get("titulo") or title or "Sin título").strip()
+                analisis_final = ds.get("analisis") or summary or ""
+                fecha_final = ds.get("fecha_publicacion") or pub_raw or "Fecha Desconocida"
 
+                raw.append({
+                    "title": titulo_final[:160],
+                    "link": link,
+                    "url": link,
+                    "summary": analisis_final[:300],
+                    "pub_raw": fecha_final,
+                    # FIX: No forzar el nombre de la empresa en full_text, para que detect_company sea exacto
+                    # y no asigne noticias falsas a la empresa si Google News devolvió algo genérico.
+                    "full_text": titulo_final + " " + analisis_final,
+                    "source": "Google News",
+                })
+
+        except Exception as e:
+            log.error("Error procesando RSS para %s: %s", empresa, e)
+
+    log.info("Total raw: %d artículos", len(raw))
     entries = analyse(raw)
 
     log.info("Generando Informe Ejecutivo de Mercado...")
@@ -1207,6 +1217,8 @@ def run_scan():
     db = build_database(entries, market_report)
     write_database(db)
     sync_to_supabase(db)
+
+
 
 def schedule_scans():
     try:
