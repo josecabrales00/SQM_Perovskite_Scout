@@ -464,18 +464,21 @@ def generate_market_report(articles: list[dict]) -> str:
 # â”€â”€ RSS Fetch â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â# â”€â”€ Deep Scrape HTML + IA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 def deep_scrape(url: str) -> dict:
     """
-    Fix 3: Extraccion de fecha INFALIBLE en 3 capas:
-      1. BeautifulSoup directo sobre meta tags HTML estandar -> fecha exacta sin Gemini
-      2. JSON-LD schema.org -> fecha exacta sin Gemini
-      3. Si no hay fecha estructural, Gemini extrae fecha + titulo + analisis
-    Siempre extrae titulo y analisis via Gemini (solo omite tarea de fecha si ya la encontro).
+    v6.1 - Extraccion de fecha INFALIBLE en 4 capas.
+    Capas 1-3 NO requieren Gemini y siempre se ejecutan.
+    Capa 4 usa Gemini via REST (sin SDK) solo si LLM_ENABLED.
+    GARANTIA: nunca lanza excepcion sin capturar, siempre devuelve dict.
     """
     import requests as _req, json as _json, time as _time, re as _re
-    from bs4 import BeautifulSoup
-    import google.generativeai as genai
 
     res = {"fecha_publicacion": "Fecha Desconocida", "analisis": "Sin analisis detallado.", "titulo": ""}
-    if not API_KEY or not url:
+    if not url:
+        return res
+
+    try:
+        from bs4 import BeautifulSoup
+    except ImportError:
+        log.warning("deep_scrape: bs4 no instalado, omitiendo extraccion HTML.")
         return res
 
     try:
@@ -483,14 +486,14 @@ def deep_scrape(url: str) -> dict:
             r = _req.get(url, timeout=10, headers={"User-Agent": "Mozilla/5.0"}, verify=False)
             if not r.ok:
                 return res
-        except _req.exceptions.RequestException as e:
-            log.warning("Página muy lenta, saltando... (%s)", url[:60])
+        except _req.exceptions.RequestException:
+            log.warning("Pagina muy lenta, saltando... (%s)", url[:60])
             return res
 
         soup = BeautifulSoup(r.content, "html.parser")
         hoy = datetime.now().strftime("%Y-%m-%d")
 
-        # â”€â”€ Fix 3 Capa 1: Extraccion directa de meta tags HTML estandar â”€â”€â”€â”€â”€
+        # Capa 1: meta tags HTML estandar (NO requiere Gemini)
         fecha_html = None
         DATE_META_ATTRS = [
             ("property", "article:published_time"),
@@ -506,16 +509,15 @@ def deep_scrape(url: str) -> dict:
             tag = soup.find("meta", {attr_name: attr_val})
             if tag and tag.get("content"):
                 raw = tag["content"].strip()[:30]
-                # Extraer YYYY-MM-DD del valor ISO8601
                 m = _re.search(r"(\d{4}-\d{2}-\d{2})", raw)
                 if m:
                     candidate = m.group(1)
                     if candidate != hoy:
                         fecha_html = candidate
-                        log.debug("Fix3 Capa1 meta[%s]: %s", attr_val, fecha_html)
+                        log.debug("Capa1 meta[%s]: %s", attr_val, fecha_html)
                         break
 
-        # â”€â”€ Fix 3 Capa 2: <time datetime="..."> â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        # Capa 2: time datetime (NO requiere Gemini)
         if not fecha_html:
             for t_tag in soup.find_all("time", attrs={"datetime": True})[:5]:
                 raw = t_tag["datetime"].strip()[:30]
@@ -524,10 +526,10 @@ def deep_scrape(url: str) -> dict:
                     candidate = m.group(1)
                     if candidate != hoy:
                         fecha_html = candidate
-                        log.debug("Fix3 Capa2 <time>: %s", fecha_html)
+                        log.debug("Capa2 time: %s", fecha_html)
                         break
 
-        # â”€â”€ Fix 3 Capa 3: JSON-LD schema.org â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        # Capa 3: JSON-LD schema.org (NO requiere Gemini)
         if not fecha_html:
             for schema_tag in soup.find_all("script", type="application/ld+json"):
                 try:
@@ -541,86 +543,83 @@ def deep_scrape(url: str) -> dict:
                             candidate = m.group(1)
                             if candidate != hoy:
                                 fecha_html = candidate
-                                log.debug("Fix3 Capa3 JSON-LD[%s]: %s", k, fecha_html)
                                 break
                     if fecha_html:
+                        log.debug("Capa3 JSON-LD: %s", fecha_html)
                         break
                 except Exception:
                     pass
 
-        # Si encontramos fecha estructural, la usamos directamente
         if fecha_html:
             res["fecha_publicacion"] = fecha_html
-            log.info("Fix3: fecha extraida del HTML sin Gemini: %s para %s", fecha_html, url[:60])
+            log.info("Fecha extraida del HTML sin Gemini: %s -> %s", fecha_html, url[:60])
 
-        # â”€â”€ Gemini: siempre extrae titulo + analisis (y fecha si no la encontramos) â”€
         for tag in soup(["script", "style", "nav", "footer", "header"]):
             tag.extract()
         text = soup.get_text(separator=" ", strip=True)[:12000]
 
+        # Capa 4: Gemini via REST, SOLO si LLM_ENABLED
+        if not LLM_ENABLED:
+            log.debug("deep_scrape: LLM deshabilitado, usando solo extraccion HTML.")
+            return res
+
         if fecha_html:
-            # Gemini solo necesita titulo + analisis (fecha ya resuelta)
             prompt = (
                 "Eres un extractor de datos para inteligencia comercial de SQM.\n"
                 "Lee el texto de esta pagina web y extrae:\n\n"
                 "TAREA 1 - TITULO DEL ARTICULO:\n"
-                "  - El titulo exacto tal como aparece publicado (no parafrasear).\n\n"
-                "TAREA 2 - RESUMEN COMERCIAL (2 lineas maximo):\n"
-                "  - Que anuncia la empresa y cual es su impacto potencial en la demanda de yodo.\n\n"
-                "RESPONDE UNICAMENTE un JSON valido con exactamente 2 llaves:\n"
-                "{\"titulo\": \"Titulo del articulo\","
-                " \"analisis\": \"Resumen comercial de 2 lineas\"}\n\n"
+                "  - El titulo exacto tal como aparece publicado.\n\n"
+                "TAREA 2 - RESUMEN COMERCIAL:\n"
+                "  - 2 lineas sobre el impacto en demanda de yodo.\n\n"
+                'RESPONDE UNICAMENTE un JSON: {"titulo": "...", "analisis": "..."}\n\n'
                 f"TEXTO DE LA PAGINA:\n{text}"
             )
         else:
-            # Gemini extrae fecha + titulo + analisis
             prompt = (
                 "Eres un extractor de datos estructurado para inteligencia comercial.\n\n"
-                "TAREA 1 - FECHA DE PUBLICACION ORIGINAL:\n"
-                "  - Busca la fecha en que el ARTICULO fue publicado por primera vez.\n"
-                "  - Formato: YYYY-MM-DD (ej. 2024-11-15).\n"
-                "  - PROHIBICION ABSOLUTA: Si NO encuentras fecha original, "
-                "responde EXACTAMENTE 'Fecha Desconocida'. "
-                "NUNCA uses la fecha de hoy ni ninguna fecha post-acceso.\n\n"
-                "TAREA 2 - TITULO DEL ARTICULO:\n"
-                "  - El titulo exacto tal como aparece publicado.\n\n"
-                "TAREA 3 - RESUMEN COMERCIAL (2 lineas maximo):\n"
-                "  - Que anuncia la empresa y cual es su impacto en la demanda de yodo.\n\n"
-                "RESPONDE UNICAMENTE un JSON valido con exactamente estas 3 llaves:\n"
-                "{\"fecha_publicacion\": \"YYYY-MM-DD o Fecha Desconocida\","
-                " \"titulo\": \"Titulo del articulo\","
-                " \"analisis\": \"Resumen comercial de 2 lineas\"}\n\n"
+                "TAREA 1 - FECHA: formato YYYY-MM-DD o 'Fecha Desconocida'\n"
+                "TAREA 2 - TITULO: el titulo exacto\n"
+                "TAREA 3 - RESUMEN COMERCIAL: 2 lineas sobre impacto en yodo\n\n"
+                'RESPONDE UNICAMENTE un JSON: {"fecha_publicacion": "...", "titulo": "...", "analisis": "..."}\n\n'
                 f"TEXTO DE LA PAGINA:\n{text}"
             )
 
+        # REST call, sin SDK de Google
         try:
-            genai.configure(api_key=API_KEY)
-            model = genai.GenerativeModel("gemini-1.5-flash")
-            resp_ai = model.generate_content(prompt)
-            t_text = resp_ai.text
-            idx1 = t_text.find("{")
-            idx2 = t_text.rfind("}")
-            if idx1 != -1 and idx2 != -1:
-                data = _json.loads(t_text[idx1:idx2 + 1])
-                res["titulo"]   = data.get("titulo", "").strip()[:200]
-                res["analisis"] = data.get("analisis", "Sin analisis detallado.").strip()[:800]
-                # Solo sobreescribir fecha si Gemini la encontro y no tenemos una del HTML
-                if not fecha_html:
-                    fecha_g = data.get("fecha_publicacion", "Fecha Desconocida").strip()
-                    if fecha_g and fecha_g != hoy and _re.match(r"\d{4}-\d{2}-\d{2}$", fecha_g):
-                        res["fecha_publicacion"] = fecha_g
-                    else:
-                        res["fecha_publicacion"] = "Fecha Desconocida"
+            gem_url = GEMINI_ENDPOINTS[0].format(key=_RESOLVED_KEY)
+            payload = {
+                "contents": [{"parts": [{"text": prompt}]}],
+                "generationConfig": {"temperature": 0.2, "maxOutputTokens": 512},
+            }
+            gem_resp = _req.post(gem_url, json=payload, verify=False, timeout=30)
+            if gem_resp.ok:
+                gem_json = gem_resp.json()
+                t_text = gem_json["candidates"][0]["content"]["parts"][0]["text"]
+                idx1, idx2 = t_text.find("{"), t_text.rfind("}")
+                if idx1 != -1 and idx2 != -1:
+                    data = _json.loads(t_text[idx1:idx2 + 1])
+                    res["titulo"]   = (data.get("titulo") or "").strip()[:200]
+                    res["analisis"] = (data.get("analisis") or "Sin analisis detallado.").strip()[:800]
+                    if not fecha_html:
+                        fecha_g = (data.get("fecha_publicacion") or "Fecha Desconocida").strip()
+                        if fecha_g and fecha_g != hoy and _re.match(r"\d{4}-\d{2}-\d{2}$", fecha_g):
+                            res["fecha_publicacion"] = fecha_g
+                        else:
+                            res["fecha_publicacion"] = "Fecha Desconocida"
+                else:
+                    log.warning("deep_scrape: no JSON en respuesta Gemini para %s", url[:60])
             else:
-                log.warning("deep_scrape: no JSON en respuesta Gemini para %s", url[:60])
+                log.warning("deep_scrape Gemini HTTP %s para %s", gem_resp.status_code, url[:60])
         except Exception as e:
             log.warning("deep_scrape Gemini error (%s): %s", url[:60], e)
 
-        _time.sleep(2)  # avoid rate limit
+        _time.sleep(2)
     except Exception as e:
         log.warning("deep_scrape request error (%s): %s", url[:60], e)
         _time.sleep(2)
 
+    if not res.get("fecha_publicacion"):
+        res["fecha_publicacion"] = "Fecha Desconocida"
     return res
 
 def detect_company(text: str) -> str:
@@ -726,18 +725,30 @@ def analyse(raw_articles: list[dict]) -> list[dict]:
             continue
 
         log.info("  Deep scraping [%s]...", link)
-        ia_data = deep_scrape(link)
+        try:
+            ia_data = deep_scrape(link)
+        except Exception as e:
+            # Blindaje: un solo artículo roto NUNCA debe tumbar el ciclo de
+            # escaneo completo. Antes, una excepción aquí mataba el hilo de
+            # fondo para siempre y el agente dejaba de refrescar datos.
+            log.warning("  deep_scrape falló para %s: %s -- usando defaults.", link[:60], e)
+            ia_data = {"fecha_publicacion": "Fecha Desconocida", "analisis": "", "titulo": ""}
 
         # Fix 3: Only override date if IA returned a valid date (never today's timestamp)
-        fecha_ia = ia_data.get("fecha_publicacion", "Fecha Desconocida")
+        fecha_ia = ia_data.get("fecha_publicacion") or "Fecha Desconocida"
         if fecha_ia != "Fecha Desconocida":
             candidate_entry["date"] = fecha_ia
         elif not candidate_entry["date"]:
             candidate_entry["date"] = "Fecha Desconocida"
 
+        # NUEVO: alias estandarizado, mismo nombre exacto que la columna de Supabase,
+        # para que el dato viaje sin ambigüedad de punta a punta:
+        # scraping -> database.json -> Supabase -> frontend.
+        candidate_entry["fecha_publicacion"] = candidate_entry["date"]
+
         # Fix 4: Store analysis + extracted headline in resumen_ia and titulo
-        candidate_entry["resumen_ia"] = ia_data.get("analisis", "Sin anÃ¡lisis detallado.")
-        titulo_ia = ia_data.get("titulo", "").strip()
+        candidate_entry["resumen_ia"] = ia_data.get("analisis") or "Sin análisis detallado."
+        titulo_ia = (ia_data.get("titulo") or "").strip()
         if titulo_ia:
             candidate_entry["title"] = titulo_ia[:160]
         candidate_entry["titulo"] = candidate_entry["title"]  # keep alias for Supabase column
@@ -947,7 +958,7 @@ def sync_to_supabase(db: dict):
             "geo_continente":   e.get("geo", {}).get("continent", ""),
             "nivel_riesgo":     e.get("nivel_riesgo", "Neutral"),
             "invest_proxy":     bool(e.get("invest_proxy", False)),
-            "fecha_publicacion": e.get("date", "Fecha Desconocida")[:30],
+            "fecha_publicacion": (e.get("fecha_publicacion") or e.get("date") or "Fecha Desconocida")[:30],
             "analisis":         (e.get("resumen_ia") or e.get("analisis") or "Sin anÃ¡lisis detallado.")[:800],
         })
 
@@ -1195,7 +1206,10 @@ def run_scan():
     sync_to_supabase(db)
 
 def schedule_scans():
-    run_scan()
+    try:
+        run_scan()
+    except Exception as e:
+        log.error("run_scan() falló por completo: %s -- se reintentará en el próximo ciclo.", e)
     t = threading.Timer(SCAN_INTERVAL_SEC, schedule_scans)
     t.daemon = True
     t.start()
@@ -1394,10 +1408,11 @@ if __name__ == "__main__":
 
     try:
         import feedparser, requests
+        from bs4 import BeautifulSoup  # noqa: F401  (usado en deep_scrape)
     except ImportError:
         import subprocess
         subprocess.check_call([sys.executable, "-m", "pip", "install",
-                               "feedparser", "requests", "-q"])
+                               "feedparser", "requests", "beautifulsoup4", "-q"])
         import feedparser, requests
 
     if not LLM_ENABLED:
