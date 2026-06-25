@@ -1,6 +1,6 @@
 {
   "meta": {
-    "last_updated": "2026-06-25T19:52:45.822784+00:00",
+    "last_updated": "2026-06-25T22:15:43.080381+00:00",
     "total_gw": 0,
     "total_iodine_ton": 0,
     "total_pbi2_ton": 0.0,
@@ -8,16 +8,18 @@
     "total_mai_ton": 0.0,
     "total_csi_ton": 0.0,
     "unique_companies": 0,
-    "article_count": 0,
+    "article_count": 5,
     "capacity_count": 0,
     "iodine_per_gw": 4.73,
     "risk_counts": {
       "Beneficioso": 0,
       "Riesgo": 0,
-      "Neutral": 0
+      "Neutral": 5
     },
     "llm_enabled": true,
-    "target_years": []
+    "target_years": [
+      "2026"
+    ]
   },
   "companies": [
     "UtmoLight",
@@ -33,6 +35,157 @@
     "Photon Crystal Energy",
     "Mellow Energy"
   ],
-  "articles": [],
-  "market_report": "Como Analista Senior de SQM, he evaluado el panorama actual del sector fotovoltaico tras la reciente ausencia de hitos comerciales significativos en la base de datos, lo cual mantiene nuestra capacidad instalada de celdas de perovskita en 0 GW. A pesar de la expectativa tecnológica que rodea a esta industria, la falta de proyectos operativos a gran escala implica que la demanda proyectada de yodo para este segmento se mantiene en 0.0 toneladas métricas. Esta cifra refleja un estado de maduración tecnológica donde, si bien la investigación continúa, aún no se han materializado los despliegues industriales necesarios para activar nuestra cadena de suministro de yodo de alta pureza.\n\nEs imperativo señalar que, ante la ausencia de anuncios de capacidad por parte de empresas líderes en el sector de perovskitas, nuestra proyección de consumo basada en el factor técnico de 4.73 toneladas de yodo por cada GW instalado permanece estática. La falta de hitos corporativos de entidades que suelen liderar la innovación en este campo impide, por el momento, una escalabilidad comercial que justifique un ajuste en nuestras estimaciones de demanda. Como SQM, mantenemos un monitoreo constante de los avances en la eficiencia de celdas tándem, ya que cualquier anuncio de expansión de capacidad por parte de los actores clave del mercado activaría inmediatamente el requerimiento de nuestro producto.\n\nEn conclusión, la estrategia de SQM frente a la tecnología de perovskita se mantiene en una fase de vigilancia proactiva, a la espera de que el mercado transite desde la etapa de prototipado hacia la producción masiva. La métrica de 4.73 Ton/GW sigue siendo nuestra referencia estratégica para evaluar el impacto futuro en el mercado global de yodo una vez que las empresas del sector logren la viabilidad comercial. Seguiremos integrando cualquier nueva noticia de capacidad instalada en nuestros modelos financieros para asegurar que nuestra capacidad de respuesta logística y productiva esté alineada con las necesidades reales de esta prometedora industria fotovoltaica."
+  "articles": [
+    {
+      "id": "a-270169381353",
+      "company": "CNNP",
+      "capacityValue": 0.0,
+      "capacityUnit": "MW",
+      "capacityGw": 0.0,
+      "iodineDemand": 0.0,
+      "pbi2": 0.0,
+      "fai": 0.0,
+      "mai": 0.0,
+      "csi": 0.0,
+      "phase": "Planned",
+      "nivel_riesgo": "Neutral",
+      "resumen_ia": "Sin analisis detallado.",
+      "target_year": "2026",
+      "invest_proxy": false,
+      "geo": {
+        "country": "China",
+        "continent": "Asia"
+      },
+      "llm_used": false,
+      "radar_only": true,
+      "date": "Fecha Desconocida",
+      "fecha_publicacion": "Fecha Desconocida",
+      "source": "Google News",
+      "title": "CNNP Optoelectronics unveils 16.5%-efficient perovskite solar module - pv magazine Global",
+      "titulo": "CNNP Optoelectronics unveils 16.5%-efficient perovskite solar module - pv magazine Global",
+      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPOVM5NnE5ajhIdWR1bEJ1ZUwwLWpVMTlzZUd5S2M1QUJrZ3R5ekQxZlVyMXIzeldqSkE1UmZ0Wm5xM2pqVXZjMmQtU0p0ckc0bGxWbHo4LU8wcG4tOGs4c1pTVFZtd3dabVlKZ3RkbGxzNXN0TWtzbUZvdkRpNG80NjFZS2RBcl8zVlFlSF9WaWdLbDhTeU5sWUhzSXRaRGdieVU5WWNCY0VuRjQ?oc=5",
+      "summary": "Sin analisis detallado."
+    },
+    {
+      "id": "a-422257688287",
+      "company": "BOE",
+      "capacityValue": 0.0,
+      "capacityUnit": "MW",
+      "capacityGw": 0.0,
+      "iodineDemand": 0.0,
+      "pbi2": 0.0,
+      "fai": 0.0,
+      "mai": 0.0,
+      "csi": 0.0,
+      "phase": "Planned",
+      "nivel_riesgo": "Neutral",
+      "resumen_ia": "Sin analisis detallado.",
+      "target_year": "2026",
+      "invest_proxy": false,
+      "geo": {
+        "country": "China",
+        "continent": "Asia"
+      },
+      "llm_used": false,
+      "radar_only": true,
+      "date": "Fecha Desconocida",
+      "fecha_publicacion": "Fecha Desconocida",
+      "source": "Google News",
+      "title": "China’s Hefei BOE Solar Technology claims 27.37% efficiency for perovskite solar cell - pv magazine Global",
+      "titulo": "China’s Hefei BOE Solar Technology claims 27.37% efficiency for perovskite solar cell - pv magazine Global",
+      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOT1E0MzBlOExGWHBEalZicUhydWJUTEk1ak5RaU50ekc2TXMzX01XSkFDZlpNck84Mm5QN0Z2QTNOQTNad3BIalJlS0pEaGRDS1EtOGlVSHY4VWFDVnljcjU3ZERjN1lQenVCNnAyVy1JMmJ6bW40WFBQak5jckNFSUh0cnBPN2VYLUFWTXY5WXpiUU41LUxabkl3b3ZkeGFVRU1FRUI5RUx2Y1J1b05EUHNWOFljY3IyTnhrSFZacmg?oc=5",
+      "summary": "Sin analisis detallado."
+    },
+    {
+      "id": "a-938394899971",
+      "company": "BOE",
+      "capacityValue": 0.0,
+      "capacityUnit": "MW",
+      "capacityGw": 0.0,
+      "iodineDemand": 0.0,
+      "pbi2": 0.0,
+      "fai": 0.0,
+      "mai": 0.0,
+      "csi": 0.0,
+      "phase": "Planned",
+      "nivel_riesgo": "Neutral",
+      "resumen_ia": "Sin analisis detallado.",
+      "target_year": "2026",
+      "invest_proxy": false,
+      "geo": {
+        "country": "China",
+        "continent": "Asia"
+      },
+      "llm_used": false,
+      "radar_only": true,
+      "date": "Fecha Desconocida",
+      "fecha_publicacion": "Fecha Desconocida",
+      "source": "Google News",
+      "title": "China Solar PV News Snippets: BOE Expands Perovskite Push With Corning Partnership & More - TaiyangNews",
+      "titulo": "China Solar PV News Snippets: BOE Expands Perovskite Push With Corning Partnership & More - TaiyangNews",
+      "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1LQkh5bDBSeHlmdDVBZW1oVHFrY0RJMUk0ZUdEcDg0Ukl4QmVBZG9ZYzBsV3MybkV3SGNjWVpNWkZ2YlhwTVRjSjVKYmNqQjQ5dU40TGJuNXI3cjNqdF9IdkpFV0NOX0loVlhXdkE2N1B2QkNqZEhmOFgwWFlVZ9IBiwFBVV95cUxQRDVDVUFNdXd4VVpuR3R3djRnem9Ga1RSRmcxT21mMmZHYS12eGxReHBhODFDako1TXhNSGttNV9xRERTWlMycktKQWJOS0Vma0o0cWZ5cEZsMnJMa29DSXR1SlkxR1ZDb2lGTWVrd3pmV3ZrSnFDa2xuekJrTkIyTXYzLVJLQWZELWhj?oc=5",
+      "summary": "Sin analisis detallado."
+    },
+    {
+      "id": "a-512124756831",
+      "company": "BOE",
+      "capacityValue": 0.0,
+      "capacityUnit": "MW",
+      "capacityGw": 0.0,
+      "iodineDemand": 0.0,
+      "pbi2": 0.0,
+      "fai": 0.0,
+      "mai": 0.0,
+      "csi": 0.0,
+      "phase": "Planned",
+      "nivel_riesgo": "Neutral",
+      "resumen_ia": "Sin analisis detallado.",
+      "target_year": "2026",
+      "invest_proxy": false,
+      "geo": {
+        "country": "China",
+        "continent": "Asia"
+      },
+      "llm_used": false,
+      "radar_only": true,
+      "date": "Fecha Desconocida",
+      "fecha_publicacion": "Fecha Desconocida",
+      "source": "Google News",
+      "title": "BOE Partners with Corning to Strengthen Layout in New Areas Including Glass-Based Packaging and Perovskite | Quick Read Announcement - Moomoo",
+      "titulo": "BOE Partners with Corning to Strengthen Layout in New Areas Including Glass-Based Packaging and Perovskite | Quick Read Announcement - Moomoo",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPMmRjaWVqc2pKUEx2b3JpNXd1Z0tTN01LU0Q4dHk3azRqOExhUjlqR3hhR3pLdzZRVGZJcldWWjBoT3NnWThmZ2tNaUV5UWlfZ0w4STN3b1F0c3pPZHNOOWYxaW83c0FvUHhXUEFzRjcwYThIdnFYQTZLbVdwV3NGZlNsSVpSd3V5ZWthd2dUckNkdklLbFJwTlpwVVVDczU5bkRB?oc=5",
+      "summary": "Sin analisis detallado."
+    },
+    {
+      "id": "a-125765336928",
+      "company": "GCL",
+      "capacityValue": 0.0,
+      "capacityUnit": "MW",
+      "capacityGw": 0.0,
+      "iodineDemand": 0.0,
+      "pbi2": 0.0,
+      "fai": 0.0,
+      "mai": 0.0,
+      "csi": 0.0,
+      "phase": "Planned",
+      "nivel_riesgo": "Neutral",
+      "resumen_ia": "Sin analisis detallado.",
+      "target_year": "2026",
+      "invest_proxy": false,
+      "geo": {
+        "country": "China",
+        "continent": "Asia"
+      },
+      "llm_used": false,
+      "radar_only": true,
+      "date": "Fecha Desconocida",
+      "fecha_publicacion": "Fecha Desconocida",
+      "source": "Google News",
+      "title": "China Solar PV News Snippets: GCL SI Publishes Perovskite Tandem Research & More - TaiyangNews",
+      "titulo": "China Solar PV News Snippets: GCL SI Publishes Perovskite Tandem Research & More - TaiyangNews",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQRE1PaHo3UElkdHJGT3B3WlpXMWlyNW44a3h4emRNMUozVUt0cVE4a0l3T3BwakpXSzhPVXlfN1dNcU0yeUJkd2RHei1CZDh3STJQamFqWE9kcmNuVDBaell3MFhQdVIzVUFDTnhlYWQ2UjlSLXk4WlNUSjhQNmRrRtIBjgFBVV95cUxPRTBVU1FReUVjWHc0bFhDTXliRE83RG5IWm1sajlaLVpmSW54RmhNMVVTdk92NkFNbUJBT3dNRktPVVVaYmxYTFFNYkNYUng3aGxBMU5UYTNGVkRsUDhhR0ItREdDMDUzZ2V0MnZjbjdLOHhsdmxKWllRU0x2UUNsVkIyel91Wkhuejd1MjN3?oc=5",
+      "summary": "Sin analisis detallado."
+    }
+  ],
+  "market_report": "El panorama actual de la industria fotovoltaica de nueva generación refleja un avance técnico significativo, aunque todavía incipiente en términos de capacidad instalada comercial a gran escala. Empresas líderes como BOE han consolidado hitos de eficiencia del 27.37% en celdas de perovskita, respaldados por alianzas estratégicas con Corning para optimizar el empaquetado basado en vidrio, mientras que CNNP Optoelectronics ha reportado módulos con una eficiencia del 16.5%. Paralelamente, GCL ha intensificado sus esfuerzos en investigación y desarrollo enfocados en celdas tándem, lo que subraya una tendencia sectorial hacia la maduración tecnológica, a pesar de que la capacidad productiva instalada reportada por estos actores se mantiene actualmente en 0.0 GW.\n\nBajo nuestra métrica interna de consumo de 4.73 toneladas de yodo por cada gigavatio (GW) de capacidad fotovoltaica de perovskita, el impacto directo en la demanda de nuestro portafolio de yodo es, por el momento, nulo. Dado que la capacidad total detectada en los proyectos de CNNP, GCL y BOE no ha escalado hacia fases de manufactura masiva o despliegue comercial, la demanda proyectada se cifra estrictamente en 0.0 toneladas. Esta situación nos permite mantener una postura de observación estratégica, monitoreando de cerca cómo la transición de los laboratorios de estas compañías hacia líneas de producción industrial alterará los requerimientos de insumos químicos de alta pureza en el corto y mediano plazo.\n\nComo analistas senior, proyectamos que cualquier anuncio de expansión de capacidad productiva por parte de estos actores clave actuará como un catalizador inmediato para la demanda de yodo, dado que la perovskita es un componente crítico en la arquitectura de estas celdas. Mientras BOE, GCL y CNNP continúan refinando sus procesos de eficiencia y escalabilidad, SQM se posiciona para capitalizar el crecimiento de este mercado emergente una vez que los proyectos superen la etapa de investigación y alcancen el despliegue de gigavatios comerciales. Seguiremos integrando los avances técnicos de estas empresas en nuestro modelo de proyección de demanda, asegurando que nuestra capacidad de suministro esté alineada con la evolución real de la capacidad instalada global."
 }
