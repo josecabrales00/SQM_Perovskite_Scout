@@ -52,7 +52,7 @@ def deploy():
         file_url = f"https://api.github.com/repos/{username}/{REPO_NAME}/contents/{f}"
         file_res = requests.get(file_url, headers=gh_headers)
         payload = {
-            "message": f"v1.4.0 - Frontend Rescue - {f}",
+            "message": f"v1.4.1 - deep_scrape v6.1 Bulletproof - {f}",
             "content": base64.b64encode(content).decode('utf-8')
         }
         if file_res.ok:
