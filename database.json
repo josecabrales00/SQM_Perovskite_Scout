@@ -1,20 +1,20 @@
 {
   "meta": {
-    "last_updated": "2026-06-24T23:17:13.250693+00:00",
-    "total_gw": 8.045,
-    "total_iodine_ton": 38.0529,
-    "total_pbi2_ton": 22.8317,
-    "total_fai_ton": 7.6106,
-    "total_mai_ton": 3.8053,
-    "total_csi_ton": 3.8053,
+    "last_updated": "2026-06-25T18:46:15.511174+00:00",
+    "total_gw": 9.026,
+    "total_iodine_ton": 42.693,
+    "total_pbi2_ton": 25.6158,
+    "total_fai_ton": 8.5386,
+    "total_mai_ton": 4.2693,
+    "total_csi_ton": 4.2693,
     "unique_companies": 5,
-    "article_count": 125,
+    "article_count": 121,
     "capacity_count": 11,
     "iodine_per_gw": 4.73,
     "risk_counts": {
-      "Beneficioso": 43,
+      "Beneficioso": 40,
       "Riesgo": 0,
-      "Neutral": 82
+      "Neutral": 81
     },
     "llm_enabled": true,
     "target_years": [
@@ -69,7 +69,7 @@
       "summary": "<p>China’s Ministry of Industry and Information Technology (MIIT), together with four other key government bodies, has announced its 2026 list of typical smart photovoltaic (PV) projects, selecting 73 initiatives nationwide. Among them, two perovskite-based projects were recognized, signaling contin"
     },
     {
-      "id": "a-757318203086",
+      "id": "a-499326814609",
       "company": "Oxford PV",
       "capacityValue": 0.0,
       "capacityUnit": "MW",
@@ -93,8 +93,36 @@
       "date": "2026-06-24",
       "source": "GNews-Oxford PV",
       "title": "Oxford PV and Fraunhofer unveil 25.6 per cent tandem modules - The Engineer - Home",
-      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPV1dfVzBKRU4zRG1TUG5xYnIxdkVrWWdicTVRZDVmTlZyM3dvOEx3LW51NkVFTGQ4NnN4Ukd1YXIwdlN5RU5lXzBsLWU4M1gtVExySWFaN25TWFZqMVZBOWVnOHVwekxKR01HY3dDVmJhT21CVnVOelZlNUFXd09mQUtEa0IxWUtyNTBObms5NnQ1ZGpHR3FsSXdxZkh6OW9oV3ljbFFzM3B1dDdSS0E?oc=5",
-      "summary": "<a href=\"https://news.google.com/rss/articles/CBMirgFBVV95cUxPV1dfVzBKRU4zRG1TUG5xYnIxdkVrWWdicTVRZDVmTlZyM3dvOEx3LW51NkVFTGQ4NnN4Ukd1YXIwdlN5RU5lXzBsLWU4M1gtVExySWFaN25TWFZqMVZBOWVnOHVwekxKR01HY3dDVmJhT21CVnVOelZlNUFXd09mQUtEa0IxWUtyNTBObms5NnQ1ZGpHR3FsSXdxZkh6OW9oV3ljbFFzM3B1dDdSS0E?oc=5\" target=\""
+      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNQnFvWkZ1TlJXYU9zNjMzV0MwOHZ0bEk3cGs2MjNxZzd0akpCQW1Ba0QzRkQ4T2J1VmNVUDBUNUdJV3BwbGdpbnhOZGNjTm9UUmhaMkNja0k5Q1FINVI3TkZSek9DNDhua3RTV0kwYWxxTnQxa1lVOUNhR3FvcUd2MG84QU1qVnd4RDBTdDREbXlxSmZENkZFdVpYZEc5aEFxQzFCYTFIZ24xVk52cVhV?oc=5",
+      "summary": "<a href=\"https://news.google.com/rss/articles/CBMirwFBVV95cUxNQnFvWkZ1TlJXYU9zNjMzV0MwOHZ0bEk3cGs2MjNxZzd0akpCQW1Ba0QzRkQ4T2J1VmNVUDBUNUdJV3BwbGdpbnhOZGNjTm9UUmhaMkNja0k5Q1FINVI3TkZSek9DNDhua3RTV0kwYWxxTnQxa1lVOUNhR3FvcUd2MG84QU1qVnd4RDBTdDREbXlxSmZENkZFdVpYZEc5aEFxQzFCYTFIZ24xVk52cVhV?oc=5\" target="
+    },
+    {
+      "id": "a-839967680808",
+      "company": "Microquanta",
+      "capacityValue": 1.0,
+      "capacityUnit": "GW",
+      "capacityGw": 1.0,
+      "iodineDemand": 4.73,
+      "pbi2": 2.838,
+      "fai": 0.946,
+      "mai": 0.473,
+      "csi": 0.473,
+      "phase": "Under Construction",
+      "nivel_riesgo": "Neutral",
+      "resumen_ia": "Análisis local — Empresa: Microquanta (China). Capacidad: 1.000 GW. Fase: Under Construction. Nivel: Neutral. Año objetivo: 2026.",
+      "target_year": "2026",
+      "invest_proxy": false,
+      "geo": {
+        "country": "China",
+        "continent": "Asia"
+      },
+      "llm_used": false,
+      "radar_only": false,
+      "date": "2026-06-24",
+      "source": "GNews-Microquanta",
+      "title": "Microquanta launches 26%-efficient colored perovskite-silicon tandem modules for building-integrated PV - pv magazine Global",
+      "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOVlJla2xPYmh1VFhhMWwwWXlKWlV4WWJ5WXVfUVZ4QUN3aV9Fd2tKZ1gwaGVmQ0xpSVVzRzdzTnVMb290bDZoZE1xMjQzZzJXNG5jX3QxeDNIS3UyMi1WYkVkZ0l5ekRKNXM0WkZ0cFVOUHVYbldyQ1FvbVU2SW9VTzRuellPZmJwa2dhMVZmVzAyd2w2clRWMmctaEFGMk0yS1lnQWZVWmFYaDlRcC0zRlVaZUVBVHdvbl8tOHZkX3NLRjhXVHVIZVZRTzROdm9qQ25Gc0FrOUk1dw?oc=5",
+      "summary": "<a href=\"https://news.google.com/rss/articles/CBMi2gFBVV95cUxOVlJla2xPYmh1VFhhMWwwWXlKWlV4WWJ5WXVfUVZ4QUN3aV9Fd2tKZ1gwaGVmQ0xpSVVzRzdzTnVMb290bDZoZE1xMjQzZzJXNG5jX3QxeDNIS3UyMi1WYkVkZ0l5ekRKNXM0WkZ0cFVOUHVYbldyQ1FvbVU2SW9VTzRuellPZmJwa2dhMVZmVzAyd2w2clRWMmctaEFGMk0yS1lnQWZVWmFYaDlRcC0zRlVaZUVBVHdvbl"
     },
     {
       "id": "a-272184011852",
@@ -235,34 +263,6 @@
       "title": "GCL updates on perovskite PV commercialization, 4T tandem progress and space applications",
       "link": "https://www.perovskite-info.com/gcl-updates-perovskite-pv-commercialization-4t-tandem-progress-and-space",
       "summary": "<p>An interview with Dr. Bin Fan, Founder and Chairman of <a href=\"https://www.perovskite-info.com/gcl-optoelectronic-material\">GCL Optoelectronic</a>, took place at a recent conference, providing interesting updates and shedding light on GCL’s perovskite commercialization strategy and 4‑terminal ta"
-    },
-    {
-      "id": "a-141982572332",
-      "company": "Oxford PV",
-      "capacityValue": 0.0,
-      "capacityUnit": "MW",
-      "capacityGw": 0.0,
-      "iodineDemand": 0.0,
-      "pbi2": 0.0,
-      "fai": 0.0,
-      "mai": 0.0,
-      "csi": 0.0,
-      "phase": "Planned",
-      "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
-      "target_year": "2025",
-      "invest_proxy": false,
-      "geo": {
-        "country": "UK",
-        "continent": "Europa"
-      },
-      "llm_used": false,
-      "radar_only": true,
-      "date": "2026-06-19",
-      "source": "GNews-Oxford PV",
-      "title": "Oxford PV, Fraunhofer ISE develop shingled perovskite-silicon module - Renewables Now",
-      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNRUYwOTJ1ZHdFd1RUMldhb2hubE1Wemo2azBiOEo3ZkpFR2NvQnRYbmQ4TllVRGRTbzNxOS1QcWpWajcwVVFBd2VWZ043QUdLRFlIakhySVR1Q01HbGJMbUh4Qjh3TTd3S2ZOUm04eC1XZHd6UVF4MlMxTDlzRDJIZHVQTzF6RWdTbmEwQ21HTGJoOEJGOGE2c0RfTW83UUw4UDVDR3FRYVQzbEk?oc=5",
-      "summary": "<a href=\"https://news.google.com/rss/articles/CBMiqwFBVV95cUxNRUYwOTJ1ZHdFd1RUMldhb2hubE1Wemo2azBiOEo3ZkpFR2NvQnRYbmQ4TllVRGRTbzNxOS1QcWpWajcwVVFBd2VWZ043QUdLRFlIakhySVR1Q01HbGJMbUh4Qjh3TTd3S2ZOUm04eC1XZHd6UVF4MlMxTDlzRDJIZHVQTzF6RWdTbmEwQ21HTGJoOEJGOGE2c0RfTW83UUw4UDVDR3FRYVQzbEk?oc=5\" target=\"_bla"
     },
     {
       "id": "a-625730925390",
@@ -459,34 +459,6 @@
       "title": "UtmoLight launches new perovskite solar module series - pv magazine Global",
       "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNZkFGVFhqSDdwY2lnUnpWb2pFQVAxczVOQkJkYUtvSVpXUkxXcUg0R1lMZXdwOWh0WUZTNkJqRUVnQmVFc05rUl9HeUs4dlZMd19DSlBiRF8wUUtEVTlwdGpfdDgwT0lfOVZnWkRkTk5IVHVvc0c1TTY0alRFLUJTS2s1Z09PeEtMTG9BYmVWWWNyZHdKWnBobQ?oc=5",
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMimAFBVV95cUxNZkFGVFhqSDdwY2lnUnpWb2pFQVAxczVOQkJkYUtvSVpXUkxXcUg0R1lMZXdwOWh0WUZTNkJqRUVnQmVFc05rUl9HeUs4dlZMd19DSlBiRF8wUUtEVTlwdGpfdDgwT0lfOVZnWkRkTk5IVHVvc0c1TTY0alRFLUJTS2s1Z09PeEtMTG9BYmVWWWNyZHdKWnBobQ?oc=5\" target=\"_blank\">UtmoLight launches ne"
-    },
-    {
-      "id": "a-700867068126",
-      "company": "UtmoLight",
-      "capacityValue": 19.0,
-      "capacityUnit": "MW",
-      "capacityGw": 0.019,
-      "iodineDemand": 0.0899,
-      "pbi2": 0.0539,
-      "fai": 0.018,
-      "mai": 0.009,
-      "csi": 0.009,
-      "phase": "Under Construction",
-      "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: UtmoLight (China). Capacidad: 0.019 GW. Fase: Under Construction. Nivel: Beneficioso. Año objetivo: 2026.",
-      "target_year": "2026",
-      "invest_proxy": false,
-      "geo": {
-        "country": "China",
-        "continent": "Asia"
-      },
-      "llm_used": false,
-      "radar_only": false,
-      "date": "2026-06-08",
-      "source": "Perovskite-Info",
-      "title": "UtmoLight secures 19MW perovskite PV module order",
-      "link": "https://www.perovskite-info.com/utmolight-secures-19mw-perovskite-pv-module-order",
-      "summary": "<p>During a recent industry exhibition, <a href=\"https://www.perovskite-info.com/wuxi-utmost-light-technology-utmolight\">UtmoLight</a> reportedly signed a cooperation agreement with the China Construction Fourth Engineering Division (CSCEC 4th Bureau) for a \"19MW Perovskite PV Module Project,\" marki"
     },
     {
       "id": "a-950804331152",
@@ -739,34 +711,6 @@
       "title": "Solx & Caelux Launch U.S. Hybrid Solar Panel Production | 2027 Market - News and Statistics - IndexBox",
       "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQallXNndxWlc4X0JwTnF2RlY3MVVhMDRPTVpVMVlXa29uRTRlMUItckVuOW1odzNYcHl2Y0RpN25EYjBaUGs5cE9aSGNQa0p3ZGEtdGR5R1Z6SmptaDN1U3VVNGNkQ1VCN3lsZlZkYkJQMnZYT3l0Vk5DMm1KdzBOZy00Qms1VWVRZU9KNjNBUXhmN3MtWVBoVy1TR183dzRXYkE?oc=5",
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiogFBVV95cUxQallXNndxWlc4X0JwTnF2RlY3MVVhMDRPTVpVMVlXa29uRTRlMUItckVuOW1odzNYcHl2Y0RpN25EYjBaUGs5cE9aSGNQa0p3ZGEtdGR5R1Z6SmptaDN1U3VVNGNkQ1VCN3lsZlZkYkJQMnZYT3l0Vk5DMm1KdzBOZy00Qms1VWVRZU9KNjNBUXhmN3MtWVBoVy1TR183dzRXYkE?oc=5\" target=\"_blank\">Solx & C"
-    },
-    {
-      "id": "a-368739120649",
-      "company": "Caelux",
-      "capacityValue": 0.0,
-      "capacityUnit": "MW",
-      "capacityGw": 0.0,
-      "iodineDemand": 0.0,
-      "pbi2": 0.0,
-      "fai": 0.0,
-      "mai": 0.0,
-      "csi": 0.0,
-      "phase": "Planned",
-      "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Caelux (USA). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
-      "target_year": "2027",
-      "invest_proxy": false,
-      "geo": {
-        "country": "USA",
-        "continent": "Norteamérica"
-      },
-      "llm_used": false,
-      "radar_only": true,
-      "date": "2026-04-21",
-      "source": "GNews-Capacity",
-      "title": "Solx and Caelux announce partnership to offer domestic perovskite-silicon tandem solar modules - pv magazine USA",
-      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPWHhnSUx5dkhZcktsUW82b3NGNFkxS0ZPN1hHOGFZc2RaMGlqZTZNZG56WkY1UnlaeXZJMHExcXI3Vm9vVXBqU28wLUZubWUwb3p4ZXJNUHZrWE9tSHYxekV1a24wR1B4M0pqMjJRRGp3VzBQTkVWOS1KeHo5M3dLRjFUXzNJdDBBRnR5UjNhSXNpWklVV29mZjhzQnhrM2oteG9jU1Z3a0FvUHFVZS1EMUx5VXlMNEw2TXdiRHJjTDFDb05pN3JYbWZzdkF6dDQ?oc=5",
-      "summary": "<a href=\"https://news.google.com/rss/articles/CBMizwFBVV95cUxPWHhnSUx5dkhZcktsUW82b3NGNFkxS0ZPN1hHOGFZc2RaMGlqZTZNZG56WkY1UnlaeXZJMHExcXI3Vm9vVXBqU28wLUZubWUwb3p4ZXJNUHZrWE9tSHYxekV1a24wR1B4M0pqMjJRRGp3VzBQTkVWOS1KeHo5M3dLRjFUXzNJdDBBRnR5UjNhSXNpWklVV29mZjhzQnhrM2oteG9jU1Z3a0FvUHFVZS1EMUx5VXlMNEw2TX"
     },
     {
       "id": "a-484431506070",
@@ -1301,34 +1245,6 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMioAFBVV95cUxPTTRJQTJmRUoyVTBPWVNyTnV1eWxxaVE2bEt4UGlBT0VTVzEyRmlYMGFjU2J2SGZ6ZkxzNkd3YWtNYi1KN1V1QzZYYnVCWGtqdmViYm1ieU5IMzRHM3BLU2ZCQkVrTUt2SnpFdnpWU0FobjRSLUFva1ZVOEp0MEtwb2x3NnJkN255YW84T0s5S1ByNC1OdXA4VnBTUmw3alVm?oc=5\" target=\"_blank\">Oxford PV p"
     },
     {
-      "id": "a-752341389006",
-      "company": "Oxford PV",
-      "capacityValue": 0.0,
-      "capacityUnit": "MW",
-      "capacityGw": 0.0,
-      "iodineDemand": 0.0,
-      "pbi2": 0.0,
-      "fai": 0.0,
-      "mai": 0.0,
-      "csi": 0.0,
-      "phase": "Planned",
-      "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
-      "target_year": "2025",
-      "invest_proxy": false,
-      "geo": {
-        "country": "UK",
-        "continent": "Europa"
-      },
-      "llm_used": false,
-      "radar_only": true,
-      "date": "2026-02-25",
-      "source": "GNews-Oxford PV",
-      "title": "First Solar, Oxford PV ink US perovskite patent licensing deal - PV Tech",
-      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNOHA1VjV5UVJsS3NiZmlINUtjdElqZTNXYlVFaXVPZGNhV0tkU1I5T0dCZVdTR0o5Wl8xWlFlLUNpRVlJNWVSaEVPMHVPWlJLSEpSZ1A1M1l6cjVrcWFiVXdUS0wwYnZDQ3Z4NVE0ekJmV2xVakJ6SlBHS3k2RmJVWGdrZXNrVXBhZXJzVFlxZw?oc=5",
-      "summary": "<a href=\"https://news.google.com/rss/articles/CBMijwFBVV95cUxNOHA1VjV5UVJsS3NiZmlINUtjdElqZTNXYlVFaXVPZGNhV0tkU1I5T0dCZVdTR0o5Wl8xWlFlLUNpRVlJNWVSaEVPMHVPWlJLSEpSZ1A1M1l6cjVrcWFiVXdUS0wwYnZDQ3Z4NVE0ekJmV2xVakJ6SlBHS3k2RmJVWGdrZXNrVXBhZXJzVFlxZw?oc=5\" target=\"_blank\">First Solar, Oxford PV ink US per"
-    },
-    {
       "id": "a-426836175016",
       "company": "Oxford PV",
       "capacityValue": 0.0,
@@ -1355,6 +1271,34 @@
       "title": "First Solar, Oxford PV agree perovskite cell licensing deal in US - Renewables Now",
       "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPT1BMVFduajFEMVJBN2IwMUZsODFYX1pNYUYxbFNQcHdCV1IzYkRPejNjXzFFODZUSjk3em14UngwOFQ1d1NPajJFWkFOakVaNVRudVFFc0tiYVotRlJfejk2QUZqZ3RMemlMekwxbE1NLUdsQlJ5OUVaRFc4LWxhcGZZTk1sSWtST0xITWt6Uzl5ZUY3NkxyWVJJeDNjZzFhVUFNZXNaaw?oc=5",
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMipwFBVV95cUxPT1BMVFduajFEMVJBN2IwMUZsODFYX1pNYUYxbFNQcHdCV1IzYkRPejNjXzFFODZUSjk3em14UngwOFQ1d1NPajJFWkFOakVaNVRudVFFc0tiYVotRlJfejk2QUZqZ3RMemlMekwxbE1NLUdsQlJ5OUVaRFc4LWxhcGZZTk1sSWtST0xITWt6Uzl5ZUY3NkxyWVJJeDNjZzFhVUFNZXNaaw?oc=5\" target=\"_blank\">F"
+    },
+    {
+      "id": "a-752341389006",
+      "company": "Oxford PV",
+      "capacityValue": 0.0,
+      "capacityUnit": "MW",
+      "capacityGw": 0.0,
+      "iodineDemand": 0.0,
+      "pbi2": 0.0,
+      "fai": 0.0,
+      "mai": 0.0,
+      "csi": 0.0,
+      "phase": "Planned",
+      "nivel_riesgo": "Neutral",
+      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "target_year": "2025",
+      "invest_proxy": false,
+      "geo": {
+        "country": "UK",
+        "continent": "Europa"
+      },
+      "llm_used": false,
+      "radar_only": true,
+      "date": "2026-02-25",
+      "source": "GNews-Oxford PV",
+      "title": "First Solar, Oxford PV ink US perovskite patent licensing deal - PV Tech",
+      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNOHA1VjV5UVJsS3NiZmlINUtjdElqZTNXYlVFaXVPZGNhV0tkU1I5T0dCZVdTR0o5Wl8xWlFlLUNpRVlJNWVSaEVPMHVPWlJLSEpSZ1A1M1l6cjVrcWFiVXdUS0wwYnZDQ3Z4NVE0ekJmV2xVakJ6SlBHS3k2RmJVWGdrZXNrVXBhZXJzVFlxZw?oc=5",
+      "summary": "<a href=\"https://news.google.com/rss/articles/CBMijwFBVV95cUxNOHA1VjV5UVJsS3NiZmlINUtjdElqZTNXYlVFaXVPZGNhV0tkU1I5T0dCZVdTR0o5Wl8xWlFlLUNpRVlJNWVSaEVPMHVPWlJLSEpSZ1A1M1l6cjVrcWFiVXdUS0wwYnZDQ3Z4NVE0ekJmV2xVakJ6SlBHS3k2RmJVWGdrZXNrVXBhZXJzVFlxZw?oc=5\" target=\"_blank\">First Solar, Oxford PV ink US per"
     },
     {
       "id": "a-134139916967",
@@ -1663,34 +1607,6 @@
       "title": "China’s Hefei BOE Solar Technology claims 27.37% efficiency for perovskite solar cell - pv magazine Global",
       "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOT1E0MzBlOExGWHBEalZicUhydWJUTEk1ak5RaU50ekc2TXMzX01XSkFDZlpNck84Mm5QN0Z2QTNOQTNad3BIalJlS0pEaGRDS1EtOGlVSHY4VWFDVnljcjU3ZERjN1lQenVCNnAyVy1JMmJ6bW40WFBQak5jckNFSUh0cnBPN2VYLUFWTXY5WXpiUU41LUxabkl3b3ZkeGFVRU1FRUI5RUx2Y1J1b05EUHNWOFljY3IyTnhrSFZacmg?oc=5",
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiwAFBVV95cUxOT1E0MzBlOExGWHBEalZicUhydWJUTEk1ak5RaU50ekc2TXMzX01XSkFDZlpNck84Mm5QN0Z2QTNOQTNad3BIalJlS0pEaGRDS1EtOGlVSHY4VWFDVnljcjU3ZERjN1lQenVCNnAyVy1JMmJ6bW40WFBQak5jckNFSUh0cnBPN2VYLUFWTXY5WXpiUU41LUxabkl3b3ZkeGFVRU1FRUI5RUx2Y1J1b05EUHNWOFljY3IyTn"
-    },
-    {
-      "id": "a-580567427517",
-      "company": "Sekisui Chemical",
-      "capacityValue": 0.0,
-      "capacityUnit": "MW",
-      "capacityGw": 0.0,
-      "iodineDemand": 0.0,
-      "pbi2": 0.0,
-      "fai": 0.0,
-      "mai": 0.0,
-      "csi": 0.0,
-      "phase": "Operational",
-      "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Sekisui Chemical (Japón). Capacidad: 0.000 GW. Fase: Operational. Nivel: Beneficioso. Año objetivo: 2026.",
-      "target_year": "2027",
-      "invest_proxy": false,
-      "geo": {
-        "country": "Japón",
-        "continent": "Asia"
-      },
-      "llm_used": false,
-      "radar_only": true,
-      "date": "2025-12-28",
-      "source": "GNews-Sekisui Chemical",
-      "title": "Sekisui Chemical (4204): The 'Absolute Favorite' Perovskite Challenging the World's First Mass Production - note",
-      "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE8yYzdZbC05RE5QcE1HVGxaazBVWGNVenFuUWRVTlNsOEFQN3RxWnJpc0NxX2dkZmFvd2Z4ckJmcjZCS2VWd1gzSnJ0RlZycXJHd0FyUkkwcldEZklUVTF6ZWtoMA?oc=5",
-      "summary": "<a href=\"https://news.google.com/rss/articles/CBMiY0FVX3lxTE8yYzdZbC05RE5QcE1HVGxaazBVWGNVenFuUWRVTlNsOEFQN3RxWnJpc0NxX2dkZmFvd2Z4ckJmcjZCS2VWd1gzSnJ0RlZycXJHd0FyUkkwcldEZklUVTF6ZWtoMA?oc=5\" target=\"_blank\">Sekisui Chemical (4204): The 'Absolute Favorite' Perovskite Challenging the World's First Mas"
     },
     {
       "id": "a-409974603165",
@@ -2729,34 +2645,6 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiiwFBVV95cUxPM1N3LTV0VEJoZmdFMnd0NXloN2lCdjBHRVlNcUpmcW5ZV2R4eUxLV1F4bVBpTHhheEwzSWVXalAtMzM3Tk15YTVnbDlQU0drRXd2ODVLUzZheFdzZXVLNlp0YzBIb243OFZ5SmZQZDhPcDdtc2ZrMTNtdkZXN3FSUm5DRFM5NzY5SVYw?oc=5\" target=\"_blank\">Oxford PV ships first commercial perovs"
     },
     {
-      "id": "a-537500689899",
-      "company": "Oxford PV",
-      "capacityValue": 0.0,
-      "capacityUnit": "MW",
-      "capacityGw": 0.0,
-      "iodineDemand": 0.0,
-      "pbi2": 0.0,
-      "fai": 0.0,
-      "mai": 0.0,
-      "csi": 0.0,
-      "phase": "Planned",
-      "nivel_riesgo": "Beneficioso",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Beneficioso. Año objetivo: 2026.",
-      "target_year": "2025",
-      "invest_proxy": false,
-      "geo": {
-        "country": "UK",
-        "continent": "Europa"
-      },
-      "llm_used": false,
-      "radar_only": true,
-      "date": "2024-09-05",
-      "source": "GNews-Oxford PV",
-      "title": "Oxford PV unveils 1st commercial sale of perovskite tandem panels | Solar Power News - Renewables Now",
-      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNT04tenBCN3lrRTktZFRWMUYzbXJXWXFQYm14YXMzOV9makZCX1JaWEdzTVZVanhfZUtZbk8xcno5dGdnWVI1NE5pakNzWnpuQ2xyMlpXc0RZN2xYdW9EcFpIMU1idjQxaGRIcGNOa3pOWW5LR1VNWTdiNTk4V3ZYRXFQLXB6SHB5emptMjFjQjloZXJPWFVRNVVrNExoWElpOWF0UzAtUQ?oc=5",
-      "summary": "<a href=\"https://news.google.com/rss/articles/CBMipwFBVV95cUxNT04tenBCN3lrRTktZFRWMUYzbXJXWXFQYm14YXMzOV9makZCX1JaWEdzTVZVanhfZUtZbk8xcno5dGdnWVI1NE5pakNzWnpuQ2xyMlpXc0RZN2xYdW9EcFpIMU1idjQxaGRIcGNOa3pOWW5LR1VNWTdiNTk4V3ZYRXFQLXB6SHB5emptMjFjQjloZXJPWFVRNVVrNExoWElpOWF0UzAtUQ?oc=5\" target=\"_blank\">O"
-    },
-    {
       "id": "a-172471070754",
       "company": "GCL",
       "capacityValue": 0.0,
@@ -2951,34 +2839,6 @@
       "title": "Oxford PV reaches 25% efficiency on silicon-perovskite tandem solar panel - Solar Power World",
       "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOSmpvM1c1TFFvMlVTSTVydmFlZlJQOFdjUVN2ZkpzVmhRaGl4VmxDZFZiQVE0bkZsZWNtYWNYNm9fam9mRzZ5bzREWmlxOW1Sc1g0bUl3aFpKeTRGOXdMNVFZLVBSa1NTeDdDNVJPQVJEVDlSZEJvVHRoRG1uN0dqS3hDb1B0VFUwNzMtSEpBcDdDdFBxOU9vTWZOT2l5YW1WZnR2Rm5mbW43NngtcW15N0ZJa0I3VmhLTjA4?oc=5",
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiuwFBVV95cUxOSmpvM1c1TFFvMlVTSTVydmFlZlJQOFdjUVN2ZkpzVmhRaGl4VmxDZFZiQVE0bkZsZWNtYWNYNm9fam9mRzZ5bzREWmlxOW1Sc1g0bUl3aFpKeTRGOXdMNVFZLVBSa1NTeDdDNVJPQVJEVDlSZEJvVHRoRG1uN0dqS3hDb1B0VFUwNzMtSEpBcDdDdFBxOU9vTWZOT2l5YW1WZnR2Rm5mbW43NngtcW15N0ZJa0I3VmhLTj"
-    },
-    {
-      "id": "a-102534885120",
-      "company": "Oxford PV",
-      "capacityValue": 0.0,
-      "capacityUnit": "MW",
-      "capacityGw": 0.0,
-      "iodineDemand": 0.0,
-      "pbi2": 0.0,
-      "fai": 0.0,
-      "mai": 0.0,
-      "csi": 0.0,
-      "phase": "Planned",
-      "nivel_riesgo": "Neutral",
-      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
-      "target_year": "2025",
-      "invest_proxy": false,
-      "geo": {
-        "country": "UK",
-        "continent": "Europa"
-      },
-      "llm_used": false,
-      "radar_only": true,
-      "date": "2024-01-31",
-      "source": "GNews-Oxford PV",
-      "title": "Oxford PV sets record solar panel efficiency of 25 per cent - The Engineer - Home",
-      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPc2k4bUJwZmhRbWdGaG1EVnJjRlVDOUZZdjJzOWk3R3JSV1k3ejBHMkpqbmNMUlRTNFdSdnJLanJ3SVlaLXUycmt4ZUJ4OTEtV1E0d2twSHVMcng1MDJoM2dDUWoxRll2MHBhMXJvc3h2N2NJWkJPdUp3Sm9pa2M2T3dlYzh1Q25SWUJ5WERNcEFMeDVvQ2RYaTdfSHF3ek5zQlZXXw?oc=5",
-      "summary": "<a href=\"https://news.google.com/rss/articles/CBMipAFBVV95cUxPc2k4bUJwZmhRbWdGaG1EVnJjRlVDOUZZdjJzOWk3R3JSV1k3ejBHMkpqbmNMUlRTNFdSdnJLanJ3SVlaLXUycmt4ZUJ4OTEtV1E0d2twSHVMcng1MDJoM2dDUWoxRll2MHBhMXJvc3h2N2NJWkJPdUp3Sm9pa2M2T3dlYzh1Q25SWUJ5WERNcEFMeDVvQ2RYaTdfSHF3ek5zQlZXXw?oc=5\" target=\"_blank\">Oxfor"
     },
     {
       "id": "a-751445234268",
@@ -3513,6 +3373,34 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiogFBVV95cUxPelNvdmxVMjRubjdCQzZOeEFpZU5uQWxIUGhuZVFHdkhvLUE5NkxEc1BmRGdhWlQwcVNQSkJ1YjRqYnQwd0VLTFBqaThRajBLejlQNG1xT2FmMmxEZ0xQUVY0TEswa2s5WEpXVDBUMDdPZU1ibGxfLUhSdVdUeDZGWkxya0V4NEU2cUxPVk5ZMEt3d1RMbV8wemhNUzBkWnBKX1E?oc=5\" target=\"_blank\">Solar ce"
     },
     {
+      "id": "a-760459482873",
+      "company": "Oxford PV",
+      "capacityValue": 0.0,
+      "capacityUnit": "MW",
+      "capacityGw": 0.0,
+      "iodineDemand": 0.0,
+      "pbi2": 0.0,
+      "fai": 0.0,
+      "mai": 0.0,
+      "csi": 0.0,
+      "phase": "Planned",
+      "nivel_riesgo": "Neutral",
+      "resumen_ia": "Análisis local — Empresa: Oxford PV (UK). Capacidad: 0.000 GW. Fase: Planned. Nivel: Neutral. Año objetivo: 2026.",
+      "target_year": "2025",
+      "invest_proxy": false,
+      "geo": {
+        "country": "UK",
+        "continent": "Europa"
+      },
+      "llm_used": false,
+      "radar_only": true,
+      "date": "2018-12-24",
+      "source": "GNews-Oxford PV",
+      "title": "Oxford PV Perovskite Solar Cell Achieves 28% Efficiency - Ink World magazine -",
+      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPTHpBM3B1VHg5TXMwc3FuSmRlNFlBQ0FBZUNTb3JseVRYdVZxY0ZwUG4wUkJmc29sRVM1QXFoMnpweUZCeWxtYUdmOGE0bzhyZy1ZUjRiWTU4YnUyZXhKV20xazhTQUNGRU1MaFVqbTJHZmdTOVZRY2t1UXl1clVPc0hxVkhRbUZaTEJaZjZIT0dyTk5IQXZzaVFJdUFFOWUxZWRzYg?oc=5",
+      "summary": "<a href=\"https://news.google.com/rss/articles/CBMipAFBVV95cUxPTHpBM3B1VHg5TXMwc3FuSmRlNFlBQ0FBZUNTb3JseVRYdVZxY0ZwUG4wUkJmc29sRVM1QXFoMnpweUZCeWxtYUdmOGE0bzhyZy1ZUjRiWTU4YnUyZXhKV20xazhTQUNGRU1MaFVqbTJHZmdTOVZRY2t1UXl1clVPc0hxVkhRbUZaTEJaZjZIT0dyTk5IQXZzaVFJdUFFOWUxZWRzYg?oc=5\" target=\"_blank\">Oxfor"
+    },
+    {
       "id": "a-856224687242",
       "company": "Microquanta",
       "capacityValue": 0.0,
@@ -3541,5 +3429,5 @@
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiVkFVX3lxTFBadUlVb1JaQV9ZZkV3dDNCWFlpOXVjMFFQdWdoajNjMlYwbXFlU1dTS1dfTUx1bTVIM3BtR2Y0V1FtSUpDUjhRbWJ0UGprZ2N3cFNoWmFn?oc=5\" target=\"_blank\">Microquanta</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Forbes</font>"
     }
   ],
-  "market_report": "**INFORME EJECUTIVO: ESTRATEGIA DE MERCADO Y PROYECCIÓN DE DEMANDA DE YODO EN LA INDUSTRIA DE PEROVSKITAS**\n\n**PARA:** Comité Ejecutivo, SQM\n**DE:** Jefatura de Inteligencia de Mercado\n**FECHA:** 24 de junio de 2026\n**ASUNTO:** Análisis de impacto de la tecnología de celdas tándem en la cadena de valor del Yodo\n\n---\n\n### 1. Panorama General del Mercado: La Era de la Eficiencia Tándem\nLa industria fotovoltaica (PV) ha alcanzado un punto de inflexión tecnológico. Tras décadas de dominio del silicio cristalino (c-Si), la tecnología de **celdas tándem de perovskita-silicio** ha dejado de ser una promesa de laboratorio para convertirse en una realidad comercial escalable.\n\n*   **Estado de la Tecnología:** La perovskita permite capturar partes del espectro solar que el silicio desperdicia. Al apilar una capa de perovskita sobre una celda de silicio, superamos el límite teórico de Shockley-Queisser del silicio convencional (aprox. 29%).\n*   **Barreras:** Históricamente, la estabilidad a largo plazo y la degradación por humedad/calor han sido los frenos principales. Sin embargo, los avances en encapsulamiento y química de materiales están mitigando estos riesgos.\n*   **El Rol Fundamental del Yodo:** El yodo es el componente crítico en la estructura cristalina de la perovskita (generalmente metilamonio o formamidinio triyoduro de plomo). La pureza y la estabilidad del precursor de yodo determinan directamente la eficiencia de conversión energética (PCE) y la vida útil del módulo. Como líderes globales en la producción de yodo, SQM se posiciona en el centro de esta transición energética.\n\n---\n\n### 2. Análisis de Eventos Recientes: El \"Efecto Oxford-Fraunhofer\"\nLa recopilación de noticias de la última semana (16-24 de junio de 2026) confirma una **aceleración disruptiva** en la comercialización.\n\n*   **Evento Disruptivo:** El hito de **Oxford PV y Fraunhofer ISE**, quienes han validado un módulo tándem con un **25.6% de eficiencia** utilizando una arquitectura de diseño \"shingled\" (tejas). \n*   **Implicancia Estratégica:** Este no es solo un récord de eficiencia; es una validación de la **integración industrial**. La tecnología *shingled* permite reducir las pérdidas por resistencia eléctrica y maximizar el área activa del módulo. Al combinarse con la perovskita, se resuelve el problema de la interconexión de celdas, un cuello de botella que impedía la producción masiva.\n*   **Tendencia China:** La inclusión de proyectos de perovskita de **GCL** en la lista nacional de casos de PV inteligente en China (24 de junio) indica que el gobierno chino ha pasado de la fase de I+D a la fase de **despliegue de infraestructura crítica**. GCL, con su capacidad de 0.5 GW, está escalando rápidamente, lo que garantiza una demanda sostenida de precursores químicos, incluyendo yoduros de alta pureza.\n\n---\n\n### 3. Apreciaciones Objetivas y Proyecciones Financieras\n\n#### Análisis de Cifras\n*   **Eficiencia:** Hemos pasado de prototipos de 22% a módulos comerciales validados al 25.6% (Oxford PV) y 26.2% (Renshine Solar) en cuestión de meses.\n*   **Capacidad:** Aunque los 3.0 GW anunciados por Oxford PV para 2025 parecen modestos frente a los cientos de GW de silicio, representan el segmento de **alto valor y alta eficiencia** (premium) que absorberá la mayor parte de nuestra producción de yodo de grado electrónico.\n\n#### Proyección de Demanda de Yodo\nPara estimar el impacto, utilizamos una tasa de consumo estándar de aproximadamente **0.5 a 0.8 toneladas de yodo por cada GW de capacidad de perovskita instalada** (considerando pérdidas en el proceso de deposición y pureza requerida).\n\n| Año | Capacidad Global Tándem (Proyectada) | Demanda Estimada de Yodo (Toneladas) |\n| :--- | :--- | :--- |\n| 2025 | 3.5 GW | ~2.5 - 3.0 MT |\n| 2027 | 15.0 GW | ~10.5 - 12.0 MT |\n| 2030 | 50.0 GW | ~35.0 - 40.0 MT |\n\n*Nota: Estas cifras son conservadoras y solo consideran el segmento tándem. Si la perovskita se estandariza en el mercado residencial, la demanda podría duplicarse.*\n\n#### Conclusión para la Alta Dirección\nLa tecnología tándem no es una amenaza para el mercado fotovoltaico tradicional; es una **oportunidad de expansión para el portafolio de Yodo de SQM**. \n\n**Recomendación:**\n1.  **Asegurar contratos de suministro de largo plazo** con los principales fabricantes (Oxford PV, GCL, UtmoLight) enfocados en yoduros de ultra-alta pureza.\n2.  **Desarrollar una línea de productos específica para la industria PV**, con especificaciones técnicas que garanticen la estabilidad de la perovskita, diferenciándonos por calidad sobre los productores de bajo costo.\n3.  **Monitorear la tasa de degradación:** Si la vida útil de los módulos aumenta a 25 años, la demanda de yodo para mantenimiento será menor, pero la adopción masiva será mayor. Debemos ajustar nuestra capacidad de refinación en línea con este crecimiento exponencial.\n\n**SQM está ante una ventana de oportunidad única para capitalizar la descarbonización global a través de nuestra posición dominante en el mercado del yodo.**\n\nAtentamente,\n\n**Jefe de Inteligencia de Mercado**\nSQM S.A."
+  "market_report": "**INFORME EJECUTIVO: ESTRATEGIA DE MERCADO Y PROYECCIÓN DE DEMANDA DE YODO**\n**PARA:** Comité Ejecutivo / Dirección de Inteligencia de Mercado\n**DE:** Analista Estratégico Jefe, SQM\n**FECHA:** 24 de junio de 2026\n**ASUNTO:** Impacto de la comercialización de celdas de perovskita en la demanda estructural de Yodo\n\n---\n\n### 1. Panorama General del Mercado: La Revolución de la Perovskita\nLa industria fotovoltaica (PV) atraviesa su transformación más significativa desde la adopción del silicio monocristalino. La tecnología de perovskita ha dejado de ser una promesa de laboratorio para consolidarse como el componente disruptivo en las celdas **tándem (Perovskita-Silicio)**.\n\n*   **Estado de la tecnología:** Estamos presenciando la transición de la fase de prototipado a la producción comercial a escala de gigavatios (GW). La eficiencia de conversión energética (PCE) ha superado el techo del 25-26%, superando los límites teóricos del silicio convencional.\n*   **Barreras:** Históricamente, la estabilidad a largo plazo y la degradación por humedad/calor fueron los frenos principales. Sin embargo, los avances en técnicas de encapsulación y el diseño de \"shingled interconnection\" (interconexión tipo teja) han mitigado estos riesgos.\n*   **El rol fundamental del Yodo:** El yodo es un componente crítico en la síntesis de perovskitas de haluro de plomo. Actúa como un precursor esencial en la estructura cristalina (ABX3), donde el yoduro es el anión dominante. La pureza y disponibilidad del yodo grado electrónico son ahora un *chokepoint* estratégico para los fabricantes de celdas. Como líderes mundiales en la producción de yodo, SQM se encuentra en una posición de ventaja competitiva para capitalizar esta demanda creciente.\n\n---\n\n### 2. Análisis de Eventos Recientes: Hitos de Junio 2026\nLa recopilación de noticias de la última semana confirma una **aceleración comercial sin precedentes**. No estamos ante una tendencia aislada, sino ante una consolidación industrial.\n\n*   **Evento Disruptivo: El hito del 25.6% - 26.2% de eficiencia:** La validación técnica de Oxford PV y Fraunhofer ISE (25.6% en módulos tándem) y el récord de Renshine Solar (26.2% en all-perovskite) marcan un punto de inflexión. La eficiencia ya no es el problema; la escalabilidad lo es.\n*   **Consolidación de la capacidad:** La entrada de Microquanta con una planta de 1.0 GW y los avances de GCL en comercialización (0.5 GW) confirman que 2026 es el año de la \"salida al mercado\" real.\n*   **Cambio en las reglas del juego:** La integración de perovskitas en aplicaciones de construcción (BIPV) —como los módulos coloreados de Microquanta— y el uso de diseños \"shingled\" demuestran que la industria está optimizando la integración del yodo en estructuras de módulos comerciales, no solo en celdas de prueba. La estandarización de estos procesos garantiza que la demanda de yodo dejará de ser esporádica para convertirse en un flujo de consumo industrial constante y predecible.\n\n---\n\n### 3. Apreciaciones Objetivas y Cifras: Impacto Financiero para SQM\n\nBasado en los datos de capacidad anunciados para el periodo 2025-2026 (estimando una capacidad instalada global en plantas de perovskita de ~4.5 GW a 6.0 GW para finales de 2026), proyectamos lo siguiente:\n\n#### Proyección de Consumo de Yodo\n1.  **Intensidad de uso:** Se estima un consumo promedio de **150 a 200 kg de yodo por cada MW** de capacidad de celda de perovskita producida.\n2.  **Cálculo de demanda:**\n    *   **Escenario Base (2026):** Con una capacidad de 5 GW en operación, la demanda directa de yodo para la industria fotovoltaica se situará en **750 - 1,000 toneladas métricas anuales**.\n    *   **Proyección 2028-2030:** Si la tasa de adopción sigue la curva de los anuncios de GCL y Oxford PV, estimamos que la capacidad instalada podría alcanzar los 50 GW, lo que elevaría la demanda a **7,500 - 10,000 toneladas anuales**.\n\n#### Implicancias Estratégicas para SQM:\n*   **Valor Agregado:** El yodo para perovskitas requiere un grado de pureza superior al estándar industrial. SQM debe priorizar la inversión en procesos de refinación de alta pureza para capturar este mercado premium.\n*   **Seguridad de Suministro:** Los fabricantes (Oxford PV, GCL, Microquanta) buscan contratos de suministro a largo plazo (LTA) para mitigar la volatilidad de precios. SQM debería considerar la firma de acuerdos estratégicos con estos actores clave para asegurar el *market share* en el sector energético.\n*   **Impacto Financiero:** Aunque el volumen en toneladas puede parecer pequeño comparado con el mercado de biocidas o agentes de contraste, el **margen por tonelada en el grado electrónico** es significativamente superior. La fotovoltaica se convertirá en un motor de crecimiento que desvinculará parcialmente al yodo de la ciclicidad de los mercados tradicionales.\n\n**Conclusión:** La tecnología de perovskita ha superado la \"fase de duda\". La demanda de yodo está entrando en una fase de crecimiento exponencial. Recomiendo al Comité Ejecutivo iniciar una mesa de trabajo con los principales fabricantes de celdas tándem para posicionar a SQM como el proveedor preferente de precursores de yoduro de alta pureza.\n\n---\n*Fin del Informe.*"
 }
