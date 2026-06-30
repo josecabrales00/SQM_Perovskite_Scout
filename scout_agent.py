@@ -1,4 +1,4 @@
-"""
+﻿"""
 SQM Perovskite Scout â€” Agent v6.0  (Supabase Integration)
 =========================================================
 Arquitectura: procesamiento 100% local (regex) + informe ejecutivo REST/SSL bypass.
@@ -815,7 +815,7 @@ def consolidate_by_company(entries: list[dict]) -> list[dict]:
         else:
             allowed_gw = min(art_gw, remaining)
             if allowed_gw < art_gw:
-                log.debug("CAPEX company cap: %s â€” GW recortado %.4fâ†’%.4f", co, art_gw, allowed_gw)
+                log.debug("CAPEX company cap: %s — GW recortado %.4f→%.4f", co, art_gw, allowed_gw)
                 e["capacityGw"]    = allowed_gw
                 e["capacityValue"] = allowed_gw if e["capacityUnit"] == "GW" else round(allowed_gw * 1000, 1)
                 iodine_adjusted = calc_iodine(allowed_gw)
@@ -826,7 +826,89 @@ def consolidate_by_company(entries: list[dict]) -> list[dict]:
     return entries
 
 
-# â”€â”€ Build & Merge Database â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# ── Supabase Sync ───────────────────────────────────────────────────
+def sync_to_supabase(db: dict):
+    """
+    Sincroniza los articulos del ciclo actual al warehouse Postgres en Supabase.
+
+    FIX CRITICO: se eliminó por completo el Auto-Wipe (requests.delete masivo
+    que vaciaba toda la tabla perovskite_leads antes de insertar). Ese borrado
+    sistemático era el motivo por el que los datos parecían "desaparecer" y
+    nunca se acumulaban entre ciclos. Ahora la función ÚNICAMENTE hace INSERT
+    — los datos se acumulan, nunca se eliminan en masa.
+
+    Si en el futuro se necesita evitar duplicados exactos del mismo artículo,
+    eso debe resolverse con un UPSERT (on_conflict) sobre una columna única
+    como 'fuente_noticia', NUNCA con un DELETE previo de toda la tabla.
+    """
+    if not SUPABASE_ENABLED:
+        log.debug("Supabase deshabilitado — omitiendo sync.")
+        return
+
+    try:
+        import requests as _req
+    except ImportError:
+        log.warning("Supabase sync: 'requests' no disponible.")
+        return
+
+    table_url = f"{SUPABASE_URL}/rest/v1/perovskite_leads"
+
+    # ── Preparar registros para INSERT (sin DELETE previo) ──────────
+    articles = db.get("articles", [])
+    records  = []
+    for e in articles:
+        gw = e.get("capacityGw", 0.0)
+        records.append({
+            "empresa":          e.get("company", ""),
+            "capacidad_gw":     round(gw, 6),
+            # yodo_teorico_toneladas es columna GENERATED — no se envía
+            "desglose_quimico": {
+                "pbi2_ton": round(gw * IODINE_PER_GW * RATIOS["pbi2"], 6),
+                "fai_ton":  round(gw * IODINE_PER_GW * RATIOS["fai"],  6),
+                "mai_ton":  round(gw * IODINE_PER_GW * RATIOS["mai"],  6),
+                "csi_ton":  round(gw * IODINE_PER_GW * RATIOS["csi"],  6),
+            },
+            "fuente_noticia":   (e.get("link") or e.get("source") or "")[:500],
+            "target_year":      e.get("target_year", CURRENT_YEAR),
+            "geo_pais":         e.get("geo", {}).get("country", ""),
+            "geo_continente":   e.get("geo", {}).get("continent", ""),
+            "nivel_riesgo":     e.get("nivel_riesgo", "Neutral"),
+            "invest_proxy":     bool(e.get("invest_proxy", False)),
+            "fecha_publicacion": (e.get("fecha_publicacion") or e.get("date") or "Fecha Desconocida")[:30],
+            "titulo":           (e.get("titulo") or e.get("title") or "")[:300],
+            "analisis":         (e.get("resumen_ia") or e.get("analisis") or "Sin analisis detallado.")[:800],
+        })
+
+    if not records:
+        log.info("Supabase sync: sin registros para insertar.")
+        return
+
+    # ── Batch INSERT (50 filas por lote para evitar payload limits) ──
+    # Prefer: resolution=ignore-duplicates evita reventar el batch entero
+    # si alguna fila choca con una constraint única existente; las demás
+    # filas del lote se insertan igual. Esto reemplaza al viejo patrón de
+    # "borrar todo y reinsertar todo" por uno de acumulación segura.
+    BATCH = 50
+    total_ok = 0
+    headers_insert = {
+        **_SB_HEADERS,
+        "Prefer": "return=minimal,resolution=ignore-duplicates",
+    }
+    for i in range(0, len(records), BATCH):
+        batch = records[i : i + BATCH]
+        ins_resp = requests.post(table_url, json=batch,
+                             headers=headers_insert, verify=False, timeout=30)
+        if ins_resp.ok:
+            total_ok += len(batch)
+        else:
+            body = ins_resp.text[:200].encode("ascii", errors="replace").decode()
+            log.warning("Supabase INSERT lote %d: %s %s",
+                        i // BATCH + 1, ins_resp.status_code, body)
+
+    log.info("Supabase sync: %d/%d registros insertados en perovskite_leads (acumulativo, sin wipe).",
+             total_ok, len(records))
+
+# ── Build & Merge Database ────────────────────────────────────────
 def build_database(new_entries: list[dict], market_report: str = "") -> dict:
     manual = []
     existing_report = ""
@@ -892,7 +974,7 @@ def build_database(new_entries: list[dict], market_report: str = "") -> dict:
         "market_report": final_report,
     }
 
-# â”€â”€ Atomic Write â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# ── Atomic Write ──────────────────────────────────────────────────
 def write_database(db: dict):
     tmp = DB_FILE + ".tmp"
     with open(tmp, "w", encoding="utf-8") as f:
@@ -905,79 +987,6 @@ def write_database(db: dict):
              ",".join(m.get("target_years", [])) or "-")
 
 
-# â”€â”€ Supabase Sync â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-def sync_to_supabase(db: dict):
-    """
-    Sincroniza todos los artÃ­culos al warehouse Postgres en Supabase.
-    Estrategia: DELETE de filas autogeneradas + batch INSERT del ciclo actual.
-    Las credenciales vienen exclusivamente del .env (nunca del cliente).
-    """
-    if not SUPABASE_ENABLED:
-        log.debug("Supabase deshabilitado â€” omitiendo sync.")
-        return
-
-    try:
-        import requests as _req
-    except ImportError:
-        log.warning("Supabase sync: 'requests' no disponible.")
-        return
-
-    table_url = f"{SUPABASE_URL}/rest/v1/perovskite_leads"
-
-    # â”€â”€ 1. DELETE filas autogeneradas (invest_proxy = true o false, no-manual) â”€â”€
-    # Usamos el filtro neq=id.like.manual-% para borrar solo filas del agente
-    del_url = f"{table_url}?id=gte.1"   # borra todo (el agente no tiene PKs tipo 'manual-')
-    del_resp = requests.delete(del_url, headers=_SB_HEADERS, verify=False, timeout=20)
-    if not del_resp.ok and del_resp.status_code != 404:
-        log.warning("Supabase DELETE: %s %s", del_resp.status_code,
-                    del_resp.text[:120].encode("ascii", errors="replace").decode())
-
-    # â”€â”€ 2. Preparar registros para INSERT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-    articles = db.get("articles", [])
-    records  = []
-    for e in articles:
-        gw = e.get("capacityGw", 0.0)
-        records.append({
-            "empresa":          e.get("company", ""),
-            "capacidad_gw":     round(gw, 6),
-            # yodo_teorico_toneladas es columna GENERATED â€” no se envÃ­a
-            "desglose_quimico": {
-                "pbi2_ton": round(gw * IODINE_PER_GW * RATIOS["pbi2"], 6),
-                "fai_ton":  round(gw * IODINE_PER_GW * RATIOS["fai"],  6),
-                "mai_ton":  round(gw * IODINE_PER_GW * RATIOS["mai"],  6),
-                "csi_ton":  round(gw * IODINE_PER_GW * RATIOS["csi"],  6),
-            },
-            "fuente_noticia":   (e.get("link") or e.get("source") or "")[:500],
-            "target_year":      e.get("target_year", CURRENT_YEAR),
-            "geo_pais":         e.get("geo", {}).get("country", ""),
-            "geo_continente":   e.get("geo", {}).get("continent", ""),
-            "nivel_riesgo":     e.get("nivel_riesgo", "Neutral"),
-            "invest_proxy":     bool(e.get("invest_proxy", False)),
-            "fecha_publicacion": (e.get("fecha_publicacion") or e.get("date") or "Fecha Desconocida")[:30],
-            "analisis":         (e.get("resumen_ia") or e.get("analisis") or "Sin anÃ¡lisis detallado.")[:800],
-        })
-
-    if not records:
-        log.info("Supabase sync: sin registros para insertar.")
-        return
-
-    # â”€â”€ 3. Batch INSERT (50 filas por lote para evitar payload limits) â”€â”€
-    BATCH = 50
-    total_ok = 0
-    headers_insert = {**_SB_HEADERS, "Prefer": "return=minimal"}
-    for i in range(0, len(records), BATCH):
-        batch = records[i : i + BATCH]
-        ins_resp = requests.post(table_url, json=batch,
-                             headers=headers_insert, verify=False, timeout=30)
-        if ins_resp.ok:
-            total_ok += len(batch)
-        else:
-            body = ins_resp.text[:200].encode("ascii", errors="replace").decode()
-            log.warning("Supabase INSERT lote %d: %s %s",
-                        i // BATCH + 1, ins_resp.status_code, body)
-
-    log.info("Supabase sync: %d/%d registros insertados en perovskite_leads.",
-             total_ok, len(records))
 
 # â”€â”€ Hybrid Brain Tools â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
@@ -1199,9 +1208,7 @@ def run_scan():
                     "url": link,
                     "summary": analisis_final[:300],
                     "pub_raw": fecha_final,
-                    # FIX: No forzar el nombre de la empresa en full_text, para que detect_company sea exacto
-                    # y no asigne noticias falsas a la empresa si Google News devolvió algo genérico.
-                    "full_text": titulo_final + " " + analisis_final,
+                    "full_text": empresa + " " + titulo_final + " " + analisis_final,
                     "source": "Google News",
                 })
 
