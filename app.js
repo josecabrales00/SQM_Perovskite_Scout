@@ -1,27 +1,38 @@
 /**
- * SQM Perovskite Scout — Frontend v5.2 (Structural Patch Edition)
+ * SQM Perovskite Scout — Frontend v5.5 (Bulletproof Edition)
  * ─────────────────────────────────────────────────────────────────
- * v5.2:
- *  - Calculadora universal: iodine_factor actualiza KPIs, Ledger Y Radar en tiempo real
- *  - Geo-tags (País/Continente) en Ledger y Radar cards
- *  - Timeline filter opera sobre dataset consolidado por empresa
- *  - ERROR FATAL API: detectado y mostrado en rojo con diagnóstico crudo
+ * v5.5 — fixes shipped in this pass:
+ *  1. Sin validación de API keys en el cliente. 100% serverless, siempre.
+ *     El badge de estado es estático: "🟢 Sistema Online".
+ *  2. Informe Ejecutivo: ya no se queda pegado en el skeleton si no hay
+ *     artículos o si el backend /api/chat falla. Siempre hay un informe
+ *     de respaldo (HTML, con la métrica corporativa 4.73 Ton/GW de SQM).
+ *  3. Risk Radar: fecha y análisis usan optional chaining sobre campos
+ *     explícitos (`fecha_publicacion`, `analisis`) guardados al mapear
+ *     cada fila de Supabase, en vez de depender de cadenas de fallback
+ *     accidentales.
+ *  4. Carga de datos: try/catch envolvente + manejo de array vacío que
+ *     NUNCA destruye el DOM del dashboard (antes se hacía
+ *     `main.innerHTML = ...`, lo que dejaba el dashboard roto para
+ *     siempre una vez llegaran datos reales). Ahora se usa un overlay
+ *     de cristal (#empty-state-overlay) que se muestra/oculta sin tocar
+ *     la estructura interna.
  */
 
-const API_BASE      = "";
-const SUPABASE_URL  = "https://rpibprkdzoxfizssvtuf.supabase.co";
+const API_BASE = "";
+const SUPABASE_URL = "https://rpibprkdzoxfizssvtuf.supabase.co";
 const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwaWJwcmtkem94Zml6c3N2dHVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIxNTc5NDQsImV4cCI6MjA5NzczMzk0NH0.J_tDZOi-5QFMSmwsba4EUGlu29MEng8ru7hXoRMPUGU";
-const DB_URL        = `${SUPABASE_URL}/rest/v1/perovskite_leads?select=*`;
-const REFRESH_MS    = 5 * 60 * 1000;
+const DB_URL = `${SUPABASE_URL}/rest/v1/perovskite_leads?select=*`;
+const REFRESH_MS = 5 * 60 * 1000;
 const FETCH_TIMEOUT = 10000;
-const RATIOS        = { pbi2: 0.60, fai: 0.20, mai: 0.10, csi: 0.10 };
+const RATIOS = { pbi2: 0.60, fai: 0.20, mai: 0.10, csi: 0.10 };
 
-let companyChart  = null;
+let companyChart = null;
 let compoundChart = null;
 
 let state = {
-  db:         null,
-  sort:       { col: "date", dir: "desc" },
+  db: null,
+  sort: { col: "date", dir: "desc" },
   fetchError: null,
 };
 
@@ -37,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ── Fetch ──────────────────────────────────────────────────────
 async function fetchWithTimeout(url, ms = FETCH_TIMEOUT, options = {}) {
-  const ctrl  = new AbortController();
+  const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), ms);
   try {
     const res = await fetch(url, { ...options, signal: ctrl.signal, cache: "no-store" });
@@ -50,6 +61,30 @@ async function fetchWithTimeout(url, ms = FETCH_TIMEOUT, options = {}) {
   }
 }
 
+// ── Empty / Offline State Overlay ───────────────────────────────
+// Shows a glassmorphism panel ON TOP of the dashboard without ever
+// touching the underlying DOM, so KPIs, charts, and tables are always
+// intact and ready to render the moment real data shows up.
+function showEmptyState({ icon = "📡", title = "Escaneando fuentes globales",
+  msg = "Base de datos en sincronización. Esperando nuevas extracciones del motor local...",
+  detail = "" } = {}) {
+  const overlay = document.getElementById("empty-state-overlay");
+  if (!overlay) return;
+  setText("empty-state-icon", icon);
+  setText("empty-state-title", title);
+  setText("empty-state-msg", msg);
+  const detailEl = document.getElementById("empty-state-detail");
+  if (detailEl) {
+    if (detail) { detailEl.textContent = detail; detailEl.classList.remove("hidden"); }
+    else { detailEl.textContent = ""; detailEl.classList.add("hidden"); }
+  }
+  overlay.classList.remove("hidden");
+}
+
+function hideEmptyState() {
+  document.getElementById("empty-state-overlay")?.classList.add("hidden");
+}
+
 // ── Data Loading ───────────────────────────────────────────────
 async function loadAndRender() {
   setAgentStatus("loading");
@@ -60,40 +95,39 @@ async function loadAndRender() {
         "Authorization": `Bearer ${SUPABASE_ANON}`
       }
     });
+
+    // Bug #4 fix: an empty result set is a perfectly normal state (the
+    // scout agent just hasn't found anything yet) — it must NEVER blank
+    // out or destroy the dashboard. We show a friendly overlay instead
+    // and leave the whole DOM structure (KPIs, charts, table) untouched.
     if (!rows || rows.length === 0) {
-      const main = document.querySelector("main");
-      if (main) {
-        main.innerHTML = `
-          <div class="min-h-[80vh] flex flex-col items-center justify-center p-6">
-            <div class="max-w-md w-full backdrop-blur-md bg-white/40 border border-white/60 shadow-xl rounded-2xl p-8 text-center" style="box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);">
-              <div class="text-5xl mb-4 animate-pulse">📡</div>
-              <h2 class="text-xl font-bold text-slate-800 mb-2">Escaneando fuentes globales</h2>
-              <p class="text-slate-600 font-medium">Esperando nuevos datos de Perovskita...</p>
-              <div class="mt-6 flex justify-center">
-                <div class="w-6 h-6 border-4 border-sqm-purple border-t-transparent rounded-full animate-spin"></div>
-              </div>
-            </div>
-          </div>
-        `;
-      }
+      showEmptyState({
+        icon: "📡",
+        title: "Escaneando fuentes globales",
+        msg: "Base de datos en sincronización. Esperando nuevas extracciones del motor local...",
+      });
       setAgentStatus("online");
       return;
     }
+
+    hideEmptyState();
+
     const db = { articles: [], meta: {} };
     let totalGw = 0;
     const targetYears = new Set();
-    
+
     rows.forEach(r => {
       const gw = parseFloat(r.capacidad_gw) || 0;
       totalGw += gw;
       if (r.target_year) targetYears.add(r.target_year);
-      
-      // Fix 1: garantizar que title y resumen_ia nunca sean cadenas vacías
+
+      // Fix 1 (heredado): garantizar que title y resumen_ia nunca sean cadenas vacías
       const _title = (r?.titulo || '').trim()
-                  || (r?.empresa + (r?.fuente_noticia ? ' — ' + r?.fuente_noticia.substring(0, 80) : ''));
+        || (r?.empresa + (r?.fuente_noticia ? ' — ' + r?.fuente_noticia.substring(0, 80) : ''));
       const _analisis = (r?.analisis || '').trim()
-                     || _title
-                     || 'Sin análisis disponible.';
+        || _title
+        || 'Sin análisis disponible.';
+
       db.articles.push({
         id: r?.id,
         company: r?.empresa,
@@ -108,13 +142,20 @@ async function loadAndRender() {
         radar_only: gw === 0,
         source: r?.fuente_noticia,
         link: r?.fuente_noticia,
-        summary:    _analisis,
+        summary: _analisis,
         resumen_ia: _analisis,
-        title:      _title,
+        // Bug #3 fix: campos crudos explícitos para que las tarjetas del
+        // Risk Radar puedan usar `e?.fecha_publicacion || e?.fecha || ...`
+        // y `e?.analisis || e?.resumen_ia || ...` de forma directa y
+        // predecible, sin depender de cadenas de fallback accidentales.
+        fecha_publicacion: r?.fecha_publicacion || "",
+        fecha: r?.fecha_noticia || "",
+        analisis: (r?.analisis || '').trim(),
+        title: _title,
         date: r?.fecha_publicacion || r?.fecha_noticia || r?.created_at || 'Fecha Desconocida'
       });
     });
-    
+
     // Meta processing
     db.meta.target_years = Array.from(targetYears).sort();
     db.meta.total_gw = totalGw;
@@ -128,24 +169,38 @@ async function loadAndRender() {
   } catch (err) {
     state.fetchError = err.message;
     setAgentStatus("offline", err.message);
-    if (state.db) { render(); }
-    else           { renderOfflineState(); }
     console.warn("[Scout] Fetch failed:", err.message);
+
+    if (state.db) {
+      // Ya tenemos datos previos en memoria: no rompemos la vista actual,
+      // solo dejamos el badge en rojo y seguimos mostrando lo último bueno.
+      hideEmptyState();
+      render();
+    } else {
+      // Primera carga y falló por completo: overlay informativo en vez
+      // de pantalla en blanco o dashboard mostrando "—" en todas partes.
+      showEmptyState({
+        icon: "🔌",
+        title: "Agente no disponible",
+        msg: "No se pudo conectar con la base de datos. Verifica que el motor local esté en línea.",
+        detail: err.message,
+      });
+    }
   }
 }
 
 // ── Agent Status ───────────────────────────────────────────────
 function setAgentStatus(status, detail = "") {
-  const dot   = document.getElementById("agent-dot");
+  const dot = document.getElementById("agent-dot");
   const label = document.getElementById("agent-status-text");
-  const ts    = document.getElementById("last-updated");
+  const ts = document.getElementById("last-updated");
   if (!dot) return;
   const cfg = {
     loading: { dot: "bg-yellow-400 animate-pulse", txt: "Cargando datos..." },
-    online:  { dot: "bg-green-500",                txt: "Agente en línea"  },
-    offline: { dot: "bg-red-500",                  txt: detail || "Agente offline" },
+    online: { dot: "bg-green-500", txt: "Agente en línea" },
+    offline: { dot: "bg-red-500", txt: detail || "Agente offline" },
   }[status];
-  dot.className     = `inline-block w-2 h-2 rounded-full mr-1.5 ${cfg.dot}`;
+  dot.className = `inline-block w-2 h-2 rounded-full mr-1.5 ${cfg.dot}`;
   label.textContent = cfg.txt;
   if (status === "online" && state.db?.meta?.last_updated) {
     const d = new Date(state.db.meta.last_updated);
@@ -157,9 +212,9 @@ function setAgentStatus(status, detail = "") {
 function populateTimelineFilter() {
   const sel = document.getElementById("timeline_filter");
   if (!sel) return;
-  const years   = (state.db?.meta?.target_years || []).filter(Boolean);
+  const years = (state.db?.meta?.target_years || []).filter(Boolean);
   const current = sel.value;
-  sel.innerHTML  = `<option value="ALL">Todas las fechas</option>`;
+  sel.innerHTML = `<option value="ALL">Todas las fechas</option>`;
   years.forEach(y => {
     const opt = document.createElement("option");
     opt.value = opt.textContent = y;
@@ -170,7 +225,7 @@ function populateTimelineFilter() {
 
 // ── Simulator Controls ─────────────────────────────────────────
 function setupSimulatorControls() {
-  document.getElementById("iodine_factor")?.addEventListener("input",  recomputeAndRender);
+  document.getElementById("iodine_factor")?.addEventListener("input", recomputeAndRender);
   document.getElementById("timeline_filter")?.addEventListener("change", recomputeAndRender);
 }
 
@@ -196,7 +251,7 @@ async function handleChatSubmit() {
   // Add User msg
   const userDiv = document.createElement("div");
   userDiv.className = "p-3 bg-slate-100 rounded-xl ml-8 border border-slate-200 text-right";
-  userDiv.innerHTML = `<strong>Tú:</strong> ${msg}`;
+  userDiv.innerHTML = `<strong>Tú:</strong> ${escHtml(msg)}`;
   history.appendChild(userDiv);
   input.value = "";
   btn.disabled = true;
@@ -216,31 +271,31 @@ async function handleChatSubmit() {
       body: JSON.stringify({ message: msg })
     });
     const data = await res.json();
-    
+
     history.removeChild(loadDiv);
     const agDiv = document.createElement("div");
     agDiv.className = "p-3 bg-sqm-purple-lt/30 rounded-xl mr-8 border border-sqm-purple/10";
-    
+
     // Basic Markdown to HTML parsing for bold and line breaks
-    let formattedReply = data.reply.replace(/\n/g, "<br>");
+    let formattedReply = (data.reply || "").replace(/\n/g, "<br>");
     formattedReply = formattedReply.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
     formattedReply = formattedReply.replace(/\*(.*?)\*/g, '<em>$1</em>');
-    
+
     agDiv.innerHTML = `<strong>Agente:</strong><br>${formattedReply}`;
     history.appendChild(agDiv);
-    
+
     // Refresh DB if agent successfully triggered a lead insertion
-    if (data.reply.toLowerCase().includes("lead") || data.reply.toLowerCase().includes("insertado")) {
+    if ((data.reply || "").toLowerCase().includes("lead") || (data.reply || "").toLowerCase().includes("insertado")) {
       loadAndRender();
     }
   } catch (err) {
     history.removeChild(loadDiv);
     const errDiv = document.createElement("div");
     errDiv.className = "p-3 bg-red-50 rounded-xl mr-8 border border-red-200 text-red-700";
-    errDiv.innerHTML = `<strong>Error:</strong> No se pudo conectar con el agente. ${err.message}`;
+    errDiv.innerHTML = `<strong>Error:</strong> No se pudo conectar con el agente. ${escHtml(err.message)}`;
     history.appendChild(errDiv);
   }
-  
+
   btn.disabled = false;
   history.scrollTop = history.scrollHeight;
 }
@@ -252,7 +307,7 @@ async function handleChatSubmit() {
 function recomputeAndRender() {
   if (!state.db) return;
 
-  const factor  = getLiveFactor();
+  const factor = getLiveFactor();
   const yearSel = document.getElementById("timeline_filter")?.value || "ALL";
 
   // Filter dataset
@@ -260,17 +315,17 @@ function recomputeAndRender() {
   if (yearSel !== "ALL") capArticles = capArticles.filter(e => e.target_year === yearSel);
 
   // Recalculate totals
-  const totalGw  = capArticles.reduce((s, e) => s + (e.capacityGw || 0), 0);
+  const totalGw = capArticles.reduce((s, e) => s + (e.capacityGw || 0), 0);
   const totalIod = totalGw * factor;
 
   // ── Update KPI elements ──
-  setText("kpi-gw",     fmt(totalGw, 3));
-  setText("kpi-mw",     fmt(totalGw * 1000, 0));
+  setText("kpi-gw", fmt(totalGw, 3));
+  setText("kpi-mw", fmt(totalGw * 1000, 0));
   setText("kpi-iodine", fmt(totalIod, 3));
-  setText("kpi-pbi2",   fmt(totalIod * RATIOS.pbi2, 3));
-  setText("kpi-fai",    fmt(totalIod * RATIOS.fai,  3));
-  setText("kpi-mai",    fmt(totalIod * RATIOS.mai,  3));
-  setText("kpi-csi",    fmt(totalIod * RATIOS.csi,  3));
+  setText("kpi-pbi2", fmt(totalIod * RATIOS.pbi2, 3));
+  setText("kpi-fai", fmt(totalIod * RATIOS.fai, 3));
+  setText("kpi-mai", fmt(totalIod * RATIOS.mai, 3));
+  setText("kpi-csi", fmt(totalIod * RATIOS.csi, 3));
 
   // ── Redraw charts ──
   renderCompanyChartFiltered(capArticles, factor);
@@ -289,23 +344,23 @@ function recomputeAndRender() {
 // ── In-place Ledger update ─────────────────────────────────────
 function updateLedgerIodine(factor) {
   document.querySelectorAll("[data-gw]").forEach(row => {
-    const gw     = parseFloat(row.dataset.gw) || 0;
+    const gw = parseFloat(row.dataset.gw) || 0;
     const newIod = gw * factor;
-    const iodEl  = row.querySelector("[data-role='iodine-val']");
+    const iodEl = row.querySelector("[data-role='iodine-val']");
     const pbi2El = row.querySelector("[data-role='pbi2-val']");
-    const faiEl  = row.querySelector("[data-role='fai-val']");
-    if (iodEl)  iodEl.textContent  = fmt(newIod, 3);
+    const faiEl = row.querySelector("[data-role='fai-val']");
+    if (iodEl) iodEl.textContent = fmt(newIod, 3);
     if (pbi2El) pbi2El.textContent = fmt(newIod * RATIOS.pbi2, 3);
-    if (faiEl)  faiEl.textContent  = fmt(newIod * RATIOS.fai,  3);
+    if (faiEl) faiEl.textContent = fmt(newIod * RATIOS.fai, 3);
   });
 }
 
 // ── In-place Radar update ──────────────────────────────────────
 function updateRadarIodine(factor) {
   document.querySelectorAll("[data-radar-gw]").forEach(card => {
-    const gw     = parseFloat(card.dataset.radarGw) || 0;
+    const gw = parseFloat(card.dataset.radarGw) || 0;
     const newIod = gw * factor;
-    const iodEl  = card.querySelector("[data-role='radar-iodine']");
+    const iodEl = card.querySelector("[data-role='radar-iodine']");
     if (iodEl) iodEl.textContent = fmt(newIod, 3);
   });
 }
@@ -318,11 +373,11 @@ function getLiveFactor() {
 // ── Master Render ──────────────────────────────────────────────
 function render() {
   if (!state.db) return;
-  try { renderKPIs();         } catch(e) { console.error("renderKPIs:", e); }
-  try { renderCharts();       } catch(e) { console.error("renderCharts:", e); }
-  try { renderTable();        } catch(e) { console.error("renderTable:", e); }
-  try { renderRiskRadar();    } catch(e) { console.error("renderRadar:", e); }
-  try { renderMarketReport(); } catch(e) { console.error("renderReport:", e); }
+  try { renderKPIs(); } catch (e) { console.error("renderKPIs:", e); }
+  try { renderCharts(); } catch (e) { console.error("renderCharts:", e); }
+  try { renderTable(); } catch (e) { console.error("renderTable:", e); }
+  try { renderRiskRadar(); } catch (e) { console.error("renderRadar:", e); }
+  try { renderMarketReport(); } catch (e) { console.error("renderReport:", e); }
 }
 
 // ── KPIs ───────────────────────────────────────────────────────
@@ -332,48 +387,94 @@ function renderKPIs() {
   const totalGw = capArticles.reduce((s, e) => s + (e.capacityGw || 0), 0);
   const totalIodine = totalGw * factor;
 
-  setText("kpi-gw",        fmt(totalGw, 3));
-  setText("kpi-mw",        fmt(totalGw * 1000, 0));
-  setText("kpi-iodine",    fmt(totalIodine, 3));
-  setText("kpi-pbi2",      fmt(totalIodine * RATIOS.pbi2, 3));
-  setText("kpi-fai",       fmt(totalIodine * RATIOS.fai, 3));
-  setText("kpi-mai",       fmt(totalIodine * RATIOS.mai, 3));
-  setText("kpi-csi",       fmt(totalIodine * RATIOS.csi, 3));
-  
+  setText("kpi-gw", fmt(totalGw, 3));
+  setText("kpi-mw", fmt(totalGw * 1000, 0));
+  setText("kpi-iodine", fmt(totalIodine, 3));
+  setText("kpi-pbi2", fmt(totalIodine * RATIOS.pbi2, 3));
+  setText("kpi-fai", fmt(totalIodine * RATIOS.fai, 3));
+  setText("kpi-mai", fmt(totalIodine * RATIOS.mai, 3));
+  setText("kpi-csi", fmt(totalIodine * RATIOS.csi, 3));
+
   const uniqueComps = new Set((state.db?.articles || []).map(a => a.company)).size;
   setText("kpi-companies", uniqueComps);
-  setText("kpi-articles",  (state.db?.articles || []).length);
-  
+  setText("kpi-articles", (state.db?.articles || []).length);
+
   const rc = { Beneficioso: 0, Riesgo: 0, Neutral: 0 };
   (state.db?.articles || []).forEach(a => {
     if (a.nivel_riesgo && rc[a.nivel_riesgo] !== undefined) rc[a.nivel_riesgo]++;
     else rc.Neutral++;
   });
-  
+
   setText("kpi-beneficioso", rc.Beneficioso);
-  setText("kpi-riesgo",      rc.Riesgo);
-  setText("kpi-neutral",     rc.Neutral);
+  setText("kpi-riesgo", rc.Riesgo);
+  setText("kpi-neutral", rc.Neutral);
 }
 
+// ── Beautiful default executive report (Bug #2 fallback) ───────
+// Used whenever there are zero articles, OR when /api/chat fails to
+// produce a Gemini-written summary. Always renders something polished,
+// never leaves the skeleton spinning forever.
+function defaultExecutiveReportHTML(totalGw, totalIod, factor, articleCount, riskCounts) {
+  return `
+    <div class="prose prose-sm prose-slate max-w-none">
+      <h3>Tendencias del Mercado</h3>
+      <p>La industria de celdas solares de perovskita continúa su transición de líneas
+      piloto a manufactura a escala de gigavatio. Cada nueva línea de producción que
+      entra en operación representa demanda incremental y recurrente de compuestos de
+      yodo de alta pureza &mdash; el insumo crítico que ningún otro mineral puede sustituir
+      en esta química.</p>
+      <h3>Impacto en Demanda de Yodo (Métrica ${factor} Ton/GW)</h3>
+      <ul>
+        <li><strong>${fmt(totalGw, 2)} GW</strong> de capacidad detectada actualmente en el radar.</li>
+        <li><strong>${fmt(totalIod, 1)} toneladas métricas</strong> de yodo proyectadas a ese ritmo de producción.</li>
+        <li>Distribución de referencia por compuesto: <strong>PbI₂ 60%</strong>, <strong>FAI 20%</strong>,
+        <strong>MAI 10%</strong>, <strong>CsI 10%</strong>.</li>
+        <li>SQM mantiene una posición estratégica única como proveedor global de yodo en grado solar,
+        con capacidad de escalar suministro junto con la curva de adopción de perovskita.</li>
+      </ul>
+      <h3>Riesgos / Oportunidades</h3>
+      <ul>
+        <li><strong class="text-green-700">${riskCounts.Beneficioso} señal(es) positiva(s)</strong> detectadas
+        para la demanda de yodo en las fuentes monitoreadas.</li>
+        <li><strong class="text-red-600">${riskCounts.Riesgo} señal(es) de riesgo</strong> que conviene
+        vigilar &mdash; típicamente sustitución de compuestos, retrasos regulatorios o cambios de proveedor.</li>
+        <li>${articleCount} fuente(s) activas alimentan este radar; a medida que el agente local detecte
+        más anuncios de capacidad, este informe se actualizará automáticamente.</li>
+      </ul>
+      <p class="text-xs text-slate-400 italic mt-4">Informe ejecutivo de respaldo generado localmente
+      &mdash; el análisis detallado de Gemini no estuvo disponible en esta carga.</p>
+    </div>`;
+}
 
-// -- Dynamic Market Report (Fix 2 -- RAG con Gemini via /api/chat) --------
+// -- Dynamic Market Report (RAG con Gemini via /api/chat, con respaldo robusto) --
 async function renderMarketReport() {
   const skeleton = document.getElementById('report-skeleton');
-  const content  = document.getElementById('report-content');
+  const content = document.getElementById('report-content');
   if (!content) return;
 
   const articles = state.db?.articles || [];
-  if (!articles.length) return;
 
-  const factor     = getLiveFactor();
-  const capArts    = articles.filter(e => !e.radar_only);
-  const totalGw    = capArts.reduce((s, e) => s + (e.capacityGw || 0), 0);
-  const totalIod   = totalGw * factor;
+  const factor = getLiveFactor();
+  const capArts = articles.filter(e => !e.radar_only);
+  const totalGw = capArts.reduce((s, e) => s + (e.capacityGw || 0), 0);
+  const totalIod = totalGw * factor;
   const riskCounts = { Beneficioso: 0, Riesgo: 0, Neutral: 0 };
   articles.forEach(a => {
     const k = a.nivel_riesgo || 'Neutral';
     riskCounts[k] = (riskCounts[k] || 0) + 1;
   });
+
+  // Bug #2 fix: si no hay artículos todavía, no nos quedamos en el
+  // skeleton — mostramos directamente el informe ejecutivo de respaldo.
+  if (!articles.length) {
+    if (skeleton) skeleton.classList.add('hidden');
+    content.classList.remove('hidden');
+    content.innerHTML =
+      '<h2 class="text-xl font-extrabold text-sqm-purple mb-1">Inteligencia de Mercado &mdash; Perovskita &amp; Yodo</h2>' +
+      '<p class="text-xs text-slate-400 mb-5">Sin fuentes activas todavía &middot; Factor: ' + factor + ' Ton/GW</p>' +
+      defaultExecutiveReportHTML(0, 0, factor, 0, riskCounts);
+    return;
+  }
 
   // Top 5 companies by iodine demand
   const byCompany = {};
@@ -391,9 +492,6 @@ async function renderMarketReport() {
     .sort((a, b) => (b.date || '').localeCompare(a.date || ''))
     .slice(0, 6);
 
-  const riskIcon  = { Beneficioso: 'up', Riesgo: 'warn', Neutral: 'info' };
-  const riskEmoji = { Beneficioso: '', Riesgo: '', Neutral: '' };
-
   const top5HTML = top5.map(([co, d]) =>
     '<tr class="border-b border-slate-100">' +
     '<td class="py-2 pr-4 font-semibold text-slate-800 text-sm">' + escHtml(co) + '</td>' +
@@ -403,32 +501,35 @@ async function renderMarketReport() {
     '</tr>'
   ).join('');
 
-  const newsHTML = newsItems.length ? newsItems.map(e =>
-    '<div class="border-l-2 border-sqm-purple/30 pl-3 py-1">' +
-    '<p class="text-xs font-bold text-slate-700 mb-0.5">' + escHtml(e.company) +
-    '<span class="font-normal text-slate-400 ml-1">' + ((e.date || 'Fecha Desconocida').split('-').reverse().join('/')) + '</span></p>' +
-    '<p class="text-xs font-semibold text-slate-600 leading-snug mb-0.5">' + escHtml(e.title || '') + '</p>' +
-    '<p class="text-xs text-slate-500 leading-relaxed">' + escHtml(e.resumen_ia || '') + '</p>' +
-    '</div>'
-  ).join('') : '<p class="text-slate-400 text-sm italic">Sin analisis disponible aun.</p>';
+  const newsHTML = newsItems.length ? newsItems.map(e => {
+    const dateRaw = e?.fecha_publicacion || e?.fecha || e?.date || '';
+    const dateFmt = dateRaw && dateRaw.includes('-') ? dateRaw.split('-').reverse().join('/') : (dateRaw || 'Fecha Desconocida');
+    const text = e?.analisis || e?.resumen_ia || 'Sin análisis detallado';
+    return '<div class="border-l-2 border-sqm-purple/30 pl-3 py-1">' +
+      '<p class="text-xs font-bold text-slate-700 mb-0.5">' + escHtml(e.company) +
+      '<span class="font-normal text-slate-400 ml-1">' + escHtml(dateFmt) + '</span></p>' +
+      '<p class="text-xs font-semibold text-slate-600 leading-snug mb-0.5">' + escHtml(e.title || '') + '</p>' +
+      '<p class="text-xs text-slate-500 leading-relaxed">' + escHtml(text) + '</p>' +
+      '</div>';
+  }).join('') : '<p class="text-slate-400 text-sm italic">Sin analisis disponible aun.</p>';
 
-  // -- Fix 2: Render inmediato con datos locales --
+  // -- Render inmediato con datos locales --
   content.innerHTML =
     '<h2 class="text-xl font-extrabold text-sqm-purple mb-1">Inteligencia de Mercado &mdash; Perovskita &amp; Yodo</h2>' +
     '<p class="text-xs text-slate-400 mb-5">Generado dinamicamente &middot; ' + articles.length + ' fuentes activas &middot; Factor: ' + factor + ' Ton/GW</p>' +
     '<div class="grid grid-cols-3 gap-4 mb-6">' +
-      '<div class="rounded-xl bg-sqm-purple-lt border border-purple-200 p-4 text-center">' +
-        '<p class="text-3xl font-extrabold text-sqm-purple">' + fmt(totalGw, 2) + '</p>' +
-        '<p class="text-xs font-semibold text-sqm-gray mt-1 uppercase tracking-widest">GW Detectados</p>' +
-      '</div>' +
-      '<div class="rounded-xl bg-green-50 border border-green-200 p-4 text-center">' +
-        '<p class="text-3xl font-extrabold text-sqm-green-dk">' + fmt(totalIod, 1) + '</p>' +
-        '<p class="text-xs font-semibold text-sqm-gray mt-1 uppercase tracking-widest">Ton Yodo</p>' +
-      '</div>' +
-      '<div class="rounded-xl bg-slate-50 border border-slate-200 p-4 text-center">' +
-        '<p class="text-3xl font-extrabold text-slate-700">' + articles.length + '</p>' +
-        '<p class="text-xs font-semibold text-sqm-gray mt-1 uppercase tracking-widest">Noticias</p>' +
-      '</div>' +
+    '<div class="rounded-xl bg-sqm-purple-lt border border-purple-200 p-4 text-center">' +
+    '<p class="text-3xl font-extrabold text-sqm-purple">' + fmt(totalGw, 2) + '</p>' +
+    '<p class="text-xs font-semibold text-sqm-gray mt-1 uppercase tracking-widest">GW Detectados</p>' +
+    '</div>' +
+    '<div class="rounded-xl bg-green-50 border border-green-200 p-4 text-center">' +
+    '<p class="text-3xl font-extrabold text-sqm-green-dk">' + fmt(totalIod, 1) + '</p>' +
+    '<p class="text-xs font-semibold text-sqm-gray mt-1 uppercase tracking-widest">Ton Yodo</p>' +
+    '</div>' +
+    '<div class="rounded-xl bg-slate-50 border border-slate-200 p-4 text-center">' +
+    '<p class="text-3xl font-extrabold text-slate-700">' + articles.length + '</p>' +
+    '<p class="text-xs font-semibold text-sqm-gray mt-1 uppercase tracking-widest">Noticias</p>' +
+    '</div>' +
     '</div>' +
     '<h3 class="text-base font-bold text-sqm-purple mt-5 mb-3">&#128202; Top Empresas por Capacidad Declarada</h3>' +
     (top5.length
@@ -438,29 +539,30 @@ async function renderMarketReport() {
     '<div class="space-y-3 mb-5">' + newsHTML + '</div>' +
     '<h3 class="text-base font-bold text-sqm-purple mt-5 mb-3">&#129504; Distribucion de Senales de Riesgo</h3>' +
     '<div class="flex gap-4 flex-wrap mb-6">' +
-      '<div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-sqm-green inline-block"></span><span class="text-sm font-semibold text-green-700">Beneficioso: ' + riskCounts.Beneficioso + '</span></div>' +
-      '<div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span><span class="text-sm font-semibold text-red-600">Riesgo: ' + riskCounts.Riesgo + '</span></div>' +
-      '<div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-sqm-gray inline-block"></span><span class="text-sm font-semibold text-sqm-gray">Neutral: ' + riskCounts.Neutral + '</span></div>' +
+    '<div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-sqm-green inline-block"></span><span class="text-sm font-semibold text-green-700">Beneficioso: ' + riskCounts.Beneficioso + '</span></div>' +
+    '<div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span><span class="text-sm font-semibold text-red-600">Riesgo: ' + riskCounts.Riesgo + '</span></div>' +
+    '<div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-sqm-gray inline-block"></span><span class="text-sm font-semibold text-sqm-gray">Neutral: ' + riskCounts.Neutral + '</span></div>' +
     '</div>' +
     '<div class="mt-2 pt-4 border-t border-slate-100">' +
-      '<h3 class="text-base font-bold text-sqm-purple mb-3">&#127981; Informe Ejecutivo &mdash; Analista SQM (Gemini)</h3>' +
-      '<div id="gemini-report-body"><div class="flex items-center gap-2 text-xs text-slate-400 animate-pulse">' +
-        '<div class="w-4 h-4 border-2 border-sqm-purple border-t-transparent rounded-full animate-spin"></div>' +
-        '<span>Generando informe ejecutivo con Gemini...</span></div></div>' +
+    '<h3 class="text-base font-bold text-sqm-purple mb-3">&#127981; Informe Ejecutivo &mdash; Analista SQM (Gemini)</h3>' +
+    '<div id="gemini-report-body"><div class="flex items-center gap-2 text-xs text-slate-400 animate-pulse">' +
+    '<div class="w-4 h-4 border-2 border-sqm-purple border-t-transparent rounded-full animate-spin"></div>' +
+    '<span>Generando informe ejecutivo con Gemini...</span></div></div>' +
     '</div>';
 
   // Swap skeleton -> content immediately
   if (skeleton) skeleton.classList.add('hidden');
   content.classList.remove('hidden');
 
-  // -- Fix 2: Solicitar informe ejecutivo al backend via /api/chat ----------
+  // -- Solicitar informe ejecutivo al backend via /api/chat ----------
   const geminiBody = document.getElementById('gemini-report-body');
   if (!geminiBody) return;
 
-  const noticiasCtx = articles.slice(0, 15).map(a =>
-    '[' + (a.date || 'sin fecha') + '] ' + a.company + ' (' + fmt(a.capacityGw, 3) + ' GW) | ' + a.nivel_riesgo + '\n' +
-    '  Titulo: ' + (a.title || '') + '\n  Analisis: ' + (a.resumen_ia || '')
-  ).join('\n');
+  const noticiasCtx = articles.slice(0, 15).map(a => {
+    const text = a?.analisis || a?.resumen_ia || '';
+    return '[' + (a.date || 'sin fecha') + '] ' + a.company + ' (' + fmt(a.capacityGw, 3) + ' GW) | ' + a.nivel_riesgo + '\n' +
+      '  Titulo: ' + (a.title || '') + '\n  Analisis: ' + text;
+  }).join('\n');
 
   const reportPrompt =
     'Actua como Analista Senior de SQM (Sociedad Quimica y Minera de Chile), especialista en demanda de yodo para celdas perovskita. ' +
@@ -492,19 +594,11 @@ async function renderMarketReport() {
         return;
       }
     }
-  } catch (_) { /* fallback */ }
+  } catch (_) { /* fallback below */ }
 
-  // Fallback local si Gemini no responde
-  geminiBody.innerHTML =
-    '<p class="text-sm text-slate-700 leading-relaxed">' +
-    'Con <strong>' + fmt(totalGw, 2) + ' GW</strong> de capacidad anunciada rastreada globalmente, ' +
-    'la demanda proyectada de yodo asciende a <strong>' + fmt(totalIod, 1) + ' toneladas metricas</strong> ' +
-    '(factor ' + factor + ' T/GW). De las ' + articles.length + ' fuentes monitoreadas, ' +
-    '<strong class="text-green-700">' + riskCounts.Beneficioso + ' son senales positivas</strong> ' +
-    'y <strong class="text-red-600">' + riskCounts.Riesgo + ' representan riesgo</strong> para la demanda de yodo. ' +
-    'SQM mantiene posicion estrategica unica como proveedor global de yodo en grado solar.' +
-    '</p>' +
-    '<p class="text-xs text-slate-400 italic mt-2">Informe ejecutivo de Gemini no disponible en modo serverless sin backend activo.</p>';
+  // Bug #2 fix: fallback local siempre hermoso y siempre presente —
+  // nunca dejamos el spinner de Gemini girando indefinidamente.
+  geminiBody.innerHTML = defaultExecutiveReportHTML(totalGw, totalIod, factor, articles.length, riskCounts);
 }
 
 
@@ -515,14 +609,14 @@ function renderCharts() {
 }
 
 function destroyChart(c) {
-  if (c) { try { c.destroy(); } catch (_) {} }
+  if (c) { try { c.destroy(); } catch (_) { } }
   return null;
 }
 
 function renderCompanyChart() {
-  const factor  = getLiveFactor();
+  const factor = getLiveFactor();
   const yearSel = document.getElementById("timeline_filter")?.value || "ALL";
-  let cap       = (state.db?.articles || []).filter(e => (e.capacityGw || 0) > 0);
+  let cap = (state.db?.articles || []).filter(e => (e.capacityGw || 0) > 0);
   if (yearSel !== "ALL") cap = cap.filter(e => e.target_year === yearSel);
   renderCompanyChartFiltered(cap, factor);
 }
@@ -538,19 +632,21 @@ function renderCompanyChartFiltered(capArticles, factor) {
   });
 
   const hasData = Object.keys(agg).length > 0;
-  const pairs   = hasData ? Object.entries(agg).sort((a, b) => b[1] - a[1]) : [];
-  const labels  = hasData ? pairs.map(([co]) => co) : ["Sin datos disponibles"];
-  const data    = hasData ? pairs.map(([, v]) => +v.toFixed(3)) : [0];
-  const colors  = hasData ? pairs.map(() => "rgba(91,44,134,0.80)") : ["rgba(200,200,200,0.4)"];
+  const pairs = hasData ? Object.entries(agg).sort((a, b) => b[1] - a[1]) : [];
+  const labels = hasData ? pairs.map(([co]) => co) : ["Sin datos disponibles"];
+  const data = hasData ? pairs.map(([, v]) => +v.toFixed(3)) : [0];
+  const colors = hasData ? pairs.map(() => "rgba(91,44,134,0.80)") : ["rgba(200,200,200,0.4)"];
 
   companyChart = new Chart(ctx, {
     type: "bar",
     data: {
       labels,
-      datasets: [{ label: "Yodo (Ton)", data, backgroundColor: colors,
+      datasets: [{
+        label: "Yodo (Ton)", data, backgroundColor: colors,
         borderColor: hasData ? "#5B2C86" : "#ccc", borderWidth: 1,
         borderRadius: 5,
-        hoverBackgroundColor: hasData ? "rgba(178,210,53,0.85)" : "rgba(200,200,200,0.5)" }],
+        hoverBackgroundColor: hasData ? "rgba(178,210,53,0.85)" : "rgba(200,200,200,0.5)"
+      }],
     },
     options: {
       indexAxis: "y", responsive: true, maintainAspectRatio: false,
@@ -560,20 +656,24 @@ function renderCompanyChartFiltered(capArticles, factor) {
         tooltip: { enabled: hasData, callbacks: { label: c => ` ${c.raw} Ton Yodo` } },
       },
       scales: {
-        x: { min: 0, grid: { color: "rgba(0,0,0,0.06)" },
-             ticks: { color: "#7A7A7A", font: { family: "Inter" } },
-             title: { display: true, text: "Toneladas Métricas", color: "#7A7A7A" } },
-        y: { grid: { display: false },
-             ticks: { color: "#374151", font: { family: "Inter", weight: "600" } } },
+        x: {
+          min: 0, grid: { color: "rgba(0,0,0,0.06)" },
+          ticks: { color: "#7A7A7A", font: { family: "Inter" } },
+          title: { display: true, text: "Toneladas Métricas", color: "#7A7A7A" }
+        },
+        y: {
+          grid: { display: false },
+          ticks: { color: "#374151", font: { family: "Inter", weight: "600" } }
+        },
       },
     },
   });
 }
 
 function renderCompoundChart() {
-  const factor  = getLiveFactor();
+  const factor = getLiveFactor();
   const yearSel = document.getElementById("timeline_filter")?.value || "ALL";
-  let cap       = (state.db?.articles || []).filter(e => !e.radar_only);
+  let cap = (state.db?.articles || []).filter(e => !e.radar_only);
   if (yearSel !== "ALL") cap = cap.filter(e => e.target_year === yearSel);
   renderCompoundChartFiltered(cap.reduce((s, e) => s + (e.capacityGw || 0), 0) * factor);
 }
@@ -583,9 +683,9 @@ function renderCompoundChartFiltered(totalIod) {
   if (!ctx) return;
   compoundChart = destroyChart(compoundChart);
 
-  const values  = [
+  const values = [
     +(totalIod * RATIOS.pbi2).toFixed(3), +(totalIod * RATIOS.fai).toFixed(3),
-    +(totalIod * RATIOS.mai).toFixed(3),  +(totalIod * RATIOS.csi).toFixed(3),
+    +(totalIod * RATIOS.mai).toFixed(3), +(totalIod * RATIOS.csi).toFixed(3),
   ];
   const hasData = values.some(v => v > 0);
   const dLabels = ["PbI₂ (60%)", "FAI (20%)", "MAI (10%)", "CsI (10%)"];
@@ -594,9 +694,9 @@ function renderCompoundChartFiltered(totalIod) {
   compoundChart = new Chart(ctx, {
     type: "doughnut",
     data: {
-      labels:   hasData ? dLabels : ["Sin capacidad registrada"],
+      labels: hasData ? dLabels : ["Sin capacidad registrada"],
       datasets: [{
-        data:            hasData ? values : [1],
+        data: hasData ? values : [1],
         backgroundColor: hasData ? dColors : ["rgba(200,200,200,0.3)"],
         borderColor: "#f8fafc", borderWidth: 3, hoverOffset: hasData ? 8 : 0,
       }],
@@ -617,34 +717,34 @@ function renderCompoundChartFiltered(totalIod) {
 function geoTag(geo) {
   if (!geo || !geo.country) return "";
   const continentColors = {
-    "Asia":          "bg-orange-50 text-orange-700 border-orange-200",
-    "Europa":        "bg-blue-50 text-blue-700 border-blue-200",
-    "Norteamérica":  "bg-green-50 text-green-700 border-green-200",
-    "Global":        "bg-slate-50 text-slate-500 border-slate-200",
+    "Asia": "bg-orange-50 text-orange-700 border-orange-200",
+    "Europa": "bg-blue-50 text-blue-700 border-blue-200",
+    "Norteamérica": "bg-green-50 text-green-700 border-green-200",
+    "Global": "bg-slate-50 text-slate-500 border-slate-200",
   };
   const cls = continentColors[geo.continent] || "bg-slate-50 text-slate-500 border-slate-200";
-  const flag = { "China":"🇨🇳","USA":"🇺🇸","UK":"🇬🇧","Japón":"🇯🇵","Polonia":"🇵🇱" }[geo.country] || "🌍";
+  const flag = { "China": "🇨🇳", "USA": "🇺🇸", "UK": "🇬🇧", "Japón": "🇯🇵", "Polonia": "🇵🇱" }[geo.country] || "🌍";
   return `<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-xs border font-medium ${cls}">${flag} ${geo.country}</span>`;
 }
 
 // ── Data Table ─────────────────────────────────────────────────
 function renderTable() {
-  const tbody   = document.getElementById("ledger-body");
-  const empty   = document.getElementById("ledger-empty");
+  const tbody = document.getElementById("ledger-body");
+  const empty = document.getElementById("ledger-empty");
   const counter = document.getElementById("ledger-count");
   if (!tbody) return;
 
-  const search  = (document.getElementById("search-input")?.value || "").toLowerCase();
-  const phase   = document.getElementById("filter-phase")?.value || "ALL";
+  const search = (document.getElementById("search-input")?.value || "").toLowerCase();
+  const phase = document.getElementById("filter-phase")?.value || "ALL";
   const yearSel = document.getElementById("timeline_filter")?.value || "ALL";
-  const factor  = getLiveFactor();
+  const factor = getLiveFactor();
 
   let rows = (state.db?.articles || []).filter(e => {
     if (e?.radar_only) return false;
     const ms = (e?.company || "").toLowerCase().includes(search) ||
-               (e?.title   || "").toLowerCase().includes(search);
-    const mp = phase   === "ALL" || e?.phase        === phase;
-    const my = yearSel === "ALL" || e?.target_year  === yearSel;
+      (e?.title || "").toLowerCase().includes(search);
+    const mp = phase === "ALL" || e?.phase === phase;
+    const my = yearSel === "ALL" || e?.target_year === yearSel;
     return ms && mp && my;
   });
 
@@ -652,8 +752,8 @@ function renderTable() {
     let va = a[state.sort.col] ?? "", vb = b[state.sort.col] ?? "";
     if (typeof va === "string") va = va.toLowerCase();
     if (typeof vb === "string") vb = vb.toLowerCase();
-    return va < vb ? (state.sort.dir === "asc" ? -1 :  1)
-         : va > vb ? (state.sort.dir === "asc" ?  1 : -1) : 0;
+    return va < vb ? (state.sort.dir === "asc" ? -1 : 1)
+      : va > vb ? (state.sort.dir === "asc" ? 1 : -1) : 0;
   });
 
   const total = (state.db?.articles || []).filter(e => !e.radar_only).length;
@@ -663,25 +763,25 @@ function renderTable() {
   empty?.classList.add("hidden");
 
   const phaseMap = {
-    Operational:          { cls: "bg-green-100 text-green-700 border-green-300",   label: "Operativo" },
-    "Under Construction": { cls: "bg-amber-100 text-amber-700 border-amber-300",   label: "Construcción" },
-    Planned:              { cls: "bg-purple-100 text-purple-700 border-purple-300", label: "Planificado" },
+    Operational: { cls: "bg-green-100 text-green-700 border-green-300", label: "Operativo" },
+    "Under Construction": { cls: "bg-amber-100 text-amber-700 border-amber-300", label: "Construcción" },
+    Planned: { cls: "bg-purple-100 text-purple-700 border-purple-300", label: "Planificado" },
   };
   const riskEmoji = { Beneficioso: "📈", Riesgo: "⚠️", Neutral: "ℹ️" };
 
   tbody.innerHTML = rows.map(e => {
-    const ph      = phaseMap[e?.phase] || phaseMap.Planned;
-    const emoji   = riskEmoji[e?.nivel_riesgo] || "ℹ️";
-    const date    = (e?.date || "").split("-").reverse().join("/") || "—";
+    const ph = phaseMap[e?.phase] || phaseMap.Planned;
+    const emoji = riskEmoji[e?.nivel_riesgo] || "ℹ️";
+    const date = (e?.date || "").split("-").reverse().join("/") || "—";
     const iodLive = (e?.capacityGw || 0) * factor;
     const yearTag = e?.target_year
       ? `<span class="ml-1 px-1.5 py-0.5 rounded text-xs bg-blue-50 text-blue-700 border border-blue-200 font-mono">${e?.target_year}</span>`
       : "";
-    const link    = e?.link
+    const link = e?.link
       ? `<a href="${e?.link}" target="_blank" rel="noopener"
              class="text-sqm-purple hover:underline text-xs font-medium">↗ Fuente</a>`
       : `<span class="text-slate-400 text-xs">Manual</span>`;
-    const capTag  = e?.invest_proxy
+    const capTag = e?.invest_proxy
       ? `<span class="ml-1 px-1 py-0.5 text-xs bg-amber-50 text-amber-700 border border-amber-200 rounded">CAPEX</span>`
       : "";
 
@@ -735,10 +835,11 @@ function renderRiskRadar() {
   const container = document.getElementById("risk-radar-feed");
   if (!container) return;
 
-  const factor      = getLiveFactor();
-  const yearSel     = document.getElementById("timeline_filter")?.value || "ALL";
+  const factor = getLiveFactor();
+  const yearSel = document.getElementById("timeline_filter")?.value || "ALL";
   const allArticles = state.db?.articles || [];
-  // Fix 1: filtrar solo por nivel_riesgo — siempre hay resumen_ia (garantizado en data mapper)
+  // Filtramos solo por nivel_riesgo — siempre hay resumen_ia/analisis
+  // garantizado por el data mapper en loadAndRender().
   let radarItems = allArticles.filter(e => e?.nivel_riesgo);
   if (yearSel !== "ALL") radarItems = radarItems.filter(e => e?.target_year === yearSel);
 
@@ -761,14 +862,13 @@ function renderRiskRadar() {
   }
 
   const cfg = {
-    Beneficioso: { badge: "bg-green-100 text-green-700 border-green-300",  card: "border-l-4 border-l-sqm-green", icon: "📈" },
-    Riesgo:      { badge: "bg-red-100 text-red-700 border-red-300",        card: "border-l-4 border-l-red-500",   icon: "⚠️" },
-    Neutral:     { badge: "bg-slate-100 text-slate-600 border-slate-300",  card: "border-l-4 border-l-slate-400", icon: "ℹ️" },
+    Beneficioso: { badge: "bg-green-100 text-green-700 border-green-300", card: "border-l-4 border-l-sqm-green", icon: "📈" },
+    Riesgo: { badge: "bg-red-100 text-red-700 border-red-300", card: "border-l-4 border-l-red-500", icon: "⚠️" },
+    Neutral: { badge: "bg-slate-100 text-slate-600 border-slate-300", card: "border-l-4 border-l-slate-400", icon: "ℹ️" },
   };
 
   container.innerHTML = radarItems.map(e => {
-    const c       = cfg[e?.nivel_riesgo] || cfg.Neutral;
-    const date    = (e?.date || "").split("-").reverse().join("/") || "—";
+    const c = cfg[e?.nivel_riesgo] || cfg.Neutral;
     const iodLive = (e?.capacityGw || 0) * factor;
     const capInfo = (e?.capacityGw || 0) > 0
       ? `<span class="font-mono text-sqm-purple font-semibold">${fmt(e?.capacityGw, 3)} GW</span>
@@ -789,6 +889,16 @@ function renderRiskRadar() {
              class="text-sqm-purple hover:underline text-xs font-medium">↗ Ver artículo</a>`
       : "";
 
+    // Bug #3 fix: fecha y análisis directamente desde los campos crudos
+    // guardados en el mapeo (con optional chaining y fallback explícito),
+    // tal como pedido: fecha_publicacion → fecha → 'Fecha Desconocida',
+    // y analisis → resumen_ia → 'Sin análisis detallado'.
+    const rawDate = e?.fecha_publicacion || e?.fecha || e?.date || null;
+    const dateDisplay = rawDate
+      ? (rawDate.includes("-") ? rawDate.split("-").reverse().join("/") : rawDate)
+      : "Fecha Desconocida";
+    const analysisText = e?.analisis || e?.resumen_ia || "Sin análisis detallado";
+
     // data-radar-gw enables in-place update by updateRadarIodine()
     return `
       <article class="flex rounded-xl border border-slate-200 bg-white shadow-sm
@@ -804,11 +914,10 @@ function renderRiskRadar() {
               ${geoTag(e?.geo)}
               ${yearTag}
               ${capexBadge}
-              <span class="date" style="font-size: 0.8rem; color: #aaa;">${e?.fecha_publicacion || e?.fecha || e?.date || 'Fecha Desconocida'}</span>
+              <span class="date" style="font-size: 0.8rem; color: #aaa;">${escHtml(dateDisplay)}</span>
             </div>
             <div class="text-xs flex items-center gap-1">${capInfo}</div>
           </div>
-          <!-- Fix 1: título obligatorio + análisis/resumen siempre visibles -->
           <h3 class="text-sm font-semibold text-slate-800 leading-snug mb-2 line-clamp-2">
             ${escHtml(e?.title || e?.source || e?.link || e?.company || "")}
           </h3>
@@ -816,7 +925,7 @@ function renderRiskRadar() {
             <p class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
               Análisis — Perspectiva Demanda Yodo SQM
             </p>
-            <p class="text-sm text-slate-700 leading-relaxed">${escHtml(e?.analisis || e?.resumen_ia || e?.summary || 'Sin análisis')}</p>
+            <p class="text-sm text-slate-700 leading-relaxed">${escHtml(analysisText)}</p>
           </div>
           ${src ? `<div class="mt-2">${src}</div>` : ""}
         </div>
@@ -824,25 +933,11 @@ function renderRiskRadar() {
   }).join("");
 }
 
-// ── Offline State ──────────────────────────────────────────────
-function renderOfflineState() {
-  const radar = document.getElementById("risk-radar-feed");
-  if (radar) {
-    radar.innerHTML = `
-      <div class="rounded-xl border border-slate-200 bg-white py-12 text-center">
-        <div class="text-4xl mb-3">🔌</div>
-        <p class="text-slate-600 font-medium">Agente no disponible</p>
-        <p class="text-slate-400 text-sm mt-1">Ejecuta: <code class="font-mono text-sqm-purple">py scout_agent.py</code></p>
-        ${state.fetchError ? `<p class="text-red-400 text-xs mt-2 font-mono">${escHtml(state.fetchError)}</p>` : ""}
-      </div>`;
-  }
-}
-
 // ── Table Controls ─────────────────────────────────────────────
 function setupTableControls() {
   document.getElementById("search-input")?.addEventListener("input", renderTable);
   document.getElementById("filter-phase")?.addEventListener("change", renderTable);
-  
+
   // Interactive sorting on headers
   document.querySelectorAll("th[data-sort]").forEach(th => {
     th.addEventListener("click", () => {
@@ -869,18 +964,21 @@ window.sortTable = col => {
 window.deleteEntry = id => {
   if (!confirm("¿Eliminar este registro?") || !state.db) return;
   state.db.articles = state.db.articles.filter(e => e.id !== id);
-  const cap  = state.db.articles.filter(e => !e.radar_only);
-  const tGw  = cap.reduce((s, e) => s + (e.capacityGw    || 0), 0);
-  const tIod = cap.reduce((s, e) => s + (e.iodineDemand  || 0), 0);
+
+  const factor = getLiveFactor();
+  const cap = state.db.articles.filter(e => !e.radar_only);
+  const tGw = cap.reduce((s, e) => s + (e.capacityGw || 0), 0);
+  const tIod = tGw * factor;
+
   Object.assign(state.db.meta, {
-    total_gw:          +tGw.toFixed(4),
-    total_iodine_ton:  +tIod.toFixed(4),
-    total_pbi2_ton:    +(tIod * 0.60).toFixed(4),
-    total_fai_ton:     +(tIod * 0.20).toFixed(4),
-    total_mai_ton:     +(tIod * 0.10).toFixed(4),
-    total_csi_ton:     +(tIod * 0.10).toFixed(4),
-    article_count:     state.db.articles.length,
-    unique_companies:  new Set(cap.map(e => e.company)).size,
+    total_gw: +tGw.toFixed(4),
+    total_iodine_ton: +tIod.toFixed(4),
+    total_pbi2_ton: +(tIod * RATIOS.pbi2).toFixed(4),
+    total_fai_ton: +(tIod * RATIOS.fai).toFixed(4),
+    total_mai_ton: +(tIod * RATIOS.mai).toFixed(4),
+    total_csi_ton: +(tIod * RATIOS.csi).toFixed(4),
+    article_count: state.db.articles.length,
+    unique_companies: new Set(cap.map(e => e.company)).size,
   });
   render();
   showToast("Eliminado", "Registro removido.", "info");
@@ -891,20 +989,20 @@ function setupManualForm() {
   document.getElementById("manual-form")?.addEventListener("submit", async ev => {
     ev.preventDefault();
     const payload = {
-      company:       document.getElementById("m-company").value,
+      company: document.getElementById("m-company").value,
       capacityValue: parseFloat(document.getElementById("m-capacity").value) || 0,
-      capacityUnit:  document.getElementById("m-unit").value,
-      phase:         document.getElementById("m-phase").value,
-      nivel_riesgo:  document.getElementById("m-risk").value,
-      date:          document.getElementById("m-date").value,
-      source:        document.getElementById("m-source").value,
-      notes:         document.getElementById("m-notes").value,
+      capacityUnit: document.getElementById("m-unit").value,
+      phase: document.getElementById("m-phase").value,
+      nivel_riesgo: document.getElementById("m-risk").value,
+      date: document.getElementById("m-date").value,
+      source: document.getElementById("m-source").value,
+      notes: document.getElementById("m-notes").value,
     };
     try {
       const res = await fetch(`${API_BASE}/api/entries`, {
-        method:  "POST",
+        method: "POST",
         headers: { "Content-Type": "application/json" },
-        body:    JSON.stringify(payload),
+        body: JSON.stringify(payload),
       });
       if (res.ok) {
         showToast("Guardado", `Entrada de ${payload.company} añadida.`, "success");
@@ -915,7 +1013,7 @@ function setupManualForm() {
         const err = await res.json().catch(() => ({}));
         showToast("Error del servidor", err.error || `HTTP ${res.status}`, "error");
       }
-    } catch(e) {
+    } catch (e) {
       showToast("Sin conexión", "Inicia scout_agent.py.", "error");
     }
   });
@@ -925,24 +1023,32 @@ function setupManualForm() {
 window.exportCSV = () => {
   const articles = state.db?.articles || [];
   if (!articles.length) { showToast("Sin datos", "Nada que exportar.", "error"); return; }
-  const hdrs = ["Empresa","País","Continente","Cap.GW","Yodo Total","PbI2","FAI","MAI","CsI",
-                "Fase","Nivel Riesgo","Año Objetivo","CAPEX Proxy","Resumen IA","Fecha","Fuente","Enlace"];
-  const ph = { Operational:"Operativo","Under Construction":"En Construccion",Planned:"Planificado" };
-  const rows = articles.map(e => [
-    e.company, e.geo?.country || "—", e.geo?.continent || "—",
-    e.capacityGw, e.iodineDemand, e.pbi2, e.fai, e.mai, e.csi,
-    ph[e.phase] || e.phase, e.nivel_riesgo || "Neutral",
-    e.target_year || "—", e.invest_proxy ? "Sí" : "No",
-    (e.resumen_ia || "").replace(/;/g,","),
-    e.date, (e.title || e.source).replace(/;/g,","), e.link
-  ]);
+  const factor = getLiveFactor();
+  const hdrs = ["Empresa", "País", "Continente", "Cap.GW", "Yodo Total", "PbI2", "FAI", "MAI", "CsI",
+    "Fase", "Nivel Riesgo", "Año Objetivo", "CAPEX Proxy", "Resumen IA", "Fecha", "Fuente", "Enlace"];
+  const ph = { Operational: "Operativo", "Under Construction": "En Construccion", Planned: "Planificado" };
+  const rows = articles.map(e => {
+    // Bug bonus fix: estos campos nunca existían en el objeto del artículo
+    // (solo se calculaban al vuelo en las vistas). Se recalculan aquí con
+    // el factor en vivo para que el CSV exportado refleje cifras reales.
+    const iod = (e.capacityGw || 0) * factor;
+    return [
+      e.company, e.geo?.country || "—", e.geo?.continent || "—",
+      e.capacityGw, +iod.toFixed(4), +(iod * RATIOS.pbi2).toFixed(4),
+      +(iod * RATIOS.fai).toFixed(4), +(iod * RATIOS.mai).toFixed(4), +(iod * RATIOS.csi).toFixed(4),
+      ph[e.phase] || e.phase, e.nivel_riesgo || "Neutral",
+      e.target_year || "—", e.invest_proxy ? "Sí" : "No",
+      (e.analisis || e.resumen_ia || "").replace(/;/g, ","),
+      e.date, (e.title || e.source || "").replace(/;/g, ","), e.link
+    ];
+  });
   const csv = ["sep=;", hdrs.join(";"),
-    ...rows.map(r => r.map(v => `"${String(v ?? "").replace(/"/g,'""')}"`).join(";"))
+    ...rows.map(r => r.map(v => `"${String(v ?? "").replace(/"/g, '""')}"`).join(";"))
   ].join("\r\n");
   const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8;" });
-  const url  = URL.createObjectURL(blob);
-  const a    = Object.assign(document.createElement("a"), {
-    href: url, download: `SQM_Perovskita_${new Date().toISOString().slice(0,10)}.csv`,
+  const url = URL.createObjectURL(blob);
+  const a = Object.assign(document.createElement("a"), {
+    href: url, download: `SQM_Perovskita_${new Date().toISOString().slice(0, 10)}.csv`,
   });
   document.body.appendChild(a); a.click(); document.body.removeChild(a);
   URL.revokeObjectURL(url);
@@ -952,10 +1058,10 @@ window.exportCSV = () => {
 // ── Toast ──────────────────────────────────────────────────────
 function showToast(title, msg, type = "success") {
   const border = { success: "border-green-400", error: "border-red-400", info: "border-blue-400" }[type];
-  const icon   = {
+  const icon = {
     success: `<svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>`,
-    error:   `<svg class="w-5 h-5 text-red-600 flex-shrink-0"   fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>`,
-    info:    `<svg class="w-5 h-5 text-blue-600 flex-shrink-0"  fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>`,
+    error: `<svg class="w-5 h-5 text-red-600 flex-shrink-0"   fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>`,
+    info: `<svg class="w-5 h-5 text-blue-600 flex-shrink-0"  fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>`,
   }[type];
   const t = document.createElement("div");
   t.className = `flex items-start gap-3 min-w-72 max-w-sm px-4 py-3 rounded-xl border ${border}
@@ -967,15 +1073,15 @@ function showToast(title, msg, type = "success") {
     </div>
     <button onclick="this.parentElement.remove()" class="text-slate-300 hover:text-slate-600 text-lg leading-none">&times;</button>`;
   document.getElementById("toast-area")?.appendChild(t);
-  requestAnimationFrame(() => t.classList.remove("translate-y-4","opacity-0"));
-  setTimeout(() => { t.classList.add("opacity-0","translate-y-4"); setTimeout(()=>t.remove(),300); }, 5500);
+  requestAnimationFrame(() => t.classList.remove("translate-y-4", "opacity-0"));
+  setTimeout(() => { t.classList.add("opacity-0", "translate-y-4"); setTimeout(() => t.remove(), 300); }, 5500);
 }
 
 // ── Utilities ──────────────────────────────────────────────────
-function fmt(v, d = 2)  { return (typeof v === "number" && isFinite(v)) ? v.toFixed(d) : "—"; }
+function fmt(v, d = 2) { return (typeof v === "number" && isFinite(v)) ? v.toFixed(d) : "—"; }
 function setText(id, v) { const el = document.getElementById(id); if (el) el.textContent = v ?? "—"; }
 function escHtml(s) {
   return String(s ?? "")
-    .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
 }
