@@ -893,10 +893,7 @@ function renderRiskRadar() {
     // guardados en el mapeo (con optional chaining y fallback explícito),
     // tal como pedido: fecha_publicacion → fecha → 'Fecha Desconocida',
     // y analisis → resumen_ia → 'Sin análisis detallado'.
-    const rawDate = e?.fecha_publicacion || e?.fecha || e?.date || null;
-    const dateDisplay = rawDate
-      ? (rawDate.includes("-") ? rawDate.split("-").reverse().join("/") : rawDate)
-      : "Fecha Desconocida";
+    const fechaReal = e?.fecha_publicacion || e?.fecha || e?.date || "Fecha Desconocida";
     const analysisText = e?.analisis || e?.resumen_ia || "Sin análisis detallado";
 
     // data-radar-gw enables in-place update by updateRadarIodine()
@@ -914,7 +911,9 @@ function renderRiskRadar() {
               ${geoTag(e?.geo)}
               ${yearTag}
               ${capexBadge}
-              <span class="date" style="font-size: 0.8rem; color: #aaa;">${escHtml(dateDisplay)}</span>
+              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-300 text-xs font-medium shadow-sm">
+                📅 ${escHtml(fechaReal)}
+              </span>
             </div>
             <div class="text-xs flex items-center gap-1">${capInfo}</div>
           </div>
