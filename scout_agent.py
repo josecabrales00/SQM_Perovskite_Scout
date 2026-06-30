@@ -826,87 +826,63 @@ def consolidate_by_company(entries: list[dict]) -> list[dict]:
     return entries
 
 
-# ── Supabase Sync ───────────────────────────────────────────────────
-def sync_to_supabase(db: dict):
-    """
-    Sincroniza los articulos del ciclo actual al warehouse Postgres en Supabase.
-
-    FIX CRITICO: se eliminó por completo el Auto-Wipe (requests.delete masivo
-    que vaciaba toda la tabla perovskite_leads antes de insertar). Ese borrado
-    sistemático era el motivo por el que los datos parecían "desaparecer" y
-    nunca se acumulaban entre ciclos. Ahora la función ÚNICAMENTE hace INSERT
-    — los datos se acumulan, nunca se eliminan en masa.
-
-    Si en el futuro se necesita evitar duplicados exactos del mismo artículo,
-    eso debe resolverse con un UPSERT (on_conflict) sobre una columna única
-    como 'fuente_noticia', NUNCA con un DELETE previo de toda la tabla.
-    """
+def sync_to_supabase(db_data: dict):
     if not SUPABASE_ENABLED:
-        log.debug("Supabase deshabilitado — omitiendo sync.")
         return
 
     try:
-        import requests as _req
-    except ImportError:
-        log.warning("Supabase sync: 'requests' no disponible.")
-        return
+        log.info("Iniciando sincronización con Supabase (Acumulativo, sin wipe)...")
+        url = f"{SUPABASE_URL}/rest/v1/perovskite_leads"
 
-    table_url = f"{SUPABASE_URL}/rest/v1/perovskite_leads"
+        payload = []
+        entries = db_data.get("entries", [])
+        for e in entries:
+            # Aseguramos que la fecha viaje correctamente en ambos campos por seguridad
+            fecha_segura = e.get("fecha_publicacion") or e.get("date") or "Fecha Desconocida"
 
-    # ── Preparar registros para INSERT (sin DELETE previo) ──────────
-    articles = db.get("articles", [])
-    records  = []
-    for e in articles:
-        gw = e.get("capacityGw", 0.0)
-        records.append({
-            "empresa":          e.get("company", ""),
-            "capacidad_gw":     round(gw, 6),
-            # yodo_teorico_toneladas es columna GENERATED — no se envía
-            "desglose_quimico": {
-                "pbi2_ton": round(gw * IODINE_PER_GW * RATIOS["pbi2"], 6),
-                "fai_ton":  round(gw * IODINE_PER_GW * RATIOS["fai"],  6),
-                "mai_ton":  round(gw * IODINE_PER_GW * RATIOS["mai"],  6),
-                "csi_ton":  round(gw * IODINE_PER_GW * RATIOS["csi"],  6),
-            },
-            "fuente_noticia":   (e.get("link") or e.get("source") or "")[:500],
-            "target_year":      e.get("target_year", CURRENT_YEAR),
-            "geo_pais":         e.get("geo", {}).get("country", ""),
-            "geo_continente":   e.get("geo", {}).get("continent", ""),
-            "nivel_riesgo":     e.get("nivel_riesgo", "Neutral"),
-            "invest_proxy":     bool(e.get("invest_proxy", False)),
-            "fecha_publicacion": (e.get("fecha_publicacion") or e.get("date") or "Fecha Desconocida")[:30],
-            "titulo":           (e.get("titulo") or e.get("title") or "")[:300],
-            "analisis":         (e.get("resumen_ia") or e.get("analisis") or "Sin analisis detallado.")[:800],
-        })
+            payload.append({
+                "id": e.get("id", ""),
+                "company": e.get("company", ""),
+                "capacityValue": e.get("capacityValue", 0),
+                "capacityUnit": e.get("capacityUnit", "MW"),
+                "capacityGw": e.get("capacityGw", 0.0),
+                "iodineDemandTonnes": e.get("iodineDemandTonnes", 0.0),
+                "phase": e.get("phase", ""),
+                "nivel_riesgo": e.get("nivel_riesgo", ""),
+                "resumen_ia": e.get("resumen_ia", ""),
+                "target_year": e.get("target_year", ""),
+                "geo_pais": e.get("geo", {}).get("country", ""),
+                "geo_continente": e.get("geo", {}).get("continent", ""),
+                "llm_used": e.get("llm_used", False),
+                "radar_only": e.get("radar_only", False),
+                "date": fecha_segura,
+                "fecha_publicacion": fecha_segura,
+                "fuente_noticia": e.get("source") or e.get("fuente_noticia") or "Google News",
+                "title": e.get("title", ""),
+                "link": e.get("link", ""),
+                "summary": e.get("summary", ""),
+                "invest_proxy": e.get("invest_proxy", False)
+            })
 
-    if not records:
-        log.info("Supabase sync: sin registros para insertar.")
-        return
+        if not payload:
+            log.info("Supabase sync: sin registros para insertar.")
+            return
 
-    # ── Batch INSERT (50 filas por lote para evitar payload limits) ──
-    # Prefer: resolution=ignore-duplicates evita reventar el batch entero
-    # si alguna fila choca con una constraint única existente; las demás
-    # filas del lote se insertan igual. Esto reemplaza al viejo patrón de
-    # "borrar todo y reinsertar todo" por uno de acumulación segura.
-    BATCH = 50
-    total_ok = 0
-    headers_insert = {
-        **_SB_HEADERS,
-        "Prefer": "return=minimal,resolution=ignore-duplicates",
-    }
-    for i in range(0, len(records), BATCH):
-        batch = records[i : i + BATCH]
-        ins_resp = requests.post(table_url, json=batch,
-                             headers=headers_insert, verify=False, timeout=30)
-        if ins_resp.ok:
-            total_ok += len(batch)
+        # El truco maestro: Insertar y si hay duplicado, ignorarlo (no borra nada histórico)
+        headers = {
+            **_SB_HEADERS,
+            "Prefer": "return=minimal,resolution=ignore-duplicates"
+        }
+
+        resp = requests.post(url, headers=headers, json=payload, verify=False, timeout=20)
+
+        if resp.ok:
+            log.info("Supabase sync: %d registros insertados (acumulativo).", len(payload))
         else:
-            body = ins_resp.text[:200].encode("ascii", errors="replace").decode()
-            log.warning("Supabase INSERT lote %d: %s %s",
-                        i // BATCH + 1, ins_resp.status_code, body)
+            log.warning("Supabase sync error HTTP %s: %s", resp.status_code, resp.text)
 
-    log.info("Supabase sync: %d/%d registros insertados en perovskite_leads (acumulativo, sin wipe).",
-             total_ok, len(records))
+    except Exception as e:
+        log.error("Fallo de conexión en sync_to_supabase: %s", e)
 
 # ── Build & Merge Database ────────────────────────────────────────
 def build_database(new_entries: list[dict], market_report: str = "") -> dict:
