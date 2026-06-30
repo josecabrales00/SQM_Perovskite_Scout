@@ -1,4 +1,4 @@
-﻿"""
+"""
 SQM Perovskite Scout â€” Agent v6.0  (Supabase Integration)
 =========================================================
 Arquitectura: procesamiento 100% local (regex) + informe ejecutivo REST/SSL bypass.
@@ -1186,7 +1186,20 @@ def run_scan():
                 link = getattr(entry, "link", "") or ""
                 title = getattr(entry, "title", "Sin título") or "Sin título"
                 summary = getattr(entry, "summary", "") or ""
-                pub_raw = getattr(entry, "published", "") or ""
+
+                # FIX FECHA: feedparser expone la fecha de publicación del RSS
+                # en dos formas: el string crudo RFC822 (entry.published, ej.
+                # "Mon, 24 Jun 2026 12:00:00 GMT") y la versión ya parseada
+                # como time.struct_time en entry.published_parsed. Usamos la
+                # estructurada para construir un YYYY-MM-DD confiable, sin
+                # depender de regex frágil sobre el string crudo.
+                pub_rss_iso = ""
+                published_parsed = getattr(entry, "published_parsed", None)
+                if published_parsed:
+                    try:
+                        pub_rss_iso = time.strftime("%Y-%m-%d", published_parsed)
+                    except Exception:
+                        pub_rss_iso = ""
 
                 if not link:
                     continue
@@ -1200,7 +1213,19 @@ def run_scan():
 
                 titulo_final = (ds.get("titulo") or title or "Sin título").strip()
                 analisis_final = ds.get("analisis") or summary or ""
-                fecha_final = ds.get("fecha_publicacion") or pub_raw or "Fecha Desconocida"
+
+                # FIX FECHA (bug raíz): deep_scrape() SIEMPRE devuelve el string
+                # no vacío "Fecha Desconocida" como default — en Python eso es
+                # truthy, así que el viejo `ds.get(...) or pub_raw or "..."`
+                # nunca llegaba a usar pub_raw. Ahora se compara explícitamente
+                # contra ese centinela antes de caer al fallback del RSS.
+                fecha_ds = ds.get("fecha_publicacion") or "Fecha Desconocida"
+                if fecha_ds != "Fecha Desconocida":
+                    fecha_final = fecha_ds
+                elif pub_rss_iso:
+                    fecha_final = pub_rss_iso
+                else:
+                    fecha_final = "Fecha Desconocida"
 
                 raw.append({
                     "title": titulo_final[:160],
